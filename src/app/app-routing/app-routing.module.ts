@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SortimentiComponent } from '../sortimenti/sortimenti.component';
-import { HomeComponent } from '../home/home.component';
+import { UnosPodatakaComponent } from '../unos-podataka/unos-podataka.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'sortimenti', component: SortimentiComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'unospodataka', component: UnosPodatakaComponent }
 ]
 
 @NgModule({

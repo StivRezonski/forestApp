@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6 offset-xl-3">
+            <select class="form-select" (change) = "onChangeValue1($event)">
+                <option selected>Open this select menu</option>
+                <option value="1">Do 1000 mnv</option>
+                <option value="2">1000-1500 mnv</option>
+                <option value="3">Preko 1500 mnv</option>
+            </select>
+            <select class="form-select" (change) = "onChangeValue2($event)">
+                <option selected>Open this select menu</option>
+                <option value="1">Do 30 cm</option>
+                <option value="2">30-45 cm</option>
+                <option value="3">Preko 45 cm</option>
+            </select>
+            <p>{{nadmorskaVisina}}</p>
+            <p>{{srednjiPrecnikCetinara}}</p>
+            <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button>
+        </div>
+    </div>
+</div>
