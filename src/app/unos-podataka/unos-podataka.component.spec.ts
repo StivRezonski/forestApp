@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { UnosPodatakaComponent } from './unos-podataka.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('UnosPodatakaComponent', () => {
+  let component: UnosPodatakaComponent;
+  let fixture: ComponentFixture<UnosPodatakaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ UnosPodatakaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(UnosPodatakaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
