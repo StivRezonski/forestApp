@@ -2,18 +2,66 @@
     <div class="row">
         <div class="col-xl-6 offset-xl-3">
             <select class="form-select" (change) = "onChangeValue1($event)">
-                <option selected>Open this select menu</option>
-                <option value="1">Do 1000 mnv</option>
-                <option value="2">1000-1500 mnv</option>
-                <option value="3">Preko 1500 mnv</option>
-            </select>
+                <option selected>Nagib terena</option>
+                <option value=1>Do 15</option>
+                <option value=3>15-30</option>
+                <option value=11>Preko 30</option>
+            </select> <br>
             <select class="form-select" (change) = "onChangeValue2($event)">
-                <option selected>Open this select menu</option>
-                <option value="1">Do 30 cm</option>
-                <option value="2">30-45 cm</option>
-                <option value="3">Preko 45 cm</option>
-            </select>
-            <p>{{nadmorskaVisina}}</p>
+                <option selected>Gustina podmlatka</option>
+                <option value="1">Neznatan</option>
+                <option value="4">Srednje gust</option>
+                <option value="10">Gust</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue3($event)">
+                <option selected>Doznačena masa po ha</option>
+                <option value="4">> 80 m3</option>
+                <option value="6">60-80 m3</option>
+                <option value="10">vece od 60 m3</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue4($event)">
+                <option selected>Srednja nadmorska visina</option>
+                <option value="1">Do 1500 mnv</option>
+                <option value="3">1001-1501 mnv</option>
+                <option value="6">Veća od 1501 mnv</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue5($event)">
+                <option selected>Srednja udaljenost od ceste</option>
+                <option value="3">Do 500 m</option>
+                <option value="5">1500-1500 m</option>
+                <option value="12">Veća od 1501 mnv</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue6($event)">
+                <option selected>Srednji prečnik četinara</option>
+                <option value="3">Veći od 46 cm</option>
+                <option value="5">31-45 cm</option>
+                <option value="12">Do 30 cm</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue7($event)">
+                <option selected>Srednji prečnik lišćara</option>
+                <option value="3">Veći od 46 cm</option>
+                <option value="5">31-45 cm</option>
+                <option value="12">Do 30 cm</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue8($event)">
+                <option selected>Bonitet</option>
+                <option value="1">Prvi</option>
+                <option value="2">Drugi</option>
+                <option value="3">Treći</option>
+                <option value="4">Četvrti</option>
+                <option value="5">Peti</option>
+            </select> <br>
+            <select class="form-select" (change) = "onChangeValue9($event)">
+                <option selected>Bonitet</option>
+                <option value="1">Prvi</option>
+                <option value="2">Drugi</option>
+                <option value="3">Treći</option>
+                <option value="4">Četvrti</option>
+                <option value="5">Peti</option>
+            </select> <br> <hr>
+            <p>Bonitet za četinare je: {{bonitetCetinari}}</p>
+            <p>Bonitet za lišćare je: {{bonitetLiscari}}</p>
+            <input (keyup)="onKey($event)">
             <p>{{srednjiPrecnikCetinara}}</p>
             <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button>
         </div>
