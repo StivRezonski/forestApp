@@ -1,28 +1,82 @@
 <form [formGroup]="sortimentiFormGroup" (ngSubmit)="onSubmit()">
-<div class="d-flex flex-row">
-<div class="form-floating mb-3">
-  <input type="number" class="form-control" formControlName="fTrupci" id="fTrupci" placeholder="fTrupci">
-  <label for="fTrupci">F Trupci</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="number" class="form-control" formControlName="lTrupci" id="lTrupci" placeholder="lTrupci">
-  <label for="lTrupci">L Trupci</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="number" class="form-control" formControlName="prvaKlasa" id="prvaKlasa" placeholder="prvaKlasa">
-  <label for="prvaKlasa">I Klasa</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="number" class="form-control" formControlName="drugaKlasa" id="drugaKlasa" placeholder="drugaKlasa">
-  <label for="drugaKlasa">II Klasa</label>
-</div>
-<div class="form-floating mb-3">
-  <input type="number" class="form-control" formControlName="trecaKlasa" id="trecaKlasa" placeholder="trecaKlasa">
-  <label for="trecaKlasa">III Klasa</label>
-</div>
-</div>
+  <div class="selectVrsta">Vrsta drveta
+    <select class="custom-select custom-select-lg mb-3" formControlName="izabranaVrsta">
+      <option value="21">Jela</option>
+      <option value="22">Smrca</option>
+      <option value="41">Bukva</option>
+      <option value="50">Plemeniti</option>
+    </select>
+  </div>
+  <div class="sortimentForm mx-auto">
+    <div class="d-flex flex-row">
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="fTrupci" id="fTrupci" placeholder="fTrupci">
+        <label for="fTrupci">F Trupci</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="lTrupci" id="lTrupci" placeholder="lTrupci">
+        <label for="lTrupci">L Trupci</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="prvaKlasa" id="prvaKlasa" placeholder="prvaKlasa">
+        <label for="prvaKlasa">I Klasa</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="drugaKlasa" id="drugaKlasa" placeholder="drugaKlasa">
+        <label for="drugaKlasa">II Klasa</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="trecaKlasa" id="trecaKlasa" placeholder="trecaKlasa">
+        <label for="trecaKlasa">III Klasa</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="stuboviZaVodove" id="stuboviZaVodove"
+               placeholder="stuboviZaVodove">
+        <label for="stuboviZaVodove">TT stubovi</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="jamskoDrvo" id="jamskoDrvo" placeholder="jamskoDrvo">
+        <label for="jamskoDrvo">Jamsko drvo</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="koljeZaVoce" id="koljeZaVoce"
+               placeholder="koljeZaVoce">
+        <label for="koljeZaVoce">Kolje za voce</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="celuloznoDrvo" id="celuloznoDrvo"
+               placeholder="celuloznoDrvo">
+        <label for="celuloznoDrvo">Celulozno drvo</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="ogrevPrveKlase" id="ogrevPrveKlase"
+               placeholder="ogrevPrveKlase">
+        <label for="ogrevPrveKlase">Ogrev I klase</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" formControlName="ogrevDrugeKlase" id="ogrevDrugeKlase"
+               placeholder="ogrevDrugeKlase">
+        <label for="ogrevDrugeKlase">Ogrev II klase</label>
+      </div>
+    </div>
+  </div>
   <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
 </form>
-<div>Kolicina sortimenata iznosi:{{sumKlasa}}</div>
+
+
+
+<div>Kolicina sortimenata iznosi:{{sumNetoKlasa}}</div>
 <div>Troskovi projekta iznosi:{{sumTroskova}}</div>
-<div>Cjena projektapo kubiku iznosi:{{sumCjenaProjekta}}</div>
+<div>Cjena projekta po kubiku iznosi:{{sumCjenaProjekta}}</div>
+
+<div>jela F {{this.sortimentiFormGroup.get('fTrupci').value}}</div>
+<div>jela L {{this.sortimentiFormGroup.get('lTrupci').value}}</div>
+<div>jela I {{this.sortimentiFormGroup.get('prvaKlasa').value}}</div>
+<div>jela II {{this.sortimentiFormGroup.get('drugaKlasa').value}}</div>
+<div>jela III {{this.sortimentiFormGroup.get('trecaKlasa').value}}</div>
+<div>jela TT {{this.sortimentiFormGroup.get('stuboviZaVodove').value}}</div>
+<div>jela Jamsko {{this.sortimentiFormGroup.get('jamskoDrvo').value}}</div>
+<div>jela Kolje za voce {{this.sortimentiFormGroup.get('koljeZaVoce').value}}</div>
+<div>jela Celuloza {{this.sortimentiFormGroup.get('celuloznoDrvo').value}}</div>
+<div>jela Ogrev I Klase {{this.sortimentiFormGroup.get('ogrevPrveKlase').value}}</div>
+<div>jela Ogrev II Klase {{this.sortimentiFormGroup.get('ogrevDrugeKlase').value}}</div>
