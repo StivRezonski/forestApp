@@ -1,15 +1,29 @@
-.btn {
-  float: right;
-  margin-right: 50px;
-}
-
 
 .selectVrsta {
   margin-top: 25px;
   margin-left: 25px;
 }
 
-.sortimentForm{
+.sortimentForm {
+  position: relative;
   width: 82%;
   Height: 75px;
+}
+
+.sortimentnaTabela {
+  position: relative;
+  margin: auto;
+}
+
+.btn {
+  margin-left: 50px;
+  display: block;
+}
+
+.d-table-cell {
+  display:table-cell;
+}
+
+.d-table {
+  display:table;
 }
