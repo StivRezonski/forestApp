@@ -7,7 +7,7 @@
       <option value="50">Plemeniti</option>
     </select>
   </div>
-  <div class="sortimentForm mx-auto">
+  <div class="sortimentForm d-table mx-auto">
     <div class="d-flex flex-row">
       <div class="form-floating mb-3">
         <input type="number" class="form-control" formControlName="fTrupci" id="fTrupci" placeholder="fTrupci">
@@ -55,18 +55,113 @@
       </div>
       <div class="form-floating mb-3">
         <input type="number" class="form-control" formControlName="ogrevDrugeKlase" id="ogrevDrugeKlase"
-               placeholder="ogrevDrugeKlase">
+               placeholder="ogrevDrugeKlase" required>
         <label for="ogrevDrugeKlase">Ogrev II klase</label>
       </div>
     </div>
+    <div class="d-table-cell">
+      <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
+    </div>
   </div>
-  <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
+
 </form>
 
+<div>
 
+<table class="sortimentForm sortimentnaTabela  table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" style="width: 5%">4.3</th>
+    <th scope="col" style="width: 5%">F</th>
+    <th scope="col" style="width: 5%">L</th>
+    <th scope="col" style="width: 5%">I klasa</th>
+    <th scope="col" style="width: 5%">II klasa</th>
+    <th scope="col" style="width: 5%">III klasa</th>
+    <th scope="col" style="width: 5%">TT stubovi</th>
+    <th scope="col" style="width: 5%">Jamsko Drvo</th>
+    <th scope="col" style="width: 5%">Kolje za voce</th>
+    <th scope="col" style="width: 5%">Celulozno drvo</th>
+    <th scope="col" style="width: 5%">Ogrev I klase</th>
+    <th scope="col" style="width: 5%">Ogrev II klase</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Jela</th>
+    <td>{{jelaFklase}}</td>
+    <td>{{jelaLklase}}</td>
+    <td>{{jelaPrvaKlasa}}</td>
+    <td>{{jelaDrugaKlasa}}</td>
+    <td>{{jelaTrecaKlasa}}</td>
+    <td>{{jelaStubovi}}</td>
+    <td>{{jelaJamskoDrvo}}</td>
+    <td>{{jelaKoljeZaVoce}}</td>
+    <td>{{jelaCeluloznoDrvo}}</td>
+    <td>{{jelaOgrevPrveKlase}}</td>
+    <td>{{jelaOgrevDrugeKlase}}</td>
+  </tr>
+  <tr>
+    <th scope="row">Smrca</th>
+    <td>{{smrcaFklase}}</td>
+    <td>{{smrcaLklase}}</td>
+    <td>{{smrcaPrvaKlasa}}</td>
+    <td>{{smrcaDrugaKlasa}}</td>
+    <td>{{smrcaTrecaKlasa}}</td>
+    <td>{{smrcaStubovi}}</td>
+    <td>{{smrcaJamskoDrvo}}</td>
+    <td>{{smrcaKoljeZaVoce}}</td>
+    <td>{{smrcaCeluloznoDrvo}}</td>
+    <td>{{smrcaOgrevPrveKlase}}</td>
+    <td>{{smrcaOgrevDrugeKlase}}</td>
+  </tr>
+  <tr>
+    <th scope="row">Bukva</th>
+    <td>{{bukvaFklase}}</td>
+    <td>{{bukvaLklase}}</td>
+    <td>{{bukvaPrvaKlasa}}</td>
+    <td>{{bukvaDrugaKlasa}}</td>
+    <td>{{bukvaTrecaKlasa}}</td>
+    <td>{{bukvaStubovi}}</td>
+    <td>{{bukvaJamskoDrvo}}</td>
+    <td>{{bukvaKoljeZaVoce}}</td>
+    <td>{{bukvaCeluloznoDrvo}}</td>
+    <td>{{bukvaOgrevPrveKlase}}</td>
+    <td>{{bukvaOgrevDrugeKlase}}</td>
+  </tr>
+  <tr>
+    <th scope="row">Plemeniti</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">Suma</th>
+    <td>{{sumaCetinariLiscariFKlase}}</td>
+    <td>{{sumaCetinariLiscariLKlase}}</td>
+    <td>{{sumaCetinariLiscariPrvaKlasa}}</td>
+    <td>{{sumaCetinariLiscarDrugaKlasa}}</td>
+    <td>{{sumaCetinariLiscariTrecaKlasa}}</td>
+    <td>{{sumaCetinariLiscariStubovi}}</td>
+    <td>{{sumaCetinariLiscariJamskoDrvo}}</td>
+    <td>{{sumaCetinariLiscariKoljeZaVoce}}</td>
+    <td>{{sumaCetinariLiscariCeluloznoDrvo}}</td>
+    <td>{{sumaCetinariLiscariOgrevPrveKlase}}</td>
+    <td>{{sumaCetinariLiscariOgrevDrugeKlase}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
 
-<div>Kolicina sortimenata iznosi:{{sumNetoKlasa}}</div>
-<div>Troskovi projekta iznosi:{{sumTroskova}}</div>
-<div>Cjena projekta po kubiku iznosi:{{sumCjenaProjekta}}</div>
+<div>Kolicina sortimenata iznosi: {{sumCetinariLiscari}}</div>
+<div>Troskovi projekta iznosi: {{sumTroskova}}</div>
+<div>Cjena projekta po kubiku iznosi: {{sumCjenaProjekta}}</div>
 
 
