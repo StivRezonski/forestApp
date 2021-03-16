@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UnosPodatakaComponent } from './unos-podataka.component';
+import { UnosPodatakaSjecaComponent } from './unos-podataka-sjeca.component';
 
-describe('UnosPodatakaComponent', () => {
-  let component: UnosPodatakaComponent;
-  let fixture: ComponentFixture<UnosPodatakaComponent>;
+describe('UnosPodatakaSjecaComponent', () => {
+  let component: UnosPodatakaSjecaComponent;
+  let fixture: ComponentFixture<UnosPodatakaSjecaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UnosPodatakaComponent ]
+      declarations: [ UnosPodatakaSjecaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UnosPodatakaComponent);
+    fixture = TestBed.createComponent(UnosPodatakaSjecaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
