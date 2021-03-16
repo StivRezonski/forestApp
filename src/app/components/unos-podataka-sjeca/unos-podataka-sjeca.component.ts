@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { SortimentiComponent } from '../../sortimenti/sortimenti.component'
+
 
 
 @Component({
-  selector: 'app-unos-podataka',
-  templateUrl: './unos-podataka.component.html',
-  styleUrls: ['./unos-podataka.component.css']
+  selector: 'app-unos-podataka-sjeca',
+  templateUrl: './unos-podataka-sjeca.component.html',
+  styleUrls: ['./unos-podataka-sjeca.component.css']
 })
-export class UnosPodatakaComponent implements OnInit {
-  constructor() { }
+export class UnosPodatakaSjecaComponent implements OnInit {
+  constructor(private sortimenti: SortimentiComponent) { }
   ngOnInit(): void {}
 
   //varijable
@@ -31,6 +32,20 @@ normaCetSjeca;
 normaLisSjeca;
 p;
 j;
+sumCetinariNeto = this.sortimenti.sumCetinariNeto;
+sumLiscariNeto = this.sortimenti.sumLiscariNeto;
+srPr21;
+srPr22;
+srPr41;
+srPr43;
+cijenaSjecaCetinari: number;
+cijenaSjecaLiscari;
+cijenaRadnogDanaSjeca = 89.37; 
+cijenaRadnogDanaAnimal = 124.63;
+cijenaRadnogDanaTraktor = 696.26;
+cijenaRadnogDanaIznos = 110.06;
+
+
 
 unosSrednjiPrecnikCetinari(event: any) {
   this.srednjiPrecnikCetinari = parseInt (event.target.value);
@@ -197,6 +212,9 @@ const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi
     this.p = (Object.keys (ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1])).filter( k=> k==this.srednjiPrecnikLiscari);
     this.normaLisSjeca = ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1][this.p]
   }
+
+  this.cijenaSjecaCetinari = this.cijenaRadnogDanaSjeca / parseFloat (this.normaCetSjeca);
+  this.cijenaSjecaLiscari = this.cijenaRadnogDanaSjeca / parseFloat (this.normaLisSjeca);
   
   //else{
     //this.i = [ljetoCet[this.usloviRadaCet][this.bonitetCetinari-1]].indexOf(this.srednjiPrecnikCetinari.toString());
@@ -221,7 +239,7 @@ const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi
   //console.log( typeof this.norma)
  //console.log(this.i);
  //console.log(this.l)
- console.log(this.normaCetSjeca);
+ console.log(this.cijenaSjecaCetinari.toFixed(2));
  //console.log(this.normaLisSjeca);
  //console.log( typeof (this.normaLisSjeca));
    

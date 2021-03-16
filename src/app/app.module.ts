@@ -6,13 +6,16 @@ import { SortimentiComponent } from './sortimenti/sortimenti.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UnosPodatakaComponent } from './unos-podataka/unos-podataka.component';
+import { UnosPodatakaSjecaComponent } from './components/unos-podataka-sjeca/unos-podataka-sjeca.component';
+import { UnosPodatakaAnimalComponent } from './components/unos-podataka-animal/unos-podataka-animal.component';
+import { NormeService } from './services/norme.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SortimentiComponent,
-    UnosPodatakaComponent
+    UnosPodatakaSjecaComponent,
+    UnosPodatakaAnimalComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { UnosPodatakaComponent } from './unos-podataka/unos-podataka.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, NormeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

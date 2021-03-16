@@ -7,6 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./sortimenti.component.css']
 })
 export class SortimentiComponent implements OnInit {
+  sumCetinariNeto = 150;
+  sumLiscariNeto = 300;
   sumTrupciJela = [];
   sumTrupciSmrca = [];
   sumTrupciBukva = [];

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-xl-4 offset-xl-4">
+        <div class="col-xl-4">
             <select class="form-select" (change) = "dohvatiNagibTerena($event)">
                 <option selected>Nagib terena</option>
                 <option value=1>Do 15</option>
@@ -21,8 +21,8 @@
             </select> <br>
             <select class="form-select" (change) = "dohvatiNadmorskuVisinu($event)">
                 <option selected>Srednja nadmorska visina</option>
-                <option value="1">Do 1500 mnv</option>
-                <option value="3">1001-1501 mnv</option>
+                <option value="1">Do 1000 mnv</option>
+                <option value="3">1001-1500 mnv</option>
                 <option value="6">Veća od 1501 mnv</option>
             </select> <br>
             <select class="form-select" (change) = "dohvatiSrednjuUdaljenostOdCeste($event)">
@@ -58,24 +58,27 @@
                 <option value="3">Treći</option>
                 <option value="4">Četvrti</option>
                 <option value="5">Peti</option>
-            </select> <br> <hr>
+            </select> <br>
+            <input placeholder="Unijeti sr. precnik cetinara" (keyup)="unosSrednjiPrecnikCetinari($event)"> <br>
+            <input placeholder="Unijeti sr. precnik liscara" (keyup)="unosSrednjiPrecnikLiscari($event)">
+            <p>Bonitet za četinare je: {{bonitetCetinari}}</p>
+            <p>Bonitet za lišćare je: {{bonitetLiscari}}</p>
+            <p>Srednji precnik cetinara je: {{srednjiPrecnikCetinari}}</p>
+            <p>Srednji precnik liscara je: {{srednjiPrecnikLiscari}}</p>
+            <p>Norma sjece za cetinare je: {{normaCetSjeca}}</p>
+            <p>Norma sjece za liscare je: {{normaLisSjeca}}</p>
+            <p>Broj bodova za cetinare je je: {{bodoviCetinari}}</p>
+            <p>Broj bodova za liscare je: {{bodoviLiscari}}</p>
+            <p>Cijena sjece za cetinare je: {{cijenaSjecaCetinari}}</p>
+            <p>Cijena sjece za liscare je: {{cijenaSjecaLiscari}}</p>
+            <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button> <hr>
 
            
         </div>
-        <div class="row row-paragraf">
-            <div class="col-xl-4 offset-xl-4">
-                <input placeholder="Unijeti sr. precnik cetinara" (keyup)="unosSrednjiPrecnikCetinari($event)"> <br>
-                <input placeholder="Unijeti sr. precnik liscara" (keyup)="unosSrednjiPrecnikLiscari($event)">
-                <p>Bonitet za četinare je: {{bonitetCetinari}}</p>
-                <p>Bonitet za lišćare je: {{bonitetLiscari}}</p>
-                <p>Srednji precnik cetinara je: {{srednjiPrecnikCetinari}}</p>
-                <p>Srednji precnik liscara je: {{srednjiPrecnikLiscari}}</p>
-                <p>Norma sjece za cetinare je: {{normaCetSjeca}}</p>
-                <p>Norma sjece za liscare je: {{normaLisSjeca}}</p>
-                <p>Broj bodova za cetinare je je: {{bodoviCetinari}}</p>
-                <p>Broj bodova za liscare je: {{bodoviLiscari}}</p>
-                <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button>
-            </div>
+        <div class="col-xl-4 offset-xl-4">
+            <app-unos-podataka-animal></app-unos-podataka-animal>
         </div>
+
     </div>
-</div>
+        </div>
+
