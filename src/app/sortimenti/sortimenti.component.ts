@@ -7,12 +7,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./sortimenti.component.css']
 })
 export class SortimentiComponent implements OnInit {
-  sumCetinariNeto = 150;
-  sumLiscariNeto = 300;
+  sumCetinari = [];
+  sumLiscari = [];
   sumTrupciJela = [];
   sumTrupciSmrca = [];
   sumTrupciBukva = [];
-  sumTrupciPlemeniti = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  sumTrupciPlemeniti = [];
   sumCetinariLiscari: number;
   sumNormaTest: number;
   sumTroskova: number;
@@ -30,44 +30,10 @@ export class SortimentiComponent implements OnInit {
       celuloznoDrvo: new FormControl(),
       ogrevPrveKlase: new FormControl(),
       ogrevDrugeKlase: new FormControl(),
+      sveukupnaDrvnaMasa: new FormControl(),
+      srednjiPrecnik: new FormControl(),
     }
   );
-
-  jelaFklase: number;
-  jelaLklase: number;
-  jelaPrvaKlasa: number;
-  jelaDrugaKlasa: number;
-  jelaTrecaKlasa: number;
-  jelaStubovi: number;
-  jelaJamskoDrvo: number;
-  jelaKoljeZaVoce: number;
-  jelaCeluloznoDrvo: number;
-  jelaOgrevPrveKlase: number;
-  jelaOgrevDrugeKlase: number;
-
-  smrcaFklase: number;
-  smrcaLklase: number;
-  smrcaPrvaKlasa: number;
-  smrcaDrugaKlasa: number;
-  smrcaTrecaKlasa: number;
-  smrcaStubovi: number;
-  smrcaJamskoDrvo: number;
-  smrcaKoljeZaVoce: number;
-  smrcaCeluloznoDrvo: number;
-  smrcaOgrevPrveKlase: number;
-  smrcaOgrevDrugeKlase: number;
-
-  bukvaFklase: number;
-  bukvaLklase: number;
-  bukvaPrvaKlasa: number;
-  bukvaDrugaKlasa: number;
-  bukvaTrecaKlasa: number;
-  bukvaStubovi: number;
-  bukvaJamskoDrvo: number;
-  bukvaKoljeZaVoce: number;
-  bukvaCeluloznoDrvo: number;
-  bukvaOgrevPrveKlase: number;
-  bukvaOgrevDrugeKlase: number;
 
   sumaCetinariLiscariFKlase: number;
   sumaCetinariLiscariLKlase: number;
@@ -80,6 +46,36 @@ export class SortimentiComponent implements OnInit {
   sumaCetinariLiscariCeluloznoDrvo: number;
   sumaCetinariLiscariOgrevPrveKlase: number;
   sumaCetinariLiscariOgrevDrugeKlase: number;
+  sumacetinariLiscariSveukupnaDrvnaMasa: number;
+  sumaCetinariLiscariSrednjiPrecnik: number;
+
+  sumaFTrupciCetinari: number;
+  sumaLklaseCetinari: number;
+  sumaPrvaKlasaCetinari: number;
+  sumaDrugaKlasaCetinari: number;
+  sumaTrecaKlasaCetinari: number;
+  sumaStuboviCetinari: number;
+  sumaJamskoDrvoCetinari: number;
+  sumaKoljeZaVoceCetinari: number;
+  sumaCeluloznoDrvoCetinari: number;
+  sumaOgrevPrveKlaseCetinari: number;
+  sumaOgrevDrugeKlaseCetinari: number;
+  sveukupnaDrvnaMasaCetinari: number;
+  srednjiPrecnikCetinari: number;
+
+  sumaFTrupciLiscari: number;
+  sumaLklaseLiscari: number;
+  sumaPrvaKlasaLiscari: number;
+  sumaDrugaKlasaLiscari: number;
+  sumaTrecaKlasaLiscari: number;
+  sumaStuboviLiscari: number;
+  sumaJamskoDrvoLiscari: number;
+  sumaKoljeZaVoceLiscari: number;
+  sumaCeluloznoDrvoLiscari: number;
+  sumaOgrevPrveKlaseLiscari: number;
+  sumaOgrevDrugeKlaseLiscari: number;
+  sveukupnaDrvnaMasaLiscari: number;
+  srednjiPrecnikLiscari: number;
 
   constructor() {
   }
@@ -89,132 +85,84 @@ export class SortimentiComponent implements OnInit {
 
 
   onSubmit(): void {
-    // console.log(this.sortimentiFormGroup.value);
 
     const izabranaVrsta = this.sortimentiFormGroup.get('izabranaVrsta').value;
-    // const novaFtrupci = this.sortimentiFormGroup.get('fTrupci').value;
-    // const novaLtrupci = this.sortimentiFormGroup.get('lTrupci').value;
-    // const novaPrvaKlasa = this.sortimentiFormGroup.get('prvaKlasa').value;
-    // const novaDrugaKlasa = this.sortimentiFormGroup.get('drugaKlasa').value;
-    // const novaTrecaKlasa = this.sortimentiFormGroup.get('trecaKlasa').value;
-    // const novaStuboviZaVodove = this.sortimentiFormGroup.get('stuboviZaVodove').value;
-    // const novaJamskoDrvo = this.sortimentiFormGroup.get('jamskoDrvo').value;
-    // const novaKoljeZaVoce = this.sortimentiFormGroup.get('koljeZaVoce').value;
-    // const novaCeluloznoDrvo = this.sortimentiFormGroup.get('celuloznoDrvo').value;
-    // const novaOgrevPrveKlase = this.sortimentiFormGroup.get('ogrevPrveKlase').value;
-    // const novaOgrevDrugeKlase = this.sortimentiFormGroup.get('ogrevDrugeKlase').value;
-    //
-    //
-    // this.sumNetoKlasa = novaFtrupci + novaLtrupci + novaPrvaKlasa + novaDrugaKlasa + novaTrecaKlasa +
-    //   novaStuboviZaVodove + novaJamskoDrvo + novaKoljeZaVoce + novaCeluloznoDrvo +
-    //   novaOgrevPrveKlase + novaOgrevDrugeKlase;
 
     if (izabranaVrsta === '21') {
       this.sumTrupciJela.push(this.sortimentiFormGroup.value);
-      console.log('Unesi smrcu');
+      this.sumCetinari.push(this.sortimentiFormGroup.value);
+      this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '22') {
       this.sumTrupciSmrca.push(this.sortimentiFormGroup.value);
-      console.log('Unesi Bukvu');
+      this.sumCetinari.push(this.sortimentiFormGroup.value);
+      this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '41') {
       this.sumTrupciBukva.push(this.sortimentiFormGroup.value);
-      // console.log('Unesi plemenite');
+      this.sumLiscari.push(this.sortimentiFormGroup.value);
+      this.sortimentiFormGroup.reset();
     } else {
       this.sumTrupciPlemeniti.push(this.sortimentiFormGroup.value);
+      this.sumLiscari.push(this.sortimentiFormGroup.value);
+      this.sortimentiFormGroup.reset();
     }
 
-
-    if (this.sumTrupciJela.length > 0 && this.sumTrupciSmrca.length > 0 && this.sumTrupciBukva.length > 0) {
+    // cetinari sabiranje i loop
+    if (this.sumTrupciJela.length > 0 && this.sumTrupciSmrca.length > 0) {
       for (let i = 0; i < this.sumTrupciJela.length; i++) {
-
-        this.jelaFklase = this.sumTrupciJela[i].fTrupci;
-        this.jelaLklase = this.sumTrupciJela[i].lTrupci;
-        this.jelaPrvaKlasa = this.sumTrupciJela[i].prvaKlasa;
-        this.jelaDrugaKlasa = this.sumTrupciJela[i].drugaKlasa;
-        this.jelaTrecaKlasa = this.sumTrupciJela[i].trecaKlasa;
-        this.jelaStubovi = this.sumTrupciJela[i].stuboviZaVodove;
-        this.jelaJamskoDrvo = this.sumTrupciJela[i].jamskoDrvo;
-        this.jelaKoljeZaVoce = this.sumTrupciJela[i].koljeZaVoce;
-        this.jelaCeluloznoDrvo = this.sumTrupciJela[i].celuloznoDrvo;
-        this.jelaOgrevPrveKlase = this.sumTrupciJela[i].ogrevPrveKlase;
-        this.jelaOgrevDrugeKlase = this.sumTrupciJela[i].ogrevDrugeKlase;
-
-        const sumaJele = this.jelaFklase + this.jelaLklase + this.jelaPrvaKlasa +
-          this.jelaDrugaKlasa + this.jelaTrecaKlasa + this.jelaStubovi +
-          this.jelaJamskoDrvo + this.jelaKoljeZaVoce + this.jelaCeluloznoDrvo
-          + this.jelaOgrevPrveKlase + this.jelaOgrevDrugeKlase;
-
-        this.smrcaFklase = this.sumTrupciSmrca[i].fTrupci;
-        this.smrcaLklase = this.sumTrupciSmrca[i].lTrupci;
-        this.smrcaPrvaKlasa = this.sumTrupciSmrca[i].prvaKlasa;
-        this.smrcaDrugaKlasa = this.sumTrupciSmrca[i].drugaKlasa;
-        this.smrcaTrecaKlasa = this.sumTrupciSmrca[i].trecaKlasa;
-        this.smrcaStubovi = this.sumTrupciSmrca[i].stuboviZaVodove;
-        this.smrcaJamskoDrvo = this.sumTrupciSmrca[i].jamskoDrvo;
-        this.smrcaKoljeZaVoce = this.sumTrupciSmrca[i].koljeZaVoce;
-        this.smrcaCeluloznoDrvo = this.sumTrupciSmrca[i].celuloznoDrvo;
-        this.smrcaOgrevPrveKlase = this.sumTrupciSmrca[i].ogrevPrveKlase;
-        this.smrcaOgrevDrugeKlase = this.sumTrupciSmrca[i].ogrevDrugeKlase;
-
-        const sumaSmrce = this.smrcaFklase + this.smrcaLklase + this.smrcaPrvaKlasa +
-          this.smrcaDrugaKlasa + this.smrcaTrecaKlasa + this.smrcaStubovi +
-          this.smrcaJamskoDrvo + this.smrcaKoljeZaVoce + this.smrcaCeluloznoDrvo +
-          this.smrcaOgrevPrveKlase + this.smrcaOgrevDrugeKlase;
-
-        this.bukvaFklase = this.sumTrupciBukva[i].fTrupci;
-        this.bukvaLklase = this.sumTrupciBukva[i].lTrupci;
-        this.bukvaPrvaKlasa = this.sumTrupciBukva[i].prvaKlasa;
-        this.bukvaDrugaKlasa = this.sumTrupciBukva[i].drugaKlasa;
-        this.bukvaTrecaKlasa = this.sumTrupciBukva[i].trecaKlasa;
-        this.bukvaStubovi = this.sumTrupciBukva[i].stuboviZaVodove;
-        this.bukvaJamskoDrvo = this.sumTrupciBukva[i].jamskoDrvo;
-        this.bukvaKoljeZaVoce = this.sumTrupciBukva[i].koljeZaVoce;
-        this.bukvaCeluloznoDrvo = this.sumTrupciBukva[i].celuloznoDrvo;
-        this.bukvaOgrevPrveKlase = this.sumTrupciBukva[i].ogrevPrveKlase;
-        this.bukvaOgrevDrugeKlase = this.sumTrupciBukva[i].ogrevDrugeKlase;
-
-        const sumaBukve = this.bukvaFklase + this.bukvaLklase + this.bukvaPrvaKlasa +
-          this.bukvaDrugaKlasa + this.bukvaTrecaKlasa + this.bukvaStubovi +
-          this.bukvaJamskoDrvo + this.bukvaKoljeZaVoce + this.bukvaCeluloznoDrvo +
-          this.bukvaOgrevPrveKlase + this.bukvaOgrevDrugeKlase;
-
-        const cetinariFklase = this.jelaFklase + this.smrcaFklase;
-        const cetinariLklase = this.jelaLklase + this.smrcaLklase;
-        const cetinariPrvaKlasa = this.jelaPrvaKlasa + this.smrcaPrvaKlasa;
-        const cetinariDrugaKlasa = this.jelaDrugaKlasa + this.smrcaDrugaKlasa;
-        const cetinariTrecaKlasa = this.jelaTrecaKlasa + this.smrcaTrecaKlasa;
-        const cetinariStubovi = this.jelaStubovi + this.smrcaStubovi;
-        const cetinariJamskoDrvo = this.jelaJamskoDrvo + this.smrcaJamskoDrvo;
-        const cetinariKoljeZaVoce = this.jelaKoljeZaVoce + this.smrcaKoljeZaVoce;
-        const cetinariCeluloznoDrvo = this.jelaCeluloznoDrvo + this.smrcaCeluloznoDrvo;
-        const cetinariOgrevPrveKlase = this.jelaOgrevPrveKlase + this.smrcaOgrevPrveKlase;
-        const cetinariOgrevDrugeKlase = this.jelaOgrevDrugeKlase + this.smrcaOgrevDrugeKlase;
-
-        const sumaCetinari = cetinariFklase + cetinariLklase + cetinariPrvaKlasa + cetinariDrugaKlasa + cetinariTrecaKlasa +
-          cetinariStubovi + cetinariJamskoDrvo + cetinariKoljeZaVoce + cetinariCeluloznoDrvo + cetinariOgrevPrveKlase +
-          cetinariOgrevDrugeKlase;
-
-        this.sumaCetinariLiscariFKlase = this.jelaFklase + this.smrcaFklase + this.bukvaFklase;
-        this.sumaCetinariLiscariLKlase = this.jelaLklase + this.smrcaLklase + this.bukvaLklase;
-        this.sumaCetinariLiscariPrvaKlasa = this.jelaPrvaKlasa + this.smrcaPrvaKlasa + this.bukvaPrvaKlasa;
-        this.sumaCetinariLiscarDrugaKlasa = this.jelaDrugaKlasa + this.smrcaDrugaKlasa + this.bukvaDrugaKlasa;
-        this.sumaCetinariLiscariTrecaKlasa = this.jelaTrecaKlasa + this.smrcaTrecaKlasa + this.bukvaTrecaKlasa;
-        this.sumaCetinariLiscariStubovi = this.jelaStubovi + this.smrcaStubovi + this.bukvaStubovi;
-        this.sumaCetinariLiscariJamskoDrvo = this.jelaJamskoDrvo + this.smrcaJamskoDrvo + this.bukvaJamskoDrvo;
-        this.sumaCetinariLiscariKoljeZaVoce = this.jelaKoljeZaVoce + this.smrcaKoljeZaVoce + this.bukvaKoljeZaVoce;
-        this.sumaCetinariLiscariCeluloznoDrvo = this.jelaCeluloznoDrvo + this.smrcaCeluloznoDrvo + this.bukvaCeluloznoDrvo;
-        this.sumaCetinariLiscariOgrevPrveKlase = this.jelaOgrevPrveKlase + this.smrcaOgrevPrveKlase + this.bukvaOgrevPrveKlase;
-        this.sumaCetinariLiscariOgrevDrugeKlase = this.jelaOgrevDrugeKlase + this.smrcaOgrevDrugeKlase + this.bukvaOgrevDrugeKlase;
-
-        // kasnije dodati plemenite i hrast
-        this.sumCetinariLiscari = sumaCetinari + sumaBukve;
-        console.log('suma jele =', sumaJele, 'suma smrce =', sumaSmrce, 'suma bukve =', sumaBukve, 'suma cetinari =', sumaCetinari, 'suma Liscari =', sumaBukve);
-
-        this.sumNormaTest = 5.10;
-        this.sumTroskova = 30000;
-        this.sumCjenaProjekta = this.sumTroskova / this.sumCetinariLiscari;
-
+        this.sumaFTrupciCetinari = this.sumTrupciJela[i].fTrupci + this.sumTrupciSmrca[i].fTrupci;
+        this.sumaLklaseCetinari = this.sumTrupciJela[i].lTrupci + this.sumTrupciSmrca[i].lTrupci;
+        this.sumaPrvaKlasaCetinari = this.sumTrupciJela[i].prvaKlasa + this.sumTrupciSmrca[i].prvaKlasa;
+        this.sumaDrugaKlasaCetinari = this.sumTrupciJela[i].drugaKlasa + this.sumTrupciSmrca[i].drugaKlasa;
+        this.sumaTrecaKlasaCetinari = this.sumTrupciJela[i].trecaKlasa + this.sumTrupciSmrca[i].trecaKlasa;
+        this.sumaStuboviCetinari = this.sumTrupciJela[i].stuboviZaVodove + this.sumTrupciSmrca[i].stuboviZaVodove;
+        this.sumaJamskoDrvoCetinari = this.sumTrupciJela[i].jamskoDrvo + this.sumTrupciSmrca[i].jamskoDrvo;
+        this.sumaKoljeZaVoceCetinari = this.sumTrupciJela[i].koljeZaVoce + this.sumTrupciSmrca[i].koljeZaVoce;
+        this.sumaCeluloznoDrvoCetinari = this.sumTrupciJela[i].celuloznoDrvo + this.sumTrupciSmrca[i].celuloznoDrvo;
+        this.sumaOgrevPrveKlaseCetinari = this.sumTrupciJela[i].ogrevPrveKlase + this.sumTrupciSmrca[i].ogrevPrveKlase;
+        this.sumaOgrevDrugeKlaseCetinari = this.sumTrupciJela[i].ogrevDrugeKlase + this.sumTrupciSmrca[i].ogrevDrugeKlase;
+        this.sveukupnaDrvnaMasaCetinari = this.sumTrupciJela[i].sveukupnaDrvnaMasa + this.sumTrupciSmrca[i].sveukupnaDrvnaMasa;
+        this.srednjiPrecnikCetinari = this.sumTrupciJela[i].srednjiPrecnik + this.sumTrupciSmrca[i].srednjiPrecnik;
       }
     }
+    // liscari sabiranje i loop
+    if (this.sumTrupciBukva.length > 0 && this.sumTrupciPlemeniti.length > 0) {
+      for (let i = 0; i < this.sumTrupciBukva.length; i++) {
+        this.sumaFTrupciLiscari = this.sumTrupciBukva[i].fTrupci + this.sumTrupciPlemeniti[i].fTrupci;
+        this.sumaLklaseLiscari = this.sumTrupciBukva[i].lTrupci + this.sumTrupciPlemeniti[i].lTrupci;
+        this.sumaPrvaKlasaLiscari = this.sumTrupciBukva[i].prvaKlasa + this.sumTrupciPlemeniti[i].prvaKlasa;
+        this.sumaDrugaKlasaLiscari = this.sumTrupciBukva[i].drugaKlasa + this.sumTrupciPlemeniti[i].drugaKlasa;
+        this.sumaTrecaKlasaLiscari = this.sumTrupciBukva[i].trecaKlasa + this.sumTrupciPlemeniti[i].trecaKlasa;
+        this.sumaStuboviLiscari = this.sumTrupciBukva[i].stuboviZaVodove + this.sumTrupciPlemeniti[i].stuboviZaVodove;
+        this.sumaJamskoDrvoLiscari = this.sumTrupciBukva[i].jamskoDrvo + this.sumTrupciPlemeniti[i].jamskoDrvo;
+        this.sumaKoljeZaVoceLiscari = this.sumTrupciBukva[i].koljeZaVoce + this.sumTrupciPlemeniti[i].koljeZaVoce;
+        this.sumaCeluloznoDrvoLiscari = this.sumTrupciBukva[i].celuloznoDrvo + this.sumTrupciPlemeniti[i].celuloznoDrvo;
+        this.sumaOgrevPrveKlaseLiscari = this.sumTrupciBukva[i].ogrevPrveKlase + this.sumTrupciPlemeniti[i].ogrevPrveKlase;
+        this.sumaOgrevDrugeKlaseLiscari = this.sumTrupciBukva[i].ogrevDrugeKlase + this.sumTrupciPlemeniti[i].ogrevDrugeKlase;
+        this.sveukupnaDrvnaMasaLiscari = this.sumTrupciBukva[i].sveukupnaDrvnaMasa + this.sumTrupciBukva[i].sveukupnaDrvnaMasa;
+        this.srednjiPrecnikLiscari = this.sumTrupciBukva[i].srednjiPrecnik + this.sumTrupciBukva[i].srednjiPrecnik;
+      }
+    }
+
+    // ukupno sabiranje i loop
+    if (this.sumTrupciBukva.length > 0 && this.sumTrupciPlemeniti.length > 0
+      && this.sumTrupciBukva.length > 0 && this.sumTrupciPlemeniti.length > 0) {
+      for (let i = 0; i < this.sumTrupciBukva.length; i++) {
+        this.sumaCetinariLiscariFKlase = this.sumaFTrupciCetinari + this.sumaFTrupciLiscari;
+        this.sumaCetinariLiscariLKlase = this.sumaLklaseCetinari + this.sumaLklaseLiscari;
+        this.sumaCetinariLiscariPrvaKlasa = this.sumaPrvaKlasaCetinari + this.sumaPrvaKlasaLiscari;
+        this.sumaCetinariLiscarDrugaKlasa = this.sumaDrugaKlasaCetinari + this.sumaDrugaKlasaLiscari;
+        this.sumaCetinariLiscariTrecaKlasa = this.sumaTrecaKlasaCetinari + this.sumaTrecaKlasaLiscari;
+        this.sumaCetinariLiscariStubovi = this.sumaStuboviCetinari + this.sumaStuboviLiscari;
+        this.sumaCetinariLiscariJamskoDrvo = this.sumaJamskoDrvoCetinari + this.sumaJamskoDrvoLiscari;
+        this.sumaCetinariLiscariKoljeZaVoce = this.sumaKoljeZaVoceCetinari + this.sumaKoljeZaVoceLiscari;
+        this.sumaCetinariLiscariCeluloznoDrvo = this.sumaCeluloznoDrvoCetinari + this.sumaCeluloznoDrvoLiscari;
+        this.sumaCetinariLiscariOgrevPrveKlase = this.sumaOgrevPrveKlaseCetinari + this.sumaOgrevPrveKlaseLiscari;
+        this.sumaCetinariLiscariOgrevDrugeKlase = this.sumaOgrevDrugeKlaseCetinari + this.sumaOgrevDrugeKlaseLiscari;
+        this.sumacetinariLiscariSveukupnaDrvnaMasa = this.sveukupnaDrvnaMasaCetinari + this.sveukupnaDrvnaMasaLiscari;
+      }
+    }
+
+
 
     this.sumNormaTest = 5.10;
     this.sumTroskova = 30000;
