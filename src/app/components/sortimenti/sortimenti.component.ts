@@ -7,16 +7,20 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./sortimenti.component.css']
 })
 export class SortimentiComponent implements OnInit {
+  vrstaSlika;
+  showVrstaImage = false;
   sumCetinari = [];
   sumLiscari = [];
   sumTrupciJela = [];
   sumTrupciSmrca = [];
   sumTrupciBukva = [];
   sumTrupciPlemeniti = [];
-  sumCetinariLiscari: number;
-  sumNormaTest: number;
-  sumTroskova: number;
-  sumCjenaProjekta: number;
+  netoJelaSmrca: number;
+  netoBukvaPlemeniti: number;
+  netoCetinariLiscari: number;
+  sumNormaTest: number; // samo za test
+  sumTroskova: number; // samo za test
+  sumCjenaProjekta: number; // samo za test
   sortimentiFormGroup = new FormGroup({
       izabranaVrsta: new FormControl(),
       fTrupci: new FormControl(),
@@ -81,8 +85,20 @@ export class SortimentiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
   }
 
+  onSelectVrsta(): void {
+    const vrstaSlika =  this.sortimentiFormGroup.get('izabranaVrsta').value;
+    if (vrstaSlika === '21' || vrstaSlika === '22'){
+      this.vrstaSlika = 'cetinar';
+      this.showVrstaImage = true;
+    }else if (vrstaSlika === '41' || vrstaSlika === '50'){
+      this.vrstaSlika = 'liscari';
+      this.showVrstaImage = true;
+    }
+  }
 
   onSubmit(): void {
 
@@ -106,6 +122,9 @@ export class SortimentiComponent implements OnInit {
       this.sortimentiFormGroup.reset();
     }
 
+
+
+
     // cetinari sabiranje i loop
     if (this.sumTrupciJela.length > 0 && this.sumTrupciSmrca.length > 0) {
       for (let i = 0; i < this.sumTrupciJela.length; i++) {
@@ -122,6 +141,10 @@ export class SortimentiComponent implements OnInit {
         this.sumaOgrevDrugeKlaseCetinari = this.sumTrupciJela[i].ogrevDrugeKlase + this.sumTrupciSmrca[i].ogrevDrugeKlase;
         this.sveukupnaDrvnaMasaCetinari = this.sumTrupciJela[i].sveukupnaDrvnaMasa + this.sumTrupciSmrca[i].sveukupnaDrvnaMasa;
         this.srednjiPrecnikCetinari = this.sumTrupciJela[i].srednjiPrecnik + this.sumTrupciSmrca[i].srednjiPrecnik;
+        this.netoJelaSmrca = this.sumaFTrupciCetinari + this.sumaLklaseCetinari + this.sumaPrvaKlasaCetinari +
+          this.sumaDrugaKlasaCetinari + this.sumaTrecaKlasaCetinari + this.sumaStuboviCetinari + this.sumaJamskoDrvoCetinari +
+          this.sumaKoljeZaVoceCetinari + this.sumaCeluloznoDrvoCetinari + this.sumaOgrevPrveKlaseCetinari +
+          this.sumaOgrevDrugeKlaseCetinari;
       }
     }
     // liscari sabiranje i loop
@@ -140,6 +163,10 @@ export class SortimentiComponent implements OnInit {
         this.sumaOgrevDrugeKlaseLiscari = this.sumTrupciBukva[i].ogrevDrugeKlase + this.sumTrupciPlemeniti[i].ogrevDrugeKlase;
         this.sveukupnaDrvnaMasaLiscari = this.sumTrupciBukva[i].sveukupnaDrvnaMasa + this.sumTrupciBukva[i].sveukupnaDrvnaMasa;
         this.srednjiPrecnikLiscari = this.sumTrupciBukva[i].srednjiPrecnik + this.sumTrupciBukva[i].srednjiPrecnik;
+        this.netoBukvaPlemeniti = this.sumaFTrupciLiscari + this.sumaLklaseLiscari + this.sumaPrvaKlasaLiscari +
+          this.sumaDrugaKlasaLiscari + this.sumaTrecaKlasaLiscari + this.sumaStuboviLiscari + this.sumaJamskoDrvoLiscari +
+          this.sumaKoljeZaVoceLiscari + this.sumaCeluloznoDrvoLiscari + this.sumaOgrevPrveKlaseLiscari +
+          this.sumaOgrevDrugeKlaseLiscari;
       }
     }
 
@@ -159,6 +186,10 @@ export class SortimentiComponent implements OnInit {
         this.sumaCetinariLiscariOgrevPrveKlase = this.sumaOgrevPrveKlaseCetinari + this.sumaOgrevPrveKlaseLiscari;
         this.sumaCetinariLiscariOgrevDrugeKlase = this.sumaOgrevDrugeKlaseCetinari + this.sumaOgrevDrugeKlaseLiscari;
         this.sumacetinariLiscariSveukupnaDrvnaMasa = this.sveukupnaDrvnaMasaCetinari + this.sveukupnaDrvnaMasaLiscari;
+        this.netoCetinariLiscari = this.sumaCetinariLiscariFKlase + this.sumaCetinariLiscariLKlase + this.sumaCetinariLiscariPrvaKlasa +
+          this.sumaCetinariLiscarDrugaKlasa + this.sumaCetinariLiscariTrecaKlasa + this.sumaCetinariLiscariStubovi +
+          this.sumaCetinariLiscariJamskoDrvo + this.sumaCetinariLiscariKoljeZaVoce + this.sumaCetinariLiscariCeluloznoDrvo +
+          this.sumaCetinariLiscariOgrevPrveKlase + this.sumaCetinariLiscariOgrevDrugeKlase;
       }
     }
 
@@ -166,7 +197,7 @@ export class SortimentiComponent implements OnInit {
 
     this.sumNormaTest = 5.10;
     this.sumTroskova = 30000;
-    this.sumCjenaProjekta = this.sumTroskova / this.sumCetinariLiscari;
+    this.sumCjenaProjekta = this.sumTroskova / this.netoCetinariLiscari;
 
   }
 }

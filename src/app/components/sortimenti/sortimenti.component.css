@@ -1,0 +1,83 @@
+/*.table-sort-page{*/
+/*  margin: 5px 5px 5px 5px;*/
+/*}*/
+
+/*.selectVrsta {*/
+/*  margin-top: 25px;*/
+/*  margin-left: 25px;*/
+/*}*/
+
+.row{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.selectSizeCustom{
+  margin-left: 20px;
+  width: 100px;
+}
+
+.circle-sizer{
+  width: 100px;
+  height: 60px;
+}
+
+.bg-ogrev{
+  background-color: #D2B48C;
+}
+
+.bg-celuloza{
+  background-color: #909090;
+}
+
+.bg-suma{
+  background-color: #C0C0C0;
+}
+/*.sortimentForm {*/
+/*  display: flex;*/
+/*  width: 70%;*/
+/*  flex-wrap: nowrap;*/
+/*  !*margin: 50px;*!*/
+/*  !*flex-direction: row;*!*/
+/*}*/
+
+/*.sortimentForm > div {*/
+/*  !*background-color: #f1f1f1;*!*/
+/*  width: 100px;*/
+/*  !*margin: 10px;*!*/
+/*  !*text-align: center;*!*/
+/*  line-height: 100px;*/
+/*  !*font-size: 30px;*!*/
+/*}*/
+
+
+.sortimentnaTabela {
+  position: relative;
+  margin: auto;
+}
+
+.btn {
+  margin-left: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /*display: flex;*/
+  /*justify-content: flex-end;*/
+}
+
+/*.d-table-cell {*/
+/*  display:table-cell;*/
+/*}*/
+
+/*.d-table {*/
+/*  display:table;*/
+/*  height: 75px;*/
+/*  !*padding: 20px 10px;*!*/
+/*  !*line-height: 100px;*!*/
+/*}*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
