@@ -16,7 +16,7 @@
       <label for="srednjiPrecnik" class="control-label">Srednji precnik</label>
       <input type="number" class="form-control bg-info text-white" formControlName="srednjiPrecnik"
              id="srednjiPrecnik"
-             onKeyPress="if(this.value.length==8) return false;">
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <img class="rounded-circle circle-sizer" *ngIf="showVrstaImage" src="/assets/{{vrstaSlika}}.png" alt="image">
   </div>
@@ -65,45 +65,52 @@
 
   <div class="row">
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="fTrupci" id="fTrupci">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="fTrupci" id="fTrupci"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="lTrupci" id="lTrupci"/>
+      <input type="number" class="form-control bg-secondary text-white" formControlName="lTrupci" id="lTrupci"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="prvaKlasa" id="prvaKlasa">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="prvaKlasa" id="prvaKlasa"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="drugaKlasa" id="drugaKlasa">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="drugaKlasa" id="drugaKlasa"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="trecaKlasa" id="trecaKlasa">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="trecaKlasa" id="trecaKlasa"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
       <input type="number" class="form-control bg-secondary text-white" formControlName="stuboviZaVodove"
-             id="stuboviZaVodove">
+             id="stuboviZaVodove" onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="jamskoDrvo" id="jamskoDrvo">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="jamskoDrvo" id="jamskoDrvo"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
-      <input type="number" class="form-control bg-secondary text-white" formControlName="koljeZaVoce" id="koljeZaVoce">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="koljeZaVoce" id="koljeZaVoce"
+             onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
       <input type="number" class="form-control bg-secondary text-white" formControlName="celuloznoDrvo"
-             id="celuloznoDrvo">
+             id="celuloznoDrvo" onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
       <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevPrveKlase"
-             id="ogrevPrveKlase">
+             id="ogrevPrveKlase" onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
       <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevDrugeKlase"
-             id="ogrevDrugeKlase">
+             id="ogrevDrugeKlase" onKeyPress="if(this.value.length==5) return false;">
     </div>
     <div class="col-sm-1">
       <input type="number" class="form-control bg-secondary text-white" formControlName="sveukupnaDrvnaMasa"
-             id="sveukupnaDrvnaMasa">
+             id="sveukupnaDrvnaMasa" onKeyPress="if(this.value.length==5) return false;">
       <div>
         <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
       </div>
@@ -119,7 +126,7 @@
   <table class="sortimentnaTabela  table table-bordered">
     <thead>
     <tr>
-      <th scope="col" style="width: 5%">4.3</th>
+      <th scope="col" style="width: 5%">Sortimentna Struktura</th>
       <th scope="col" style="width: 5%" class="text-dark bg-white">F</th>
       <th scope="col" style="width: 5%"class="text-light bg-warning">L</th>
       <th scope="col" style="width: 5%" class="text-light bg-primary">I klasa</th>
