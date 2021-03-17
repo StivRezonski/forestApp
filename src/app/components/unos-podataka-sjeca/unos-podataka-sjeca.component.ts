@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SortimentiComponent } from '../../sortimenti/sortimenti.component'
+import { SortimentiComponent } from '../sortimenti/sortimenti.component'
 
 
 
@@ -32,15 +32,15 @@ normaCetSjeca;
 normaLisSjeca;
 p;
 j;
-sumCetinariNeto = this.sortimenti.sumCetinariNeto;
-sumLiscariNeto = this.sortimenti.sumLiscariNeto;
+// sumCetinariNeto = this.sortimenti.sumCetinariNeto;
+// sumLiscariNeto = this.sortimenti.sumLiscariNeto;
 srPr21;
 srPr22;
 srPr41;
 srPr43;
 cijenaSjecaCetinari: number;
 cijenaSjecaLiscari;
-cijenaRadnogDanaSjeca = 89.37; 
+cijenaRadnogDanaSjeca = 89.37;
 cijenaRadnogDanaAnimal = 124.63;
 cijenaRadnogDanaTraktor = 696.26;
 cijenaRadnogDanaIznos = 110.06;
@@ -51,7 +51,7 @@ unosSrednjiPrecnikCetinari(event: any) {
   this.srednjiPrecnikCetinari = parseInt (event.target.value);
 }
 unosSrednjiPrecnikLiscari(event: any) {
-  this.srednjiPrecnikLiscari = parseInt (event.target.value);  
+  this.srednjiPrecnikLiscari = parseInt (event.target.value);
 }
 dohvatiNagibTerena(event){
   this.nagibTerena = event.target.value;
@@ -120,8 +120,8 @@ izracunajNorme (){
     this.usloviRadaLis = 3
     console.log(this.usloviRadaLis)
   }else this.usloviRadaLis = 4
-  
- 
+
+
   const ljetoUslovi1Cet = [{25:"1.0",30:"3.9",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"2",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"3",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
@@ -141,7 +141,7 @@ izracunajNorme (){
                         {25:"13",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"14",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"15",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
- 
+
   const ljetoUslovi4Cet = [{25:"16",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"17",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"18",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
@@ -188,7 +188,7 @@ const ljetoUslovi5Lis = [{25:"21",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,1
   {25:"24",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
   {25:"25",30:"3.3",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
 
-const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi4Lis, ljetoUslovi5Lis]; 
+const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi4Lis, ljetoUslovi5Lis];
 
   let a = (Object.keys (ljetoCet[this.usloviRadaCet][this.bonitetCetinari-1])).filter( k=> k<this.srednjiPrecnikCetinari).pop();
   let b = (Object.keys (ljetoCet[this.usloviRadaCet][this.bonitetCetinari-1])).filter( k=> k>this.srednjiPrecnikCetinari)[0];
@@ -215,20 +215,20 @@ const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi
 
   this.cijenaSjecaCetinari = this.cijenaRadnogDanaSjeca / parseFloat (this.normaCetSjeca);
   this.cijenaSjecaLiscari = this.cijenaRadnogDanaSjeca / parseFloat (this.normaLisSjeca);
-  
+
   //else{
     //this.i = [ljetoCet[this.usloviRadaCet][this.bonitetCetinari-1]].indexOf(this.srednjiPrecnikCetinari.toString());
     //this.normaCetSjeca = ljetoLis[this.usloviRadaCet][this.bonitetCetinari][this.i.toString()];
     //this.l = [ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1]].indexOf(this.srednjiPrecnikLiscari.toString());
-    //this.normaLisSjeca = ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1][this.l.toString()];  
+    //this.normaLisSjeca = ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1][this.l.toString()];
   //}
 
 
-  
-     
-  
-   
- 
+
+
+
+
+
   //console.log(a)
   //console.log(b);
   //console.log(x);
@@ -242,7 +242,7 @@ const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi
  console.log(this.cijenaSjecaCetinari.toFixed(2));
  //console.log(this.normaLisSjeca);
  //console.log( typeof (this.normaLisSjeca));
-   
+
 }
 
 }

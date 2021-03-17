@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UnosPodatakaSjecaComponent } from '../unos-podataka-sjeca/unos-podataka-sjeca.component';
-import { NormeService } from '../../services/norme.service'; 
+import { NormeService } from '../../services/norme.service';
 
 @Component({
   selector: 'app-unos-podataka-animal',
@@ -35,8 +35,8 @@ normaCetAnimal;
 normaLisAnimal;
 normeAnimalCetinari = this.norme.normeAnimalCetinari;
 normeAnimalLiscari = this.norme.normeAnimalLiscari
-sumCetinariNeto = this.sjeca.sumCetinariNeto;
-sumLiscariNeto = this.sjeca.sumLiscariNeto;
+// sumCetinariNeto = this.sjeca.sumCetinariNeto;
+// sumLiscariNeto = this.sjeca.sumLiscariNeto;
 cijenaAnimalCetinari: any;
 cijenaAnimalLiscari: any;
 cijenaRadnogDanaAnimal = this.sjeca.cijenaRadnogDanaAnimal;
@@ -95,7 +95,7 @@ izracunajNorme(){
   }else this.usloviRadaLis = 4
 
   this.normaCetAnimal = this.normeAnimalCetinari[this.usloviRadaCet][this.udaljenostOdCeste];
-  this.normaLisAnimal = this.normeAnimalLiscari[this.usloviRadaLis][this.udaljenostOdCeste]; 
+  this.normaLisAnimal = this.normeAnimalLiscari[this.usloviRadaLis][this.udaljenostOdCeste];
 }
 
 
