@@ -1,0 +1,261 @@
+<form [formGroup]="sortimentiFormGroup" (ngSubmit)="onSubmit()">
+
+
+  <div class="row">
+    <div class="form-group col-sm-1">
+      <label for="izabranaVrsta">Vrsta drveta</label>
+      <select class="form-control selectSizeCustom" formControlName="izabranaVrsta" id="izabranaVrsta" (click)="onSelectVrsta()">
+        <option value="21">Jela</option>
+        <option value="22">Smrca</option>
+        <option value="41">Bukva</option>
+        <option value="50">Plemeniti</option>
+      </select>
+    </div>
+
+    <div class="col-sm-1">
+      <label for="srednjiPrecnik" class="control-label">Srednji precnik</label>
+      <input type="number" class="form-control bg-info text-white" formControlName="srednjiPrecnik"
+             id="srednjiPrecnik"
+             onKeyPress="if(this.value.length==8) return false;">
+    </div>
+    <img class="rounded-circle circle-sizer" *ngIf="showVrstaImage" src="/assets/{{vrstaSlika}}.png" alt="image">
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-1">
+      <label for="fTrupci" class="control-label">F trupci</label>
+    </div>
+    <div class="col-md-1">
+      <label for="lTrupci" class="control-label">L trupci</label>
+    </div>
+    <div class="col-md-1">
+      <label for="prvaKlasa" class="control-label">Prva klasa</label>
+    </div>
+    <div class="col-md-1">
+      <label for="drugaKlasa" class="control-label">Druga klasa</label>
+    </div>
+    <div class="col-md-1">
+      <label for="trecaKlasa" class="control-label">Treca klasa</label>
+    </div>
+    <div class="col-md-1">
+      <label for="stuboviZaVodove" class="control-label">Stubovi za vodove</label>
+    </div>
+    <div class="col-md-1">
+      <label for="jamskoDrvo" class="control-label">Jamsko drvo</label>
+    </div>
+    <div class="col-md-1">
+      <label for="koljeZaVoce" class="control-label">Kolje za voce</label>
+    </div>
+    <div class="col-md-1">
+      <label for="celuloznoDrvo" class="control-label">Celulozno drvo</label>
+    </div>
+    <div class="col-md-1">
+      <label for="ogrevPrveKlase" class="control-label">Ogrev prve klase</label>
+    </div>
+    <div class="col-md-1">
+      <label for="ogrevDrugeKlase" class="control-label">Ogrev druge klase</label>
+    </div>
+    <div class="col-md-1">
+      <label for="sveukupnaDrvnaMasa" class="control-label">Sveukupna masa</label>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="fTrupci" id="fTrupci">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="lTrupci" id="lTrupci"/>
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="prvaKlasa" id="prvaKlasa">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="drugaKlasa" id="drugaKlasa">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="trecaKlasa" id="trecaKlasa">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="stuboviZaVodove"
+             id="stuboviZaVodove">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="jamskoDrvo" id="jamskoDrvo">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="koljeZaVoce" id="koljeZaVoce">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="celuloznoDrvo"
+             id="celuloznoDrvo">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevPrveKlase"
+             id="ogrevPrveKlase">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevDrugeKlase"
+             id="ogrevDrugeKlase">
+    </div>
+    <div class="col-sm-1">
+      <input type="number" class="form-control bg-secondary text-white" formControlName="sveukupnaDrvnaMasa"
+             id="sveukupnaDrvnaMasa">
+      <div>
+        <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+    </div>
+
+
+
+</form>
+
+<div>
+
+  <table class="sortimentnaTabela  table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" style="width: 5%">4.3</th>
+      <th scope="col" style="width: 5%" class="text-dark bg-white">F</th>
+      <th scope="col" style="width: 5%"class="text-light bg-warning">L</th>
+      <th scope="col" style="width: 5%" class="text-light bg-primary">I klasa</th>
+      <th scope="col" style="width: 5%" class="text-light bg-success">II klasa</th>
+      <th scope="col" style="width: 5%" class="text-light bg-danger">III klasa</th>
+      <th scope="col" style="width: 5%" class="text-light bg-dark">TT stubovi</th>
+      <th scope="col" style="width: 5%" class="bg-celuloza">Jamsko Drvo</th>
+      <th scope="col" style="width: 5%" class="bg-celuloza">Kolje za voce</th>
+      <th scope="col" style="width: 5%" class="bg-celuloza">Celulozno drvo</th>
+      <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev I klase</th>
+      <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev II klase</th>
+      <th scope="col" style="width: 5%">Sveukupna Drvna Masa</th>
+      <th scope="col" style="width: 5%">Srednji precnik</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of sumTrupciJela;">
+      <th scope="row">Jela</th>
+      <td>{{item.fTrupci}}</td>
+      <td>{{item.lTrupci}}</td>
+      <td>{{item.prvaKlasa}}</td>
+      <td>{{item.drugaKlasa}}</td>
+      <td>{{item.trecaKlasa}}</td>
+      <td>{{item.stuboviZaVodove}}</td>
+      <td>{{item.jamskoDrvo}}</td>
+      <td>{{item.koljeZaVoce}}</td>
+      <td>{{item.celuloznoDrvo}}</td>
+      <td>{{item.ogrevPrveKlase}}</td>
+      <td>{{item.ogrevDrugeKlase}}</td>
+      <td>{{item.sveukupnaDrvnaMasa}}</td>
+      <td>{{item.srednjiPrecnik}}</td>
+    </tr>
+    <tr *ngFor="let item of sumTrupciSmrca;">
+      <th scope="row">Smrca</th>
+      <td>{{item.fTrupci}}</td>
+      <td>{{item.lTrupci}}</td>
+      <td>{{item.prvaKlasa}}</td>
+      <td>{{item.drugaKlasa}}</td>
+      <td>{{item.trecaKlasa}}</td>
+      <td>{{item.stuboviZaVodove}}</td>
+      <td>{{item.jamskoDrvo}}</td>
+      <td>{{item.koljeZaVoce}}</td>
+      <td>{{item.celuloznoDrvo}}</td>
+      <td>{{item.ogrevPrveKlase}}</td>
+      <td>{{item.ogrevDrugeKlase}}</td>
+      <td>{{item.sveukupnaDrvnaMasa}}</td>
+      <td>{{item.srednjiPrecnik}}</td>
+    </tr>
+    <tr class="bg-suma">
+      <th scope="row">Ukupno cetinara</th>
+      <td>{{sumaFTrupciCetinari}}</td>
+      <td>{{sumaLklaseCetinari}}</td>
+      <td>{{sumaPrvaKlasaCetinari}}</td>
+      <td>{{sumaDrugaKlasaCetinari}}</td>
+      <td>{{sumaTrecaKlasaCetinari}}</td>
+      <td>{{sumaStuboviCetinari}}</td>
+      <td>{{sumaJamskoDrvoCetinari}}</td>
+      <td>{{sumaKoljeZaVoceCetinari}}</td>
+      <td>{{sumaCeluloznoDrvoCetinari}}</td>
+      <td>{{sumaOgrevPrveKlaseCetinari}}</td>
+      <td>{{sumaOgrevDrugeKlaseCetinari}}</td>
+      <td>{{sveukupnaDrvnaMasaCetinari}}</td>
+      <td>{{srednjiPrecnikCetinari}}</td>
+    </tr>
+    <tr *ngFor="let item of sumTrupciBukva;">
+      <th scope="row">Bukva</th>
+      <td>{{item.fTrupci}}</td>
+      <td>{{item.lTrupci}}</td>
+      <td>{{item.prvaKlasa}}</td>
+      <td>{{item.drugaKlasa}}</td>
+      <td>{{item.trecaKlasa}}</td>
+      <td>{{item.stuboviZaVodove}}</td>
+      <td>{{item.jamskoDrvo}}</td>
+      <td>{{item.koljeZaVoce}}</td>
+      <td>{{item.celuloznoDrvo}}</td>
+      <td>{{item.ogrevPrveKlase}}</td>
+      <td>{{item.ogrevDrugeKlase}}</td>
+      <td>{{item.sveukupnaDrvnaMasa}}</td>
+      <td>{{item.srednjiPrecnik}}</td>
+    </tr>
+    <tr *ngFor="let item of sumTrupciPlemeniti;">
+      <th scope="row">Plemeniti</th>
+      <td>{{item.fTrupci}}</td>
+      <td>{{item.lTrupci}}</td>
+      <td>{{item.prvaKlasa}}</td>
+      <td>{{item.drugaKlasa}}</td>
+      <td>{{item.trecaKlasa}}</td>
+      <td>{{item.stuboviZaVodove}}</td>
+      <td>{{item.jamskoDrvo}}</td>
+      <td>{{item.koljeZaVoce}}</td>
+      <td>{{item.celuloznoDrvo}}</td>
+      <td>{{item.ogrevPrveKlase}}</td>
+      <td>{{item.ogrevDrugeKlase}}</td>
+      <td>{{item.sveukupnaDrvnaMasa}}</td>
+      <td>{{item.srednjiPrecnik}}</td>
+    </tr>
+    <tr class="bg-suma">
+      <th scope="row">Ukupno liscari</th>
+      <td>{{sumaFTrupciLiscari}}</td>
+      <td>{{sumaLklaseLiscari}}</td>
+      <td>{{sumaPrvaKlasaLiscari}}</td>
+      <td>{{sumaDrugaKlasaLiscari}}</td>
+      <td>{{sumaTrecaKlasaLiscari}}</td>
+      <td>{{sumaStuboviLiscari}}</td>
+      <td>{{sumaJamskoDrvoLiscari}}</td>
+      <td>{{sumaKoljeZaVoceLiscari}}</td>
+      <td>{{sumaCeluloznoDrvoLiscari}}</td>
+      <td>{{sumaOgrevPrveKlaseLiscari}}</td>
+      <td>{{sumaOgrevDrugeKlaseLiscari}}</td>
+      <td>{{sveukupnaDrvnaMasaLiscari}}</td>
+      <td>{{srednjiPrecnikLiscari}}</td>
+    </tr>
+    <tr class="bg-suma">
+      <th scope="row">Ukupno cetinari i liscari</th>
+      <td>{{sumaCetinariLiscariFKlase}}</td>
+      <td>{{sumaCetinariLiscariLKlase}}</td>
+      <td>{{sumaCetinariLiscariPrvaKlasa}}</td>
+      <td>{{sumaCetinariLiscarDrugaKlasa}}</td>
+      <td>{{sumaCetinariLiscariTrecaKlasa}}</td>
+      <td>{{sumaCetinariLiscariStubovi}}</td>
+      <td>{{sumaCetinariLiscariJamskoDrvo}}</td>
+      <td>{{sumaCetinariLiscariKoljeZaVoce}}</td>
+      <td>{{sumaCetinariLiscariCeluloznoDrvo}}</td>
+      <td>{{sumaCetinariLiscariOgrevPrveKlase}}</td>
+      <td>{{sumaCetinariLiscariOgrevDrugeKlase}}</td>
+      <td>{{sumacetinariLiscariSveukupnaDrvnaMasa}}</td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>Neto kolicina jele i smrce iznosi: {{netoJelaSmrca}}</div>
+<div>Neto kolicina bukva i plemenit iznosi: {{netoBukvaPlemeniti}}</div>
+<div>Ukupna neto kolicina sortimenata iznosi: {{netoCetinariLiscari}}</div>
+<div>Troskovi projekta iznosi: {{sumTroskova}}</div>
+<div>Cjena projekta po kubiku iznosi: {{sumCjenaProjekta}}</div>
+
+
