@@ -19,36 +19,35 @@ usloviRadaCet: number;
 usloviRadaLis: number;
 bodoviCetinari: number;
 bodoviLiscari: number;
-nagibTerena: string;
-ucesceLiscara: string;
-gustinaPodmlatka: string;
-doznacenaMasa: string;
-nadmorskaVisina: string;
-udaljenostOdStale: any;
-srednjiPrecnikCetinari: any;
-srednjiPrecnikLiscari: any;
-srednjiPrecnikCetinariBodovi: string;
-srednjiPrecnikLiscariBodovi: string;
-udaljenostOdStaleBodovi: string;
-udaljenostOdCeste: any;
-normaCetAnimal;
-normaLisAnimal;
+nagibTerena: number;
+ucesceLiscara: number;
+gustinaPodmlatka: number;
+doznacenaMasa: number;
+nadmorskaVisina: number;
+udaljenostOdStale: number;
+srednjiPrecnikCetinari: number;
+srednjiPrecnikLiscari: number;
+srednjiPrecnikCetinariBodovi: number;
+srednjiPrecnikLiscariBodovi: number;
+udaljenostOdStaleBodovi: number;
+udaljenostOdCeste: number;
+normaCetAnimal: number;
+normaLisAnimal: number;
 normeAnimalCetinari = this.norme.normeAnimalCetinari;
 normeAnimalLiscari = this.norme.normeAnimalLiscari
-// sumCetinariNeto = this.sjeca.sumCetinariNeto;
-// sumLiscariNeto = this.sjeca.sumLiscariNeto;
-cijenaAnimalCetinari: any;
-cijenaAnimalLiscari: any;
-cijenaRadnogDanaAnimal = this.sjeca.cijenaRadnogDanaAnimal;
+sumCetinariNeto: number = this.sjeca.sumCetinariNeto;
+sumLiscariNeto: number = this.sjeca.sumLiscariNeto;
+cijenaAnimalCetinari: number;
+cijenaAnimalLiscari: number;
+cijenaRadnogDanaAnimal: number = this.sjeca.cijenaRadnogDanaAnimal;
 
 
 
 dohvatiNagibTerena(event){
-  this.nagibTerena = event.target.value;
-  console.log(this.normeAnimalCetinari)
+  this.nagibTerena = parseInt (event.target.value);
  }
 dohvatiUcesceLiscara(event){
-  this.ucesceLiscara = event.target.value;
+  this.ucesceLiscara = parseInt (event.target.value);
  }
 dohvatiGustinuPodmlatka(event){
   this.gustinaPodmlatka = event.target.value;
@@ -72,8 +71,10 @@ unosUdaljenostOdCeste(event){
   this.udaljenostOdCeste = event.target.value;
   }
 izracunajNorme(){
-  this.bodoviCetinari = parseInt(this.nagibTerena)+parseInt(this.ucesceLiscara)+parseInt(this.gustinaPodmlatka)+parseInt(this.doznacenaMasa)+parseInt(this.nadmorskaVisina)+parseInt(this.udaljenostOdStaleBodovi)+parseInt(this.srednjiPrecnikCetinariBodovi);
-  this.bodoviLiscari = parseInt(this.nagibTerena)+parseInt(this.ucesceLiscara)+parseInt(this.gustinaPodmlatka)+parseInt(this.doznacenaMasa)+parseInt(this.nadmorskaVisina)+parseInt(this.udaljenostOdStaleBodovi)+parseInt(this.srednjiPrecnikLiscariBodovi);
+  let b = this.nagibTerena+this.ucesceLiscara
+  console.log(b)
+  this.bodoviCetinari = this.nagibTerena + this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikCetinariBodovi;
+  this.bodoviLiscari = this.nagibTerena+this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikLiscariBodovi;
   if(18>this.bodoviCetinari){
     this.usloviRadaCet = 0;
   }else if(this.bodoviCetinari >= 19 && this.bodoviCetinari <= 25){
@@ -96,6 +97,9 @@ izracunajNorme(){
 
   this.normaCetAnimal = this.normeAnimalCetinari[this.usloviRadaCet][this.udaljenostOdCeste];
   this.normaLisAnimal = this.normeAnimalLiscari[this.usloviRadaLis][this.udaljenostOdCeste];
+
+  this.cijenaAnimalCetinari = this.cijenaRadnogDanaAnimal / this.normaCetAnimal;
+  this.cijenaAnimalLiscari = this.cijenaRadnogDanaAnimal / this.normaLisAnimal;
 }
 
 
