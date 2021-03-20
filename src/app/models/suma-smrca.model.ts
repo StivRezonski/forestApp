@@ -1,15 +1,16 @@
 export class SumaSmrca {
-  FTrupci: number;
-  Lklase: number;
-  PrvaKlasa: number;
-  DrugaKlasa: number;
-  TrecaKlasa: number;
-  Stubovi: number;
-  JamskoDrvo: number;
-  KoljeZaVoce: number;
-  CeluloznoDrvo: number;
-  OgrevPrveKlase: number;
-  OgrevDrugeKlase: number;
+  fTrupci: number;
+  lKlase: number;
+  prvaKlasa: number;
+  drugaKlasa: number;
+  trecaKlasa: number;
+  stubovi: number;
+  jamskoDrvo: number;
+  koljeZaVoce: number;
+  celuloznoDrvo: number;
+  ogrevPrveKlase: number;
+  ogrevDrugeKlase: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
+  sumaCeluloze: number;
 }

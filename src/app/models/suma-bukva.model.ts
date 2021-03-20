@@ -12,4 +12,5 @@ export class SumaBukva {
   ogrevDrugeKlase: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
+  netoOgrev: number;
 }

@@ -12,5 +12,6 @@ export class SumaJela{
   ogrevDrugeKlase: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
+  sumaCeluloze: number;
 }
 
