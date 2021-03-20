@@ -133,7 +133,7 @@
       <th scope="col" style="width: 5%" class="text-light bg-success">II klasa</th>
       <th scope="col" style="width: 5%" class="text-light bg-danger">III klasa</th>
       <th scope="col" style="width: 5%" class="text-light bg-dark">TT stubovi</th>
-      <th scope="col" style="width: 5%" class="bg-celuloza">Jamsko Drvo</th>
+      <th scope="col" style="width: 5%" class="bg-rudno">Jamsko Drvo</th>
       <th scope="col" style="width: 5%" class="bg-celuloza">Kolje za voce</th>
       <th scope="col" style="width: 5%" class="bg-celuloza">Celulozno drvo</th>
       <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev I klase</th>
@@ -177,19 +177,19 @@
     </tr>
     <tr class="bg-suma">
       <th scope="row">Ukupno cetinara</th>
-      <td>{{sumaFTrupciCetinari}}</td>
-      <td>{{sumaLklaseCetinari}}</td>
-      <td>{{sumaPrvaKlasaCetinari}}</td>
-      <td>{{sumaDrugaKlasaCetinari}}</td>
-      <td>{{sumaTrecaKlasaCetinari}}</td>
-      <td>{{sumaStuboviCetinari}}</td>
-      <td>{{sumaJamskoDrvoCetinari}}</td>
-      <td>{{sumaKoljeZaVoceCetinari}}</td>
-      <td>{{sumaCeluloznoDrvoCetinari}}</td>
-      <td>{{sumaOgrevPrveKlaseCetinari}}</td>
-      <td>{{sumaOgrevDrugeKlaseCetinari}}</td>
-      <td>{{sveukupnaDrvnaMasaCetinari}}</td>
-      <td>{{srednjiPrecnikCetinari}}</td>
+      <td>{{sumaCetinari.fKlase}}</td>
+      <td>{{sumaCetinari.lKlase}}</td>
+      <td>{{sumaCetinari.prvaKlasa}}</td>
+      <td>{{sumaCetinari.drugaKlasa}}</td>
+      <td>{{sumaCetinari.trecaKlasa}}</td>
+      <td>{{sumaCetinari.stubovi}}</td>
+      <td>{{sumaCetinari.jamskoDrvo}}</td>
+      <td>{{sumaCetinari.koljeZaVoce}}</td>
+      <td>{{sumaCetinari.celuloznoDrvo}}</td>
+      <td>{{sumaCetinari.ogrevPrveKlase}}</td>
+      <td>{{sumaCetinari.ogrevDrugeKlase}}</td>
+      <td>{{sumaCetinari.sveukupnaDrvnaMasa}}</td>
+      <td>{{sumaCetinari.srednjiPrecnik}}</td>
     </tr>
     <tr *ngFor="let item of sumTrupciBukva;">
       <th scope="row">Bukva</th>
@@ -225,34 +225,34 @@
     </tr>
     <tr class="bg-suma">
       <th scope="row">Ukupno liscari</th>
-      <td>{{sumaFTrupciLiscari}}</td>
-      <td>{{sumaLklaseLiscari}}</td>
-      <td>{{sumaPrvaKlasaLiscari}}</td>
-      <td>{{sumaDrugaKlasaLiscari}}</td>
-      <td>{{sumaTrecaKlasaLiscari}}</td>
-      <td>{{sumaStuboviLiscari}}</td>
-      <td>{{sumaJamskoDrvoLiscari}}</td>
-      <td>{{sumaKoljeZaVoceLiscari}}</td>
-      <td>{{sumaCeluloznoDrvoLiscari}}</td>
-      <td>{{sumaOgrevPrveKlaseLiscari}}</td>
-      <td>{{sumaOgrevDrugeKlaseLiscari}}</td>
-      <td>{{sveukupnaDrvnaMasaLiscari}}</td>
-      <td>{{srednjiPrecnikLiscari}}</td>
+      <td>{{sumaLiscari.fKlase}}</td>
+      <td>{{sumaLiscari.lKlase}}</td>
+      <td>{{sumaLiscari.prvaKlasa}}</td>
+      <td>{{sumaLiscari.drugaKlasa}}</td>
+      <td>{{sumaLiscari.trecaKlasa}}</td>
+      <td>{{sumaLiscari.stubovi}}</td>
+      <td>{{sumaLiscari.jamskoDrvo}}</td>
+      <td>{{sumaLiscari.koljeZaVoce}}</td>
+      <td>{{sumaLiscari.celuloznoDrvo}}</td>
+      <td>{{sumaLiscari.ogrevPrveKlase}}</td>
+      <td>{{sumaLiscari.ogrevDrugeKlase}}</td>
+      <td>{{sumaLiscari.sveukupnaDrvnaMasa}}</td>
+      <td>{{sumaLiscari.srednjiPrecnik}}</td>
     </tr>
     <tr class="bg-suma">
       <th scope="row">Ukupno cetinari i liscari</th>
-      <td>{{sumaCetinariLiscariFKlase}}</td>
-      <td>{{sumaCetinariLiscariLKlase}}</td>
-      <td>{{sumaCetinariLiscariPrvaKlasa}}</td>
-      <td>{{sumaCetinariLiscarDrugaKlasa}}</td>
-      <td>{{sumaCetinariLiscariTrecaKlasa}}</td>
-      <td>{{sumaCetinariLiscariStubovi}}</td>
-      <td>{{sumaCetinariLiscariJamskoDrvo}}</td>
-      <td>{{sumaCetinariLiscariKoljeZaVoce}}</td>
-      <td>{{sumaCetinariLiscariCeluloznoDrvo}}</td>
-      <td>{{sumaCetinariLiscariOgrevPrveKlase}}</td>
-      <td>{{sumaCetinariLiscariOgrevDrugeKlase}}</td>
-      <td>{{sumaCetinariLiscariSveukupnaDrvnaMasa}}</td>
+      <td>{{sumaCetinariLiscari.fKlase}}</td>
+      <td>{{sumaCetinariLiscari.lKlase}}</td>
+      <td>{{sumaCetinariLiscari.prvaKlasa}}</td>
+      <td>{{sumaCetinariLiscari.drugaKlasa}}</td>
+      <td>{{sumaCetinariLiscari.trecaKlasa}}</td>
+      <td>{{sumaCetinariLiscari.stubovi}}</td>
+      <td>{{sumaCetinariLiscari.jamskoDrvo}}</td>
+      <td>{{sumaCetinariLiscari.koljeZaVoce}}</td>
+      <td>{{sumaCetinariLiscari.celuloznoDrvo}}</td>
+      <td>{{sumaCetinariLiscari.ogrevPrveKlase}}</td>
+      <td>{{sumaCetinariLiscari.ogrevDrugeKlase}}</td>
+      <td>{{sumaCetinariLiscari.sveukupnaDrvnaMasa}}</td>
       <td></td>
     </tr>
     </tbody>
