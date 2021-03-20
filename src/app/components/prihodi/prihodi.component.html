@@ -2,150 +2,150 @@
 <table class="table-bordered">
   <thead>
   <tr>
-    <th scope="col">Redni broj</th>
-    <th scope="col" class="text-dark">Sortiment</th>
+    <th scope="col">Sifra vrste</th>
+    <th scope="col" class="text-dark">Klase</th>
     <th scope="col" class="text-dark">Kolicina (m³)</th>
     <th scope="col" class="text-dark">Cijena (KM/m³)</th>
     <th scope="col" class="text-dark">Ukupno (KM)</th>
   </tr>
   </thead>
   <tbody>
-  <tr class="bg">
-    <th scope="row">1</th>
-    <td>F trupci jela</td>
+  <tr class="bg" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>F</td>
     <td>{{fTrupciJela}}</td>
     <td>{{cjenaFJela}}</td>
     <td>{{ukupnoFJela}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">2</th>
-    <td>Prva jela</td>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>I</td>
     <td>{{prvaKlasaJela}}</td>
     <td>{{cjenaPrvaJela}}</td>
     <td>{{ukupnoPrvaJela}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">3</th>
-    <td>Druga klasa jela</td>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>II</td>
     <td>{{drugaKlasaJela}}</td>
     <td>{{cjenaDrugaJela}}</td>
     <td>{{ukupnoDrugaJela}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">4</th>
-    <td>Treca klasa jela</td>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>III</td>
     <td>{{trecaKlasaJela}}</td>
     <td>{{cjenaTrecaJela}}</td>
     <td>{{ukupnoTrecaJela}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">5</th>
-    <td>TT stubovi jela</td>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>TT stubovi</td>
     <td>{{stuboviJela}}</td>
     <td>{{cjenaStuboviJela}}</td>
     <td>{{ukupnoStuboviJela}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">6</th>
-    <td>Rudno jela</td>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>Rudno</td>
     <td>{{rudnoJela}}</td>
     <td>{{cjenaRudnoJela}}</td>
     <td>{{ukupnoRudnoJela}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">7</th>
-    <td>Celuloza jela</td>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
+    <td>Celuloza</td>
     <td>{{celulozaJela}}</td>
     <td>{{cjenaCelulozaJela}}</td>
     <td>{{ukupnoCelulozaJela}}</td>
   </tr>
-  <tr class="bg">
-    <th scope="row">8</th>
-    <td>F trupci Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>F</td>
     <td>{{fTrupciSmrca}}</td>
     <td>{{cjenaFSmrca}}</td>
     <td>{{ukupnoFSmrca}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">9</th>
-    <td>Prva Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>I</td>
     <td>{{prvaKlasaSmrca}}</td>
     <td>{{cjenaPrvaSmrca}}</td>
     <td>{{ukupnoPrvaSmrca}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">10</th>
-    <td>Druga klasa Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>II</td>
     <td>{{drugaKlasaSmrca}}</td>
     <td>{{cjenaDrugaSmrca}}</td>
     <td>{{ukupnoDrugaSmrca}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">11</th>
-    <td>Treca klasa Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>III</td>
     <td>{{trecaKlasaSmrca}}</td>
     <td>{{cjenaTrecaSmrca}}</td>
     <td>{{ukupnoTrecaSmrca}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">12</th>
-    <td>TT stubovi Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>TT stubovi</td>
     <td>{{stuboviSmrca}}</td>
     <td>{{cjenaStuboviSmrca}}</td>
     <td>{{ukupnoStuboviSmrca}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">13</th>
-    <td>Rudno Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>Rudno</td>
     <td>{{rudnoSmrca}}</td>
     <td>{{cjenaRudnoSmrca}}</td>
     <td>{{ukupnoRudnoSmrca}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">14</th>
-    <td>Celuloza Smrca</td>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
+    <td>Celuloza</td>
     <td>{{celulozaSmrca}}</td>
     <td>{{cjenaCelulozaSmrca}}</td>
     <td>{{ukupnoCelulozaSmrca}}</td>
   </tr>
 
-  <tr class="bg">
-    <th scope="row">15</th>
-    <td>F trupci Bukva</td>
+  <tr class="bg" *ngIf="bukvaShowTable">
+    <th scope="row">41</th>
+    <td>F</td>
     <td>{{fTrupciBukva}}</td>
     <td>{{cjenaFBukva}}</td>
     <td>{{ukupnoFBukva}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">16</th>
-    <td>L bukva</td>
+  <tr class="bg-suma" *ngIf="bukvaShowTable">
+    <th scope="row">41</th>
+    <td>L</td>
     <td>{{lTrupciBukva}}</td>
     <td>{{cjenaLBukva}}</td>
     <td>{{ukupnoLBukva}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">17</th>
-    <td>Prva klasa Bukva</td>
+  <tr class="bg-suma" *ngIf="bukvaShowTable">
+    <th scope="row">41</th>
+    <td>I</td>
     <td>{{prvaKlasaBukva}}</td>
     <td>{{cjenaPrvaBukva}}</td>
     <td>{{ukupnoPrvaBukva}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">18</th>
-    <td>Druga klasa Bukva</td>
+  <tr class="bg-suma" *ngIf="bukvaShowTable">
+    <th scope="row">41</th>
+    <td>II</td>
     <td>{{drugaKlasaBukva}}</td>
     <td>{{cjenaDrugaBukva}}</td>
     <td>{{ukupnoDrugaBukva}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">19</th>
-    <td>Treca klasa Bukva</td>
+  <tr class="bg-suma" *ngIf="bukvaShowTable">
+    <th scope="row">41</th>
+    <td>III</td>
     <td>{{trecaKlasaBukva}}</td>
     <td>{{cjenaTrecaBukva}}</td>
     <td>{{ukupnoTrecaBukva}}</td>
   </tr>
-  <tr class="bg-suma">
-    <th scope="row">20</th>
+  <tr class="bg-suma" *ngIf="bukvaShowTable">
+    <th scope="row">41</th>
     <td>Ogrevno drvo</td>
     <td>{{ogrevBukva}}</td>
     <td>{{cjenaOgrevBukva}}</td>
