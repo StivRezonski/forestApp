@@ -1,9 +1,15 @@
 .table-position{
   margin-top: 50px;
-  margin-left: 100px;
+  margin-left: 800px;
   text-align: center;
 }
 
-/*.table td {*/
-/*  text-align: center;*/
-/*} */
+.bg-siva{
+  background-color: #C0C0C0;
+}
+
+.troskovi-sjece{
+  margin-top: 150px;
+  margin-right: 500px;
+  /*float: right;*/
+}
