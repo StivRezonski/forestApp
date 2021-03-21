@@ -13,6 +13,12 @@
                 <option value="4">Srednje gust</option>
                 <option value="10">Gust</option>
             </select> <br>
+            <select class="form-select" (change) = "dohvatiUcesceLiscara($event)">
+                <option selected>Ucesce liscara</option>
+                <option value="1">Cisti cetinari</option>
+                <option value="3">Do 50% liscara</option>
+                <option value="6">Preko 50% liscara</option>
+            </select> <br>
             <select class="form-select" (change) = "dohvatiDoznacenuMasu($event)">
                 <option selected>Doznačena masa po ha</option>
                 <option value="4">> 80 m3</option>
@@ -30,6 +36,12 @@
                 <option value="3">Do 500 m</option>
                 <option value="5">1500-1500 m</option>
                 <option value="12">Veća od 1501 mnv</option>
+            </select> <br>
+            <select class="form-select" (change) = "dohvatiSrednjuUdaljenostOdStale($event)">
+                <option selected>Srednja udaljenost od stale</option>
+                <option value="2">Do 1 km</option>
+                <option value="5">Od 1 - 3 km</option>
+                <option value="8">Preko 3 km</option>
             </select> <br>
             <select class="form-select" (change) = "dohvatiSrednjiPrecnikCetinari($event)">
                 <option selected>Srednji prečnik četinara</option>
@@ -60,17 +72,18 @@
                 <option value="5">Peti</option>
             </select> <br>
             <input placeholder="Unijeti sr. precnik cetinara" (keyup)="unosSrednjiPrecnikCetinari($event)"> <br>
-            <input placeholder="Unijeti sr. precnik liscara" (keyup)="unosSrednjiPrecnikLiscari($event)">
-            <p>Bonitet za četinare je: {{bonitetCetinari}}</p>
-            <p>Bonitet za lišćare je: {{bonitetLiscari}}</p>
-            <p>Srednji precnik cetinara je: {{srednjiPrecnikCetinari}}</p>
-            <p>Srednji precnik liscara je: {{srednjiPrecnikLiscari}}</p>
-            <p>Norma sjece za cetinare je: {{normaCetSjeca}}</p>
-            <p>Norma sjece za liscare je: {{normaLisSjeca}}</p>
-            <p>Broj bodova za cetinare je je: {{bodoviCetinari}}</p>
-            <p>Broj bodova za liscare je: {{bodoviLiscari}}</p>
-            <p>Cijena sjece za cetinare je: {{cijenaSjecaCetinari}}</p>
-            <p>Cijena sjece za liscare je: {{cijenaSjecaLiscari}}</p>
+            <input placeholder="Unijeti sr. precnik liscara" (keyup)="unosSrednjiPrecnikLiscari($event)"> <br>
+            <input placeholder="Unijeti distacu privlacenja" (keyup)="unosUdaljenostOdCeste($event)"> <br>
+            <p>Bonitet za četinare je:</p>
+            <p>Bonitet za lišćare je:</p>
+            <p>Srednji precnik cetinara je:</p>
+            <p>Srednji precnik liscara je:</p>
+            <p>Norma sjece za cetinare je: </p>
+            <p>Norma sjece za liscare je:</p>
+            <p>Broj bodova za cetinare je:</p>
+            <p>Broj bodova za liscare je:</p>
+            <p>Cijena sjece za cetinare je:</p>
+            <p>Cijena sjece za liscare je:</p>
             <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button> <hr>
 
            

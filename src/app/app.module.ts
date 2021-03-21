@@ -16,6 +16,7 @@ import { SumaBukva } from './models/suma-bukva.model';
 import { SumaPlemeniti } from './models/suma-plemeniti.model';
 import { SumaCetinari } from './models/suma-cetinari.model';
 import { SumaLiscari } from './models/suma-liscari.model';
+import { TabelaNormiCijenaComponent } from './components/tabela-normi-cijena/tabela-normi-cijena.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,9 @@ import { SumaLiscari } from './models/suma-liscari.model';
     SortimentiComponent,
     UnosPodatakaSjecaComponent,
     UnosPodatakaAnimalComponent,
-    PrihodiComponent
+    PrihodiComponent,
+    TabelaNormiCijenaComponent
+    
   ],
 
   providers: [SortimentiComponent, UnosPodatakaSjecaComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
