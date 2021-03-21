@@ -87,6 +87,8 @@ export class PrihodiComponent implements OnInit {
 
   ukupnoSortimenti;
   ukupnoValuta;
+  ukupnoCetinari = this.sortimentiComponent.netoJelaSmrca;
+  ukupnoLiscari = this.sortimentiComponent.netoLiscari;
 
   constructor(public sortimentiComponent: SortimentiComponent) {
   }
@@ -95,24 +97,33 @@ export class PrihodiComponent implements OnInit {
     this.ukupnoSortimenti = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
       this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
 
+    this.ukupnoLiscari = this.ukupnoSortimenti;
+
     this.ukupnoValuta = this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
       this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.toFixedNeto();
   }
 
   smrcaAndBukvaNotEntered(): void {
     this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
       this.stuboviJela + this.rudnoJela + this.celulozaJela;
 
+    this.ukupnoLiscari = this.ukupnoSortimenti;
+
     this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
       this.ukupnoRudnoJela + this.ukupnoCelulozaJela;
+    this.toFixedNeto();
   }
 
   jelaAndBukvaAreNotEntered(): void {
     this.ukupnoSortimenti = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
       this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
 
+    this.ukupnoCetinari = this.ukupnoSortimenti;
+
     this.ukupnoValuta = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
+    this.toFixedNeto();
   }
 
   jelaBukvaAndSmrcaEntered(): void {
@@ -121,10 +132,28 @@ export class PrihodiComponent implements OnInit {
       this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca + this.fTrupciBukva +
       this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
 
+    this.ukupnoCetinari = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
+      this.stuboviJela + this.rudnoJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+
+    this.ukupnoLiscari = this.fTrupciBukva +
+      this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+
     this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
       this.ukupnoRudnoJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
       this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva + this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+
+    this.toFixedNeto();
+  }
+
+  toFixedNeto(): void {
+    this.ukupnoSortimenti.toFixed(3);
+    this.ukupnoCetinari.toFixed(3);
+    this.ukupnoLiscari.toFixed(3);
+    this.ukupnoValuta.toFixed(3);
   }
 
   ngOnInit(): void {
