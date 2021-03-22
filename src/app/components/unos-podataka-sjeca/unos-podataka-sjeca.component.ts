@@ -37,7 +37,7 @@ udaljenostOdStaleBodovi;
 bodoviCetinariAnimal;
 bodoviLiscariAnimal
 
-
+normeAnimalCetinari = this.norme.normeAnimalCetinari
 dohvatiUcesceLiscara(event){
   this.ucesceLiscara = parseInt (event.target.value);
  }
@@ -64,14 +64,12 @@ dohvatiDoznacenuMasu(event){
  }
 dohvatiNadmorskuVisinu(event){
   this.nadmorskaVisina = event.target.value;
-  console.log(this.nadmorskaVisina)
  }
- dohvatiSrednjuUdaljenostOdCeste(event){
+dohvatiSrednjuUdaljenostOdCeste(event){
   this.udaljenostOdCeste = event.target.value;
  }
 dohvatiSrednjiPrecnikCetinari(event){
    this.srednjiPrecnikCetinariBodovi = event.target.value;
-   console.log(this.srednjiPrecnikCetinariBodovi)
   }
 dohvatiSrednjiPrecnikLiscari(event){
     this.srednjiPrecnikLiscariBodovi = event.target.value;
@@ -84,8 +82,10 @@ dohvatiBonitetLiscari(event){
    }
 
 izracunajNorme (){ //ok
-  this.bodoviCetinariAnimal = this.nagibTerena + this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikCetinariBodovi;
+/*   this.bodoviCetinariAnimal = parseInt (this.nagibTerena + this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikCetinariBodovi);
   this.bodoviLiscariAnimal = this.nagibTerena+this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikLiscariBodovi;
+console.log(typeof (this.bodoviCetinariAnimal))
+console.log(this.bodoviCetinariAnimal)
 
   if(18>this.bodoviCetinariAnimal){
     this.norme.podaci.usloviRadaCetAnimal = 0;
@@ -107,12 +107,19 @@ izracunajNorme (){ //ok
     this.norme.podaci.usloviRadaLisAnimal = 3
   }else this.norme.podaci.usloviRadaLisAnimal = 4
 
+  console.log(this.norme.podaci.usloviRadaCetAnimal)
+
   this.norme.podaci.normaCetAnimal = this.norme.normeAnimalCetinari[this.norme.podaci.usloviRadaCetAnimal][this.norme.podaci.udaljenostOdCeste];
-  this.norme.podaci.normaLisAnimal = this.norme.normeAnimalLiscari[this.norme.podaci.usloviRadaLisAnimal][this.norme.podaci.udaljenostOdCeste];
+  this.norme.podaci.normaLisAnimal = this.norme.normeAnimalLiscari[this.norme.podaci.usloviRadaLisAnimal][this.norme.podaci.udaljenostOdCeste]; */
+
+//console.log(this.norme.podaci.normaCetAnimal)
+//console.log(this.norme.normeAnimalCetinari)
+//console.log(this.norme.podaci.usloviRadaCetAnimal)
+//console.log(this.norme.podaci.udaljenostOdCeste)
 
   this.bodoviCetinariSjeca = parseInt(this.nagibTerena)+parseInt(this.gustinaPodmlatka)+parseInt(this.doznacenaMasa)+parseInt(this.nadmorskaVisina)+parseInt(this.udaljenostOdCeste)+parseInt(this.srednjiPrecnikCetinariBodovi);
   this.bodoviLiscariSjeca = parseInt(this.nagibTerena)+parseInt(this.gustinaPodmlatka)+parseInt(this.doznacenaMasa)+parseInt(this.nadmorskaVisina)+parseInt(this.udaljenostOdCeste)+parseInt(this.srednjiPrecnikLiscariBodovi);
-//ok
+
   if(18>this.bodoviCetinariSjeca){
     this.norme.podaci.usloviRadaCetSjeca = 0;
   }else if(this.bodoviCetinariSjeca >= 19 && this.bodoviCetinariSjeca <= 25){
@@ -166,9 +173,9 @@ izracunajNorme (){ //ok
                         {25:"24",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
                         {25:"25",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
 
-  const ljetoCet = [ljetoUslovi1Cet, ljetoUslovi2Cet, ljetoUslovi3Cet, ljetoUslovi4Cet, ljetoUslovi5Cet];
+const ljetoCet = [ljetoUslovi1Cet, ljetoUslovi2Cet, ljetoUslovi3Cet, ljetoUslovi4Cet, ljetoUslovi5Cet];
 
-  const ljetoUslovi1Lis = [{25:"1.0",30:"3.9",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
+const ljetoUslovi1Lis = [{25:"1.0",30:"3.9",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
   {25:"2",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
   {25:"3",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
   {25:"4",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
@@ -252,7 +259,7 @@ const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi
   //console.log( typeof this.norma)
  //console.log(this.i);
  //console.log(this.l)
- console.log(this.norme.podaci)
+ //console.log(this.norme.podaci)
  //console.log(this.normaLisSjeca);
  //console.log( typeof (this.normaLisSjeca));
 

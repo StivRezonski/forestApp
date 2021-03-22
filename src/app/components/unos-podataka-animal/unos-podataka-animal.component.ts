@@ -93,9 +93,9 @@ izracunajNorme(){
     this.usloviRadaLis = 3
   }else this.usloviRadaLis = 4
 
-  this.normaCetAnimal = this.normeAnimalCetinari[this.usloviRadaCet][this.norme.podaci.udaljenostOdCeste];
-  this.normaLisAnimal = this.normeAnimalLiscari[this.usloviRadaLis][this.norme.podaci.udaljenostOdCeste];
-
+  this.normaCetAnimal = this.normeAnimalCetinari[this.usloviRadaCet][this.udaljenostOdCeste];
+  this.normaLisAnimal = this.normeAnimalLiscari[this.usloviRadaLis][this.udaljenostOdCeste];
+console.log(this.normaCetAnimal)
   //this.cijenaAnimalCetinari = this.cijenaRadnogDanaAnimal / this.normaCetAnimal;
   //this.cijenaAnimalLiscari = this.cijenaRadnogDanaAnimal / this.normaLisAnimal;
 }
