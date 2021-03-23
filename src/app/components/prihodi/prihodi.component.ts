@@ -7,9 +7,9 @@ import { SortimentiComponent } from '../sortimenti/sortimenti.component';
   styleUrls: ['./prihodi.component.css']
 })
 export class PrihodiComponent implements OnInit {
-  jelaShowTable = true;
-  smrcaShowTable = true;
-  bukvaShowTable = true;
+  jelaShowTable: boolean;
+  smrcaShowTable: boolean;
+  bukvaShowTable: boolean;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
   cjenaDrugaJela = 126.00;
@@ -26,12 +26,12 @@ export class PrihodiComponent implements OnInit {
   cjenaRudnoSmrca = 72.00;
   cjenaCelulozaSmrca = 42.00;
 
-  cjenaFBukva = 286.33;
-  cjenaLBukva = 193.67;
-  cjenaPrvaBukva = 128.67;
-  cjenaDrugaBukva = 101.67;
-  cjenaTrecaBukva = 79.67;
-  cjenaOgrevBukva = 67.50;
+  cjenaFBukva = 286.00;
+  cjenaLBukva = 193.00;
+  cjenaPrvaBukva = 128.00;
+  cjenaDrugaBukva = 101.00;
+  cjenaTrecaBukva = 79.00;
+  cjenaOgrevBukva = 67.00;
 
   fTrupciJela = this.sortimentiComponent.sumaJela.fTrupci;
   prvaKlasaJela = this.sortimentiComponent.sumaJela.prvaKlasa;
@@ -93,7 +93,10 @@ export class PrihodiComponent implements OnInit {
   constructor(public sortimentiComponent: SortimentiComponent) {
   }
 
-  smrcaAndJelaNotEntered(): void {
+  bukvaHasInputValue(): void {
+    this.jelaShowTable = false;
+    this.smrcaShowTable = false;
+    this.bukvaShowTable = true;
     this.ukupnoSortimenti = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
       this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
 
@@ -101,21 +104,26 @@ export class PrihodiComponent implements OnInit {
 
     this.ukupnoValuta = this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
       this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
-    this.toFixedNeto();
   }
 
-  smrcaAndBukvaNotEntered(): void {
+  jelaHasInputValue(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = false;
+    this.bukvaShowTable = false;
     this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
       this.stuboviJela + this.rudnoJela + this.celulozaJela;
 
-    this.ukupnoLiscari = this.ukupnoSortimenti;
+    this.ukupnoCetinari = this.ukupnoSortimenti;
 
     this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
       this.ukupnoRudnoJela + this.ukupnoCelulozaJela;
-    this.toFixedNeto();
   }
 
-  jelaAndBukvaAreNotEntered(): void {
+  smrcaHasInputValue(): void {
+    this.smrcaShowTable = true;
+    this.jelaShowTable = false;
+    this.bukvaShowTable = false;
+
     this.ukupnoSortimenti = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
       this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
 
@@ -123,10 +131,76 @@ export class PrihodiComponent implements OnInit {
 
     this.ukupnoValuta = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
-    this.toFixedNeto();
   }
 
-  jelaBukvaAndSmrcaEntered(): void {
+  jelaAndBukvaHasInputValue(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = false;
+    this.bukvaShowTable = true;
+
+    this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela +
+      this.trecaKlasaJela + this.stuboviJela + this.rudnoJela + this.celulozaJela +
+      this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoCetinari = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela +
+      this.trecaKlasaJela + this.stuboviJela + this.rudnoJela + this.celulozaJela;
+
+    this.ukupnoLiscari = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela +
+      this.ukupnoTrecaJela + this.ukupnoStuboviJela + this.ukupnoRudnoJela + this.ukupnoCelulozaJela +
+      this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
+      this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+  }
+
+  smrcaAndBukvaHasInputValue(): void {
+    this.jelaShowTable = false;
+    this.smrcaShowTable = true;
+    this.bukvaShowTable = true;
+
+    this.ukupnoSortimenti = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca +
+      this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoCetinari = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+    this.ukupnoLiscari = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoValuta = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
+      this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
+      this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
+      this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+  }
+
+  jelaAndSmrcaHasInputValue(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = true;
+    this.bukvaShowTable = false;
+
+    this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela +
+      this.trecaKlasaJela + this.stuboviJela + this.rudnoJela + this.celulozaJela +
+      this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+    this.ukupnoCetinari = this.ukupnoSortimenti;
+
+    this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela +
+      this.ukupnoTrecaJela + this.ukupnoStuboviJela + this.ukupnoRudnoJela + this.ukupnoCelulozaJela +
+      this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
+      this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
+
+  }
+
+  allIsInputed(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = true;
+    this.bukvaShowTable = true;
+
     this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
       this.stuboviJela + this.rudnoJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
       this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca + this.fTrupciBukva +
@@ -145,18 +219,33 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoRudnoJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
       this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva + this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
-
-    this.toFixedNeto();
   }
 
-  toFixedNeto(): void {
-    this.ukupnoSortimenti.toFixed(3);
-    this.ukupnoCetinari.toFixed(3);
-    this.ukupnoLiscari.toFixed(3);
-    this.ukupnoValuta.toFixed(3);
-  }
+  // checkIfVrsteHasNoValue(): void {
+  //   if (this.ukupnoJela <= 0 && this.ukupnoSmrca <= 0 && this.ukupnoBukva >= 0) {
+  //     console.log('bukva ima value');
+  //     this.bukvaHasInputValue();
+  //   } else if (this.ukupnoJela >= 0 && this.ukupnoSmrca <= 0 && this.ukupnoBukva <= 0) {
+  //     console.log('jela ima value');
+  //     this.jelaHasInputValue();
+  //   } else if (this.ukupnoJela <= 0 && this.ukupnoSmrca >= 0 && this.ukupnoBukva <= 0) {
+  //     console.log('smrca ima value');
+  //     this.smrcaHasInputValue();
+  //   } else if (this.ukupnoJela >= 0 && this.ukupnoSmrca <= 0 && this.ukupnoBukva >= 0) {
+  //     console.log('jela i bukva imaju value');
+  //     this.jelaAndBukvaHasInputValue();
+  //   } else if (this.ukupnoJela >= 0 && this.ukupnoSmrca >= 0 && this.ukupnoBukva <= 0) {
+  //     console.log('jela i smrca imaju value');
+  //     this.jelaAndSmrcaHasInputValue();
+  //   } else if (this.ukupnoJela <= 0 && this.ukupnoSmrca >= 0 && this.ukupnoBukva >= 0) {
+  //     console.log('smrca i bukva imaju value');
+  //     this.smrcaAndBukvaHasInputValue();
+  //   } else {
+  //     this.allIsInputed();
+  //   }
+  // }
 
-  ngOnInit(): void {
+  checkIfVrsteIsNaN(): void {
     if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoSmrca)) && (isNaN(this.ukupnoBukva))) {
       this.ukupnoSortimenti = 0;
       this.ukupnoBukva = 0;
@@ -166,33 +255,69 @@ export class PrihodiComponent implements OnInit {
       this.jelaShowTable = false;
       this.smrcaShowTable = false;
       this.bukvaShowTable = false;
+    } else if (isNaN(this.ukupnoSmrca) && (isNaN(this.ukupnoBukva)) && this.ukupnoJela >= 0) {
+      this.jelaHasInputValue();
+    } else if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoSmrca)) && this.ukupnoBukva >= 0) {
+      this.bukvaHasInputValue();
+    } else if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoBukva)) && this.ukupnoSmrca >= 0) {
+      console.log(this.ukupnoJela, this.ukupnoBukva, this.ukupnoSmrca);
+      this.smrcaHasInputValue();
+    } else if (isNaN(this.ukupnoJela) && this.ukupnoBukva >= 0 && this.ukupnoSmrca >= 0) {
+      this.smrcaAndBukvaHasInputValue();
+    } else if (isNaN(this.ukupnoSmrca) && this.ukupnoBukva >= 0 && this.ukupnoJela >= 0) {
+      this.jelaAndBukvaHasInputValue();
+    } else if (isNaN(this.ukupnoBukva) && this.ukupnoSmrca >= 0 && this.ukupnoJela >= 0) {
+      this.jelaAndSmrcaHasInputValue();
     } else {
-      if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoSmrca))) {
-        this.jelaShowTable = false;
-        this.smrcaShowTable = false;
-        this.smrcaAndJelaNotEntered();
-      }
-      if (isNaN(this.ukupnoSmrca) && (isNaN(this.ukupnoBukva))) {
-        this.smrcaShowTable = false;
-        this.bukvaShowTable = false;
-        this.smrcaAndBukvaNotEntered();
-      }
-      if (isNaN(this.ukupnoBukva) && (isNaN(this.ukupnoJela))) {
-        this.bukvaShowTable = false;
-        this.jelaShowTable = false;
-        this.jelaAndBukvaAreNotEntered();
-      }
-      if (this.ukupnoJela >= 0 && this.ukupnoJela >= 0 && this.ukupnoSmrca >= 0) {
-        this.ukupnoSortimenti = 0;
-        this.jelaShowTable = true;
-        this.smrcaShowTable = true;
-        this.bukvaShowTable = true;
-        this.jelaBukvaAndSmrcaEntered();
-      }
+      this.allIsInputed();
     }
-
-
   }
+
+
+  ngOnInit(): void {
+    this.checkIfVrsteIsNaN();
+    // console.log(this.ukupnoJela, this.ukupnoSmrca, this.ukupnoBukva);
+    // if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoSmrca)) && (isNaN(this.ukupnoBukva))) {
+    //   this.ukupnoSortimenti = 0;
+    //   this.ukupnoBukva = 0;
+    //   this.ukupnoJela = 0;
+    //   this.ukupnoSmrca = 0;
+    //   this.ukupnoValuta = 0;
+    //   this.jelaShowTable = false;
+    //   this.smrcaShowTable = false;
+    //   this.bukvaShowTable = false;
+    //   console.log(this.ukupnoJela, this.ukupnoSmrca, this.ukupnoBukva);
+    //   if (this.ukupnoJela <= 0 && this.ukupnoSmrca <= 0 && this.ukupnoBukva >= 0) {
+    //     console.log('bukva ima value');
+    //     this.bukvaHasInputValue();
+    //   } else if (this.ukupnoJela >= 0 && this.ukupnoSmrca <= 0 && this.ukupnoBukva <= 0) {
+    //     console.log('jela ima value');
+    //     this.jelaHasInputValue();
+    //   } else if (this.ukupnoJela <= 0 && this.ukupnoSmrca >= 0 && this.ukupnoBukva <= 0) {
+    //     console.log('smrca ima value');
+    //     this.smrcaHasInputValue();
+    //   } else if (this.ukupnoJela >= 0 && this.ukupnoSmrca <= 0 && this.ukupnoBukva >= 0) {
+    //     console.log('jela i bukva imaju value');
+    //     this.jelaAndBukvaHasInputValue();
+    //   } else if (this.ukupnoJela >= 0 && this.ukupnoSmrca >= 0 && this.ukupnoBukva <= 0) {
+    //     console.log('jela i smrca imaju value');
+    //     this.jelaAndSmrcaHasInputValue();
+    //   } else if (this.ukupnoJela <= 0 && this.ukupnoSmrca >= 0 && this.ukupnoBukva >= 0) {
+    //     console.log('smrca i bukva imaju value');
+    //     this.smrcaAndBukvaHasInputValue();
+    //   } else {
+    //   }
+
+
+    // console.log('provjera init');
+  }
+
+  // this.allIsInputed();
+
+  // }
+
+  // console.log('provjera init 2');
+  // this.checkIfVrsteHasNoValue();
 }
 
 

@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'sortimenti', component: SortimentiComponent},
   {path: 'unospodataka', component: UnosPodatakaSjecaComponent },
-  {path: 'prihodi', component: PrihodiComponent }
+  {path: 'prihodi', component: PrihodiComponent },
 ];
 
 @NgModule({
