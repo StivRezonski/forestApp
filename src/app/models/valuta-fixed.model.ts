@@ -1,0 +1,29 @@
+export class ValutaFixed{
+  ukupnoFJela;
+  ukupnoPrvaJela;
+  ukupnoDrugaJela;
+  ukupnoTrecaJela;
+  ukupnoStuboviJela;
+  ukupnoRudnoJela;
+  ukupnoCelulozaJela;
+  ukupnoJela;
+  ukupnoFSmrca;
+  ukupnoPrvaSmrca;
+  ukupnoDrugaSmrca;
+  ukupnoTrecaSmrca;
+  ukupnoStuboviSmrca;
+  ukupnoRudnoSmrca;
+  ukupnoCelulozaSmrca;
+  ukupnoSmrca;
+  ukupnoFBukva;
+  ukupnoLBukva;
+  ukupnoPrvaBukva;
+  ukupnoDrugaBukva;
+  ukupnoTrecaBukva;
+  ukupnoOgrevBukva;
+  ukupnoBukva;
+  ukupnoValuta;
+  ukupnoSortimenti;
+  ukupnoCetinari;
+  ukupnoLiscari;
+}

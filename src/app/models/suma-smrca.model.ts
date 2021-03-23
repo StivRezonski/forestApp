@@ -10,6 +10,7 @@ export class SumaSmrca {
   celuloznoDrvo: number;
   ogrevPrveKlase: number;
   ogrevDrugeKlase: number;
+  netoSmrca: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
   sumaCeluloze: number;

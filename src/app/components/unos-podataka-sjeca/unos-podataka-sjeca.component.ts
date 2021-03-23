@@ -32,7 +32,7 @@ normaCetSjeca;
 normaLisSjeca;
 p;
 j;
-sumCetinariNeto = this.sortimenti.netoJelaSmrca;
+sumCetinariNeto = this.sortimenti.netoCetinari;
 sumLiscariNeto = this.sortimenti.netoLiscari;
 srPr21;
 srPr22;

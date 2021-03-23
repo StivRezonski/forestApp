@@ -20,16 +20,9 @@ export class SortimentiComponent implements OnInit {
   sumTrupciSmrca = [];
   sumTrupciBukva = [];
   sumTrupciPlemeniti = [];
-  netoJela: number;
-  netoSmrca: number;
-  netoJelaSmrca: number;
-  netoBukva: number;
-  netoPlemeniti: number;
+  netoCetinari: number;
   netoLiscari: number;
-  netoCetinariLiscari: number;
-  sumNormaTest: number; // samo za test
-  sumTroskova: number; // samo za test
-  sumCjenaProjekta: number; // samo za test
+
   sortimentiFormGroup = new FormGroup({
       izabranaVrsta: new FormControl(),
       fTrupci: new FormControl(),
@@ -47,7 +40,6 @@ export class SortimentiComponent implements OnInit {
       srednjiPrecnik: new FormControl(),
     }
   );
-
 
 
   constructor(public sumaJela: SumaJela, public sumaSmrca: SumaSmrca, public sumaCetinariLiscari: SumaCetinariLiscari,
@@ -89,9 +81,9 @@ export class SortimentiComponent implements OnInit {
     }
 
 
-    this.sumNormaTest = 5.10;
-    this.sumTroskova = 30000;
-    this.sumCjenaProjekta = this.sumTroskova / this.netoCetinariLiscari;
+    // this.sumNormaTest = 5.10;
+    // this.sumTroskova = 30000;
+    // this.sumCjenaProjekta = this.sumTroskova / this.netoCetinariLiscari;
   }
 
   onSelectVrsta(): void {
@@ -120,7 +112,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaJela.ogrevDrugeKlase = this.sumTrupciJela[i].ogrevDrugeKlase;
       this.sumaJela.sveukupnaDrvnaMasa = this.sumTrupciJela[i].sveukupnaDrvnaMasa;
       this.sumaJela.srednjiPrecnik = this.sumTrupciJela[i].srednjiPrecnik;
-      this.netoJela = this.sumaJela.fTrupci + this.sumaJela.lKlase + this.sumaJela.prvaKlasa +
+      this.sumaJela.netoJela = this.sumaJela.fTrupci + this.sumaJela.lKlase + this.sumaJela.prvaKlasa +
         this.sumaJela.drugaKlasa + this.sumaJela.trecaKlasa + this.sumaJela.stubovi +
         this.sumaJela.jamskoDrvo + this.sumaJela.koljeZaVoce +
         this.sumaJela.celuloznoDrvo + this.sumaJela.ogrevPrveKlase + this.sumaJela.ogrevDrugeKlase;
@@ -143,7 +135,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaSmrca.ogrevDrugeKlase = this.sumTrupciSmrca[i].ogrevDrugeKlase;
       this.sumaSmrca.sveukupnaDrvnaMasa = this.sumTrupciSmrca[i].sveukupnaDrvnaMasa;
       this.sumaSmrca.srednjiPrecnik = this.sumTrupciSmrca[i].srednjiPrecnik;
-      this.netoSmrca = this.sumaSmrca.fTrupci + this.sumaSmrca.lKlase + this.sumaSmrca.prvaKlasa +
+      this.sumaSmrca.netoSmrca = this.sumaSmrca.fTrupci + this.sumaSmrca.lKlase + this.sumaSmrca.prvaKlasa +
         this.sumaSmrca.drugaKlasa + this.sumaSmrca.trecaKlasa + this.sumaSmrca.stubovi +
         this.sumaSmrca.jamskoDrvo + this.sumaSmrca.koljeZaVoce + this.sumaSmrca.celuloznoDrvo +
         this.sumaSmrca.ogrevPrveKlase + this.sumaSmrca.ogrevDrugeKlase;
@@ -166,7 +158,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaSmrca.ogrevDrugeKlase = 0;
       this.sumaSmrca.sveukupnaDrvnaMasa = 0;
       this.sumaSmrca.srednjiPrecnik = 0;
-      this.netoSmrca = 0;
+      this.sumaSmrca.netoSmrca = 0;
     }
     if (this.sumTrupciJela.length <= 0) { // ako value jele nije unesen dodjeli 0
       this.sumaJela.fTrupci = 0;
@@ -182,7 +174,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaJela.ogrevDrugeKlase = 0;
       this.sumaJela.sveukupnaDrvnaMasa = 0;
       this.sumaJela.srednjiPrecnik = 0;
-      this.netoJela = 0;
+      this.sumaJela.netoJela = 0;
     }
 
 
@@ -195,13 +187,14 @@ export class SortimentiComponent implements OnInit {
     this.sumaCetinari.jamskoDrvo = this.sumaJela.jamskoDrvo + this.sumaSmrca.jamskoDrvo;
     this.sumaCetinari.koljeZaVoce = this.sumaJela.koljeZaVoce + this.sumaSmrca.koljeZaVoce;
     this.sumaCetinari.celuloznoDrvo = this.sumaJela.celuloznoDrvo + this.sumaSmrca.celuloznoDrvo;
-    this.sumaCetinari.ogrevPrveKlase = this.sumaJela.ogrevPrveKlase + this.sumaSmrca.ogrevPrveKlase
+    this.sumaCetinari.ogrevPrveKlase = this.sumaJela.ogrevPrveKlase + this.sumaSmrca.ogrevPrveKlase;
     this.sumaCetinari.ogrevDrugeKlase = this.sumaJela.ogrevDrugeKlase + this.sumaSmrca.ogrevDrugeKlase;
     this.sumaCetinari.sveukupnaDrvnaMasa = this.sumaJela.sveukupnaDrvnaMasa + this.sumaSmrca.sveukupnaDrvnaMasa;
     this.sumaCetinari.srednjiPrecnik = this.sumaJela.srednjiPrecnik + this.sumaSmrca.srednjiPrecnik;
-    this.netoJelaSmrca = this.sumaCetinari.fKlase + this.sumaCetinari.lKlase + this.sumaCetinari.prvaKlasa + this.sumaCetinari.drugaKlasa +
-      this.sumaCetinari.trecaKlasa + this.sumaCetinari.stubovi + this.sumaCetinari.jamskoDrvo + this.sumaCetinari.koljeZaVoce +
-      this.sumaCetinari.celuloznoDrvo + this.sumaCetinari.ogrevPrveKlase + this.sumaCetinari.ogrevDrugeKlase;
+    this.sumaCetinari.netoCetinara = this.sumaCetinari.fKlase + this.sumaCetinari.lKlase + this.sumaCetinari.prvaKlasa +
+      this.sumaCetinari.drugaKlasa + this.sumaCetinari.trecaKlasa + this.sumaCetinari.stubovi + this.sumaCetinari.jamskoDrvo +
+      this.sumaCetinari.koljeZaVoce + this.sumaCetinari.celuloznoDrvo + this.sumaCetinari.ogrevPrveKlase +
+      this.sumaCetinari.ogrevDrugeKlase;
   }
 
   onBukvaSelect(): void {
@@ -219,7 +212,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaBukva.ogrevDrugeKlase = this.sumTrupciBukva[i].ogrevDrugeKlase;
       this.sumaBukva.sveukupnaDrvnaMasa = this.sumTrupciBukva[i].sveukupnaDrvnaMasa;
       this.sumaBukva.srednjiPrecnik = this.sumTrupciBukva[i].srednjiPrecnik;
-      this.netoBukva = this.sumaBukva.fTrupci + this.sumaBukva.lKlase + this.sumaBukva.prvaKlasa + this.sumaBukva.drugaKlasa +
+      this.sumaBukva.netoBukva = this.sumaBukva.fTrupci + this.sumaBukva.lKlase + this.sumaBukva.prvaKlasa + this.sumaBukva.drugaKlasa +
         this.sumaBukva.trecaKlasa + this.sumaBukva.stubovi + this.sumaBukva.jamskoDrvo + this.sumaBukva.koljeZaVoce +
         this.sumaBukva.celuloznoDrvo + this.sumaBukva.ogrevPrveKlase + this.sumaBukva.ogrevDrugeKlase;
       this.sumaBukva.netoOgrev = this.sumaBukva.celuloznoDrvo + this.sumaBukva.ogrevPrveKlase + this.sumaBukva.ogrevDrugeKlase;
@@ -241,7 +234,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaPlemeniti.ogrevDrugeKlase = this.sumTrupciPlemeniti[i].ogrevDrugeKlase;
       this.sumaPlemeniti.sveukupnaDrvnaMasa = this.sumTrupciPlemeniti[i].sveukupnaDrvnaMasa;
       this.sumaPlemeniti.srednjiPrecnik = this.sumTrupciPlemeniti[i].srednjiPrecnik;
-      this.netoPlemeniti = this.sumaPlemeniti.fTrupci + this.sumaPlemeniti.lKlase + this.sumaPlemeniti.prvaKlasa +
+      this.sumaPlemeniti.netoPlemeniti = this.sumaPlemeniti.fTrupci + this.sumaPlemeniti.lKlase + this.sumaPlemeniti.prvaKlasa +
         this.sumaPlemeniti.drugaKlasa + this.sumaPlemeniti.trecaKlasa + this.sumaPlemeniti.stubovi +
         this.sumaPlemeniti.jamskoDrvo + this.sumaPlemeniti.koljeZaVoce + this.sumaPlemeniti.celuloznoDrvo +
         this.sumaPlemeniti.ogrevPrveKlase + this.sumaPlemeniti.ogrevDrugeKlase;
@@ -263,7 +256,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaBukva.ogrevDrugeKlase = 0;
       this.sumaBukva.sveukupnaDrvnaMasa = 0;
       this.sumaBukva.srednjiPrecnik = 0;
-      this.netoBukva = 0;
+      this.sumaBukva.netoBukva = 0;
     }
     if (this.sumTrupciPlemeniti.length <= 0) {
       this.sumaPlemeniti.fTrupci = 0;
@@ -279,7 +272,7 @@ export class SortimentiComponent implements OnInit {
       this.sumaPlemeniti.ogrevDrugeKlase = 0;
       this.sumaPlemeniti.sveukupnaDrvnaMasa = 0;
       this.sumaPlemeniti.srednjiPrecnik = 0;
-      this.netoPlemeniti = 0;
+      this.sumaPlemeniti.netoPlemeniti = 0;
     }
 
 
@@ -296,9 +289,9 @@ export class SortimentiComponent implements OnInit {
     this.sumaLiscari.ogrevDrugeKlase = this.sumaBukva.ogrevDrugeKlase + this.sumaPlemeniti.ogrevDrugeKlase;
     this.sumaLiscari.sveukupnaDrvnaMasa = this.sumaBukva.sveukupnaDrvnaMasa + this.sumaPlemeniti.sveukupnaDrvnaMasa;
     this.sumaLiscari.srednjiPrecnik = this.sumaBukva.srednjiPrecnik + this.sumaPlemeniti.srednjiPrecnik;
-    this.netoLiscari = this.sumaLiscari.fKlase + this.sumaLiscari.lKlase + this.sumaLiscari.prvaKlasa + this.sumaLiscari.drugaKlasa +
-      this.sumaLiscari.trecaKlasa + this.sumaLiscari.stubovi + this.sumaLiscari.jamskoDrvo + this.sumaLiscari.koljeZaVoce +
-      this.sumaLiscari.celuloznoDrvo + this.sumaLiscari.ogrevPrveKlase + this.sumaLiscari.ogrevDrugeKlase;
+    this.sumaLiscari.netoLiscari = this.sumaLiscari.fKlase + this.sumaLiscari.lKlase + this.sumaLiscari.prvaKlasa +
+      this.sumaLiscari.drugaKlasa + this.sumaLiscari.trecaKlasa + this.sumaLiscari.stubovi + this.sumaLiscari.jamskoDrvo +
+      this.sumaLiscari.koljeZaVoce + this.sumaLiscari.celuloznoDrvo + this.sumaLiscari.ogrevPrveKlase + this.sumaLiscari.ogrevDrugeKlase;
   }
 
   sumaLiscaraCetinara(): void {
@@ -319,7 +312,7 @@ export class SortimentiComponent implements OnInit {
     this.sumaCetinariLiscari.ogrevDrugeKlase = this.sumaCetinari.ogrevDrugeKlase + this.sumaLiscari.ogrevDrugeKlase;
     this.sumaCetinariLiscari.sveukupnaDrvnaMasa = this.sumaCetinari.sveukupnaDrvnaMasa + this.sumaLiscari.sveukupnaDrvnaMasa;
     this.sumaCetinariLiscari.srednjiPrecnik = this.sumaCetinari.srednjiPrecnik + this.sumaLiscari.srednjiPrecnik;
-    this.netoCetinariLiscari = this.sumaCetinariLiscari.fKlase + this.sumaCetinariLiscari.lKlase +
+    this.sumaCetinariLiscari.netoCetinariLiscari = this.sumaCetinariLiscari.fKlase + this.sumaCetinariLiscari.lKlase +
       this.sumaCetinariLiscari.prvaKlasa + this.sumaCetinariLiscari.drugaKlasa +
       this.sumaCetinariLiscari.trecaKlasa + this.sumaCetinariLiscari.stubovi +
       this.sumaCetinariLiscari.jamskoDrvo + this.sumaCetinariLiscari.koljeZaVoce +
