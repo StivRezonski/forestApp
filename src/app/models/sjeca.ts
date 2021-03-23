@@ -1,18 +1,32 @@
 export class Sjeca{
+ nagibTerena: number;
+ gustinaPodmlatka: number;
+ doznacenaMasa: number;
+ nadmorskaVisina: number;
+ udaljenostOdCeste: number;
+ srednjiPrecnikCetinariBodovi: number;
+ srednjiPrecnikLiscariBodovi: number;
  srednjiPrecnikCetinari: number;
  srednjiPrecnikLiscari: number;
  bonitetCetinari: number;
  bonitetLiscari: number;
  usloviRadaCetSjeca: number;
  usloviRadaLisSjeca: number;
- distancaPrivlacenjaAnimal: number;
  netoCet: number;
  netoLis: number;
  normaCetSjeca: number;
  normaLisSjeca: number;
+ cijenaSjeceCet: number;
+ cijenaSjeceLis: number;
+
+ ucesceLiscara: number;
+ udaljenostOdStale: number;
+ distancaPrivlacenjaAnimal: number;
  normaCetAnimal: number;
  normaLisAnimal: number;
  usloviRadaCetAnimal: number;
  usloviRadaLisAnimal: number;
- udaljenostOdCeste: number;
+ cijenaAnimalCet: number;
+ cijenaAnimalLis: number;
+
 }

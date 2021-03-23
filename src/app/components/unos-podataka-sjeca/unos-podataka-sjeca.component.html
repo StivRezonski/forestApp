@@ -71,20 +71,12 @@
                 <option value="4">Četvrti</option>
                 <option value="5">Peti</option>
             </select> <br>
-            <input placeholder="Unijeti sr. precnik cetinara" (keyup)="unosSrednjiPrecnikCetinari($event)"> <br>
-            <input placeholder="Unijeti sr. precnik liscara" (keyup)="unosSrednjiPrecnikLiscari($event)"> <br>
-            <input placeholder="Unijeti distacu privlacenja" (keyup)="unosUdaljenostOdCeste($event)"> <br>
-            <p>Bonitet za četinare je:</p>
-            <p>Bonitet za lišćare je:</p>
-            <p>Srednji precnik cetinara je:</p>
-            <p>Srednji precnik liscara je:</p>
-            <p>Norma sjece za cetinare je: </p>
-            <p>Norma sjece za liscare je:</p>
-            <p>Broj bodova za cetinare je:</p>
-            <p>Broj bodova za liscare je:</p>
-            <p>Cijena sjece za cetinare je:</p>
-            <p>Cijena sjece za liscare je:</p>
-            <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button> <hr>
+
+            <input placeholder="Unijeti sr. precnik cetinara" (change)="unosSrednjiPrecnikCetinari($event)"> <br>
+            <input placeholder="Unijeti sr. precnik liscara" (change)="unosSrednjiPrecnikLiscari($event)"> <br>
+            <input placeholder="Unijeti distacu privlacenja" (change)="unosUdaljenostOdCeste($event)"> <br> <br>
+          
+            <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button>
 
            
         </div>
