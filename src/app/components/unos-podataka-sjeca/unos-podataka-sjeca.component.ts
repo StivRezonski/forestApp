@@ -23,18 +23,13 @@ udaljenostOdStaleBodovi;
 bodoviCetinariAnimal;
 bodoviLiscariAnimal;
 
-ljetoCetinari = this.norme.ljetoCet;
-ljetoLiscari = this.norme.ljetoLis;
-
-normeAnimalCetinari = this.norme.normeAnimalCetinari;
+//ljetoCetinari = this.norme.ljetoCet;
+//ljetoLiscari = this.norme.ljetoLis;
 
 constructor(public sortimenti: SortimentiComponent, private norme: NormeService) {}
 ngOnInit(): void {}
 
-
-
-
-//funcije unosa podataka
+//Funcije unosa podataka
 dohvatiNagibTerena(event){
   this.norme.podaci.nagibTerena = parseInt (event.target.value);
   //console.log("Nagib terena: " + this.norme.podaci.nagibTerena);
@@ -108,12 +103,19 @@ unosUdaljenostOdCeste(event){
 
 izracunajNorme (){ 
 
-  //this.bodoviCetinariAnimal = parseInt (this.nagibTerena + this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikCetinariBodovi);
-  //this.bodoviLiscariAnimal = this.norme.podaci.nagibTerena+this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikLiscariBodovi;
-  //console.log(typeof (this.bodoviCetinariAnimal))
-  //console.log(this.bodoviCetinariAnimal)
+  // Animal norma
+  this.bodoviCetinariAnimal = this.norme.podaci.nagibTerena + this.norme.podaci.ucesceLiscara
+    +this.norme.podaci.gustinaPodmlatka+this.norme.podaci.doznacenaMasa
+    +this.norme.podaci.nadmorskaVisina+this.norme.podaci.udaljenostOdStale
+    +this.norme.podaci.srednjiPrecnikCetinariBodovi;
+  this.bodoviLiscariAnimal = this.norme.podaci.nagibTerena+this.norme.podaci.ucesceLiscara
+    +this.norme.podaci.gustinaPodmlatka+this.norme.podaci.doznacenaMasa
+    +this.norme.podaci.nadmorskaVisina+this.norme.podaci.udaljenostOdStale
+    +this.norme.podaci.srednjiPrecnikLiscariBodovi;
+  
+  //console.log(this.bodoviCetinariAnimal);
 
-  /*if(18>this.bodoviCetinariAnimal){
+  if(18>this.bodoviCetinariAnimal){
     this.norme.podaci.usloviRadaCetAnimal = 0;
   }else if(this.bodoviCetinariAnimal >= 19 && this.bodoviCetinariAnimal <= 25){
     this.norme.podaci.usloviRadaCetAnimal = 1
@@ -133,16 +135,15 @@ izracunajNorme (){
     this.norme.podaci.usloviRadaLisAnimal = 3
   }else this.norme.podaci.usloviRadaLisAnimal = 4
 
-  console.log(this.norme.podaci.usloviRadaCetAnimal)
+  //console.log(this.norme.podaci.usloviRadaCetAnimal);
 
-  this.norme.podaci.normaCetAnimal = this.norme.normeAnimalCetinari[this.norme.podaci.usloviRadaCetAnimal][this.norme.podaci.udaljenostOdCeste];
-  this.norme.podaci.normaLisAnimal = this.norme.normeAnimalLiscari[this.norme.podaci.usloviRadaLisAnimal][this.norme.podaci.udaljenostOdCeste]; */
+  this.norme.podaci.normaCetAnimal = this.norme.normeAnimalCetinari[this.norme.podaci.usloviRadaCetAnimal][this.norme.podaci.distancaPrivlacenjaAnimal];
+  this.norme.podaci.normaLisAnimal = this.norme.normeAnimalLiscari[this.norme.podaci.usloviRadaLisAnimal][this.norme.podaci.distancaPrivlacenjaAnimal]; 
 
-//console.log(this.norme.podaci.normaCetAnimal)
-//console.log(this.norme.normeAnimalCetinari)
-//console.log(this.norme.podaci.usloviRadaCetAnimal)
-//console.log(this.norme.podaci.udaljenostOdCeste)
+  //console.log(this.norme.podaci.normaCetAnimal);
+  //console.log(this.norme.podaci.normaLisAnimal);
 
+// Sjeca norma
   this.bodoviCetinariSjeca = this.norme.podaci.nagibTerena+this.norme.podaci.gustinaPodmlatka
     +this.norme.podaci.doznacenaMasa+this.norme.podaci.nadmorskaVisina
     +this.norme.podaci.udaljenostOdCeste+this.norme.podaci.srednjiPrecnikCetinariBodovi;
@@ -152,7 +153,6 @@ izracunajNorme (){
     +this.norme.podaci.udaljenostOdCeste+this.norme.podaci.srednjiPrecnikLiscariBodovi;
 
   //console.log(this.bodoviCetinariSjeca);
-  //console.log(typeof(this.bodoviCetinariSjeca));
 
   if(18>this.bodoviCetinariSjeca){
     this.norme.podaci.usloviRadaCetSjeca = 0;
@@ -175,131 +175,30 @@ izracunajNorme (){
   }else this.norme.podaci.usloviRadaLisSjeca = 4;
 
   //console.log(this.norme.podaci.usloviRadaCetSjeca);
-  //console.log(typeof (this.norme.podaci.usloviRadaCetSjeca));
 
-// const ljetoUslovi1Cet = [{25:"1.0",30:"3.9",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"2",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"3",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"4",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"5",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-
-//   const ljetoUslovi2Cet = [{25:"6",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"7",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"8",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"9",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"10",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-
-//   const ljetoUslovi3Cet = [{25:"11",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"12",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"13",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"14",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"15",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-//   const ljetoUslovi4Cet = [{25:"16",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"17",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"18",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"19",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"20",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-//   const ljetoUslovi5Cet = [{25:"21",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"22",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"23",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"24",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//                         {25:"25",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-// const ljetoCet = [ljetoUslovi1Cet, ljetoUslovi2Cet, ljetoUslovi3Cet, ljetoUslovi4Cet, ljetoUslovi5Cet];
-
-// const ljetoUslovi1Lis = [{25:"1.0",30:"3.9",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"2",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"3",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"4",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"5",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-
-// const ljetoUslovi2Lis = [{25:"6",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"7",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"8",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"9",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"10",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-
-// const ljetoUslovi3Lis = [{25:"11",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"12",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"13",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"14",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"15",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-// const ljetoUslovi4Lis = [{25:"16",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"17",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"18",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"19",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"20",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-// const ljetoUslovi5Lis = [{25:"21",30:"3,9",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"22",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"23",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"24",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
-//   {25:"25",30:"3.3",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"}];
-
-// const ljetoLis = [ljetoUslovi1Lis, ljetoUslovi2Lis, ljetoUslovi3Lis, ljetoUslovi4Lis, ljetoUslovi5Lis];
-//ok
-  let a = (Object.keys (this.ljetoCetinari[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1])).filter( k=> k<this.norme.podaci.srednjiPrecnikCetinari.toString()).pop();
-  let b = (Object.keys (this.ljetoCetinari[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1])).filter( k=> k>this.norme.podaci.srednjiPrecnikCetinari.toString())[0];
-  let c = (Object.keys (this.ljetoLiscari[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1])).filter( k=> k<this.norme.podaci.srednjiPrecnikLiscari.toString()).pop();
-  let d = (Object.keys (this.ljetoLiscari[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1])).filter( k=> k>this.norme.podaci.srednjiPrecnikLiscari.toString())[0];
-  let x = this.ljetoCetinari[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1][b];
-  let y = this.ljetoCetinari[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1][a];
-  let z = this.ljetoLiscari[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1][d];
-  let q = this.ljetoLiscari[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1][c];
+  let a = (Object.keys (this.norme.ljetoCet[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1])).filter( k=> k<this.norme.podaci.srednjiPrecnikCetinari.toString()).pop();
+  let b = (Object.keys (this.norme.ljetoCet[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1])).filter( k=> k>this.norme.podaci.srednjiPrecnikCetinari.toString())[0];
+  let c = (Object.keys (this.norme.ljetoLis[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1])).filter( k=> k<this.norme.podaci.srednjiPrecnikLiscari.toString()).pop();
+  let d = (Object.keys (this.norme.ljetoLis[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1])).filter( k=> k>this.norme.podaci.srednjiPrecnikLiscari.toString())[0];
+  let x = this.norme.ljetoCet[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1][b];
+  let y = this.norme.ljetoCet[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1][a];
+  let z = this.norme.ljetoLis[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1][d];
+  let q = this.norme.ljetoLis[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1][c];
 
   if(this.norme.podaci.srednjiPrecnikCetinari !%5){
     this.norme.podaci.normaCetSjeca = ((x - y) / 5) * (this.norme.podaci.srednjiPrecnikCetinari - parseInt (a)) + parseFloat (y);
   }else {
-    this.kljucCet = (Object.keys (this.ljetoCetinari[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1])).filter( k=> k==this.norme.podaci.srednjiPrecnikCetinari.toString());
-    this.norme.podaci.normaCetSjeca = this.ljetoCetinari[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1][this.kljucCet]
+    this.kljucCet = (Object.keys (this.norme.ljetoCet[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1])).filter( k=> k==this.norme.podaci.srednjiPrecnikCetinari.toString());
+    this.norme.podaci.normaCetSjeca = this.norme.ljetoCet[this.norme.podaci.usloviRadaCetSjeca][this.norme.podaci.bonitetCetinari-1][this.kljucCet]
   }
 
-  if(this.norme.podaci.srednjiPrecnikLiscari !%5){
-    this.norme.podaci.normaLisSjeca = ((z - q) / 5) * (this.norme.podaci.srednjiPrecnikCetinari - parseInt (c)) + parseFloat (q);
-  }else {
-    this.kljucLis = (Object.keys (this.ljetoLiscari[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1])).filter( k=> k==this.norme.podaci.srednjiPrecnikLiscari.toString());
-    this.norme.podaci.normaLisSjeca = this.ljetoLiscari[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1][this.kljucLis]
-  }
-
-
-
-  //this.cijenaSjecaCetinari = this.cijenaRadnogDanaSjeca / parseFloat (this.norme.podaci.normaCetSjeca.toString());
-  //this.cijenaSjecaLiscari = this.cijenaRadnogDanaSjeca / parseFloat (this.norme.podaci.normaLisSjeca.toString());
-
-  
-  //else{
-    //this.i = [ljetoCet[this.usloviRadaCet][this.bonitetCetinari-1]].indexOf(this.srednjiPrecnikCetinari.toString());
-    //this.normaCetSjeca = ljetoLis[this.usloviRadaCet][this.bonitetCetinari][this.i.toString()];
-    //this.l = [ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1]].indexOf(this.srednjiPrecnikLiscari.toString());
-    //this.normaLisSjeca = ljetoLis[this.usloviRadaLis][this.bonitetLiscari-1][this.l.toString()];
-  //}
-
-
- 
-
-
-
-
-  //console.log(a)
-  //console.log(b);
-  //console.log(x);
-  //console.log(y);
-  //console.log( typeof ljeto[this.usloviRada][this.bonitetCetinari])
-  //console.log( a.indexOf(this.srednjiPrecnikCetinari.toString()) )
-  //console.log( ljeto[this.usloviRada][this.bonitetCetinari])
-  //console.log( typeof this.norma)
- //console.log(this.i);
- //console.log(this.l)
- //console.log(this.norme.podaci)
- //console.log(this.normaLisSjeca);
- //console.log( typeof (this.normaLisSjeca));
+   if(this.norme.podaci.srednjiPrecnikLiscari !%5){
+     this.norme.podaci.normaLisSjeca = ((z - q) / 5) * (this.norme.podaci.srednjiPrecnikCetinari - parseInt (c)) + parseFloat (q);
+   }else {
+     this.kljucLis = (Object.keys (this.norme.ljetoLis[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1])).filter( k=> k==this.norme.podaci.srednjiPrecnikLiscari.toString());
+     this.norme.podaci.normaLisSjeca = this.norme.ljetoLis[this.norme.podaci.usloviRadaLisSjeca][this.norme.podaci.bonitetLiscari-1][this.kljucLis]
+   }
+  console.log(this.norme.podaci);
 
 }
 

@@ -19,6 +19,9 @@ export class TabelaNormiCijenaComponent implements OnInit {
  cijenaSjeceCetinari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaCetSjeca;
  cijenaSjeceLiscari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaLisSjeca;
 
+ cijenaAnimalCetinari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaCetAnimal;
+ cijenaAnimalLiscari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaLisAnimal;
+
 
 
 
