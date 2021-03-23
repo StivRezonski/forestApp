@@ -89,8 +89,9 @@ export class PrihodiComponent implements OnInit {
 
   ukupnoSortimenti;
   ukupnoValuta;
-  ukupnoCetinari = this.sortimentiComponent.netoJelaSmrca;
+  ukupnoCetinari = this.sortimentiComponent.netoCetinari;
   ukupnoLiscari = this.sortimentiComponent.netoLiscari;
+
 
   constructor(public sortimentiComponent: SortimentiComponent, private valutaFixed: ValutaFixed) {
   }

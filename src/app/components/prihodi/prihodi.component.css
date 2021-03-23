@@ -33,12 +33,16 @@
 
 .circle-sizer{
   display: block;
-  margin: 220px auto 150px;
+  margin: 100px auto 150px;
   width: 250px;
   height: 250px;
 }
 
-
+.sikira-header{
+  margin-top: 25px;
+  margin-left: 900px;
+  font-size: 20px;
+}
 
 
 
