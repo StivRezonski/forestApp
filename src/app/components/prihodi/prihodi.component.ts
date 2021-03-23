@@ -303,7 +303,7 @@ export class PrihodiComponent implements OnInit {
     if (this.ukupnoLiscari === undefined) {
       this.ukupnoLiscari = 0;
     } else {
-      this.valutaFixed.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
+      this.valutaFixed.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
     }
   }
 
