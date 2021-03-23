@@ -16,6 +16,7 @@ import { SumaBukva } from './models/suma-bukva.model';
 import { SumaPlemeniti } from './models/suma-plemeniti.model';
 import { SumaCetinari } from './models/suma-cetinari.model';
 import { SumaLiscari } from './models/suma-liscari.model';
+import { ValutaFixed } from './models/valuta-fixed.model';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { SumaLiscari } from './models/suma-liscari.model';
   ],
 
   providers: [SortimentiComponent, UnosPodatakaSjecaComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
-    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari],
+    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari, ValutaFixed],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

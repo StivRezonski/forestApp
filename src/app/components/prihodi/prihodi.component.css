@@ -31,6 +31,14 @@
   background-color: #C0C0C0;
 }
 
+.circle-sizer{
+  display: block;
+  margin: 220px auto 150px;
+  width: 250px;
+  height: 250px;
+}
+
+
 
 
 
