@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortimentiComponent } from '../sortimenti/sortimenti.component';
 import { ValutaFixed } from '../../models/valuta-fixed.model';
+import { OpstiPodaciComponent } from '../opsti-podaci/opsti-podaci.component';
 
 @Component({
   selector: 'app-prihodi',
@@ -92,8 +93,11 @@ export class PrihodiComponent implements OnInit {
   ukupnoCetinari = this.sortimentiComponent.netoCetinari;
   ukupnoLiscari = this.sortimentiComponent.netoLiscari;
 
+  odjel = this.opstiPodaciComponent.opstiPodaci.izabraniOdjel;
 
-  constructor(public sortimentiComponent: SortimentiComponent, private valutaFixed: ValutaFixed) {
+  constructor(public sortimentiComponent: SortimentiComponent,
+              private valutaFixed: ValutaFixed,
+              private opstiPodaciComponent: OpstiPodaciComponent) {
   }
 
   bukvaHasInputValue(): void {

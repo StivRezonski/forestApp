@@ -79,11 +79,6 @@ export class SortimentiComponent implements OnInit {
       this.sumaLiscaraCetinara();
       this.sortimentiFormGroup.reset();
     }
-
-
-    // this.sumNormaTest = 5.10;
-    // this.sumTroskova = 30000;
-    // this.sumCjenaProjekta = this.sumTroskova / this.netoCetinariLiscari;
   }
 
   onSelectVrsta(): void {

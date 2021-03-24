@@ -1,0 +1,41 @@
+<form [formGroup]="opstaForma" (ngSubmit)="submit()">
+
+
+  <label for="gazdinstvo">Izaberi gazdinstvo</label>
+  <select formControlName="gazdinstvo" id="gazdinstvo">
+    <option *ngFor="let list of gazdinstvo; let i = index" [value]="gazdinstvo[i].name">
+      {{gazdinstvo[i].name}}
+    </option>
+  </select>
+
+  <label for="privrednaJedinica">Izaberi gazdinstvo</label>
+  <select formControlName="privrednaJedinica" id="privrednaJedinica">
+    <option *ngFor="let list of privrednaJedinica; let i = index" [value]="privrednaJedinica[i].name">
+      {{privrednaJedinica[i].name}}
+    </option>
+  </select>
+
+  <label for="odjel">Odjel</label>
+  <select formControlName="odjel" id="odjel">
+    <option *ngFor="let list of odjel; let i = index" [value]="odjel[i].name">
+      {{odjel[i].name}}
+    </option>
+  </select>
+
+  <label for="vrstaSjece">Vrsta sjece</label>
+  <select formControlName="vrstaSjece" id="vrstaSjece">
+    <option *ngFor="let list of vrstaSjece; let i = index" [value]="vrstaSjece[i].name">
+      {{vrstaSjece[i].name}}
+    </option>
+  </select>
+
+  <label for="projektant">Projektant</label>
+  <select formControlName="projektant" id="projektant">
+    <option *ngFor="let list of projektant; let i = index" [value]="projektant[i].name">
+      {{projektant[i].name}}
+    </option>
+  </select>
+
+  <button>submit</button>
+</form>
+
