@@ -17,6 +17,10 @@ import { SumaPlemeniti } from './models/suma-plemeniti.model';
 import { SumaCetinari } from './models/suma-cetinari.model';
 import { SumaLiscari } from './models/suma-liscari.model';
 import { ValutaFixed } from './models/valuta-fixed.model';
+import { OpstiPodaciComponent } from './components/opsti-podaci/opsti-podaci.component';
+import { SharedService } from './services/shared.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { OpstiPodaci } from './models/opsti-podaci.model';
 
 
 @NgModule({
@@ -24,17 +28,19 @@ import { ValutaFixed } from './models/valuta-fixed.model';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     SortimentiComponent,
     UnosPodatakaSjecaComponent,
     UnosPodatakaAnimalComponent,
-    PrihodiComponent
+    PrihodiComponent,
+    OpstiPodaciComponent
   ],
 
-  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
-    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari, ValutaFixed],
+  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
+    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari, ValutaFixed, SharedService, HttpClient, OpstiPodaci],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

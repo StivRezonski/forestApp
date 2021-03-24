@@ -8,8 +8,6 @@ export class SumaSmrca {
   jamskoDrvo: number;
   koljeZaVoce: number;
   celuloznoDrvo: number;
-  ogrevPrveKlase: number;
-  ogrevDrugeKlase: number;
   netoSmrca: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
