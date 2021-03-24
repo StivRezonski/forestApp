@@ -35,12 +35,10 @@ normaCetAnimal: number;
 normaLisAnimal: number;
 normeAnimalCetinari = this.norme.normeAnimalCetinari;
 normeAnimalLiscari = this.norme.normeAnimalLiscari
-sumCetinariNeto: number = this.sjeca.sumCetinariNeto;
-sumLiscariNeto: number = this.sjeca.sumLiscariNeto;
+//sumCetinariNeto: number = this.sjeca.sumCetinariNeto;
+//sumLiscariNeto: number = this.sjeca.sumLiscariNeto;
 cijenaAnimalCetinari: number;
 cijenaAnimalLiscari: number;
-cijenaRadnogDanaAnimal: number = this.sjeca.cijenaRadnogDanaAnimal;
-
 
 
 dohvatiNagibTerena(event){
@@ -71,8 +69,8 @@ unosUdaljenostOdCeste(event){
   this.udaljenostOdCeste = event.target.value;
   }
 izracunajNorme(){
-  let b = this.nagibTerena+this.ucesceLiscara
-  console.log(b)
+  //let b = this.nagibTerena+this.ucesceLiscara
+  //console.log(b)
   this.bodoviCetinari = this.nagibTerena + this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikCetinariBodovi;
   this.bodoviLiscari = this.nagibTerena+this.ucesceLiscara+this.gustinaPodmlatka+this.doznacenaMasa+this.nadmorskaVisina+this.udaljenostOdStaleBodovi+this.srednjiPrecnikLiscariBodovi;
   if(18>this.bodoviCetinari){
@@ -97,9 +95,9 @@ izracunajNorme(){
 
   this.normaCetAnimal = this.normeAnimalCetinari[this.usloviRadaCet][this.udaljenostOdCeste];
   this.normaLisAnimal = this.normeAnimalLiscari[this.usloviRadaLis][this.udaljenostOdCeste];
-
-  this.cijenaAnimalCetinari = this.cijenaRadnogDanaAnimal / this.normaCetAnimal;
-  this.cijenaAnimalLiscari = this.cijenaRadnogDanaAnimal / this.normaLisAnimal;
+console.log(this.normaCetAnimal)
+  //this.cijenaAnimalCetinari = this.cijenaRadnogDanaAnimal / this.normaCetAnimal;
+  //this.cijenaAnimalLiscari = this.cijenaRadnogDanaAnimal / this.normaLisAnimal;
 }
 
 

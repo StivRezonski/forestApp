@@ -16,6 +16,7 @@ import { SumaBukva } from './models/suma-bukva.model';
 import { SumaPlemeniti } from './models/suma-plemeniti.model';
 import { SumaCetinari } from './models/suma-cetinari.model';
 import { SumaLiscari } from './models/suma-liscari.model';
+import { TabelaNormiCijenaComponent } from './components/tabela-normi-cijena/tabela-normi-cijena.component';
 import { ValutaFixed } from './models/valuta-fixed.model';
 import { OpstiPodaciComponent } from './components/opsti-podaci/opsti-podaci.component';
 import { SharedService } from './services/shared.service';
@@ -36,6 +37,7 @@ import { OpstiPodaci } from './models/opsti-podaci.model';
     UnosPodatakaSjecaComponent,
     UnosPodatakaAnimalComponent,
     PrihodiComponent,
+    TabelaNormiCijenaComponent,
     OpstiPodaciComponent
   ],
 

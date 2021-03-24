@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { SortimentiComponent } from '../components/sortimenti/sortimenti.component';
 import { UnosPodatakaSjecaComponent } from '../components/unos-podataka-sjeca/unos-podataka-sjeca.component';
 import { PrihodiComponent } from '../components/prihodi/prihodi.component';
+import { TabelaNormiCijenaComponent } from '../components/tabela-normi-cijena/tabela-normi-cijena.component';
 import { OpstiPodaciComponent } from '../components/opsti-podaci/opsti-podaci.component';
+
 
 
 const routes: Routes = [
@@ -13,6 +15,7 @@ const routes: Routes = [
   {path: 'sortimenti', component: SortimentiComponent },
   {path: 'unospodataka', component: UnosPodatakaSjecaComponent },
   {path: 'prihodi', component: PrihodiComponent },
+  {path: 'norme-cijene', component: TabelaNormiCijenaComponent}
 ];
 
 @NgModule({
