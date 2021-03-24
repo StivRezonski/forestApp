@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortimentiComponent } from '../sortimenti/sortimenti.component';
+import { ValutaFixed } from '../../models/valuta-fixed.model';
+import { OpstiPodaciComponent } from '../opsti-podaci/opsti-podaci.component';
 
 @Component({
   selector: 'app-prihodi',
@@ -7,6 +9,10 @@ import { SortimentiComponent } from '../sortimenti/sortimenti.component';
   styleUrls: ['./prihodi.component.css']
 })
 export class PrihodiComponent implements OnInit {
+  jelaShowTable: boolean;
+  smrcaShowTable: boolean;
+  bukvaShowTable: boolean;
+  showSikiraImage = true;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
   cjenaDrugaJela = 126.00;
@@ -23,12 +29,12 @@ export class PrihodiComponent implements OnInit {
   cjenaRudnoSmrca = 72.00;
   cjenaCelulozaSmrca = 42.00;
 
-  cjenaFBukva = 286.33;
-  cjenaLBukva = 193.67;
-  cjenaPrvaBukva = 128.67;
-  cjenaDrugaBukva = 101.67;
-  cjenaTrecaBukva = 79.67;
-  cjenaOgrevBukva = 67.50;
+  cjenaFBukva = 286.00;
+  cjenaLBukva = 193.00;
+  cjenaPrvaBukva = 128.00;
+  cjenaDrugaBukva = 101.00;
+  cjenaTrecaBukva = 79.00;
+  cjenaOgrevBukva = 67.00;
 
   fTrupciJela = this.sortimentiComponent.sumaJela.fTrupci;
   prvaKlasaJela = this.sortimentiComponent.sumaJela.prvaKlasa;
@@ -60,6 +66,8 @@ export class PrihodiComponent implements OnInit {
   ukupnoStuboviJela = this.stuboviJela * this.cjenaStuboviJela;
   ukupnoRudnoJela = this.rudnoJela * this.cjenaRudnoJela;
   ukupnoCelulozaJela = this.celulozaJela * this.cjenaCelulozaJela;
+  ukupnoJela = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
+    this.ukupnoRudnoJela + this.ukupnoCelulozaJela;
 
   ukupnoFSmrca = this.fTrupciSmrca * this.cjenaFSmrca;
   ukupnoPrvaSmrca = this.prvaKlasaSmrca * this.cjenaPrvaSmrca;
@@ -68,6 +76,8 @@ export class PrihodiComponent implements OnInit {
   ukupnoStuboviSmrca = this.stuboviSmrca * this.cjenaStuboviSmrca;
   ukupnoRudnoSmrca = this.rudnoSmrca * this.cjenaRudnoSmrca;
   ukupnoCelulozaSmrca = this.celulozaSmrca * this.cjenaCelulozaSmrca;
+  ukupnoSmrca = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca + this.ukupnoTrecaSmrca +
+    this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
 
   ukupnoFBukva = this.fTrupciBukva * this.cjenaFBukva;
   ukupnoLBukva = this.lTrupciBukva * this.cjenaLBukva;
@@ -75,20 +85,238 @@ export class PrihodiComponent implements OnInit {
   ukupnoDrugaBukva = this.drugaKlasaBukva * this.cjenaDrugaBukva;
   ukupnoTrecaBukva = this.trecaKlasaBukva * this.cjenaTrecaBukva;
   ukupnoOgrevBukva = this.ogrevBukva * this.cjenaOgrevBukva;
+  ukupnoBukva = this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva +
+    this.ukupnoDrugaBukva + this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
 
-  ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
-    this.stuboviJela + this.rudnoJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
-    this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca + this.fTrupciBukva +
-    this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
-  ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
-    this.ukupnoRudnoJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
-    this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
-    this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva + this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+  ukupnoSortimenti;
+  ukupnoValuta;
+  ukupnoCetinari = this.sortimentiComponent.netoCetinari;
+  ukupnoLiscari = this.sortimentiComponent.netoLiscari;
 
-  constructor(public sortimentiComponent: SortimentiComponent) {
+  odjel = this.opstiPodaciComponent.opstiPodaci.izabraniOdjel;
+
+  constructor(public sortimentiComponent: SortimentiComponent,
+              private valutaFixed: ValutaFixed,
+              private opstiPodaciComponent: OpstiPodaciComponent) {
   }
 
+  bukvaHasInputValue(): void {
+    this.jelaShowTable = false;
+    this.smrcaShowTable = false;
+    this.bukvaShowTable = true;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoLiscari = this.ukupnoSortimenti;
+
+    this.ukupnoValuta = this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
+      this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.putValueToFixed();
+  }
+
+  jelaHasInputValue(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = false;
+    this.bukvaShowTable = false;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
+      this.stuboviJela + this.rudnoJela + this.celulozaJela;
+
+    this.ukupnoCetinari = this.ukupnoSortimenti;
+
+    this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
+      this.ukupnoRudnoJela + this.ukupnoCelulozaJela;
+    this.putValueToFixed();
+  }
+
+  smrcaHasInputValue(): void {
+    this.smrcaShowTable = true;
+    this.jelaShowTable = false;
+    this.bukvaShowTable = false;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+    this.ukupnoCetinari = this.ukupnoSortimenti;
+
+    this.ukupnoValuta = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
+      this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
+    this.putValueToFixed();
+  }
+
+  jelaAndBukvaHasInputValue(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = false;
+    this.bukvaShowTable = true;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela +
+      this.trecaKlasaJela + this.stuboviJela + this.rudnoJela + this.celulozaJela +
+      this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoCetinari = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela +
+      this.trecaKlasaJela + this.stuboviJela + this.rudnoJela + this.celulozaJela;
+
+    this.ukupnoLiscari = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela +
+      this.ukupnoTrecaJela + this.ukupnoStuboviJela + this.ukupnoRudnoJela + this.ukupnoCelulozaJela +
+      this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
+      this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.putValueToFixed();
+  }
+
+  smrcaAndBukvaHasInputValue(): void {
+    this.jelaShowTable = false;
+    this.smrcaShowTable = true;
+    this.bukvaShowTable = true;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca +
+      this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoCetinari = this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+    this.ukupnoLiscari = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva +
+      this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoValuta = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
+      this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
+      this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
+      this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.putValueToFixed();
+  }
+
+  jelaAndSmrcaHasInputValue(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = true;
+    this.bukvaShowTable = false;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela +
+      this.trecaKlasaJela + this.stuboviJela + this.rudnoJela + this.celulozaJela +
+      this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+    this.ukupnoCetinari = this.ukupnoSortimenti;
+
+    this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela +
+      this.ukupnoTrecaJela + this.ukupnoStuboviJela + this.ukupnoRudnoJela + this.ukupnoCelulozaJela +
+      this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
+      this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
+    this.putValueToFixed();
+
+  }
+
+  allIsInputed(): void {
+    this.jelaShowTable = true;
+    this.smrcaShowTable = true;
+    this.bukvaShowTable = true;
+    this.showSikiraImage = false;
+
+    this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
+      this.stuboviJela + this.rudnoJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca + this.fTrupciBukva +
+      this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+    this.ukupnoCetinari = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
+      this.stuboviJela + this.rudnoJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca +
+      this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.celulozaSmrca;
+
+
+    this.ukupnoLiscari = this.fTrupciBukva +
+      this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva + this.ogrevBukva;
+
+
+    this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
+      this.ukupnoRudnoJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
+      this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
+      this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva + this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.putValueToFixed();
+  }
+
+
+  checkIfVrsteIsNaN(): void {
+    if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoSmrca)) && (isNaN(this.ukupnoBukva))) {
+      this.ukupnoSortimenti = 0;
+      this.ukupnoBukva = 0;
+      this.ukupnoJela = 0;
+      this.ukupnoSmrca = 0;
+      this.ukupnoValuta = 0;
+      this.jelaShowTable = false;
+      this.smrcaShowTable = false;
+      this.bukvaShowTable = false;
+    } else if (isNaN(this.ukupnoSmrca) && (isNaN(this.ukupnoBukva)) && this.ukupnoJela >= 0) {
+      this.jelaHasInputValue();
+    } else if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoSmrca)) && this.ukupnoBukva >= 0) {
+      this.bukvaHasInputValue();
+    } else if (isNaN(this.ukupnoJela) && (isNaN(this.ukupnoBukva)) && this.ukupnoSmrca >= 0) {
+      this.smrcaHasInputValue();
+    } else if (isNaN(this.ukupnoJela) && this.ukupnoBukva >= 0 && this.ukupnoSmrca >= 0) {
+      this.smrcaAndBukvaHasInputValue();
+    } else if (isNaN(this.ukupnoSmrca) && this.ukupnoBukva >= 0 && this.ukupnoJela >= 0) {
+      this.jelaAndBukvaHasInputValue();
+    } else if (isNaN(this.ukupnoBukva) && this.ukupnoSmrca >= 0 && this.ukupnoJela >= 0) {
+      this.jelaAndSmrcaHasInputValue();
+    } else {
+      this.allIsInputed();
+    }
+  }
+
+  putValueToFixed(): void {
+    this.valutaFixed.ukupnoValuta = this.ukupnoValuta.toFixed(2);
+    this.valutaFixed.ukupnoFJela = this.ukupnoFJela.toFixed(2);
+    this.valutaFixed.ukupnoPrvaJela = this.ukupnoPrvaJela.toFixed(2);
+    this.valutaFixed.ukupnoDrugaJela = this.ukupnoDrugaJela.toFixed(2);
+    this.valutaFixed.ukupnoTrecaJela = this.ukupnoTrecaJela.toFixed(2);
+    this.valutaFixed.ukupnoStuboviJela = this.ukupnoStuboviJela.toFixed(2);
+    this.valutaFixed.ukupnoRudnoJela = this.ukupnoRudnoJela.toFixed(2);
+    this.valutaFixed.ukupnoCelulozaJela = this.ukupnoCelulozaJela.toFixed(2);
+    this.valutaFixed.ukupnoJela = this.ukupnoJela.toFixed(2);
+    this.valutaFixed.ukupnoFSmrca = this.ukupnoFSmrca.toFixed(2);
+    this.valutaFixed.ukupnoPrvaSmrca = this.ukupnoPrvaSmrca.toFixed(2);
+    this.valutaFixed.ukupnoDrugaSmrca = this.ukupnoDrugaSmrca.toFixed(2);
+    this.valutaFixed.ukupnoTrecaSmrca = this.ukupnoTrecaSmrca.toFixed(2);
+    this.valutaFixed.ukupnoStuboviSmrca = this.ukupnoStuboviSmrca.toFixed(2);
+    this.valutaFixed.ukupnoRudnoSmrca = this.ukupnoRudnoSmrca.toFixed(2);
+    this.valutaFixed.ukupnoCelulozaSmrca = this.ukupnoCelulozaSmrca.toFixed(2);
+    this.valutaFixed.ukupnoSmrca = this.ukupnoSmrca.toFixed(2);
+    this.valutaFixed.ukupnoFBukva = this.ukupnoFBukva.toFixed(2);
+    this.valutaFixed.ukupnoLBukva = this.ukupnoLBukva.toFixed(2);
+    this.valutaFixed.ukupnoPrvaBukva = this.ukupnoPrvaBukva.toFixed(2);
+    this.valutaFixed.ukupnoDrugaBukva = this.ukupnoDrugaBukva.toFixed(2);
+    this.valutaFixed.ukupnoTrecaBukva = this.ukupnoTrecaBukva.toFixed(2);
+    this.valutaFixed.ukupnoOgrevBukva = this.ukupnoOgrevBukva.toFixed(2);
+    this.valutaFixed.ukupnoBukva = this.ukupnoBukva.toFixed(2);
+    this.valutaFixed.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
+    if (this.ukupnoCetinari === undefined) {
+      this.ukupnoCetinari = 0;
+    } else {
+      this.valutaFixed.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
+    }
+
+    if (this.ukupnoLiscari === undefined) {
+      this.ukupnoLiscari = 0;
+    } else {
+      this.valutaFixed.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
+    }
+  }
+
+
   ngOnInit(): void {
+    this.checkIfVrsteIsNaN();
+  }
 }
 
-}
+
+
+

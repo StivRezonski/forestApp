@@ -1,9 +1,52 @@
-.table-position{
-  margin-top: 50px;
-  margin-left: 100px;
+.table-headers{
+  margin-top: 25px;
+  margin-left: 800px;
+  font-size: 20px;
+}
+
+.sortimentna-tabela{
+  margin-top: 15px;
+  margin-left: 800px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-/*.table td {*/
-/*  text-align: center;*/
-/*} */
+.troskovi-sjece{
+  margin-top: 15px;
+  margin-left: 800px;
+  margin-bottom: 40px;
+  /*float: right;*/
+}
+
+.prihodi-table{
+  margin-top: 15px;
+  margin-left: 900px;
+}
+
+.prihodi-headers{
+  margin-left: 900px;
+}
+
+.bg-siva{
+  background-color: #C0C0C0;
+}
+
+.circle-sizer{
+  display: block;
+  margin: 100px auto 150px;
+  width: 250px;
+  height: 250px;
+}
+
+.sikira-header{
+  margin-top: 25px;
+  margin-left: 900px;
+  font-size: 20px;
+}
+
+
+
+
+
+
+

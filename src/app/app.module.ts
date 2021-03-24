@@ -17,12 +17,19 @@ import { SumaPlemeniti } from './models/suma-plemeniti.model';
 import { SumaCetinari } from './models/suma-cetinari.model';
 import { SumaLiscari } from './models/suma-liscari.model';
 import { TabelaNormiCijenaComponent } from './components/tabela-normi-cijena/tabela-normi-cijena.component';
+import { ValutaFixed } from './models/valuta-fixed.model';
+import { OpstiPodaciComponent } from './components/opsti-podaci/opsti-podaci.component';
+import { SharedService } from './services/shared.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { OpstiPodaci } from './models/opsti-podaci.model';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -30,12 +37,12 @@ import { TabelaNormiCijenaComponent } from './components/tabela-normi-cijena/tab
     UnosPodatakaSjecaComponent,
     UnosPodatakaAnimalComponent,
     PrihodiComponent,
-    TabelaNormiCijenaComponent
-    
+    TabelaNormiCijenaComponent,
+    OpstiPodaciComponent
   ],
 
-  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
-    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari],
+  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
+    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari, ValutaFixed, SharedService, HttpClient, OpstiPodaci],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

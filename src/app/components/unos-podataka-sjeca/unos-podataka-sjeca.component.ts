@@ -13,6 +13,42 @@ import { NormeService } from '../../services/norme.service';
 })
 export class UnosPodatakaSjecaComponent implements OnInit {
 
+  constructor(private sortimenti: SortimentiComponent) { }
+  ngOnInit(): void {}
+
+  //varijable
+bonitetCetinari;
+bonitetLiscari;
+usloviRadaCet;
+usloviRadaLis;
+bodoviCetinari;
+bodoviLiscari;
+nagibTerena;
+gustinaPodmlatka;
+doznacenaMasa;
+nadmorskaVisina;
+udaljenostOdCeste;
+srednjiPrecnikCetinariBodovi;
+srednjiPrecnikLiscariBodovi;
+srednjiPrecnikCetinari;
+srednjiPrecnikLiscari;
+normaCetSjeca;
+normaLisSjeca;
+p;
+j;
+sumCetinariNeto = this.sortimenti.netoCetinari;
+sumLiscariNeto = this.sortimenti.netoLiscari;
+srPr21;
+srPr22;
+srPr41;
+srPr43;
+cijenaSjecaCetinari: number;
+cijenaSjecaLiscari;
+cijenaRadnogDanaSjeca = 89.37;
+cijenaRadnogDanaAnimal = 124.63;
+cijenaRadnogDanaTraktor = 696.26;
+cijenaRadnogDanaIznos = 110.06;
+
 //varijable
 bodoviCetinariSjeca;
 bodoviLiscariSjeca;

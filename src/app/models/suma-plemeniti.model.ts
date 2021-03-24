@@ -4,12 +4,10 @@ export class SumaPlemeniti{
   prvaKlasa: number;
   drugaKlasa: number;
   trecaKlasa: number;
-  stubovi: number;
-  jamskoDrvo: number;
-  koljeZaVoce: number;
   celuloznoDrvo: number;
   ogrevPrveKlase: number;
   ogrevDrugeKlase: number;
+  netoPlemeniti: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
 }

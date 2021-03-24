@@ -1,3 +1,4 @@
+<div class="sortimenti-wrapper">
 <form [formGroup]="sortimentiFormGroup" (ngSubmit)="onSubmit()">
 
 
@@ -112,7 +113,7 @@
       <input type="number" class="form-control bg-secondary text-white" formControlName="sveukupnaDrvnaMasa"
              id="sveukupnaDrvnaMasa" onKeyPress="if(this.value.length==5) return false;">
       <div>
-        <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="onSubmit()">Unesi</button>
       </div>
     </div>
     </div>
@@ -138,47 +139,50 @@
       <th scope="col" style="width: 5%" class="bg-celuloza">Celulozno drvo</th>
       <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev I klase</th>
       <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev II klase</th>
+      <th scope="col" style="width: 5%" >Neto</th>
       <th scope="col" style="width: 5%">Sveukupna Drvna Masa</th>
       <th scope="col" style="width: 5%">Srednji precnik</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of sumTrupciJela;">
+    <tr>
       <th scope="row">Jela</th>
-      <td>{{item.fTrupci}}</td>
-      <td>{{item.lTrupci}}</td>
-      <td>{{item.prvaKlasa}}</td>
-      <td>{{item.drugaKlasa}}</td>
-      <td>{{item.trecaKlasa}}</td>
-      <td>{{item.stuboviZaVodove}}</td>
-      <td>{{item.jamskoDrvo}}</td>
-      <td>{{item.koljeZaVoce}}</td>
-      <td>{{item.celuloznoDrvo}}</td>
-      <td>{{item.ogrevPrveKlase}}</td>
-      <td>{{item.ogrevDrugeKlase}}</td>
-      <td>{{item.sveukupnaDrvnaMasa}}</td>
-      <td>{{item.srednjiPrecnik}}</td>
+      <td>{{sumaJela.fTrupci}}</td>
+      <td></td>
+      <td>{{sumaJela.prvaKlasa}}</td>
+      <td>{{sumaJela.drugaKlasa}}</td>
+      <td>{{sumaJela.trecaKlasa}}</td>
+      <td>{{sumaJela.stubovi}}</td>
+      <td>{{sumaJela.jamskoDrvo}}</td>
+      <td>{{sumaJela.koljeZaVoce}}</td>
+      <td>{{sumaJela.celuloznoDrvo}}</td>
+      <td></td>
+      <td></td>
+      <td>{{sumaJela.netoJela}}</td>
+      <td>{{sumaJela.sveukupnaDrvnaMasa}}</td>
+      <td>{{sumaJela.srednjiPrecnik}}</td>
     </tr>
-    <tr *ngFor="let item of sumTrupciSmrca;">
+    <tr>
       <th scope="row">Smrca</th>
-      <td>{{item.fTrupci}}</td>
-      <td>{{item.lTrupci}}</td>
-      <td>{{item.prvaKlasa}}</td>
-      <td>{{item.drugaKlasa}}</td>
-      <td>{{item.trecaKlasa}}</td>
-      <td>{{item.stuboviZaVodove}}</td>
-      <td>{{item.jamskoDrvo}}</td>
-      <td>{{item.koljeZaVoce}}</td>
-      <td>{{item.celuloznoDrvo}}</td>
-      <td>{{item.ogrevPrveKlase}}</td>
-      <td>{{item.ogrevDrugeKlase}}</td>
-      <td>{{item.sveukupnaDrvnaMasa}}</td>
-      <td>{{item.srednjiPrecnik}}</td>
+      <td>{{sumaSmrca.fTrupci}}</td>
+      <td></td>
+      <td>{{sumaSmrca.prvaKlasa}}</td>
+      <td>{{sumaSmrca.drugaKlasa}}</td>
+      <td>{{sumaSmrca.trecaKlasa}}</td>
+      <td>{{sumaSmrca.stubovi}}</td>
+      <td>{{sumaSmrca.jamskoDrvo}}</td>
+      <td>{{sumaSmrca.koljeZaVoce}}</td>
+      <td>{{sumaSmrca.celuloznoDrvo}}</td>
+      <td></td>
+      <td></td>
+      <td>{{sumaSmrca.netoSmrca}}</td>
+      <td>{{sumaSmrca.sveukupnaDrvnaMasa}}</td>
+      <td>{{sumaSmrca.srednjiPrecnik}}</td>
     </tr>
     <tr class="bg-suma">
       <th scope="row">Ukupno cetinara</th>
       <td>{{sumaCetinari.fKlase}}</td>
-      <td>{{sumaCetinari.lKlase}}</td>
+      <td></td>
       <td>{{sumaCetinari.prvaKlasa}}</td>
       <td>{{sumaCetinari.drugaKlasa}}</td>
       <td>{{sumaCetinari.trecaKlasa}}</td>
@@ -186,42 +190,45 @@
       <td>{{sumaCetinari.jamskoDrvo}}</td>
       <td>{{sumaCetinari.koljeZaVoce}}</td>
       <td>{{sumaCetinari.celuloznoDrvo}}</td>
-      <td>{{sumaCetinari.ogrevPrveKlase}}</td>
-      <td>{{sumaCetinari.ogrevDrugeKlase}}</td>
+      <td></td>
+      <td></td>
+      <td>{{sumaCetinari.netoCetinara}}</td>
       <td>{{sumaCetinari.sveukupnaDrvnaMasa}}</td>
       <td>{{sumaCetinari.srednjiPrecnik}}</td>
     </tr>
-    <tr *ngFor="let item of sumTrupciBukva;">
+    <tr>
       <th scope="row">Bukva</th>
-      <td>{{item.fTrupci}}</td>
-      <td>{{item.lTrupci}}</td>
-      <td>{{item.prvaKlasa}}</td>
-      <td>{{item.drugaKlasa}}</td>
-      <td>{{item.trecaKlasa}}</td>
-      <td>{{item.stuboviZaVodove}}</td>
-      <td>{{item.jamskoDrvo}}</td>
-      <td>{{item.koljeZaVoce}}</td>
-      <td>{{item.celuloznoDrvo}}</td>
-      <td>{{item.ogrevPrveKlase}}</td>
-      <td>{{item.ogrevDrugeKlase}}</td>
-      <td>{{item.sveukupnaDrvnaMasa}}</td>
-      <td>{{item.srednjiPrecnik}}</td>
+      <td>{{sumaBukva.fTrupci}}</td>
+      <td>{{sumaBukva.lKlase}}</td>
+      <td>{{sumaBukva.prvaKlasa}}</td>
+      <td>{{sumaBukva.drugaKlasa}}</td>
+      <td>{{sumaBukva.trecaKlasa}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{sumaBukva.celuloznoDrvo}}</td>
+      <td>{{sumaBukva.ogrevPrveKlase}}</td>
+      <td>{{sumaBukva.ogrevDrugeKlase}}</td>
+      <td>{{sumaBukva.netoBukva}}</td>
+      <td>{{sumaBukva.sveukupnaDrvnaMasa}}</td>
+      <td>{{sumaBukva.srednjiPrecnik}}</td>
     </tr>
-    <tr *ngFor="let item of sumTrupciPlemeniti;">
+    <tr>
       <th scope="row">Plemeniti</th>
-      <td>{{item.fTrupci}}</td>
-      <td>{{item.lTrupci}}</td>
-      <td>{{item.prvaKlasa}}</td>
-      <td>{{item.drugaKlasa}}</td>
-      <td>{{item.trecaKlasa}}</td>
-      <td>{{item.stuboviZaVodove}}</td>
-      <td>{{item.jamskoDrvo}}</td>
-      <td>{{item.koljeZaVoce}}</td>
-      <td>{{item.celuloznoDrvo}}</td>
-      <td>{{item.ogrevPrveKlase}}</td>
-      <td>{{item.ogrevDrugeKlase}}</td>
-      <td>{{item.sveukupnaDrvnaMasa}}</td>
-      <td>{{item.srednjiPrecnik}}</td>
+      <td>{{sumaPlemeniti.fTrupci}}</td>
+      <td>{{sumaPlemeniti.lKlase}}</td>
+      <td>{{sumaPlemeniti.prvaKlasa}}</td>
+      <td>{{sumaPlemeniti.drugaKlasa}}</td>
+      <td>{{sumaPlemeniti.trecaKlasa}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{sumaPlemeniti.celuloznoDrvo}}</td>
+      <td>{{sumaPlemeniti.ogrevPrveKlase}}</td>
+      <td>{{sumaPlemeniti.ogrevDrugeKlase}}</td>
+      <td>{{sumaPlemeniti.netoPlemeniti}}</td>
+      <td>{{sumaPlemeniti.sveukupnaDrvnaMasa}}</td>
+      <td>{{sumaPlemeniti.srednjiPrecnik}}</td>
     </tr>
     <tr class="bg-suma">
       <th scope="row">Ukupno liscari</th>
@@ -230,12 +237,13 @@
       <td>{{sumaLiscari.prvaKlasa}}</td>
       <td>{{sumaLiscari.drugaKlasa}}</td>
       <td>{{sumaLiscari.trecaKlasa}}</td>
-      <td>{{sumaLiscari.stubovi}}</td>
-      <td>{{sumaLiscari.jamskoDrvo}}</td>
-      <td>{{sumaLiscari.koljeZaVoce}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td>{{sumaLiscari.celuloznoDrvo}}</td>
       <td>{{sumaLiscari.ogrevPrveKlase}}</td>
       <td>{{sumaLiscari.ogrevDrugeKlase}}</td>
+      <td>{{sumaLiscari.netoLiscari}}</td>
       <td>{{sumaLiscari.sveukupnaDrvnaMasa}}</td>
       <td>{{sumaLiscari.srednjiPrecnik}}</td>
     </tr>
@@ -252,20 +260,14 @@
       <td>{{sumaCetinariLiscari.celuloznoDrvo}}</td>
       <td>{{sumaCetinariLiscari.ogrevPrveKlase}}</td>
       <td>{{sumaCetinariLiscari.ogrevDrugeKlase}}</td>
+      <td>{{sumaCetinariLiscari.netoCetinariLiscari}}</td>
       <td>{{sumaCetinariLiscari.sveukupnaDrvnaMasa}}</td>
       <td></td>
     </tr>
     </tbody>
   </table>
 </div>
+</div>
 
-
-<div>Neto kolicina jele iznosi: {{netoJela}}</div>
-<div>Neto kolicina smrca iznosi: {{netoSmrca}}</div>
-<div>Neto kolicina jele i smrce iznosi: {{netoJelaSmrca}}</div>
-<div>Neto kolicina bukva i plemenit iznosi: {{netoLiscari}}</div>
-<div>Ukupna neto kolicina sortimenata iznosi: {{netoCetinariLiscari}}</div>
-<div>Troskovi projekta iznosi: {{sumTroskova}}</div>
-<div>Cjena projekta po kubiku iznosi: {{sumCjenaProjekta}}</div>
 
 

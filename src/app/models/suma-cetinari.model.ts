@@ -10,6 +10,7 @@ export class SumaCetinari {
   celuloznoDrvo: number;
   ogrevPrveKlase: number;
   ogrevDrugeKlase: number;
+  netoCetinara: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
 }

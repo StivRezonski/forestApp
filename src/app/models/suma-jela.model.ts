@@ -10,6 +10,7 @@ export class SumaJela{
   celuloznoDrvo: number;
   ogrevPrveKlase: number;
   ogrevDrugeKlase: number;
+  netoJela: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
   sumaCeluloze: number;
