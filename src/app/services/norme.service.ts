@@ -11,9 +11,9 @@ export class NormeService {
   cijenaRadnogDanaAnimal = 124.63;
   cijenaRadnogDanaTraktor = 696.26;
   cijenaRadnogDanaIznos = 110.06;
- 
+
   constructor() {}
-  
+
   //Norme sjeca ljeto
   ljetoUslovi1Cet = [{25:"1.0",30:"3.9",35:"5.79",40:"6.89",45:"8.03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},
   {25:"2",30:"3,3",35:"5,79",40:"6,89",45:"8,03",50:"9,16",55:"10,3",60:"11,42",65:"12,49",70:"13,54"},

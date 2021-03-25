@@ -12,10 +12,10 @@ import { OpstiPodaciComponent } from '../components/opsti-podaci/opsti-podaci.co
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'opsti-podaci', component: OpstiPodaciComponent },
-  {path: 'sortimenti', component: SortimentiComponent },
   {path: 'unospodataka', component: UnosPodatakaSjecaComponent },
+  {path: 'norme-cijene', component: TabelaNormiCijenaComponent},
+  {path: 'sortimenti', component: SortimentiComponent },
   {path: 'prihodi', component: PrihodiComponent },
-  {path: 'norme-cijene', component: TabelaNormiCijenaComponent}
 ];
 
 @NgModule({

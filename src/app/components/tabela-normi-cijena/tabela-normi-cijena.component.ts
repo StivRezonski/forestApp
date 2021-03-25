@@ -13,9 +13,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class TabelaNormiCijenaComponent implements OnInit {
 
   podaci = this.norme.podaci;
-  
+
   constructor( private norme: NormeService) { }
-  
+
  cijenaSjeceCetinari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaCetSjeca;
  cijenaSjeceLiscari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaLisSjeca;
 
@@ -25,23 +25,23 @@ export class TabelaNormiCijenaComponent implements OnInit {
 
 
 
-  
+
   // cijenaSjeceCet = this.cijenaRadnogDanaSjeca / this.norme.normaCetSjeca;
   // cijenaSjeceLis = this.cijenaRadnogDanaSjeca / this.norme.normaLisSjeca;
   // cijenaSjece = this.cijenaSjeceCet + this.cijenaSjeceLis;
   // cijenaAnimalCet = this.cijenaRadnogDanaAnimal / this.norme.normaCetAnimal;
   // cijenaAnimalLis = this.cijenaRadnogDanaAnimal / this.norme.normaLisAnimal;
   // neto = this.norme.netoCet + this.norme.netoLis;
-   
-   
+
+
 
   ngOnInit(): void {
-   
+    console.log( this.cijenaSjeceCetinari);
   //console.log(this.normeSjece.cijenaSjeceCet)
-   
+
   }
 
- 
+
 
 
 

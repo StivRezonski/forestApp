@@ -41,8 +41,9 @@ import { OpstiPodaci } from './models/opsti-podaci.model';
     OpstiPodaciComponent
   ],
 
-  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, SumaJela, SumaSmrca, SumaBukva,
-    SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari, ValutaFixed, SharedService, HttpClient, OpstiPodaci],
+  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, SumaJela,
+    SumaSmrca, SumaBukva, SumaPlemeniti, SumaCetinariLiscari, SumaCetinari, SumaLiscari, ValutaFixed, SharedService, HttpClient,
+    OpstiPodaci],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

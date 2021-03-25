@@ -195,47 +195,47 @@
       <td scope="row" rowspan="2">Sjeca i izrada</td>
       <td scope="row" rowspan="1">cetinari</td>
       <td scope="row" rowspan="1">{{valutaFixed.ukupnoCetinari}}</td>
-      <td scope="row" rowspan="1">200</td>
-      <td scope="row" rowspan="1">200</td>
+      <td scope="row" rowspan="1">{{valutaFixed.cjenaSjeceCetinari}}</td>
+      <td scope="row" rowspan="1">{{valutaFixed.trosakSjeceCetinari}}</td>
     </tr>
     <tr>
       <td scope="row" rowspan="1">liscari</td>
       <td scope="row" rowspan="1">{{valutaFixed.ukupnoLiscari}}</td>
-      <td scope="row" rowspan="1">100</td>
-      <td scope="row" rowspan="1">100</td>
+      <td scope="row" rowspan="1">{{valutaFixed.cjenaSjeceLiscari}}</td>
+      <td scope="row" rowspan="1">{{valutaFixed.trosakSjeceLiscari}}</td>
     </tr>
     <tr>
       <td scope="row" rowspan="2">Privlacenje</td>
       <td scope="row" rowspan="1">cetinari</td>
       <td scope="row" rowspan="1">{{valutaFixed.ukupnoCetinari}}</td>
-      <td scope="row" rowspan="1">100</td>
-      <td scope="row" rowspan="1">100</td>
+      <td scope="row" rowspan="1">'animal cet'</td>
+      <td scope="row" rowspan="1">'troskovi animal cet'</td>
     </tr>
     <tr>
       <td scope="row" rowspan="1">liscari</td>
       <td scope="row" rowspan="1">{{valutaFixed.ukupnoLiscari}}</td>
-      <td scope="row" rowspan="1">100</td>
-      <td scope="row" rowspan="1">100</td>
+      <td scope="row" rowspan="1">'animal lis'</td>
+      <td scope="row" rowspan="1">'troskovi animal cet'</td>
     </tr>
     <tr>
       <td scope="row" rowspan="2">Iznosenje</td>
       <td scope="row" rowspan="1">cetinari</td>
       <td scope="row" rowspan="1"></td>
-      <td scope="row" rowspan="1">100</td>
-      <td scope="row" rowspan="1">100</td>
+      <td scope="row" rowspan="1"></td>
+      <td scope="row" rowspan="1"></td>
     </tr>
     <tr>
       <td scope="row" rowspan="1">liscari</td>
       <td scope="row" rowspan="1"></td>
-      <td scope="row" rowspan="1">100</td>
-      <td scope="row" rowspan="1">100</td>
+      <td scope="row" rowspan="1"></td>
+      <td scope="row" rowspan="1"></td>
     </tr>
     <tr>
       <td scope="row" rowspan="2">Ukupno</td>
       <td scope="row" rowspan="1"></td>
       <td scope="row" rowspan="1">{{valutaFixed.ukupnoSortimenti}}</td>
-      <td scope="row" rowspan="1">Cjena kubik</td>
-      <td scope="row" rowspan="1">Ukupna kolicina</td>
+      <td scope="row" rowspan="1">{{valutaFixed.cjenaKubik}}</td>
+      <td scope="row" rowspan="1">{{valutaFixed.trosakCetinariLiscari}}</td>
     </tr>
     </tbody>
   </table>
@@ -247,20 +247,24 @@
       <thead>
       <tr>
         <th scope="col">Prihodi</th>
-        <td scope="row" rowspan="1">cifre prihoda</td>
+        <td scope="row" rowspan="1">{{valutaFixed.ukupnoValuta}}</td>
       </tr>
       </thead>
       <tbody>
 
       <tr>
         <th scope="row" rowspan="1">Direktni troskovi</th>
-        <td scope="row" rowspan="1">cifre troskova</td>
+        <td scope="row" rowspan="1">{{valutaFixed.trosakCetinariLiscari}}</td>
       </tr>
 
       <tr>
         <th scope="row" rowspan="1">Dobit</th>
-        <td scope="row" rowspan="2">zarada</td>
+        <td scope="row" rowspan="2">{{valutaFixed.dobit}}</td>
       </tr>
       </tbody>
     </table>
 </div>
+<div>projektant {{projektant}}</div>
+<div>gazdinstvo {{gazdinstvo}}</div>
+<div>Vrsta sjece {{vrstaSjece}}</div>
+<div>privredna jedinica {{privrednaJedinica}}</div>

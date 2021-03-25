@@ -26,4 +26,11 @@ export class ValutaFixed{
   ukupnoSortimenti;
   ukupnoCetinari;
   ukupnoLiscari;
+  cjenaSjeceCetinari;
+  trosakSjeceCetinari;
+  cjenaSjeceLiscari;
+  trosakSjeceLiscari;
+  trosakCetinariLiscari;
+  cjenaKubik;
+  dobit;
 }
