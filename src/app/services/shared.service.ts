@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 
 
@@ -7,9 +8,17 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SharedService {
+  // za print
+private emitChangeSource = new Subject<any>();
+changeEmitted$ = this.emitChangeSource.asObservable();
+emitChange(change: any){
+  this.emitChangeSource.next(change);
+}
 
   constructor(private http: HttpClient) {
   }
+
+
 
   getGazdinstvo()  {
     return [

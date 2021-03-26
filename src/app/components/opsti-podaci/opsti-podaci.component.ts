@@ -39,11 +39,11 @@ export class OpstiPodaciComponent implements OnInit {
 
   submit(): void {
     console.log(this.opstaForma.value);
-    const gazdinstvo = this.opstaForma.get('gazdinstvo').value;
-    const privrednaJedinica = this.opstaForma.get('privrednaJedinica').value;
+    this.opstiPodaci.gazdinstvo = this.opstaForma.get('gazdinstvo').value;
+    this.opstiPodaci.privrednaJedinica = this.opstaForma.get('privrednaJedinica').value;
     this.opstiPodaci.izabraniOdjel = this.opstaForma.get('odjel').value;
-    const vrstaSjece = this.opstaForma.get('vrstaSjece').value;
-    const projektant = this.opstaForma.get('projektant').value;
+    this.opstiPodaci.vrstaSjece = this.opstaForma.get('vrstaSjece').value;
+    this.opstiPodaci.projektant = this.opstaForma.get('projektant').value;
   }
 
 }

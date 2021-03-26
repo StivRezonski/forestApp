@@ -1,41 +1,62 @@
 <form [formGroup]="opstaForma" (ngSubmit)="submit()">
 
 
-  <label for="gazdinstvo">Izaberi gazdinstvo</label>
-  <select formControlName="gazdinstvo" id="gazdinstvo">
-    <option *ngFor="let list of gazdinstvo; let i = index" [value]="gazdinstvo[i].name">
-      {{gazdinstvo[i].name}}
-    </option>
-  </select>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="gazdinstvo">Izaberi gazdinstvo</label>
+        <select class="form-select" formControlName="gazdinstvo" id="gazdinstvo">
+          <option *ngFor="let list of gazdinstvo; let i = index" [value]="gazdinstvo[i].name">
+            {{gazdinstvo[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
 
-  <label for="privrednaJedinica">Izaberi gazdinstvo</label>
-  <select formControlName="privrednaJedinica" id="privrednaJedinica">
-    <option *ngFor="let list of privrednaJedinica; let i = index" [value]="privrednaJedinica[i].name">
-      {{privrednaJedinica[i].name}}
-    </option>
-  </select>
+    <div class="row">
+      <div class="col-xl-4">
+        <label for="privrednaJedinica">Izaberi gazdinstvo</label>
+        <select class="form-select" formControlName="privrednaJedinica" id="privrednaJedinica">
+          <option *ngFor="let list of privrednaJedinica; let i = index" [value]="privrednaJedinica[i].name">
+            {{privrednaJedinica[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
 
-  <label for="odjel">Odjel</label>
-  <select formControlName="odjel" id="odjel">
-    <option *ngFor="let list of odjel; let i = index" [value]="odjel[i].name">
-      {{odjel[i].name}}
-    </option>
-  </select>
+    <div class="row">
+      <div class="col-xl-4">
+        <label for="odjel">Odjel</label>
+        <select class="form-select" formControlName="odjel" id="odjel">
+          <option *ngFor="let list of odjel; let i = index" [value]="odjel[i].name">
+            {{odjel[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
 
-  <label for="vrstaSjece">Vrsta sjece</label>
-  <select formControlName="vrstaSjece" id="vrstaSjece">
-    <option *ngFor="let list of vrstaSjece; let i = index" [value]="vrstaSjece[i].name">
-      {{vrstaSjece[i].name}}
-    </option>
-  </select>
+    <div class="row">
+      <div class="col-xl-4">
+        <label for="vrstaSjece">Vrsta sjece</label>
+        <select class="form-select" formControlName="vrstaSjece" id="vrstaSjece">
+          <option *ngFor="let list of vrstaSjece; let i = index" [value]="vrstaSjece[i].name">
+            {{vrstaSjece[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
 
-  <label for="projektant">Projektant</label>
-  <select formControlName="projektant" id="projektant">
-    <option *ngFor="let list of projektant; let i = index" [value]="projektant[i].name">
-      {{projektant[i].name}}
-    </option>
-  </select>
-
-  <button>submit</button>
+    <div class="row">
+      <div class="col-xl-4">
+        <label for="projektant">Projektant</label>
+        <select class="form-select" formControlName="projektant" id="projektant">
+          <option *ngFor="let list of projektant; let i = index" [value]="projektant[i].name">
+            {{projektant[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary">submit</button>
+  </div>
 </form>
 

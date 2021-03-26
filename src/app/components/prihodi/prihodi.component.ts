@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SortimentiComponent } from '../sortimenti/sortimenti.component';
 import { ValutaFixed } from '../../models/valuta-fixed.model';
 import { OpstiPodaciComponent } from '../opsti-podaci/opsti-podaci.component';
+import { TabelaNormiCijenaComponent } from '../tabela-normi-cijena/tabela-normi-cijena.component';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-prihodi',
@@ -13,6 +15,7 @@ export class PrihodiComponent implements OnInit {
   smrcaShowTable: boolean;
   bukvaShowTable: boolean;
   showSikiraImage = true;
+  notForPrint = true;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
   cjenaDrugaJela = 126.00;
@@ -93,11 +96,27 @@ export class PrihodiComponent implements OnInit {
   ukupnoCetinari = this.sortimentiComponent.netoCetinari;
   ukupnoLiscari = this.sortimentiComponent.netoLiscari;
 
+  cjenaSjeceCetinari = this.tabelaNormiCijenaComponent.cijenaSjeceCetinari;
+  cjenaSjeceLiscari = this.tabelaNormiCijenaComponent.cijenaSjeceLiscari;
+
+  trosakSjeceCetinari;
+  trosakSjeceLiscari;
+
+  cjenaKubik;
+  trosakCetinariLiscari;
+  dobit;
+
+  gazdinstvo = this.opstiPodaciComponent.opstiPodaci.gazdinstvo; // samo za testiranje
   odjel = this.opstiPodaciComponent.opstiPodaci.izabraniOdjel;
+  privrednaJedinica = this.opstiPodaciComponent.opstiPodaci.privrednaJedinica;
+  projektant = this.opstiPodaciComponent.opstiPodaci.projektant;
+  vrstaSjece = this.opstiPodaciComponent.opstiPodaci.vrstaSjece;
 
   constructor(public sortimentiComponent: SortimentiComponent,
               private valutaFixed: ValutaFixed,
-              private opstiPodaciComponent: OpstiPodaciComponent) {
+              private opstiPodaciComponent: OpstiPodaciComponent,
+              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent,
+              private sharedService: SharedService) {
   }
 
   bukvaHasInputValue(): void {
@@ -129,6 +148,8 @@ export class PrihodiComponent implements OnInit {
 
     this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
       this.ukupnoRudnoJela + this.ukupnoCelulozaJela;
+
+    this.izracunajTroskove();
     this.putValueToFixed();
   }
 
@@ -145,6 +166,7 @@ export class PrihodiComponent implements OnInit {
 
     this.ukupnoValuta = this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
+    this.izracunajTroskove();
     this.putValueToFixed();
   }
 
@@ -169,6 +191,7 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoTrecaJela + this.ukupnoStuboviJela + this.ukupnoRudnoJela + this.ukupnoCelulozaJela +
       this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
       this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.izracunajTroskove();
     this.putValueToFixed();
   }
 
@@ -193,6 +216,7 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
       this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
       this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.izracunajTroskove();
     this.putValueToFixed();
   }
 
@@ -213,6 +237,7 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoTrecaJela + this.ukupnoStuboviJela + this.ukupnoRudnoJela + this.ukupnoCelulozaJela +
       this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca;
+    this.izracunajTroskove();
     this.putValueToFixed();
 
   }
@@ -241,6 +266,7 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoRudnoJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca + this.ukupnoDrugaSmrca +
       this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoCelulozaSmrca +
       this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva + this.ukupnoTrecaBukva + this.ukupnoOgrevBukva;
+    this.izracunajTroskove();
     this.putValueToFixed();
   }
 
@@ -298,23 +324,55 @@ export class PrihodiComponent implements OnInit {
     this.valutaFixed.ukupnoOgrevBukva = this.ukupnoOgrevBukva.toFixed(2);
     this.valutaFixed.ukupnoBukva = this.ukupnoBukva.toFixed(2);
     this.valutaFixed.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
+    this.valutaFixed.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
+    this.valutaFixed.cjenaKubik = this.cjenaKubik.toFixed(2);
     if (this.ukupnoCetinari === undefined) {
       this.ukupnoCetinari = 0;
     } else {
       this.valutaFixed.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
+      this.valutaFixed.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
+      this.valutaFixed.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
     }
 
     if (this.ukupnoLiscari === undefined) {
       this.ukupnoLiscari = 0;
     } else {
       this.valutaFixed.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
+      this.valutaFixed.cjenaSjeceLiscari = this.cjenaSjeceLiscari.toFixed(2);
+      this.valutaFixed.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
     }
+    this.valutaFixed.dobit = this.dobit.toFixed(2);
   }
+
+  izracunajTroskove(): void{
+    this.trosakSjeceCetinari = this.ukupnoCetinari * this.cjenaSjeceCetinari;
+    this.trosakSjeceLiscari = this.ukupnoLiscari * this.cjenaSjeceLiscari;
+    this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari; // kasnije dodati animal u formulu
+    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti; // takodje dodati
+    this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
+  }
+
+  // za print
+  printPage(): void {
+    this.hideNavbarAndFooter();
+  }
+
+  hideNavbarAndFooter(): any{
+    this.sharedService.emitChange(false);
+    this.notForPrint = false;
+    setTimeout(this.printPageDelay, 1000);
+  }
+
+  printPageDelay(): any{
+    window.print();
+  }
+  // za print
 
 
   ngOnInit(): void {
-    this.checkIfVrsteIsNaN();
-  }
+      this.checkIfVrsteIsNaN();
+
+    }
 }
 
 

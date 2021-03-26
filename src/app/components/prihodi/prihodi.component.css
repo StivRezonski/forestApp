@@ -1,26 +1,15 @@
-.table-headers{
-  margin-top: 25px;
-  margin-left: 800px;
-  font-size: 20px;
-}
 
-.sortimentna-tabela{
-  margin-top: 15px;
-  margin-left: 800px;
+.sortimentna-tabela {
+  margin-top: 30px;
+  margin-left: 550px;
+  margin-right: 550px;
   margin-bottom: 30px;
   text-align: center;
 }
 
-.troskovi-sjece{
-  margin-top: 15px;
+.dobit-tabela{
+  margin-right: 800px;
   margin-left: 800px;
-  margin-bottom: 40px;
-  /*float: right;*/
-}
-
-.prihodi-table{
-  margin-top: 15px;
-  margin-left: 900px;
 }
 
 .prihodi-headers{
@@ -40,13 +29,29 @@
 
 .sikira-header{
   margin-top: 25px;
-  margin-left: 900px;
+  margin-left: 800px;
   font-size: 20px;
 }
 
 
 
-
+/*za printanje pokusaj*/
+/*@media print {*/
+/*  body * {*/
+/*    visibility: hidden;*/
+/*  }*/
+/*  .navbar .button-print{*/
+/*    visibility: hidden;*/
+/*  }*/
+/*  .sortimentna-tabela, #section-to-print * {*/
+/*    visibility: visible;*/
+/*  }*/
+/*  .sortimentna-tabela {*/
+/*    position: relative;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*  }*/
+/*}*/
 
 
 
