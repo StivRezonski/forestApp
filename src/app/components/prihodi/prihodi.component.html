@@ -1,12 +1,13 @@
 <h1 class="sikira-header" *ngIf="showSikiraImage">Unijeti sortimente i uslove rada</h1>
 <img class="rounded-circle circle-sizer" *ngIf="showSikiraImage" src="/assets/panjSikira.jpg" alt="image">
-<h1 class="table-headers" *ngIf="jelaShowTable && smrcaShowTable && bukvaShowTable"
->Prihodi od realizacije drvnih sortimenata</h1>
-<div class="table-responsive">
-<table class="table-bordered sortimentna-tabela"  *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
-  <thead>
 
+<div class="sortimentna-tabela">
+<table class="table table-bordered" *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
+  <thead class="thead-dark">
   <tr>
+    <th class="bg-siva" scope="col" colspan="5">Prihodi od realizacije drvnih sortimenata</th>
+  </tr>
+  <tr class="bg-siva">
     <th scope="col">Sifra vrste</th>
     <th scope="col" class="text-dark">Klase</th>
     <th scope="col" class="text-dark">Kolicina (m³)</th>
@@ -171,12 +172,13 @@
 </div>
 
 
-  <div>
-    <h1 class="table-headers" *ngIf="jelaShowTable && smrcaShowTable && bukvaShowTable"
-    >Troskovi sjece, izrade privlacenja i iznosenja drvnih sortimenata </h1>
-  <table class="table-bordered troskovi-sjece"  *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
+  <div class="sortimentna-tabela">
+  <table class="table table-bordered"  *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
     <thead>
     <tr>
+      <th class="bg-siva" scope="col" colspan="6">Troskovi sjece, izrade privlacenja i iznosenja drvnih sortimenata</th>
+    </tr>
+    <tr class="bg-siva">
       <th scope="col">Odjel</th>
       <th scope="col">Faza rada</th>
       <th scope="col">Vrste</th>
@@ -241,12 +243,14 @@
   </table>
   </div>
 
-<div>
-  <h1 class="table-headers prihodi-headers"  *ngIf="jelaShowTable && smrcaShowTable && bukvaShowTable">Ostvarena dobit</h1>
-    <table class="table-bordered prihodi-table"  *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
+<div class="sortimentna-tabela dobit-tabela">
+    <table class="table table-bordered prihodi-table"  *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
       <thead>
       <tr>
-        <th scope="col">Prihodi</th>
+        <th class="bg-siva" scope="col" colspan="2">Ostvarena dobit</th>
+      </tr>
+      <tr>
+        <th class="bg-siva" scope="col">Prihodi</th>
         <td scope="row" rowspan="1">{{valutaFixed.ukupnoValuta}}</td>
       </tr>
       </thead>
@@ -264,7 +268,9 @@
       </tbody>
     </table>
 </div>
-<div>projektant {{projektant}}</div>
-<div>gazdinstvo {{gazdinstvo}}</div>
-<div>Vrsta sjece {{vrstaSjece}}</div>
-<div>privredna jedinica {{privrednaJedinica}}</div>
+<button class="button-print" (click)="printPage()" *ngIf="notForPrint">Printaj projekat</button>
+
+<!--<div>projektant {{projektant}}</div>-->
+<!--<div>gazdinstvo {{gazdinstvo}}</div>-->
+<!--<div>Vrsta sjece {{vrstaSjece}}</div>-->
+<!--<div>privredna jedinica {{privrednaJedinica}}</div>-->

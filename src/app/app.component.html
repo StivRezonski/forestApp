@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="hideNavbarAndFooter">
   <img class="rounded-circle" src="/assets/logo.jpg" alt="image">
   <div class="container-fluid">
     <a class="navbar-brand">Navbar</a>
@@ -7,6 +7,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/projekat">Projekat slucajnih</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="/opsti-podaci">Opsti podaci</a>
         </li>
@@ -35,7 +38,7 @@
 <router-outlet></router-outlet>
 
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" *ngIf="hideNavbarAndFooter">
 
 <!-- Footer -->
 <footer class="bg-white">
@@ -63,7 +66,7 @@
       <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
         <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
         <ul class="list-unstyled mb-0">
-          <li class="mb-2"><a routerLink="#" class="text-muted">Login</a></li>
+          <li class="mb-2"><a routerLink="sortimenti" class="text-muted">Login</a></li>
           <li class="mb-2"><a routerLink="#" class="text-muted">Register</a></li>
           <li class="mb-2"><a routerLink="#" class="text-muted">Wishlist</a></li>
           <li class="mb-2"><a routerLink="#" class="text-muted">Our Products</a></li>

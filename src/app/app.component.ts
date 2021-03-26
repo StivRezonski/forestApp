@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from './services/shared.service';
 
 
 @Component({
@@ -8,7 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'forest';
-constructor() {
+  hideNavbarAndFooter = true;
+constructor(private sharedService: SharedService) {
+  // za print
+  sharedService.changeEmitted$.subscribe(
+    text => {
+      console.log(text);
+      this.hideNavbarAndFooter = text;
+    });
 }
-
 }

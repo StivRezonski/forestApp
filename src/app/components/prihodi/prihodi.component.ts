@@ -3,6 +3,7 @@ import { SortimentiComponent } from '../sortimenti/sortimenti.component';
 import { ValutaFixed } from '../../models/valuta-fixed.model';
 import { OpstiPodaciComponent } from '../opsti-podaci/opsti-podaci.component';
 import { TabelaNormiCijenaComponent } from '../tabela-normi-cijena/tabela-normi-cijena.component';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-prihodi',
@@ -14,6 +15,7 @@ export class PrihodiComponent implements OnInit {
   smrcaShowTable: boolean;
   bukvaShowTable: boolean;
   showSikiraImage = true;
+  notForPrint = true;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
   cjenaDrugaJela = 126.00;
@@ -113,7 +115,8 @@ export class PrihodiComponent implements OnInit {
   constructor(public sortimentiComponent: SortimentiComponent,
               private valutaFixed: ValutaFixed,
               private opstiPodaciComponent: OpstiPodaciComponent,
-              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent) {
+              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent,
+              private sharedService: SharedService) {
   }
 
   bukvaHasInputValue(): void {
@@ -349,9 +352,26 @@ export class PrihodiComponent implements OnInit {
     this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
   }
 
+  // za print
+  printPage(): void {
+    this.hideNavbarAndFooter();
+  }
+
+  hideNavbarAndFooter(): any{
+    this.sharedService.emitChange(false);
+    this.notForPrint = false;
+    setTimeout(this.printPageDelay, 1000);
+  }
+
+  printPageDelay(): any{
+    window.print();
+  }
+  // za print
+
 
   ngOnInit(): void {
       this.checkIfVrsteIsNaN();
+
     }
 }
 
