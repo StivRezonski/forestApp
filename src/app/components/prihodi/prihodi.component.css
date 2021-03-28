@@ -1,16 +1,16 @@
 
 .sortimentna-tabela {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-left: 550px;
   margin-right: 550px;
   margin-bottom: 30px;
   text-align: center;
 }
 
-.dobit-tabela{
-  margin-right: 800px;
-  margin-left: 800px;
-}
+/*.dobit-tabela-div{*/
+/*  margin-right: 800px;*/
+/*  margin-left: 800px;*/
+/*}*/
 
 .prihodi-headers{
   margin-left: 900px;
@@ -36,22 +36,35 @@
 
 
 /*za printanje pokusaj*/
-/*@media print {*/
-/*  body * {*/
-/*    visibility: hidden;*/
-/*  }*/
-/*  .navbar .button-print{*/
-/*    visibility: hidden;*/
-/*  }*/
-/*  .sortimentna-tabela, #section-to-print * {*/
-/*    visibility: visible;*/
-/*  }*/
-/*  .sortimentna-tabela {*/
-/*    position: relative;*/
-/*    left: 0;*/
-/*    top: 0;*/
-/*  }*/
-/*}*/
+@media print {
+  .button-print, .sikira-header  {
+    visibility: hidden;
+  }
+  .sortimentna-tabela, #section-to-print {
+    visibility: visible;
+  }
+  .sortimentna-tabela {
+    page-break-after : always;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    height: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+  }
 
+  .troskovi-sjece {
+    page-break-after: avoid;
+  }
+  .dobit-tabela {
+    page-break-after: avoid;
+    width: 60%;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 220px;
+  }
+
+}
 
 
