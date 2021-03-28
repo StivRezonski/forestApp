@@ -12,10 +12,10 @@ export class AppComponent {
   hideNavbarAndFooter = true;
 constructor(private sharedService: SharedService) {
   // za print
-  sharedService.changeEmitted$.subscribe(
-    text => {
-      console.log(text);
-      this.hideNavbarAndFooter = text;
-    });
+  // sharedService.changeEmitted$.subscribe(
+  //   text => {
+  //     console.log(text);
+  //     this.hideNavbarAndFooter = text;
+  //   });
 }
 }

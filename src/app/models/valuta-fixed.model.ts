@@ -27,10 +27,14 @@ export class ValutaFixed{
   ukupnoCetinari;
   ukupnoLiscari;
   cjenaSjeceCetinari;
-  trosakSjeceCetinari;
   cjenaSjeceLiscari;
+  trosakSjeceCetinari;
   trosakSjeceLiscari;
   trosakCetinariLiscari;
+  cjenaAnimalCetinari;
+  cjenaAnimalLiscari;
+  trosakAnimalCetinari;
+  trosakAnimalLiscari;
   cjenaKubik;
   dobit;
 }

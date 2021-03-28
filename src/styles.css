@@ -1,18 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /*za print test*/
-/*@media print {*/
-/*  body * {*/
-/*    visibility: hidden;*/
-/*  }*/
-/*  .navbar .button-print{*/
-/*    visibility: hidden;*/
-/*  }*/
-/*  .sortimentna-tabela, #section-to-print * {*/
-/*    visibility: visible;*/
-/*  }*/
-/*  .sortimentna-tabela {*/
-/*    position: relative;*/
-/*    left: 0;*/
-/*    top: 0;*/
-/*  }*/
-/*}*/
+@media print {
+  nav, footer *{
+    visibility: hidden;
+  }
+}

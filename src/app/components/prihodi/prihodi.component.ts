@@ -11,10 +11,12 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./prihodi.component.css']
 })
 export class PrihodiComponent implements OnInit {
+  // vrati na boolean
   jelaShowTable: boolean;
   smrcaShowTable: boolean;
   bukvaShowTable: boolean;
-  showSikiraImage = true;
+  // vrati na true sikira
+  showSikiraImage = false;
   notForPrint = true;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
@@ -99,8 +101,14 @@ export class PrihodiComponent implements OnInit {
   cjenaSjeceCetinari = this.tabelaNormiCijenaComponent.cijenaSjeceCetinari;
   cjenaSjeceLiscari = this.tabelaNormiCijenaComponent.cijenaSjeceLiscari;
 
+  cjenaAnimalCetinari = this.tabelaNormiCijenaComponent.cijenaAnimalCetinari;
+  cjenaAnimalLiscari = this.tabelaNormiCijenaComponent.cijenaAnimalLiscari;
+
   trosakSjeceCetinari;
   trosakSjeceLiscari;
+
+  trosakAnimalCetinari;
+  trosakAnimalLiscari;
 
   cjenaKubik;
   trosakCetinariLiscari;
@@ -113,7 +121,7 @@ export class PrihodiComponent implements OnInit {
   vrstaSjece = this.opstiPodaciComponent.opstiPodaci.vrstaSjece;
 
   constructor(public sortimentiComponent: SortimentiComponent,
-              private valutaFixed: ValutaFixed,
+              public valutaFixed: ValutaFixed,
               private opstiPodaciComponent: OpstiPodaciComponent,
               private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent,
               private sharedService: SharedService) {
@@ -332,6 +340,8 @@ export class PrihodiComponent implements OnInit {
       this.valutaFixed.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
       this.valutaFixed.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
       this.valutaFixed.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
+      this.valutaFixed.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
+      this.valutaFixed.cjenaAnimalCetinari = this.cjenaAnimalCetinari.toFixed(2);
     }
 
     if (this.ukupnoLiscari === undefined) {
@@ -340,15 +350,19 @@ export class PrihodiComponent implements OnInit {
       this.valutaFixed.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
       this.valutaFixed.cjenaSjeceLiscari = this.cjenaSjeceLiscari.toFixed(2);
       this.valutaFixed.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
+      this.valutaFixed.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
+      this.valutaFixed.cjenaAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
     }
     this.valutaFixed.dobit = this.dobit.toFixed(2);
   }
 
-  izracunajTroskove(): void{
+  izracunajTroskove(): void {
     this.trosakSjeceCetinari = this.ukupnoCetinari * this.cjenaSjeceCetinari;
     this.trosakSjeceLiscari = this.ukupnoLiscari * this.cjenaSjeceLiscari;
-    this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari; // kasnije dodati animal u formulu
-    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti; // takodje dodati
+    this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaAnimalCetinari;
+    this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaAnimalLiscari;
+    this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari + this.trosakAnimalCetinari + this.trosakAnimalLiscari;
+    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti; // takodje dodati mislim da je dodato
     this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
   }
 
@@ -357,22 +371,26 @@ export class PrihodiComponent implements OnInit {
     this.hideNavbarAndFooter();
   }
 
-  hideNavbarAndFooter(): any{
-    this.sharedService.emitChange(false);
-    this.notForPrint = false;
-    setTimeout(this.printPageDelay, 1000);
+  //
+  hideNavbarAndFooter(): any {
+    //   // this.sharedService.emitChange(false);
+    //   // this.notForPrint = false;
+    //   // setTimeout(this.printPageDelay, 1000);
+    this.printPageDelay();
   }
 
-  printPageDelay(): any{
+  //
+  printPageDelay(): any {
     window.print();
   }
+
   // za print
 
 
   ngOnInit(): void {
-      this.checkIfVrsteIsNaN();
+    this.checkIfVrsteIsNaN();
 
-    }
+  }
 }
 
 
