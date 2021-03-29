@@ -2,8 +2,7 @@
 <img class="rounded-circle circle-sizer" *ngIf="showSikiraImage" src="/assets/panjSikira.jpg" alt="image">
 
 <div class="sortimentna-tabela">
-<!--  ovo vrati u table class ispod linija 6 nakon print edita *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable"-->
-<table class="table table-bordered prihod-realizacija">
+<table class="table table-bordered prihod-realizacija" *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
   <thead class="thead-dark">
   <tr>
     <th class="bg-siva" scope="col" colspan="5">Prihodi od realizacije drvnih sortimenata</th>
@@ -269,10 +268,5 @@
       </tbody>
     </table>
 </div>
-<button class="button-print" (click)="printPage()"
-        *ngIf="notForPrint">Printaj projekat</button>
 
-<!--<div>projektant {{projektant}}</div>-->
-<!--<div>gazdinstvo {{gazdinstvo}}</div>-->
-<!--<div>Vrsta sjece {{vrstaSjece}}</div>-->
-<!--<div>privredna jedinica {{privrednaJedinica}}</div>-->
+<button class="btn btn-primary" (click)="printPage()">Print</button>

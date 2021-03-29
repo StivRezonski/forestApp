@@ -11,13 +11,10 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./prihodi.component.css']
 })
 export class PrihodiComponent implements OnInit {
-  // vrati na boolean
   jelaShowTable: boolean;
   smrcaShowTable: boolean;
   bukvaShowTable: boolean;
-  // vrati na true sikira
-  showSikiraImage = false;
-  notForPrint = true;
+  showSikiraImage = true;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
   cjenaDrugaJela = 126.00;
@@ -114,17 +111,12 @@ export class PrihodiComponent implements OnInit {
   trosakCetinariLiscari;
   dobit;
 
-  gazdinstvo = this.opstiPodaciComponent.opstiPodaci.gazdinstvo; // samo za testiranje
   odjel = this.opstiPodaciComponent.opstiPodaci.izabraniOdjel;
-  privrednaJedinica = this.opstiPodaciComponent.opstiPodaci.privrednaJedinica;
-  projektant = this.opstiPodaciComponent.opstiPodaci.projektant;
-  vrstaSjece = this.opstiPodaciComponent.opstiPodaci.vrstaSjece;
 
   constructor(public sortimentiComponent: SortimentiComponent,
               public valutaFixed: ValutaFixed,
               private opstiPodaciComponent: OpstiPodaciComponent,
-              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent,
-              private sharedService: SharedService) {
+              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent) {
   }
 
   bukvaHasInputValue(): void {
@@ -362,29 +354,15 @@ export class PrihodiComponent implements OnInit {
     this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaAnimalCetinari;
     this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaAnimalLiscari;
     this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari + this.trosakAnimalCetinari + this.trosakAnimalLiscari;
-    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti; // takodje dodati mislim da je dodato
+    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti;
     this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
   }
 
-  // za print
+
   printPage(): void {
-    this.hideNavbarAndFooter();
-  }
-
-  //
-  hideNavbarAndFooter(): any {
-    //   // this.sharedService.emitChange(false);
-    //   // this.notForPrint = false;
-    //   // setTimeout(this.printPageDelay, 1000);
-    this.printPageDelay();
-  }
-
-  //
-  printPageDelay(): any {
     window.print();
   }
 
-  // za print
 
 
   ngOnInit(): void {
