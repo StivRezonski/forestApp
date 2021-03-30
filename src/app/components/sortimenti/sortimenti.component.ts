@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SumaJela } from '../../models/suma-jela.model';
-import { SumaSmrca } from '../../models/suma-smrca.model';
-import { SumaCetinariLiscari } from '../../models/suma-cetinari-liscari.model';
-import { SumaBukva } from '../../models/suma-bukva.model';
-import { SumaPlemeniti } from '../../models/suma-plemeniti.model';
-import { SumaCetinari } from '../../models/suma-cetinari.model';
-import { SumaLiscari } from '../../models/suma-liscari.model';
+import { Jela } from '../../models/jela.model';
+import { Smrca } from '../../models/smrca.model';
+import { CetinariLiscari } from '../../models/cetinari-liscari.model';
+import { Bukva } from '../../models/bukva.model';
+import { Plemeniti } from '../../models/plemeniti.model';
+import { Cetinari } from '../../models/cetinari.model';
+import { Liscari } from '../../models/liscari.model';
 
 @Component({
   selector: 'app-sortimenti',
@@ -16,10 +16,10 @@ import { SumaLiscari } from '../../models/suma-liscari.model';
 export class SortimentiComponent implements OnInit {
   vrstaSlika;
   showVrstaImage = false;
-  sumTrupciJela = [];
-  sumTrupciSmrca = [];
-  sumTrupciBukva = [];
-  sumTrupciPlemeniti = [];
+  trupciJela = [];
+  trupciSmrca = [];
+  trupciBukva = [];
+  trupciPlemeniti = [];
   netoCetinari: number;
   netoLiscari: number;
 
@@ -42,9 +42,9 @@ export class SortimentiComponent implements OnInit {
   );
 
 
-  constructor(public sumaJela: SumaJela, public sumaSmrca: SumaSmrca, public sumaCetinariLiscari: SumaCetinariLiscari,
-              public sumaBukva: SumaBukva, public sumaPlemeniti: SumaPlemeniti, public sumaCetinari: SumaCetinari,
-              public sumaLiscari: SumaLiscari) {
+  constructor(public jela: Jela, public smrca: Smrca, public cetinariLiscari: CetinariLiscari,
+              public bukva: Bukva, public plemeniti: Plemeniti, public cetinari: Cetinari,
+              public liscari: Liscari) {
   }
 
   ngOnInit(): void {
@@ -55,25 +55,25 @@ export class SortimentiComponent implements OnInit {
     const izabranaVrsta = this.sortimentiFormGroup.get('izabranaVrsta').value;
 
     if (izabranaVrsta === '21') {
-      this.sumTrupciJela.push(this.sortimentiFormGroup.value);
+      this.trupciJela.push(this.sortimentiFormGroup.value);
       this.onJelaSelect();
       this.sumaSvihCetinara();
       this.sumaLiscaraCetinara();
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '22') {
-      this.sumTrupciSmrca.push(this.sortimentiFormGroup.value);
+      this.trupciSmrca.push(this.sortimentiFormGroup.value);
       this.onSmrcaSelect();
       this.sumaSvihCetinara();
       this.sumaLiscaraCetinara();
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '41') {
-      this.sumTrupciBukva.push(this.sortimentiFormGroup.value);
+      this.trupciBukva.push(this.sortimentiFormGroup.value);
       this.onBukvaSelect();
       this.sumaSvihLiscara();
       this.sumaLiscaraCetinara();
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '50') {
-      this.sumTrupciPlemeniti.push(this.sortimentiFormGroup.value);
+      this.trupciPlemeniti.push(this.sortimentiFormGroup.value);
       this.onPlemenitiSelect();
       this.sumaSvihLiscara();
       this.sumaLiscaraCetinara();
@@ -93,166 +93,182 @@ export class SortimentiComponent implements OnInit {
   }
 
   onJelaSelect(): void {
-    for (let i = 0; i < this.sumTrupciJela.length; i++) {
-      this.sumaJela.fTrupci = this.sumTrupciJela[i].fTrupci;
-      this.sumaJela.prvaKlasa = this.sumTrupciJela[i].prvaKlasa;
-      this.sumaJela.drugaKlasa = this.sumTrupciJela[i].drugaKlasa;
-      this.sumaJela.trecaKlasa = this.sumTrupciJela[i].trecaKlasa;
-      this.sumaJela.stubovi = this.sumTrupciJela[i].stuboviZaVodove;
-      this.sumaJela.jamskoDrvo = this.sumTrupciJela[i].jamskoDrvo;
-      this.sumaJela.koljeZaVoce = this.sumTrupciJela[i].koljeZaVoce;
-      this.sumaJela.celuloznoDrvo = this.sumTrupciJela[i].celuloznoDrvo;
-      this.sumaJela.sveukupnaDrvnaMasa = this.sumTrupciJela[i].sveukupnaDrvnaMasa;
-      this.sumaJela.srednjiPrecnik = this.sumTrupciJela[i].srednjiPrecnik;
-      this.sumaJela.netoJela = this.sumaJela.fTrupci + this.sumaJela.prvaKlasa +
-        this.sumaJela.drugaKlasa + this.sumaJela.trecaKlasa + this.sumaJela.stubovi +
-        this.sumaJela.jamskoDrvo + this.sumaJela.koljeZaVoce +
-        this.sumaJela.celuloznoDrvo;
-      this.sumaJela.sumaCeluloze = this.sumaJela.celuloznoDrvo + this.sumaJela.koljeZaVoce;
+    for (let i = 0; i < this.trupciJela.length; i++) {
+      this.jela.fTrupci = this.trupciJela[i].fTrupci;
+      this.jela.prvaKlasa = this.trupciJela[i].prvaKlasa;
+      this.jela.drugaKlasa = this.trupciJela[i].drugaKlasa;
+      this.jela.trecaKlasa = this.trupciJela[i].trecaKlasa;
+      this.jela.stubovi = this.trupciJela[i].stuboviZaVodove;
+      this.jela.jamskoDrvo = this.trupciJela[i].jamskoDrvo;
+      this.jela.koljeZaVoce = this.trupciJela[i].koljeZaVoce;
+      this.jela.celuloznoDrvo = this.trupciJela[i].celuloznoDrvo;
+      this.jela.sveukupnaDrvnaMasa = this.trupciJela[i].sveukupnaDrvnaMasa;
+      this.jela.srednjiPrecnik = this.trupciJela[i].srednjiPrecnik;
+      this.jela.netoJela = this.jela.fTrupci + this.jela.prvaKlasa +
+        this.jela.drugaKlasa + this.jela.trecaKlasa + this.jela.stubovi +
+        this.jela.jamskoDrvo + this.jela.koljeZaVoce +
+        this.jela.celuloznoDrvo;
+      // this.jela.sumaCeluloze = this.jela.celuloznoDrvo + this.jela.koljeZaVoce;
     }
   }
 
   onSmrcaSelect(): void {
-    for (let i = 0; i < this.sumTrupciSmrca.length; i++) {
-      this.sumaSmrca.fTrupci = this.sumTrupciSmrca[i].fTrupci;
-      this.sumaSmrca.prvaKlasa = this.sumTrupciSmrca[i].prvaKlasa;
-      this.sumaSmrca.drugaKlasa = this.sumTrupciSmrca[i].drugaKlasa;
-      this.sumaSmrca.trecaKlasa = this.sumTrupciSmrca[i].trecaKlasa;
-      this.sumaSmrca.stubovi = this.sumTrupciSmrca[i].stuboviZaVodove;
-      this.sumaSmrca.jamskoDrvo = this.sumTrupciSmrca[i].jamskoDrvo;
-      this.sumaSmrca.koljeZaVoce = this.sumTrupciSmrca[i].koljeZaVoce;
-      this.sumaSmrca.celuloznoDrvo = this.sumTrupciSmrca[i].celuloznoDrvo;
-      this.sumaSmrca.sveukupnaDrvnaMasa = this.sumTrupciSmrca[i].sveukupnaDrvnaMasa;
-      this.sumaSmrca.srednjiPrecnik = this.sumTrupciSmrca[i].srednjiPrecnik;
-      this.sumaSmrca.netoSmrca = this.sumaSmrca.fTrupci + this.sumaSmrca.prvaKlasa +
-        this.sumaSmrca.drugaKlasa + this.sumaSmrca.trecaKlasa + this.sumaSmrca.stubovi +
-        this.sumaSmrca.jamskoDrvo + this.sumaSmrca.koljeZaVoce + this.sumaSmrca.celuloznoDrvo;
-      this.sumaSmrca.sumaCeluloze = this.sumaSmrca.celuloznoDrvo + this.sumaSmrca.koljeZaVoce;
+    for (let i = 0; i < this.trupciSmrca.length; i++) {
+      this.smrca.fTrupci = this.trupciSmrca[i].fTrupci;
+      this.smrca.prvaKlasa = this.trupciSmrca[i].prvaKlasa;
+      this.smrca.drugaKlasa = this.trupciSmrca[i].drugaKlasa;
+      this.smrca.trecaKlasa = this.trupciSmrca[i].trecaKlasa;
+      this.smrca.stubovi = this.trupciSmrca[i].stuboviZaVodove;
+      this.smrca.jamskoDrvo = this.trupciSmrca[i].jamskoDrvo;
+      this.smrca.koljeZaVoce = this.trupciSmrca[i].koljeZaVoce;
+      this.smrca.celuloznoDrvo = this.trupciSmrca[i].celuloznoDrvo;
+      this.smrca.sveukupnaDrvnaMasa = this.trupciSmrca[i].sveukupnaDrvnaMasa;
+      this.smrca.srednjiPrecnik = this.trupciSmrca[i].srednjiPrecnik;
+      this.smrca.netoSmrca = this.smrca.fTrupci + this.smrca.prvaKlasa +
+        this.smrca.drugaKlasa + this.smrca.trecaKlasa + this.smrca.stubovi +
+        this.smrca.jamskoDrvo + this.smrca.koljeZaVoce + this.smrca.celuloznoDrvo;
+      // this.smrca.sumaCeluloze = this.smrca.celuloznoDrvo + this.smrca.koljeZaVoce;
     }
   }
 
   sumaSvihCetinara(): void {
-    if (this.sumTrupciSmrca.length <= 0) { // ako value smrce nije unesen dodjeli 0
-      this.sumaSmrca.fTrupci = 0;
-      this.sumaSmrca.prvaKlasa = 0;
-      this.sumaSmrca.drugaKlasa = 0;
-      this.sumaSmrca.trecaKlasa = 0;
-      this.sumaSmrca.stubovi = 0;
-      this.sumaSmrca.jamskoDrvo = 0;
-      this.sumaSmrca.koljeZaVoce = 0;
-      this.sumaSmrca.celuloznoDrvo = 0;
-      this.sumaSmrca.sveukupnaDrvnaMasa = 0;
-      this.sumaSmrca.srednjiPrecnik = 0;
-      this.sumaSmrca.netoSmrca = 0;
+    if (this.trupciSmrca.length <= 0) { // ako value smrce nije unesen dodjeli 0
+      this.smrca.fTrupci = 0;
+      this.smrca.prvaKlasa = 0;
+      this.smrca.drugaKlasa = 0;
+      this.smrca.trecaKlasa = 0;
+      this.smrca.stubovi = 0;
+      this.smrca.jamskoDrvo = 0;
+      this.smrca.koljeZaVoce = 0;
+      this.smrca.celuloznoDrvo = 0;
+      this.smrca.sveukupnaDrvnaMasa = 0;
+      this.smrca.srednjiPrecnik = 0;
+      this.smrca.netoSmrca = 0;
     }
-    if (this.sumTrupciJela.length <= 0) { // ako value jele nije unesen dodjeli 0
-      this.sumaJela.fTrupci = 0;
-      this.sumaJela.prvaKlasa = 0;
-      this.sumaJela.drugaKlasa = 0;
-      this.sumaJela.trecaKlasa = 0;
-      this.sumaJela.stubovi = 0;
-      this.sumaJela.jamskoDrvo = 0;
-      this.sumaJela.koljeZaVoce = 0;
-      this.sumaJela.celuloznoDrvo = 0;
-      this.sumaJela.sveukupnaDrvnaMasa = 0;
-      this.sumaJela.srednjiPrecnik = 0;
-      this.sumaJela.netoJela = 0;
+    if (this.trupciJela.length <= 0) { // ako value jele nije unesen dodjeli 0
+      this.jela.fTrupci = 0;
+      this.jela.prvaKlasa = 0;
+      this.jela.drugaKlasa = 0;
+      this.jela.trecaKlasa = 0;
+      this.jela.stubovi = 0;
+      this.jela.jamskoDrvo = 0;
+      this.jela.koljeZaVoce = 0;
+      this.jela.celuloznoDrvo = 0;
+      this.jela.sveukupnaDrvnaMasa = 0;
+      this.jela.srednjiPrecnik = 0;
+      this.jela.netoJela = 0;
     }
 
 
-    this.sumaCetinari.fKlase = this.sumaJela.fTrupci + this.sumaSmrca.fTrupci;
-    this.sumaCetinari.prvaKlasa = this.sumaJela.prvaKlasa + this.sumaSmrca.prvaKlasa;
-    this.sumaCetinari.drugaKlasa = this.sumaJela.drugaKlasa + this.sumaSmrca.drugaKlasa;
-    this.sumaCetinari.trecaKlasa = this.sumaJela.trecaKlasa + this.sumaSmrca.trecaKlasa;
-    this.sumaCetinari.stubovi = this.sumaJela.stubovi + this.sumaSmrca.stubovi;
-    this.sumaCetinari.jamskoDrvo = this.sumaJela.jamskoDrvo + this.sumaSmrca.jamskoDrvo;
-    this.sumaCetinari.koljeZaVoce = this.sumaJela.koljeZaVoce + this.sumaSmrca.koljeZaVoce;
-    this.sumaCetinari.celuloznoDrvo = this.sumaJela.celuloznoDrvo + this.sumaSmrca.celuloznoDrvo;
-    this.sumaCetinari.sveukupnaDrvnaMasa = this.sumaJela.sveukupnaDrvnaMasa + this.sumaSmrca.sveukupnaDrvnaMasa;
-    this.sumaCetinari.srednjiPrecnik = this.sumaJela.srednjiPrecnik + this.sumaSmrca.srednjiPrecnik;
-    this.sumaCetinari.netoCetinara = this.sumaCetinari.fKlase + this.sumaCetinari.prvaKlasa +
-      this.sumaCetinari.drugaKlasa + this.sumaCetinari.trecaKlasa + this.sumaCetinari.stubovi + this.sumaCetinari.jamskoDrvo +
-      this.sumaCetinari.koljeZaVoce + this.sumaCetinari.celuloznoDrvo;
+    this.cetinari.fKlase = this.jela.fTrupci + this.smrca.fTrupci;
+    this.cetinari.prvaKlasa = this.jela.prvaKlasa + this.smrca.prvaKlasa;
+    this.cetinari.drugaKlasa = this.jela.drugaKlasa + this.smrca.drugaKlasa;
+    this.cetinari.trecaKlasa = this.jela.trecaKlasa + this.smrca.trecaKlasa;
+    this.cetinari.stubovi = this.jela.stubovi + this.smrca.stubovi;
+    this.cetinari.jamskoDrvo = this.jela.jamskoDrvo + this.smrca.jamskoDrvo;
+    this.cetinari.koljeZaVoce = this.jela.koljeZaVoce + this.smrca.koljeZaVoce;
+    this.cetinari.celuloznoDrvo = this.jela.celuloznoDrvo + this.smrca.celuloznoDrvo;
+    this.cetinari.sveukupnaDrvnaMasa = this.jela.sveukupnaDrvnaMasa + this.smrca.sveukupnaDrvnaMasa;
+
+    if (this.jela.srednjiPrecnik === 0) {
+      this.cetinari.srednjiPrecnik = this.smrca.srednjiPrecnik;
+    } else if (this.smrca.srednjiPrecnik === 0) {
+      this.cetinari.srednjiPrecnik = this.jela.srednjiPrecnik;
+    } else {
+      this.cetinari.srednjiPrecnik = (this.jela.srednjiPrecnik + this.smrca.srednjiPrecnik) / 2;
+    }
+
+    this.cetinari.netoCetinara = this.cetinari.fKlase + this.cetinari.prvaKlasa +
+      this.cetinari.drugaKlasa + this.cetinari.trecaKlasa + this.cetinari.stubovi + this.cetinari.jamskoDrvo +
+      this.cetinari.koljeZaVoce + this.cetinari.celuloznoDrvo;
   }
 
   onBukvaSelect(): void {
-    for (let i = 0; i < this.sumTrupciBukva.length; i++) {
-      this.sumaBukva.fTrupci = this.sumTrupciBukva[i].fTrupci;
-      this.sumaBukva.lKlase = this.sumTrupciBukva[i].lTrupci;
-      this.sumaBukva.prvaKlasa = this.sumTrupciBukva[i].prvaKlasa;
-      this.sumaBukva.drugaKlasa = this.sumTrupciBukva[i].drugaKlasa;
-      this.sumaBukva.trecaKlasa = this.sumTrupciBukva[i].trecaKlasa;
-      this.sumaBukva.celuloznoDrvo = this.sumTrupciBukva[i].celuloznoDrvo;
-      this.sumaBukva.ogrevPrveKlase = this.sumTrupciBukva[i].ogrevPrveKlase;
-      this.sumaBukva.ogrevDrugeKlase = this.sumTrupciBukva[i].ogrevDrugeKlase;
-      this.sumaBukva.sveukupnaDrvnaMasa = this.sumTrupciBukva[i].sveukupnaDrvnaMasa;
-      this.sumaBukva.srednjiPrecnik = this.sumTrupciBukva[i].srednjiPrecnik;
-      this.sumaBukva.netoBukva = this.sumaBukva.fTrupci + this.sumaBukva.lKlase + this.sumaBukva.prvaKlasa + this.sumaBukva.drugaKlasa +
-        this.sumaBukva.trecaKlasa + this.sumaBukva.celuloznoDrvo + this.sumaBukva.ogrevPrveKlase + this.sumaBukva.ogrevDrugeKlase;
-      this.sumaBukva.netoOgrev = this.sumaBukva.celuloznoDrvo + this.sumaBukva.ogrevPrveKlase + this.sumaBukva.ogrevDrugeKlase;
+    for (let i = 0; i < this.trupciBukva.length; i++) {
+      this.bukva.fTrupci = this.trupciBukva[i].fTrupci;
+      this.bukva.lKlase = this.trupciBukva[i].lTrupci;
+      this.bukva.prvaKlasa = this.trupciBukva[i].prvaKlasa;
+      this.bukva.drugaKlasa = this.trupciBukva[i].drugaKlasa;
+      this.bukva.trecaKlasa = this.trupciBukva[i].trecaKlasa;
+      this.bukva.celuloznoDrvo = this.trupciBukva[i].celuloznoDrvo;
+      this.bukva.ogrevPrveKlase = this.trupciBukva[i].ogrevPrveKlase;
+      this.bukva.ogrevDrugeKlase = this.trupciBukva[i].ogrevDrugeKlase;
+      this.bukva.sveukupnaDrvnaMasa = this.trupciBukva[i].sveukupnaDrvnaMasa;
+      this.bukva.srednjiPrecnik = this.trupciBukva[i].srednjiPrecnik;
+      this.bukva.netoBukva = this.bukva.fTrupci + this.bukva.lKlase + this.bukva.prvaKlasa + this.bukva.drugaKlasa +
+        this.bukva.trecaKlasa + this.bukva.celuloznoDrvo + this.bukva.ogrevPrveKlase + this.bukva.ogrevDrugeKlase;
+      this.bukva.netoOgrev = this.bukva.celuloznoDrvo + this.bukva.ogrevPrveKlase + this.bukva.ogrevDrugeKlase;
     }
   }
 
   onPlemenitiSelect(): void {
-    for (let i = 0; i < this.sumTrupciPlemeniti.length; i++) {
-      this.sumaPlemeniti.fTrupci = this.sumTrupciPlemeniti[i].fTrupci;
-      this.sumaPlemeniti.lKlase = this.sumTrupciPlemeniti[i].lTrupci;
-      this.sumaPlemeniti.prvaKlasa = this.sumTrupciPlemeniti[i].prvaKlasa;
-      this.sumaPlemeniti.drugaKlasa = this.sumTrupciPlemeniti[i].drugaKlasa;
-      this.sumaPlemeniti.trecaKlasa = this.sumTrupciPlemeniti[i].trecaKlasa;
-      this.sumaPlemeniti.celuloznoDrvo = this.sumTrupciPlemeniti[i].celuloznoDrvo;
-      this.sumaPlemeniti.ogrevPrveKlase = this.sumTrupciPlemeniti[i].ogrevPrveKlase;
-      this.sumaPlemeniti.ogrevDrugeKlase = this.sumTrupciPlemeniti[i].ogrevDrugeKlase;
-      this.sumaPlemeniti.sveukupnaDrvnaMasa = this.sumTrupciPlemeniti[i].sveukupnaDrvnaMasa;
-      this.sumaPlemeniti.srednjiPrecnik = this.sumTrupciPlemeniti[i].srednjiPrecnik;
-      this.sumaPlemeniti.netoPlemeniti = this.sumaPlemeniti.fTrupci + this.sumaPlemeniti.lKlase + this.sumaPlemeniti.prvaKlasa +
-        this.sumaPlemeniti.drugaKlasa + this.sumaPlemeniti.trecaKlasa + this.sumaPlemeniti.celuloznoDrvo +
-        this.sumaPlemeniti.ogrevPrveKlase + this.sumaPlemeniti.ogrevDrugeKlase;
+    for (let i = 0; i < this.trupciPlemeniti.length; i++) {
+      this.plemeniti.fTrupci = this.trupciPlemeniti[i].fTrupci;
+      this.plemeniti.lKlase = this.trupciPlemeniti[i].lTrupci;
+      this.plemeniti.prvaKlasa = this.trupciPlemeniti[i].prvaKlasa;
+      this.plemeniti.drugaKlasa = this.trupciPlemeniti[i].drugaKlasa;
+      this.plemeniti.trecaKlasa = this.trupciPlemeniti[i].trecaKlasa;
+      this.plemeniti.celuloznoDrvo = this.trupciPlemeniti[i].celuloznoDrvo;
+      this.plemeniti.ogrevPrveKlase = this.trupciPlemeniti[i].ogrevPrveKlase;
+      this.plemeniti.ogrevDrugeKlase = this.trupciPlemeniti[i].ogrevDrugeKlase;
+      this.plemeniti.sveukupnaDrvnaMasa = this.trupciPlemeniti[i].sveukupnaDrvnaMasa;
+      this.plemeniti.srednjiPrecnik = this.trupciPlemeniti[i].srednjiPrecnik;
+      this.plemeniti.netoPlemeniti = this.plemeniti.fTrupci + this.plemeniti.lKlase + this.plemeniti.prvaKlasa +
+        this.plemeniti.drugaKlasa + this.plemeniti.trecaKlasa + this.plemeniti.celuloznoDrvo +
+        this.plemeniti.ogrevPrveKlase + this.plemeniti.ogrevDrugeKlase;
     }
   }
 
   sumaSvihLiscara(): void {
-    if (this.sumTrupciBukva.length <= 0) {
-      this.sumaBukva.fTrupci = 0;
-      this.sumaBukva.lKlase = 0;
-      this.sumaBukva.prvaKlasa = 0;
-      this.sumaBukva.drugaKlasa = 0;
-      this.sumaBukva.trecaKlasa = 0;
-      this.sumaBukva.celuloznoDrvo = 0;
-      this.sumaBukva.ogrevPrveKlase = 0;
-      this.sumaBukva.ogrevDrugeKlase = 0;
-      this.sumaBukva.sveukupnaDrvnaMasa = 0;
-      this.sumaBukva.srednjiPrecnik = 0;
-      this.sumaBukva.netoBukva = 0;
+    if (this.trupciBukva.length <= 0) {
+      this.bukva.fTrupci = 0;
+      this.bukva.lKlase = 0;
+      this.bukva.prvaKlasa = 0;
+      this.bukva.drugaKlasa = 0;
+      this.bukva.trecaKlasa = 0;
+      this.bukva.celuloznoDrvo = 0;
+      this.bukva.ogrevPrveKlase = 0;
+      this.bukva.ogrevDrugeKlase = 0;
+      this.bukva.sveukupnaDrvnaMasa = 0;
+      this.bukva.srednjiPrecnik = 0;
+      this.bukva.netoBukva = 0;
     }
-    if (this.sumTrupciPlemeniti.length <= 0) {
-      this.sumaPlemeniti.fTrupci = 0;
-      this.sumaPlemeniti.lKlase = 0;
-      this.sumaPlemeniti.prvaKlasa = 0;
-      this.sumaPlemeniti.drugaKlasa = 0;
-      this.sumaPlemeniti.trecaKlasa = 0;
-      this.sumaPlemeniti.celuloznoDrvo = 0;
-      this.sumaPlemeniti.ogrevPrveKlase = 0;
-      this.sumaPlemeniti.ogrevDrugeKlase = 0;
-      this.sumaPlemeniti.sveukupnaDrvnaMasa = 0;
-      this.sumaPlemeniti.srednjiPrecnik = 0;
-      this.sumaPlemeniti.netoPlemeniti = 0;
+    if (this.trupciPlemeniti.length <= 0) {
+      this.plemeniti.fTrupci = 0;
+      this.plemeniti.lKlase = 0;
+      this.plemeniti.prvaKlasa = 0;
+      this.plemeniti.drugaKlasa = 0;
+      this.plemeniti.trecaKlasa = 0;
+      this.plemeniti.celuloznoDrvo = 0;
+      this.plemeniti.ogrevPrveKlase = 0;
+      this.plemeniti.ogrevDrugeKlase = 0;
+      this.plemeniti.sveukupnaDrvnaMasa = 0;
+      this.plemeniti.srednjiPrecnik = 0;
+      this.plemeniti.netoPlemeniti = 0;
     }
 
 
-    this.sumaLiscari.fKlase = this.sumaBukva.fTrupci + this.sumaPlemeniti.fTrupci;
-    this.sumaLiscari.lKlase = this.sumaBukva.lKlase + this.sumaPlemeniti.lKlase;
-    this.sumaLiscari.prvaKlasa = this.sumaBukva.prvaKlasa + this.sumaPlemeniti.prvaKlasa;
-    this.sumaLiscari.drugaKlasa = this.sumaBukva.drugaKlasa + this.sumaPlemeniti.drugaKlasa;
-    this.sumaLiscari.trecaKlasa = this.sumaBukva.trecaKlasa + this.sumaPlemeniti.trecaKlasa;
-    this.sumaLiscari.celuloznoDrvo = this.sumaBukva.celuloznoDrvo + this.sumaPlemeniti.celuloznoDrvo;
-    this.sumaLiscari.ogrevPrveKlase = this.sumaBukva.ogrevPrveKlase + this.sumaPlemeniti.ogrevPrveKlase;
-    this.sumaLiscari.ogrevDrugeKlase = this.sumaBukva.ogrevDrugeKlase + this.sumaPlemeniti.ogrevDrugeKlase;
-    this.sumaLiscari.sveukupnaDrvnaMasa = this.sumaBukva.sveukupnaDrvnaMasa + this.sumaPlemeniti.sveukupnaDrvnaMasa;
-    this.sumaLiscari.srednjiPrecnik = this.sumaBukva.srednjiPrecnik + this.sumaPlemeniti.srednjiPrecnik;
-    this.sumaLiscari.netoLiscari = this.sumaLiscari.fKlase + this.sumaLiscari.lKlase + this.sumaLiscari.prvaKlasa +
-      this.sumaLiscari.drugaKlasa + this.sumaLiscari.trecaKlasa + this.sumaLiscari.celuloznoDrvo + this.sumaLiscari.ogrevPrveKlase +
-      this.sumaLiscari.ogrevDrugeKlase;
+    this.liscari.fKlase = this.bukva.fTrupci + this.plemeniti.fTrupci;
+    this.liscari.lKlase = this.bukva.lKlase + this.plemeniti.lKlase;
+    this.liscari.prvaKlasa = this.bukva.prvaKlasa + this.plemeniti.prvaKlasa;
+    this.liscari.drugaKlasa = this.bukva.drugaKlasa + this.plemeniti.drugaKlasa;
+    this.liscari.trecaKlasa = this.bukva.trecaKlasa + this.plemeniti.trecaKlasa;
+    this.liscari.celuloznoDrvo = this.bukva.celuloznoDrvo + this.plemeniti.celuloznoDrvo;
+    this.liscari.ogrevPrveKlase = this.bukva.ogrevPrveKlase + this.plemeniti.ogrevPrveKlase;
+    this.liscari.ogrevDrugeKlase = this.bukva.ogrevDrugeKlase + this.plemeniti.ogrevDrugeKlase;
+    this.liscari.sveukupnaDrvnaMasa = this.bukva.sveukupnaDrvnaMasa + this.plemeniti.sveukupnaDrvnaMasa;
+
+    if (this.bukva.srednjiPrecnik === 0) {
+      this.liscari.srednjiPrecnik = this.plemeniti.srednjiPrecnik;
+    } else if (this.plemeniti.srednjiPrecnik === 0) {
+      this.liscari.srednjiPrecnik = this.bukva.srednjiPrecnik;
+    } else {
+      this.liscari.srednjiPrecnik = (this.bukva.srednjiPrecnik + this.plemeniti.srednjiPrecnik) / 2;
+    }
+
+    this.liscari.netoLiscari = this.liscari.fKlase + this.liscari.lKlase + this.liscari.prvaKlasa +
+      this.liscari.drugaKlasa + this.liscari.trecaKlasa + this.liscari.celuloznoDrvo + this.liscari.ogrevPrveKlase +
+      this.liscari.ogrevDrugeKlase;
   }
 
   sumaLiscaraCetinara(): void {
@@ -260,23 +276,23 @@ export class SortimentiComponent implements OnInit {
     this.sumaSvihLiscara();
 
 
-    this.sumaCetinariLiscari.fKlase = this.sumaCetinari.fKlase + this.sumaLiscari.fKlase;
-    this.sumaCetinariLiscari.lKlase = this.sumaLiscari.lKlase;
-    this.sumaCetinariLiscari.prvaKlasa = this.sumaCetinari.prvaKlasa + this.sumaLiscari.prvaKlasa;
-    this.sumaCetinariLiscari.drugaKlasa = this.sumaCetinari.drugaKlasa + this.sumaLiscari.drugaKlasa;
-    this.sumaCetinariLiscari.trecaKlasa = this.sumaCetinari.trecaKlasa + this.sumaLiscari.trecaKlasa;
-    this.sumaCetinariLiscari.stubovi = this.sumaCetinari.stubovi;
-    this.sumaCetinariLiscari.jamskoDrvo = this.sumaCetinari.jamskoDrvo;
-    this.sumaCetinariLiscari.koljeZaVoce = this.sumaCetinari.koljeZaVoce;
-    this.sumaCetinariLiscari.celuloznoDrvo = this.sumaCetinari.celuloznoDrvo + this.sumaLiscari.celuloznoDrvo;
-    this.sumaCetinariLiscari.ogrevPrveKlase = this.sumaLiscari.ogrevPrveKlase;
-    this.sumaCetinariLiscari.ogrevDrugeKlase = this.sumaLiscari.ogrevDrugeKlase;
-    this.sumaCetinariLiscari.sveukupnaDrvnaMasa = this.sumaCetinari.sveukupnaDrvnaMasa + this.sumaLiscari.sveukupnaDrvnaMasa;
-    this.sumaCetinariLiscari.srednjiPrecnik = this.sumaCetinari.srednjiPrecnik + this.sumaLiscari.srednjiPrecnik;
-    this.sumaCetinariLiscari.netoCetinariLiscari = this.sumaCetinariLiscari.fKlase + this.sumaCetinariLiscari.lKlase +
-      this.sumaCetinariLiscari.prvaKlasa + this.sumaCetinariLiscari.drugaKlasa +
-      this.sumaCetinariLiscari.trecaKlasa + this.sumaCetinariLiscari.stubovi + this.sumaCetinariLiscari.jamskoDrvo +
-      this.sumaCetinariLiscari.koljeZaVoce + this.sumaCetinariLiscari.celuloznoDrvo + this.sumaCetinariLiscari.ogrevPrveKlase +
-      this.sumaCetinariLiscari.ogrevDrugeKlase;
+    this.cetinariLiscari.fKlase = this.cetinari.fKlase + this.liscari.fKlase;
+    this.cetinariLiscari.lKlase = this.liscari.lKlase;
+    this.cetinariLiscari.prvaKlasa = this.cetinari.prvaKlasa + this.liscari.prvaKlasa;
+    this.cetinariLiscari.drugaKlasa = this.cetinari.drugaKlasa + this.liscari.drugaKlasa;
+    this.cetinariLiscari.trecaKlasa = this.cetinari.trecaKlasa + this.liscari.trecaKlasa;
+    this.cetinariLiscari.stubovi = this.cetinari.stubovi;
+    this.cetinariLiscari.jamskoDrvo = this.cetinari.jamskoDrvo;
+    this.cetinariLiscari.koljeZaVoce = this.cetinari.koljeZaVoce;
+    this.cetinariLiscari.celuloznoDrvo = this.cetinari.celuloznoDrvo + this.liscari.celuloznoDrvo;
+    this.cetinariLiscari.ogrevPrveKlase = this.liscari.ogrevPrveKlase;
+    this.cetinariLiscari.ogrevDrugeKlase = this.liscari.ogrevDrugeKlase;
+    this.cetinariLiscari.sveukupnaDrvnaMasa = this.cetinari.sveukupnaDrvnaMasa + this.liscari.sveukupnaDrvnaMasa;
+    this.cetinariLiscari.srednjiPrecnik = this.cetinari.srednjiPrecnik + this.liscari.srednjiPrecnik;
+    this.cetinariLiscari.netoCetinariLiscari = this.cetinariLiscari.fKlase + this.cetinariLiscari.lKlase +
+      this.cetinariLiscari.prvaKlasa + this.cetinariLiscari.drugaKlasa +
+      this.cetinariLiscari.trecaKlasa + this.cetinariLiscari.stubovi + this.cetinariLiscari.jamskoDrvo +
+      this.cetinariLiscari.koljeZaVoce + this.cetinariLiscari.celuloznoDrvo + this.cetinariLiscari.ogrevPrveKlase +
+      this.cetinariLiscari.ogrevDrugeKlase;
   }
 }

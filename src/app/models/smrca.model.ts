@@ -1,4 +1,4 @@
-export class SumaJela{
+export class Smrca {
   fTrupci: number;
   lKlase: number;
   prvaKlasa: number;
@@ -8,11 +8,8 @@ export class SumaJela{
   jamskoDrvo: number;
   koljeZaVoce: number;
   celuloznoDrvo: number;
-  ogrevPrveKlase: number;
-  ogrevDrugeKlase: number;
-  netoJela: number;
+  netoSmrca: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
-  sumaCeluloze: number;
+  // sumaCeluloze: number;
 }
-

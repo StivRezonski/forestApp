@@ -7,11 +7,6 @@
   text-align: center;
 }
 
-/*.dobit-tabela-div{*/
-/*  margin-right: 800px;*/
-/*  margin-left: 800px;*/
-/*}*/
-
 .prihodi-headers{
   margin-left: 900px;
 }
@@ -33,11 +28,12 @@
   font-size: 20px;
 }
 
+.btn {
+  margin-left: 1500px;
+}
 
-
-/*za printanje pokusaj*/
 @media print {
-  .button-print, .sikira-header  {
+  .btn, .sikira-header  {
     visibility: hidden;
   }
   .sortimentna-tabela, #section-to-print {

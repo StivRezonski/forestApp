@@ -1,5 +1,5 @@
-export class SumaCetinari {
-  fKlase: number;
+export class Jela{
+  fTrupci: number;
   lKlase: number;
   prvaKlasa: number;
   drugaKlasa: number;
@@ -10,7 +10,9 @@ export class SumaCetinari {
   celuloznoDrvo: number;
   ogrevPrveKlase: number;
   ogrevDrugeKlase: number;
-  netoCetinara: number;
+  netoJela: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
+  // sumaCeluloze: number;
 }
+
