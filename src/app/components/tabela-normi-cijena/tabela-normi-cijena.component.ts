@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UnosPodatakaSjecaComponent } from '../unos-podataka-sjeca/unos-podataka-sjeca.component';
 import { NormeService } from '../../services/norme.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 
 
@@ -19,8 +19,8 @@ export class TabelaNormiCijenaComponent implements OnInit {
  cijenaSjeceCetinari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaCetSjeca;
  cijenaSjeceLiscari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaLisSjeca;
 
- cijenaAnimalCetinari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaCetAnimal;
- cijenaAnimalLiscari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaLisAnimal;
+ //cijenaAnimalCetinari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaCetAnimal;
+ //cijenaAnimalLiscari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaLisAnimal;
 
 
 
