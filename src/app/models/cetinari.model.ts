@@ -1,4 +1,4 @@
-export class SumaCetinari {
+export class Cetinari {
   fKlase: number;
   lKlase: number;
   prvaKlasa: number;
