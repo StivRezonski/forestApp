@@ -22,8 +22,10 @@ export class Sjeca{
  ucesceLiscara: number;
  udaljenostOdStale: number;
  distancaPrivlacenjaAnimal: number;
- normaCetAnimal: number;
- normaLisAnimal: number;
+ normaCetAnimalTrupci: number;
+ normaCetAnimalTankaOblovina: number;
+ normaLisAnimalTrupci: number;
+ normaLisAnimalTankaOblovina: number;
  usloviRadaCetAnimal: number;
  usloviRadaLisAnimal: number;
  cijenaAnimalCet: number;

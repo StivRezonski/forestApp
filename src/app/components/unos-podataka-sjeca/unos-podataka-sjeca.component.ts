@@ -60,6 +60,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   udaljenostOdStaleBodovi;
   bodoviCetinariAnimal;
   bodoviLiscariAnimal;
+  
 
 //ljetoCetinari = this.norme.ljetoCet;
 //ljetoLiscari = this.norme.ljetoLis;
@@ -190,11 +191,15 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     //console.log(this.norme.podaci.usloviRadaCetAnimal);
 
-    this.norme.podaci.normaCetAnimal = this.norme.normeAnimalCetinari[this.norme.podaci.usloviRadaCetAnimal][this.norme.podaci.distancaPrivlacenjaAnimal];
-    this.norme.podaci.normaLisAnimal = this.norme.normeAnimalLiscari[this.norme.podaci.usloviRadaLisAnimal][this.norme.podaci.distancaPrivlacenjaAnimal];
-
-    //console.log(this.norme.podaci.normaCetAnimal);
-    //console.log(this.norme.podaci.normaLisAnimal);
+    this.norme.podaci.normaCetAnimalTrupci= this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
+    this.norme.podaci.normaCetAnimalTankaOblovina = this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][1][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
+    this.norme.podaci.normaLisAnimalTrupci = this.norme.animalLis[this.norme.podaci.usloviRadaLisAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
+    this.norme.podaci.normaLisAnimalTankaOblovina = this.norme.animalLis[this.norme.podaci.usloviRadaLisAnimal.toString()][1][this.norme.podaci.distancaPrivlacenjaAnimal.toString()]
+    //console.log(this.norme.podaci.normaCetAnimalTrupci);
+    //console.log(this.norme.podaci.normaCetAnimalTankaOblovina);
+    //console.log(this.norme.podaci.normaLisAnimalTrupci);
+    .//console.log(this.norme.podaci.normaLisAnimalTankaOblovina);
+    //console.log(this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()]);
 
 // Sjeca norma
     this.bodoviCetinariSjeca = this.norme.podaci.nagibTerena + this.norme.podaci.gustinaPodmlatka

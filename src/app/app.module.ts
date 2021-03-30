@@ -6,7 +6,6 @@ import { SortimentiComponent } from './components/sortimenti/sortimenti.componen
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UnosPodatakaSjecaComponent } from './components/unos-podataka-sjeca/unos-podataka-sjeca.component';
-import { UnosPodatakaAnimalComponent } from './components/unos-podataka-animal/unos-podataka-animal.component';
 import { NormeService } from './services/norme.service';
 import { PrihodiComponent } from './components/prihodi/prihodi.component';
 import { SumaJela } from './models/suma-jela.model';
@@ -36,7 +35,6 @@ import { ProjekatSlucajnihComponent } from './components/projekat-slucajnih/proj
     AppComponent,
     SortimentiComponent,
     UnosPodatakaSjecaComponent,
-    UnosPodatakaAnimalComponent,
     PrihodiComponent,
     TabelaNormiCijenaComponent,
     OpstiPodaciComponent,
