@@ -112,8 +112,8 @@ export class PrihodiComponent implements OnInit {
   cjenaSjeceCetinari = this.tabelaNormiCijenaComponent.cijenaSjeceCetinari;
   cjenaSjeceLiscari = this.tabelaNormiCijenaComponent.cijenaSjeceLiscari;
 
-  //cjenaAnimalCetinari = this.tabelaNormiCijenaComponent.cijenaAnimalCetinari;
-  //cjenaAnimalLiscari = this.tabelaNormiCijenaComponent.cijenaAnimalLiscari;
+  // cjenaAnimalCetinari = this.tabelaNormiCijenaComponent.cijenaAnimalCetinari;
+  // cjenaAnimalLiscari = this.tabelaNormiCijenaComponent.cijenaAnimalLiscari;
 
   trosakSjeceCetinari;
   trosakSjeceLiscari;
@@ -296,11 +296,11 @@ export class PrihodiComponent implements OnInit {
     if (this.ukupnoCetinari === undefined) {
       this.ukupnoCetinari = 0;
     } else {
-      this.valutaFixed.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
-      this.valutaFixed.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
-      this.valutaFixed.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
-      //this.valutaFixed.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
-      //this.valutaFixed.cjenaAnimalCetinari = this.cjenaAnimalCetinari.toFixed(2);
+      this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
+      this.valuta.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
+      this.valuta.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
+      // this.valuta.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
+      // this.valuta.cjenaAnimalCetinari = this.cjenaAnimalCetinari.toFixed(2);
     }
 
     if (this.ukupnoLiscari === undefined) {
@@ -329,9 +329,9 @@ export class PrihodiComponent implements OnInit {
 
   izracunajTroskove(): void {
     this.trosakSjeceCetinari = this.ukupnoCetinari * this.cjenaSjeceCetinari;
-    //this.trosakSjeceLiscari = this.ukupnoLiscari * this.cjenaSjeceLiscari;
-    //this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaAnimalCetinari;
-    //this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaAnimalLiscari;
+    // this.trosakSjeceLiscari = this.ukupnoLiscari * this.cjenaSjeceLiscari;
+    // this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaAnimalCetinari;
+    // this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaAnimalLiscari;
     this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari + this.trosakAnimalCetinari + this.trosakAnimalLiscari;
     this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti;
     this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
