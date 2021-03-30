@@ -3,7 +3,6 @@ import { SortimentiComponent } from '../sortimenti/sortimenti.component';
 import { ValutaFixed } from '../../models/valuta-fixed.model';
 import { OpstiPodaciComponent } from '../opsti-podaci/opsti-podaci.component';
 import { TabelaNormiCijenaComponent } from '../tabela-normi-cijena/tabela-normi-cijena.component';
-import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-prihodi',
@@ -11,13 +10,10 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./prihodi.component.css']
 })
 export class PrihodiComponent implements OnInit {
-  // vrati na boolean
   jelaShowTable: boolean;
   smrcaShowTable: boolean;
   bukvaShowTable: boolean;
-  // vrati na true sikira
-  showSikiraImage = false;
-  notForPrint = true;
+  showSikiraImage = true;
   cjenaFJela = 200.00;
   cjenaPrvaJela = 149.00;
   cjenaDrugaJela = 126.00;
@@ -113,18 +109,16 @@ export class PrihodiComponent implements OnInit {
   cjenaKubik;
   trosakCetinariLiscari;
   dobit;
+// evo ti ovde srednji precnik CETINARI I LIscari
+  srednjiPrecnikCet = this.sortimentiComponent.sumaCetinari.srednjiPrecnik;
+  srednjiPrecnikLis = this.sortimentiComponent.sumaLiscari.srednjiPrecnik;
 
-  gazdinstvo = this.opstiPodaciComponent.opstiPodaci.gazdinstvo; // samo za testiranje
   odjel = this.opstiPodaciComponent.opstiPodaci.izabraniOdjel;
-  privrednaJedinica = this.opstiPodaciComponent.opstiPodaci.privrednaJedinica;
-  projektant = this.opstiPodaciComponent.opstiPodaci.projektant;
-  vrstaSjece = this.opstiPodaciComponent.opstiPodaci.vrstaSjece;
 
   constructor(public sortimentiComponent: SortimentiComponent,
               public valutaFixed: ValutaFixed,
               private opstiPodaciComponent: OpstiPodaciComponent,
-              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent,
-              private sharedService: SharedService) {
+              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent) {
   }
 
   bukvaHasInputValue(): void {
@@ -332,8 +326,16 @@ export class PrihodiComponent implements OnInit {
     this.valutaFixed.ukupnoOgrevBukva = this.ukupnoOgrevBukva.toFixed(2);
     this.valutaFixed.ukupnoBukva = this.ukupnoBukva.toFixed(2);
     this.valutaFixed.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
-    this.valutaFixed.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
-    this.valutaFixed.cjenaKubik = this.cjenaKubik.toFixed(2);
+    if (this.trosakCetinariLiscari === undefined){
+      this.trosakCetinariLiscari = 0;
+    } else {
+      this.valutaFixed.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
+    }
+    if (this.cjenaKubik === undefined){
+      this.cjenaKubik = 0;
+    } else {
+      this.valutaFixed.cjenaKubik = this.cjenaKubik.toFixed(2);
+    }
     if (this.ukupnoCetinari === undefined) {
       this.ukupnoCetinari = 0;
     } else {
@@ -349,11 +351,23 @@ export class PrihodiComponent implements OnInit {
     } else {
       this.valutaFixed.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
       this.valutaFixed.cjenaSjeceLiscari = this.cjenaSjeceLiscari.toFixed(2);
-      this.valutaFixed.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
-      this.valutaFixed.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
+      if (this.trosakSjeceLiscari === undefined) {
+        this.trosakSjeceLiscari = 0;
+      }else {
+        this.valutaFixed.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
+      }
+      if (this.trosakAnimalLiscari === undefined){
+        this.trosakAnimalLiscari = 0;
+      } else {
+        this.valutaFixed.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
+      }
       this.valutaFixed.cjenaAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
     }
-    this.valutaFixed.dobit = this.dobit.toFixed(2);
+    if (this.dobit === undefined){
+      this.dobit = 0;
+    }else{
+      this.valutaFixed.dobit = this.dobit.toFixed(2);
+    }
   }
 
   izracunajTroskove(): void {
@@ -362,32 +376,18 @@ export class PrihodiComponent implements OnInit {
     this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaAnimalCetinari;
     this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaAnimalLiscari;
     this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari + this.trosakAnimalCetinari + this.trosakAnimalLiscari;
-    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti; // takodje dodati mislim da je dodato
+    this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti;
     this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
   }
 
-  // za print
+
   printPage(): void {
-    this.hideNavbarAndFooter();
-  }
-
-  //
-  hideNavbarAndFooter(): any {
-    //   // this.sharedService.emitChange(false);
-    //   // this.notForPrint = false;
-    //   // setTimeout(this.printPageDelay, 1000);
-    this.printPageDelay();
-  }
-
-  //
-  printPageDelay(): any {
     window.print();
   }
 
-  // za print
-
 
   ngOnInit(): void {
+    console.log(this.srednjiPrecnikCet, this.srednjiPrecnikLis);
     this.checkIfVrsteIsNaN();
 
   }

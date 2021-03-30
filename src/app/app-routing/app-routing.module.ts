@@ -6,20 +6,11 @@ import { UnosPodatakaSjecaComponent } from '../components/unos-podataka-sjeca/un
 import { PrihodiComponent } from '../components/prihodi/prihodi.component';
 import { TabelaNormiCijenaComponent } from '../components/tabela-normi-cijena/tabela-normi-cijena.component';
 import { OpstiPodaciComponent } from '../components/opsti-podaci/opsti-podaci.component';
-import { ProjekatSlucajnihComponent } from '../components/projekat-slucajnih/projekat-slucajnih.component';
 
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'projekat', component: ProjekatSlucajnihComponent,
-  children: [
-    {path: 'opsti-podaci', component: OpstiPodaciComponent },
-    {path: 'unospodataka', component: UnosPodatakaSjecaComponent },
-    {path: 'norme-cijene', component: TabelaNormiCijenaComponent},
-    {path: 'sortimenti', component: SortimentiComponent },
-    {path: 'prihodi', component: PrihodiComponent },
-  ]},
   {path: 'opsti-podaci', component: OpstiPodaciComponent },
   {path: 'unospodataka', component: UnosPodatakaSjecaComponent },
   {path: 'norme-cijene', component: TabelaNormiCijenaComponent},

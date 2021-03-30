@@ -169,7 +169,15 @@ export class SortimentiComponent implements OnInit {
     this.sumaCetinari.koljeZaVoce = this.sumaJela.koljeZaVoce + this.sumaSmrca.koljeZaVoce;
     this.sumaCetinari.celuloznoDrvo = this.sumaJela.celuloznoDrvo + this.sumaSmrca.celuloznoDrvo;
     this.sumaCetinari.sveukupnaDrvnaMasa = this.sumaJela.sveukupnaDrvnaMasa + this.sumaSmrca.sveukupnaDrvnaMasa;
-    this.sumaCetinari.srednjiPrecnik = this.sumaJela.srednjiPrecnik + this.sumaSmrca.srednjiPrecnik;
+
+    if (this.sumaJela.srednjiPrecnik === 0) {
+      this.sumaCetinari.srednjiPrecnik = this.sumaSmrca.srednjiPrecnik;
+    } else if (this.sumaSmrca.srednjiPrecnik === 0) {
+      this.sumaCetinari.srednjiPrecnik = this.sumaJela.srednjiPrecnik;
+    } else {
+      this.sumaCetinari.srednjiPrecnik = (this.sumaJela.srednjiPrecnik + this.sumaSmrca.srednjiPrecnik) / 2;
+    }
+
     this.sumaCetinari.netoCetinara = this.sumaCetinari.fKlase + this.sumaCetinari.prvaKlasa +
       this.sumaCetinari.drugaKlasa + this.sumaCetinari.trecaKlasa + this.sumaCetinari.stubovi + this.sumaCetinari.jamskoDrvo +
       this.sumaCetinari.koljeZaVoce + this.sumaCetinari.celuloznoDrvo;
@@ -249,7 +257,15 @@ export class SortimentiComponent implements OnInit {
     this.sumaLiscari.ogrevPrveKlase = this.sumaBukva.ogrevPrveKlase + this.sumaPlemeniti.ogrevPrveKlase;
     this.sumaLiscari.ogrevDrugeKlase = this.sumaBukva.ogrevDrugeKlase + this.sumaPlemeniti.ogrevDrugeKlase;
     this.sumaLiscari.sveukupnaDrvnaMasa = this.sumaBukva.sveukupnaDrvnaMasa + this.sumaPlemeniti.sveukupnaDrvnaMasa;
-    this.sumaLiscari.srednjiPrecnik = this.sumaBukva.srednjiPrecnik + this.sumaPlemeniti.srednjiPrecnik;
+
+    if (this.sumaBukva.srednjiPrecnik === 0) {
+      this.sumaLiscari.srednjiPrecnik = this.sumaPlemeniti.srednjiPrecnik;
+    } else if (this.sumaPlemeniti.srednjiPrecnik === 0) {
+      this.sumaLiscari.srednjiPrecnik = this.sumaBukva.srednjiPrecnik;
+    } else {
+      this.sumaLiscari.srednjiPrecnik = (this.sumaBukva.srednjiPrecnik + this.sumaPlemeniti.srednjiPrecnik) / 2;
+    }
+
     this.sumaLiscari.netoLiscari = this.sumaLiscari.fKlase + this.sumaLiscari.lKlase + this.sumaLiscari.prvaKlasa +
       this.sumaLiscari.drugaKlasa + this.sumaLiscari.trecaKlasa + this.sumaLiscari.celuloznoDrvo + this.sumaLiscari.ogrevPrveKlase +
       this.sumaLiscari.ogrevDrugeKlase;
