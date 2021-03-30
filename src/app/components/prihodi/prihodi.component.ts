@@ -112,8 +112,9 @@ export class PrihodiComponent implements OnInit {
   cjenaSjeceCetinari = this.tabelaNormiCijenaComponent.cijenaSjeceCetinari;
   cjenaSjeceLiscari = this.tabelaNormiCijenaComponent.cijenaSjeceLiscari;
 
-  // cjenaAnimalCetinari = this.tabelaNormiCijenaComponent.cijenaAnimalCetinari;
-  // cjenaAnimalLiscari = this.tabelaNormiCijenaComponent.cijenaAnimalLiscari;
+
+  cjenaAnimalCetinari = this.tabelaNormiCijenaComponent.cijenAnimalCetinariTrupci + this.tabelaNormiCijenaComponent.cijenaAnimalCetinariTankaOblovina;
+  cjenaAnimalLiscari = this.tabelaNormiCijenaComponent.cijenaAnimalLiscariTrupci + this.tabelaNormiCijenaComponent.cijenaAnimalLiscariTankaOblovina;
 
   trosakSjeceCetinari;
   trosakSjeceLiscari;
@@ -134,7 +135,7 @@ export class PrihodiComponent implements OnInit {
   cjenaKubik;
   trosakCetinariLiscari;
   dobit;
-// evo ti ovde srednji precnik CETINARI I LIscari
+
   srednjiPrecnikCet = this.sortimenti.cetinari.srednjiPrecnik;
   srednjiPrecnikLis = this.sortimenti.liscari.srednjiPrecnik;
 
