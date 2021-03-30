@@ -191,14 +191,14 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     //console.log(this.norme.podaci.usloviRadaCetAnimal);
 
-    this.norme.podaci.normaCetAnimalTrupci= this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
+    this.norme.podaci.normaCetAnimalTrupci = this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
     this.norme.podaci.normaCetAnimalTankaOblovina = this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][1][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
     this.norme.podaci.normaLisAnimalTrupci = this.norme.animalLis[this.norme.podaci.usloviRadaLisAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()];
     this.norme.podaci.normaLisAnimalTankaOblovina = this.norme.animalLis[this.norme.podaci.usloviRadaLisAnimal.toString()][1][this.norme.podaci.distancaPrivlacenjaAnimal.toString()]
-    //console.log(this.norme.podaci.normaCetAnimalTrupci);
-    //console.log(this.norme.podaci.normaCetAnimalTankaOblovina);
-    //console.log(this.norme.podaci.normaLisAnimalTrupci);
-    .//console.log(this.norme.podaci.normaLisAnimalTankaOblovina);
+    console.log(this.norme.podaci.normaCetAnimalTrupci);
+    console.log(this.norme.podaci.normaCetAnimalTankaOblovina);
+    console.log(this.norme.podaci.normaLisAnimalTrupci);
+    console.log(this.norme.podaci.normaLisAnimalTankaOblovina);
     //console.log(this.norme.animalCet[this.norme.podaci.usloviRadaCetAnimal.toString()][0][this.norme.podaci.distancaPrivlacenjaAnimal.toString()]);
 
 // Sjeca norma

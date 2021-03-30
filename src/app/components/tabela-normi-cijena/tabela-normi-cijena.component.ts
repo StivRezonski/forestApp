@@ -18,10 +18,11 @@ export class TabelaNormiCijenaComponent implements OnInit {
 
  cijenaSjeceCetinari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaCetSjeca;
  cijenaSjeceLiscari = this.norme.cijenaRadnogDanaSjeca / this.podaci.normaLisSjeca;
-
- //cijenaAnimalCetinari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaCetAnimal;
- //cijenaAnimalLiscari = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaLisAnimal;
-
+ cijenAnimalCetinariTrupci = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaCetAnimalTrupci;
+ cijenaAnimalCetinariTankaOblovina = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaCetAnimalTankaOblovina;
+ cijenaAnimalLiscariTrupci = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaLisAnimalTrupci;
+ cijenaAnimalLiscariTankaOblovina = this.norme.cijenaRadnogDanaAnimal / this.podaci.normaLisAnimalTankaOblovina;
+ 
 
 
 
@@ -37,6 +38,7 @@ export class TabelaNormiCijenaComponent implements OnInit {
 
   ngOnInit(): void {
     console.log( this.cijenaSjeceCetinari);
+    //console.log(this.cijenaAnimalLiscariTrupci)
   //console.log(this.normeSjece.cijenaSjeceCet)
 
   }
