@@ -1,4 +1,4 @@
-export class SumaSmrca {
+export class Smrca {
   fTrupci: number;
   lKlase: number;
   prvaKlasa: number;
