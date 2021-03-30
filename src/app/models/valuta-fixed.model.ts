@@ -20,6 +20,9 @@ export class ValutaFixed{
   ukupnoPrvaBukva;
   ukupnoDrugaBukva;
   ukupnoTrecaBukva;
+  ukupnoCelulozaBukva;
+  ukupnoOgrevPrvaBukva;
+  ukupnoOgrevDrugaBukva;
   ukupnoOgrevBukva;
   ukupnoBukva;
   ukupnoValuta;

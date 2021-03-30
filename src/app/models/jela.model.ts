@@ -13,6 +13,6 @@ export class Jela{
   netoJela: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
-  sumaCeluloze: number;
+  // sumaCeluloze: number;
 }
 
