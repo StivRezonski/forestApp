@@ -1,5 +1,5 @@
-export class SumaBukva {
-  fTrupci: number;
+export class Liscari {
+  fKlase: number;
   lKlase: number;
   prvaKlasa: number;
   drugaKlasa: number;
@@ -7,8 +7,7 @@ export class SumaBukva {
   celuloznoDrvo: number;
   ogrevPrveKlase: number;
   ogrevDrugeKlase: number;
-  netoBukva: number;
+  netoLiscari: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
-  netoOgrev: number;
 }

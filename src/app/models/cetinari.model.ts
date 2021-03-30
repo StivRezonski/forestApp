@@ -1,5 +1,5 @@
-export class SumaSmrca {
-  fTrupci: number;
+export class Cetinari {
+  fKlase: number;
   lKlase: number;
   prvaKlasa: number;
   drugaKlasa: number;
@@ -8,8 +8,9 @@ export class SumaSmrca {
   jamskoDrvo: number;
   koljeZaVoce: number;
   celuloznoDrvo: number;
-  netoSmrca: number;
+  ogrevPrveKlase: number;
+  ogrevDrugeKlase: number;
+  netoCetinara: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
-  sumaCeluloze: number;
 }

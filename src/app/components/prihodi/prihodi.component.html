@@ -2,8 +2,7 @@
 <img class="rounded-circle circle-sizer" *ngIf="showSikiraImage" src="/assets/panjSikira.jpg" alt="image">
 
 <div class="sortimentna-tabela">
-<!--  ovo vrati u table class ispod linija 6 nakon print edita *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable"-->
-<table class="table table-bordered prihod-realizacija">
+<table class="table table-bordered prihod-realizacija" *ngIf="jelaShowTable || smrcaShowTable || bukvaShowTable">
   <thead class="thead-dark">
   <tr>
     <th class="bg-siva" scope="col" colspan="5">Prihodi od realizacije drvnih sortimenata</th>
@@ -22,98 +21,98 @@
     <td>F</td>
     <td>{{fTrupciJela}}</td>
     <td>{{cjenaFJela}}</td>
-    <td>{{valutaFixed.ukupnoFJela}}</td>
+    <td>{{valuta.ukupnoFJela}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
     <td>I</td>
     <td>{{prvaKlasaJela}}</td>
     <td>{{cjenaPrvaJela}}</td>
-    <td>{{valutaFixed.ukupnoPrvaJela}}</td>
+    <td>{{valuta.ukupnoPrvaJela}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
     <td>II</td>
     <td>{{drugaKlasaJela}}</td>
     <td>{{cjenaDrugaJela}}</td>
-    <td>{{valutaFixed.ukupnoDrugaJela}}</td>
+    <td>{{valuta.ukupnoDrugaJela}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
     <td>III</td>
     <td>{{trecaKlasaJela}}</td>
     <td>{{cjenaTrecaJela}}</td>
-    <td>{{valutaFixed.ukupnoTrecaJela}}</td>
+    <td>{{valuta.ukupnoTrecaJela}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
     <td>TT stubovi</td>
     <td>{{stuboviJela}}</td>
     <td>{{cjenaStuboviJela}}</td>
-    <td>{{valutaFixed.ukupnoStuboviJela}}</td>
+    <td>{{valuta.ukupnoStuboviJela}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
     <td>Rudno</td>
     <td>{{rudnoJela}}</td>
     <td>{{cjenaRudnoJela}}</td>
-    <td>{{valutaFixed.ukupnoRudnoJela}}</td>
+    <td>{{valuta.ukupnoRudnoJela}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
     <td>Celuloza</td>
     <td>{{celulozaJela}}</td>
     <td>{{cjenaCelulozaJela}}</td>
-    <td>{{valutaFixed.ukupnoCelulozaJela}}</td>
+    <td>{{valuta.ukupnoCelulozaJela}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>F</td>
     <td>{{fTrupciSmrca}}</td>
     <td>{{cjenaFSmrca}}</td>
-    <td>{{valutaFixed.ukupnoFSmrca}}</td>
+    <td>{{valuta.ukupnoFSmrca}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>I</td>
     <td>{{prvaKlasaSmrca}}</td>
     <td>{{cjenaPrvaSmrca}}</td>
-    <td>{{valutaFixed.ukupnoPrvaSmrca}}</td>
+    <td>{{valuta.ukupnoPrvaSmrca}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>II</td>
     <td>{{drugaKlasaSmrca}}</td>
     <td>{{cjenaDrugaSmrca}}</td>
-    <td>{{valutaFixed.ukupnoDrugaSmrca}}</td>
+    <td>{{valuta.ukupnoDrugaSmrca}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>III</td>
     <td>{{trecaKlasaSmrca}}</td>
     <td>{{cjenaTrecaSmrca}}</td>
-    <td>{{valutaFixed.ukupnoTrecaSmrca}}</td>
+    <td>{{valuta.ukupnoTrecaSmrca}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>TT stubovi</td>
     <td>{{stuboviSmrca}}</td>
     <td>{{cjenaStuboviSmrca}}</td>
-    <td>{{valutaFixed.ukupnoStuboviSmrca}}</td>
+    <td>{{valuta.ukupnoStuboviSmrca}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>Rudno</td>
     <td>{{rudnoSmrca}}</td>
     <td>{{cjenaRudnoSmrca}}</td>
-    <td>{{valutaFixed.ukupnoRudnoSmrca}}</td>
+    <td>{{valuta.ukupnoRudnoSmrca}}</td>
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
     <td>Celuloza</td>
     <td>{{celulozaSmrca}}</td>
     <td>{{cjenaCelulozaSmrca}}</td>
-    <td>{{valutaFixed.ukupnoCelulozaSmrca}}</td>
+    <td>{{valuta.ukupnoCelulozaSmrca}}</td>
   </tr>
 
   <tr class="bg" *ngIf="bukvaShowTable">
@@ -121,50 +120,50 @@
     <td>F</td>
     <td>{{fTrupciBukva}}</td>
     <td>{{cjenaFBukva}}</td>
-    <td>{{valutaFixed.ukupnoFBukva}}</td>
+    <td>{{valuta.ukupnoFBukva}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="bukvaShowTable">
     <th scope="row">41</th>
     <td>L</td>
     <td>{{lTrupciBukva}}</td>
     <td>{{cjenaLBukva}}</td>
-    <td>{{valutaFixed.ukupnoLBukva}}</td>
+    <td>{{valuta.ukupnoLBukva}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="bukvaShowTable">
     <th scope="row">41</th>
     <td>I</td>
     <td>{{prvaKlasaBukva}}</td>
     <td>{{cjenaPrvaBukva}}</td>
-    <td>{{valutaFixed.ukupnoPrvaBukva}}</td>
+    <td>{{valuta.ukupnoPrvaBukva}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="bukvaShowTable">
     <th scope="row">41</th>
     <td>II</td>
     <td>{{drugaKlasaBukva}}</td>
     <td>{{cjenaDrugaBukva}}</td>
-    <td>{{valutaFixed.ukupnoDrugaBukva}}</td>
+    <td>{{valuta.ukupnoDrugaBukva}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="bukvaShowTable">
     <th scope="row">41</th>
     <td>III</td>
     <td>{{trecaKlasaBukva}}</td>
     <td>{{cjenaTrecaBukva}}</td>
-    <td>{{valutaFixed.ukupnoTrecaBukva}}</td>
+    <td>{{valuta.ukupnoTrecaBukva}}</td>
   </tr>
   <tr class="bg-suma" *ngIf="bukvaShowTable">
     <th scope="row">41</th>
     <td>Ogrevno drvo</td>
     <td>{{ogrevBukva}}</td>
-    <td>{{cjenaOgrevBukva}}</td>
-    <td>{{valutaFixed.ukupnoOgrevBukva}}</td>
+    <td>{{cjenaZajednoOgrev}}</td>
+    <td>{{valuta.ukupnoOgrevBukva}}</td>
   </tr>
 
   <tr class="bg-suma">
     <th scope="row">Ukupno</th>
     <td></td>
-    <td>{{valutaFixed.ukupnoSortimenti}}</td>
+    <td>{{valuta.ukupnoSortimenti}}</td>
     <td></td>
-    <td>{{valutaFixed.ukupnoValuta}}</td>
+    <td>{{valuta.ukupnoValuta}}</td>
   </tr>
 
 
@@ -197,28 +196,28 @@
     <tr>
       <td scope="row" rowspan="2">Sjeca i izrada</td>
       <td scope="row" rowspan="1">cetinari</td>
-      <td scope="row" rowspan="1">{{valutaFixed.ukupnoCetinari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.cjenaSjeceCetinari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.trosakSjeceCetinari}}</td>
+      <td scope="row" rowspan="1">{{valuta.ukupnoCetinari}}</td>
+      <td scope="row" rowspan="1">{{valuta.cjenaSjeceCetinari}}</td>
+      <td scope="row" rowspan="1">{{valuta.trosakSjeceCetinari}}</td>
     </tr>
     <tr>
       <td scope="row" rowspan="1">liscari</td>
-      <td scope="row" rowspan="1">{{valutaFixed.ukupnoLiscari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.cjenaSjeceLiscari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.trosakSjeceLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.ukupnoLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.cjenaSjeceLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.trosakSjeceLiscari}}</td>
     </tr>
     <tr>
       <td scope="row" rowspan="2">Privlacenje</td>
       <td scope="row" rowspan="1">cetinari</td>
-      <td scope="row" rowspan="1">{{valutaFixed.ukupnoCetinari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.cjenaAnimalCetinari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.trosakAnimalCetinari}}</td>
+      <td scope="row" rowspan="1">{{valuta.ukupnoCetinari}}</td>
+      <td scope="row" rowspan="1">{{valuta.cjenaAnimalCetinari}}</td>
+      <td scope="row" rowspan="1">{{valuta.trosakAnimalCetinari}}</td>
     </tr>
     <tr>
       <td scope="row" rowspan="1">liscari</td>
-      <td scope="row" rowspan="1">{{valutaFixed.ukupnoLiscari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.cjenaAnimalLiscari}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.trosakAnimalLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.ukupnoLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.cjenaAnimalLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.trosakAnimalLiscari}}</td>
     </tr>
     <tr>
       <td scope="row" rowspan="2">Iznosenje</td>
@@ -236,9 +235,9 @@
     <tr>
       <td scope="row" rowspan="2">Ukupno</td>
       <td scope="row" rowspan="1"></td>
-      <td scope="row" rowspan="1">{{valutaFixed.ukupnoSortimenti}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.cjenaKubik}}</td>
-      <td scope="row" rowspan="1">{{valutaFixed.trosakCetinariLiscari}}</td>
+      <td scope="row" rowspan="1">{{valuta.ukupnoSortimenti}}</td>
+      <td scope="row" rowspan="1">{{valuta.cjenaKubik}}</td>
+      <td scope="row" rowspan="1">{{valuta.trosakCetinariLiscari}}</td>
     </tr>
     </tbody>
   </table>
@@ -252,27 +251,22 @@
       </tr>
       <tr>
         <th class="bg-siva" scope="col">Prihodi</th>
-        <td scope="row" rowspan="1">{{valutaFixed.ukupnoValuta}}</td>
+        <td scope="row" rowspan="1">{{valuta.ukupnoValuta}}</td>
       </tr>
       </thead>
       <tbody>
 
       <tr>
         <th scope="row" rowspan="1">Direktni troskovi</th>
-        <td scope="row" rowspan="1">{{valutaFixed.trosakCetinariLiscari}}</td>
+        <td scope="row" rowspan="1">{{valuta.trosakCetinariLiscari}}</td>
       </tr>
 
       <tr>
         <th scope="row" rowspan="1">Dobit</th>
-        <td scope="row" rowspan="2">{{valutaFixed.dobit}}</td>
+        <td scope="row" rowspan="2">{{valuta.dobit}}</td>
       </tr>
       </tbody>
     </table>
 </div>
-<button class="button-print" (click)="printPage()"
-        *ngIf="notForPrint">Printaj projekat</button>
 
-<!--<div>projektant {{projektant}}</div>-->
-<!--<div>gazdinstvo {{gazdinstvo}}</div>-->
-<!--<div>Vrsta sjece {{vrstaSjece}}</div>-->
-<!--<div>privredna jedinica {{privrednaJedinica}}</div>-->
+<button class="btn btn-primary" (click)="printPage()">Print</button>

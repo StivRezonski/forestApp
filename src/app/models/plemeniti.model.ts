@@ -1,4 +1,4 @@
-export class SumaPlemeniti{
+export class Plemeniti{
   fTrupci: number;
   lKlase: number;
   prvaKlasa: number;
