@@ -11,5 +11,5 @@ export class Smrca {
   netoSmrca: number;
   sveukupnaDrvnaMasa: number;
   srednjiPrecnik: number;
-  sumaCeluloze: number;
+  // sumaCeluloze: number;
 }

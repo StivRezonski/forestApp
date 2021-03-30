@@ -108,7 +108,7 @@ export class SortimentiComponent implements OnInit {
         this.jela.drugaKlasa + this.jela.trecaKlasa + this.jela.stubovi +
         this.jela.jamskoDrvo + this.jela.koljeZaVoce +
         this.jela.celuloznoDrvo;
-      this.jela.sumaCeluloze = this.jela.celuloznoDrvo + this.jela.koljeZaVoce;
+      // this.jela.sumaCeluloze = this.jela.celuloznoDrvo + this.jela.koljeZaVoce;
     }
   }
 
@@ -127,7 +127,7 @@ export class SortimentiComponent implements OnInit {
       this.smrca.netoSmrca = this.smrca.fTrupci + this.smrca.prvaKlasa +
         this.smrca.drugaKlasa + this.smrca.trecaKlasa + this.smrca.stubovi +
         this.smrca.jamskoDrvo + this.smrca.koljeZaVoce + this.smrca.celuloznoDrvo;
-      this.smrca.sumaCeluloze = this.smrca.celuloznoDrvo + this.smrca.koljeZaVoce;
+      // this.smrca.sumaCeluloze = this.smrca.celuloznoDrvo + this.smrca.koljeZaVoce;
     }
   }
 
