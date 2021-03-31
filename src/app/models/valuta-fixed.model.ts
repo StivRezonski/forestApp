@@ -34,8 +34,8 @@ export class ValutaFixed{
   trosakSjeceCetinari;
   trosakSjeceLiscari;
   trosakCetinariLiscari;
-  cjenaAnimalCetinari;
-  cjenaAnimalLiscari;
+  cjenaDebelaTankaCet;
+  cjenaDebelaTankaLis;
   trosakAnimalCetinari;
   trosakAnimalLiscari;
   cjenaKubik;
