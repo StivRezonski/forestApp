@@ -109,12 +109,15 @@ export class PrihodiComponent implements OnInit {
   ukupnoCetinari = this.sortimenti.netoCetinari;
   ukupnoLiscari = this.sortimenti.netoLiscari;
 
-  cjenaSjeceCetinari = this.tabelaNormiCijenaComponent.cijenaSjeceCetinari;
-  cjenaSjeceLiscari = this.tabelaNormiCijenaComponent.cijenaSjeceLiscari;
+  cjenaSjeceCetinari = this.tabelaNormi.cijenaSjeceCetinari;
+  cjenaSjeceLiscari = this.tabelaNormi.cijenaSjeceLiscari;
 
-
-  cjenaAnimalCetinari = this.tabelaNormiCijenaComponent.cijenAnimalCetinariTrupci + this.tabelaNormiCijenaComponent.cijenaAnimalCetinariTankaOblovina;
-  cjenaAnimalLiscari = this.tabelaNormiCijenaComponent.cijenaAnimalLiscariTrupci + this.tabelaNormiCijenaComponent.cijenaAnimalLiscariTankaOblovina;
+  cjenaDebelaOblovinaCet;
+  cjenaTankaOblovinaCet;
+  cjenaDebelaTankaCet;
+  cjenaDebelaOblovinaLis;
+  cjenaTankaOblovinaLis;
+  cjenaDebelaTankaLis;
 
   trosakSjeceCetinari;
   trosakSjeceLiscari;
@@ -144,7 +147,7 @@ export class PrihodiComponent implements OnInit {
   constructor(public sortimenti: SortimentiComponent,
               public valuta: ValutaFixed,
               private opstiPodaciComponent: OpstiPodaciComponent,
-              private tabelaNormiCijenaComponent: TabelaNormiCijenaComponent) {
+              private tabelaNormi: TabelaNormiCijenaComponent) {
   }
 
 
@@ -240,10 +243,18 @@ export class PrihodiComponent implements OnInit {
       this.stuboviSmrca + this.rudnoSmrca + this.koljeSmrca + (0.7 * this.celulozaSmrca);
 
     this.iznosCet = (0.3 * this.celulozaJela) + (0.3 * this.celulozaSmrca);
+    // za cjenu cetinari
+    this.cjenaDebelaOblovinaCet = this.tabelaNormi.cijenAnimalCetinariTrupci * this.debelaOblovinaCet;
+    this.cjenaTankaOblovinaCet = this.tabelaNormi.cijenaAnimalCetinariTankaOblovina * this.tankaOblovinaCet;
+    this.cjenaDebelaTankaCet = this.cjenaDebelaOblovinaCet + this.cjenaTankaOblovinaCet;
 
     this.debelaOblovinaLis = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva;
     this.tankaOblovinaLis = this.celulozaBukva + this.ogrevPrveBukva;
     this.iznosLis = this.ogrevDrugeBukva;
+    // za cjenu liscara
+    this.cjenaDebelaOblovinaLis = this.tabelaNormi.cijenaAnimalLiscariTrupci * this.debelaOblovinaLis;
+    this.cjenaTankaOblovinaLis = this.tabelaNormi.cijenaAnimalCetinariTankaOblovina * this.debelaOblovinaLis;
+    this.cjenaDebelaTankaLis = this.cjenaDebelaOblovinaLis + this.cjenaTankaOblovinaLis;
 
     this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
       this.ukupnoRudnoJela + this.ukupnoKoljeJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca +
@@ -254,7 +265,7 @@ export class PrihodiComponent implements OnInit {
     this.putValueToFixed();
   }
 
-
+  // probati bolji nacin
   putValueToFixed(): void {
     this.valuta.ukupnoValuta = this.ukupnoValuta.toFixed(2);
     this.valuta.ukupnoFJela = this.ukupnoFJela.toFixed(2);
@@ -300,8 +311,8 @@ export class PrihodiComponent implements OnInit {
       this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
       this.valuta.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
       this.valuta.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
-      // this.valuta.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
-      // this.valuta.cjenaAnimalCetinari = this.cjenaAnimalCetinari.toFixed(2);
+      this.valuta.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
+      this.valuta.cjenaDebelaTankaCet = this.cjenaDebelaTankaCet.toFixed(2);
     }
 
     if (this.ukupnoLiscari === undefined) {
@@ -314,25 +325,32 @@ export class PrihodiComponent implements OnInit {
       } else {
         this.valuta.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
       }
+      // srediti
+      this.valuta.cjenaDebelaTankaLis = this.cjenaDebelaTankaLis.toFixed(2);
+      this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
       if (this.trosakAnimalLiscari === undefined) {
         this.trosakAnimalLiscari = 0;
       } else {
         this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
       }
-      this.valuta.cjenaAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
+      this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
     }
     if (this.dobit === undefined) {
       this.dobit = 0;
     } else {
       this.valuta.dobit = this.dobit.toFixed(2);
     }
+    console.log(this.valuta.cjenaDebelaTankaCet);
+    console.log(this.valuta.trosakAnimalCetinari);
+    console.log(this.valuta.cjenaDebelaTankaLis);
+    console.log(this.valuta.trosakAnimalLiscari);
   }
 
   izracunajTroskove(): void {
     this.trosakSjeceCetinari = this.ukupnoCetinari * this.cjenaSjeceCetinari;
-    // this.trosakSjeceLiscari = this.ukupnoLiscari * this.cjenaSjeceLiscari;
-    // this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaAnimalCetinari;
-    // this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaAnimalLiscari;
+    this.trosakSjeceLiscari = this.ukupnoLiscari * this.cjenaSjeceLiscari;
+    this.trosakAnimalCetinari = this.ukupnoCetinari * this.cjenaDebelaTankaCet;
+    this.trosakAnimalLiscari = this.ukupnoLiscari * this.cjenaDebelaTankaLis;
     this.trosakCetinariLiscari = this.trosakSjeceCetinari + this.trosakSjeceLiscari + this.trosakAnimalCetinari + this.trosakAnimalLiscari;
     this.cjenaKubik = this.trosakCetinariLiscari / this.ukupnoSortimenti;
     this.dobit = this.ukupnoValuta - this.trosakCetinariLiscari;
