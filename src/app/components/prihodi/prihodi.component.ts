@@ -219,131 +219,102 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoOgrevBukva = 0;
       this.ukupnoBukva = 0;
     }
-
-
+// test vjezba brisi
+    // Ukupno Sortimenti svih vrsta
     this.ukupnoSortimenti = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
       this.stuboviJela + this.rudnoJela + this.koljeJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca +
       this.drugaKlasaSmrca + this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.koljeSmrca + this.celulozaSmrca +
       this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva +
       this.celulozaBukva + this.ogrevPrveBukva + this.ogrevDrugeBukva;
 
+    // Ukupno Cetinari
     this.ukupnoCetinari = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
       this.stuboviJela + this.rudnoJela + this.koljeJela + this.celulozaJela + this.fTrupciSmrca + this.prvaKlasaSmrca +
       this.drugaKlasaSmrca + this.trecaKlasaSmrca + this.stuboviSmrca + this.rudnoSmrca + this.koljeSmrca + this.celulozaSmrca;
 
-
+    // Ukupno Liscari
     this.ukupnoLiscari = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva +
       this.celulozaBukva + this.ogrevPrveBukva + this.ogrevDrugeBukva;
 
-
+    // Ukupno debela, tanka i iznos cetinari
     this.debelaOblovinaCet = this.fTrupciJela + this.prvaKlasaJela + this.drugaKlasaJela + this.trecaKlasaJela +
       this.fTrupciSmrca + this.prvaKlasaSmrca + this.drugaKlasaSmrca + this.trecaKlasaSmrca;
+    // this.debelaOblovinaCet.toFixed(2);
 
     this.tankaOblovinaCet = this.stuboviJela + this.rudnoJela + this.koljeJela + (0.7 * this.celulozaJela) +
       this.stuboviSmrca + this.rudnoSmrca + this.koljeSmrca + (0.7 * this.celulozaSmrca);
-
     this.iznosCet = (0.3 * this.celulozaJela) + (0.3 * this.celulozaSmrca);
-    // za cjenu cetinari
+
+    // Ukupno cjena cetinari sa normama
     this.cjenaDebelaOblovinaCet = this.tabelaNormi.cijenAnimalCetinariTrupci * this.debelaOblovinaCet;
     this.cjenaTankaOblovinaCet = this.tabelaNormi.cijenaAnimalCetinariTankaOblovina * this.tankaOblovinaCet;
     this.cjenaDebelaTankaCet = this.cjenaDebelaOblovinaCet + this.cjenaTankaOblovinaCet;
 
+    // Ukupno debela, tanka i iznos liscari
     this.debelaOblovinaLis = this.fTrupciBukva + this.lTrupciBukva + this.prvaKlasaBukva + this.drugaKlasaBukva + this.trecaKlasaBukva;
     this.tankaOblovinaLis = this.celulozaBukva + this.ogrevPrveBukva;
     this.iznosLis = this.ogrevDrugeBukva;
-    // za cjenu liscara
+
+    // Ukupno cjena liscara sa normama
     this.cjenaDebelaOblovinaLis = this.tabelaNormi.cijenaAnimalLiscariTrupci * this.debelaOblovinaLis;
     this.cjenaTankaOblovinaLis = this.tabelaNormi.cijenaAnimalCetinariTankaOblovina * this.debelaOblovinaLis;
     this.cjenaDebelaTankaLis = this.cjenaDebelaOblovinaLis + this.cjenaTankaOblovinaLis;
 
+    // Ukupno prihoda za sve vrste
     this.ukupnoValuta = this.ukupnoFJela + this.ukupnoPrvaJela + this.ukupnoDrugaJela + this.ukupnoTrecaJela + this.ukupnoStuboviJela +
       this.ukupnoRudnoJela + this.ukupnoKoljeJela + this.ukupnoCelulozaJela + this.ukupnoFSmrca + this.ukupnoPrvaSmrca +
-      this.ukupnoDrugaSmrca + this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + +this.ukupnoKoljeSmrca +
+      this.ukupnoDrugaSmrca + this.ukupnoTrecaSmrca + this.ukupnoStuboviSmrca + this.ukupnoRudnoSmrca + this.ukupnoKoljeSmrca +
       this.ukupnoCelulozaSmrca + this.ukupnoFBukva + this.ukupnoLBukva + this.ukupnoPrvaBukva + this.ukupnoDrugaBukva +
       this.ukupnoTrecaBukva + this.ukupnoCelulozaBukva + this.ukupnoOgrevPrvaBukva + this.ukupnoOgrevDrugaBukva;
+
     this.izracunajTroskove();
     this.putValueToFixed();
   }
 
-  // probati bolji nacin
   putValueToFixed(): void {
-    this.valuta.ukupnoValuta = this.ukupnoValuta.toFixed(2);
     this.valuta.ukupnoFJela = this.ukupnoFJela.toFixed(2);
     this.valuta.ukupnoPrvaJela = this.ukupnoPrvaJela.toFixed(2);
     this.valuta.ukupnoDrugaJela = this.ukupnoDrugaJela.toFixed(2);
     this.valuta.ukupnoTrecaJela = this.ukupnoTrecaJela.toFixed(2);
     this.valuta.ukupnoStuboviJela = this.ukupnoStuboviJela.toFixed(2);
     this.valuta.ukupnoRudnoJela = this.ukupnoRudnoJela.toFixed(2);
+    this.valuta.ukupnoKoljeJela = this.ukupnoKoljeJela.toFixed(2);
     this.valuta.ukupnoCelulozaJela = this.ukupnoCelulozaJela.toFixed(2);
-    this.valuta.ukupnoJela = this.ukupnoJela.toFixed(2);
     this.valuta.ukupnoFSmrca = this.ukupnoFSmrca.toFixed(2);
     this.valuta.ukupnoPrvaSmrca = this.ukupnoPrvaSmrca.toFixed(2);
     this.valuta.ukupnoDrugaSmrca = this.ukupnoDrugaSmrca.toFixed(2);
     this.valuta.ukupnoTrecaSmrca = this.ukupnoTrecaSmrca.toFixed(2);
     this.valuta.ukupnoStuboviSmrca = this.ukupnoStuboviSmrca.toFixed(2);
     this.valuta.ukupnoRudnoSmrca = this.ukupnoRudnoSmrca.toFixed(2);
+    this.valuta.ukupnoKoljeSmrca = this.ukupnoKoljeSmrca.toFixed(2);
     this.valuta.ukupnoCelulozaSmrca = this.ukupnoCelulozaSmrca.toFixed(2);
-    this.valuta.ukupnoSmrca = this.ukupnoSmrca.toFixed(2);
     this.valuta.ukupnoFBukva = this.ukupnoFBukva.toFixed(2);
     this.valuta.ukupnoLBukva = this.ukupnoLBukva.toFixed(2);
     this.valuta.ukupnoPrvaBukva = this.ukupnoPrvaBukva.toFixed(2);
     this.valuta.ukupnoDrugaBukva = this.ukupnoDrugaBukva.toFixed(2);
     this.valuta.ukupnoTrecaBukva = this.ukupnoTrecaBukva.toFixed(2);
-    this.valuta.ukupnoCelulozaBukva = this.ukupnoCelulozaBukva.toFixed(2);
-    this.valuta.ukupnoOgrevPrvaBukva = this.ukupnoOgrevPrvaBukva.toFixed(2);
-    this.valuta.ukupnoOgrevDrugaBukva = this.ukupnoOgrevDrugaBukva.toFixed(2);
     this.valuta.ukupnoOgrevBukva = this.ukupnoOgrevBukva.toFixed(2);
-    this.valuta.ukupnoBukva = this.ukupnoBukva.toFixed(2);
+    this.valuta.ogrevZajednoBukva = this.ogrevBukva.toFixed(2);
     this.valuta.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
-    if (this.trosakCetinariLiscari === undefined) {
-      this.trosakCetinariLiscari = 0;
-    } else {
-      this.valuta.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
-    }
-    if (this.cjenaKubik === undefined) {
-      this.cjenaKubik = 0;
-    } else {
-      this.valuta.cjenaKubik = this.cjenaKubik.toFixed(2);
-    }
-    if (this.ukupnoCetinari === undefined) {
-      this.ukupnoCetinari = 0;
-    } else {
-      this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
-      this.valuta.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
-      this.valuta.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
-      this.valuta.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
-      this.valuta.cjenaDebelaTankaCet = this.cjenaDebelaTankaCet.toFixed(2);
-    }
-
-    if (this.ukupnoLiscari === undefined) {
-      this.ukupnoLiscari = 0;
-    } else {
-      this.valuta.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
-      this.valuta.cjenaSjeceLiscari = this.cjenaSjeceLiscari.toFixed(2);
-      if (this.trosakSjeceLiscari === undefined) {
-        this.trosakSjeceLiscari = 0;
-      } else {
-        this.valuta.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
-      }
-      // srediti
-      this.valuta.cjenaDebelaTankaLis = this.cjenaDebelaTankaLis.toFixed(2);
-      this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
-      if (this.trosakAnimalLiscari === undefined) {
-        this.trosakAnimalLiscari = 0;
-      } else {
-        this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
-      }
-      this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
-    }
-    if (this.dobit === undefined) {
-      this.dobit = 0;
-    } else {
-      this.valuta.dobit = this.dobit.toFixed(2);
-    }
-    console.log(this.valuta.cjenaDebelaTankaCet);
-    console.log(this.valuta.trosakAnimalCetinari);
-    console.log(this.valuta.cjenaDebelaTankaLis);
-    console.log(this.valuta.trosakAnimalLiscari);
+    this.valuta.ukupnoValuta = this.ukupnoValuta.toFixed(2);
+    this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
+    this.valuta.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
+    this.valuta.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
+    this.valuta.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
+    this.valuta.cjenaSjeceLiscari = this.cjenaSjeceLiscari.toFixed(2);
+    this.valuta.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
+    this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
+    this.valuta.cjenaDebelaTankaCet = this.cjenaDebelaTankaCet.toFixed(2);
+    this.valuta.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
+    this.valuta.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
+    this.valuta.cjenaDebelaTankaLis = this.cjenaDebelaTankaLis.toFixed(2);
+    this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
+    this.valuta.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
+    this.valuta.cjenaKubik = this.cjenaKubik.toFixed(2);
+    this.valuta.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
+    this.valuta.ukupnoValuta = this.ukupnoValuta.toFixed(2);
+    this.valuta.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
+    this.valuta.dobit = this.dobit.toFixed(2);
   }
 
   izracunajTroskove(): void {

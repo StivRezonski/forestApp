@@ -5,6 +5,7 @@ export class ValutaFixed{
   ukupnoTrecaJela;
   ukupnoStuboviJela;
   ukupnoRudnoJela;
+  ukupnoKoljeJela;
   ukupnoCelulozaJela;
   ukupnoJela;
   ukupnoFSmrca;
@@ -13,6 +14,7 @@ export class ValutaFixed{
   ukupnoTrecaSmrca;
   ukupnoStuboviSmrca;
   ukupnoRudnoSmrca;
+  ukupnoKoljeSmrca;
   ukupnoCelulozaSmrca;
   ukupnoSmrca;
   ukupnoFBukva;
@@ -24,6 +26,7 @@ export class ValutaFixed{
   ukupnoOgrevPrvaBukva;
   ukupnoOgrevDrugaBukva;
   ukupnoOgrevBukva;
+  ogrevZajednoBukva;
   ukupnoBukva;
   ukupnoValuta;
   ukupnoSortimenti;
