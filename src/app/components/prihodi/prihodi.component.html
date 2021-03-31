@@ -60,6 +60,13 @@
   </tr>
   <tr class="bg-suma" *ngIf="jelaShowTable">
     <th scope="row">21</th>
+    <td>Kolje za voce</td>
+    <td>{{koljeJela}}</td>
+    <td>{{cjenaKoljeJela}}</td>
+    <td>{{valuta.ukupnoKoljeJela}}</td>
+  </tr>
+  <tr class="bg-suma" *ngIf="jelaShowTable">
+    <th scope="row">21</th>
     <td>Celuloza</td>
     <td>{{celulozaJela}}</td>
     <td>{{cjenaCelulozaJela}}</td>
@@ -109,6 +116,13 @@
   </tr>
   <tr class="bg-siva" *ngIf="smrcaShowTable">
     <th scope="row">22</th>
+    <td>Kolje za voce</td>
+    <td>{{koljeSmrca}}</td>
+    <td>{{cjenaKoljeSmrca}}</td>
+    <td>{{valuta.ukupnoKoljeSmrca}}</td>
+  </tr>
+  <tr class="bg-siva" *ngIf="smrcaShowTable">
+    <th scope="row">22</th>
     <td>Celuloza</td>
     <td>{{celulozaSmrca}}</td>
     <td>{{cjenaCelulozaSmrca}}</td>
@@ -153,7 +167,7 @@
   <tr class="bg-suma" *ngIf="bukvaShowTable">
     <th scope="row">41</th>
     <td>Ogrevno drvo</td>
-    <td>{{ogrevBukva}}</td>
+    <td>{{valuta.ogrevZajednoBukva}}</td>
     <td>{{cjenaZajednoOgrev}}</td>
     <td>{{valuta.ukupnoOgrevBukva}}</td>
   </tr>
