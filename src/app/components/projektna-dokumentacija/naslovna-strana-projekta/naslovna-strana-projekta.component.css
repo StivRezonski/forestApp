@@ -1,0 +1,144 @@
+.memorandum{
+  margin-left: 600px;
+  padding-top: 0px;
+}
+
+.gazdinstvo{
+  font-weight: bold;
+  margin-left: 600px;
+}
+
+.broj-rjesenja{
+  margin-left: 600px;
+}
+
+.naslov{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 170px;
+}
+
+.odjel{
+  padding-top: 25px;
+  text-align: center;
+}
+
+.privredna-jedinica{
+  padding-top: 30px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.privredno-podrucje{
+  padding-top: 5px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container-bottom{
+  padding-top: 500px;
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.projektant{
+  margin-right: 350px;
+}
+
+.rukovodilac{
+  margin-right: 50px;
+}
+
+.titula-wrapper{
+  display: flex;
+}
+
+.titula-projektant{
+  margin-right: 80px;
+}
+
+.titula-sef{
+  margin-left: 220px;
+  margin-right: 100px;
+}
+
+@media print {
+
+.memorandum{
+  margin-left: 100px;
+  padding-top: 0px;
+}
+
+.gazdinstvo{
+  font-weight: bold;
+  margin-left: 100px;
+}
+
+.broj-rjesenja{
+  margin-left: 100px;
+}
+
+.naslov{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 100px;
+}
+
+.odjel{
+  padding-top: 7px;
+  text-align: center;
+}
+
+.privredna-jedinica{
+  padding-top: 7px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+  .privredno-podrucje{
+    padding-top: 5px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+.container-bottom{
+  padding-top: 150px;
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.projektant{
+  margin-right: 350px;
+}
+
+.rukovodilac{
+  margin-right: 50px;
+}
+
+.titula-wrapper{
+  display: flex;
+}
+
+.titula-projektant{
+  margin-right: 80px;
+}
+
+.titula-sef{
+  margin-left: 220px;
+  margin-right: 100px;
+}
+
+
+}
