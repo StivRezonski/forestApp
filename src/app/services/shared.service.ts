@@ -49,5 +49,21 @@ export class SharedService {
     ];
   }
 
+  getSumskoPrivrednoPodrucje(): any {
+    return [
+      {id: '1', name: 'Istocnodrvarsko'},
+      {id: '2', name: 'SPP 2'},
+      {id: '3', name: 'Spp 3'},
+    ];
+  }
+
+  getGrad(): any {
+    return [
+      {id: '1', name: 'Ribnik'},
+      {id: '2', name: 'Istocni Drvar'},
+      {id: '3', name: 'Drinic'},
+    ];
+  }
+
 
 }

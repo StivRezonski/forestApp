@@ -21,6 +21,8 @@ import { OpstiPodaciComponent } from './components/opsti-podaci/opsti-podaci.com
 import { SharedService } from './services/shared.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OpstiPodaci } from './models/opsti-podaci.model';
+import { ProjektnaDokumentacijaComponent } from './components/projektna-dokumentacija/projektna-dokumentacija.component';
+import { NaslovnaStranaProjektaComponent } from './components/projektna-dokumentacija/naslovna-strana-projekta/naslovna-strana-projekta.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import { OpstiPodaci } from './models/opsti-podaci.model';
     UnosPodatakaSjecaComponent,
     PrihodiComponent,
     TabelaNormiCijenaComponent,
-    OpstiPodaciComponent
+    OpstiPodaciComponent,
+    ProjektnaDokumentacijaComponent,
+    NaslovnaStranaProjektaComponent
   ],
 
   providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,

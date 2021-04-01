@@ -56,6 +56,28 @@
         </select>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="sumskoPrivrednoPodrucje">Izaberi SPP</label>
+        <select class="form-select" formControlName="sumskoPrivrednoPodrucje" id="sumskoPrivrednoPodrucje">
+          <option *ngFor="let list of sumskoPrivrednoPodrucje; let i = index" [value]="sumskoPrivrednoPodrucje[i].name">
+            {{sumskoPrivrednoPodrucje[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="grad">Izaberi Grad</label>
+        <select class="form-select" formControlName="grad" id="grad">
+          <option *ngFor="let list of grad; let i = index" [value]="grad[i].name">
+            {{grad[i].name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
     <button class="btn btn-primary">submit</button>
   </div>
 </form>
