@@ -7,4 +7,5 @@ export class OpstiPodaci {
   vrstaSjece = [];
   sumskoPrivrednoPodrucje = [];
   izabraniOdjel: number;
+  rukovodilacPripreme = [];
 }

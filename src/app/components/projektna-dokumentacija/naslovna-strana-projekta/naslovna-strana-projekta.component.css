@@ -1,6 +1,6 @@
 .memorandum{
   margin-left: 600px;
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .gazdinstvo{
@@ -57,23 +57,39 @@
 
 .titula-wrapper{
   display: flex;
+  justify-content: space-between;
 }
 
 .titula-projektant{
-  margin-right: 80px;
+  margin-left: 600px;
+  text-align: left;
+  white-space: nowrap;
 }
 
+.titula-projektant::before
+{
+  content: attr(inzenjer);
+}
+
+
 .titula-sef{
-  margin-left: 220px;
-  margin-right: 100px;
+  margin-right: 650px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.titula-sef::after
+{
+  content: attr(sef);
 }
 
 @media print {
 
 .memorandum{
   margin-left: 100px;
-  padding-top: 0px;
+  padding-top: 0;
 }
+
 
 .gazdinstvo{
   font-weight: bold;
@@ -127,18 +143,37 @@
   margin-right: 50px;
 }
 
-.titula-wrapper{
-  display: flex;
-}
 
-.titula-projektant{
-  margin-right: 80px;
-}
+  .titula-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
 
-.titula-sef{
-  margin-left: 220px;
-  margin-right: 100px;
-}
+  .titula-projektant{
+      margin-right: 0;
+      margin-left: 0;
+    text-align: left;
+    white-space: nowrap;
+  }
 
+  .titula-projektant::before
+  {
+    content: attr(inzenjer);
+  }
+
+
+  .titula-sef{
+    margin-right: 50px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .titula-sef::after
+  {
+    content: attr(sef);
+  }
+  .btn{
+    visibility: hidden;
+  }
 
 }

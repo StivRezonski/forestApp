@@ -1,4 +1,5 @@
-<img class="memorandum" src="/assets/memorandum.png" alt="image">
+<div class="memo"><img class="memorandum" src="/assets/memorandum.png" alt="image"></div>
+<div class="body1">
 <div class="gazdinstvo">Шумско Газдинство  „{{gazdinstvo}}“  {{ grad}}</div>
 <div class="broj-rjesenja">Број: ______________/21</div>
 <div class="broj-rjesenja">  Дана: _____________2021. године</div>
@@ -12,8 +13,9 @@
 <div class="rukovodilac">РУКОВОДИЛАЦ СЛУЖБЕ<br> ПРИПРЕМЕ ПРОИЗВОДЊЕ:</div>
 </div>
 <div class="titula-wrapper jc-center">
-  <div class="titula-projektant"> {{projektant}} дипл.инж.шум.</div>
-  <div class="titula-sef">Tadic Milan дипл.инж.шум.</div>
+  <div class="titula-projektant inzenjer">{{projektant}} дипл.инж.шум.</div>
+  <div class="titula-sef sef">{{sef}} дипл.инж.шум.</div>
 </div>
 
 <button class="btn btn-primary" (click)="printPage()">Print</button>
+</div>

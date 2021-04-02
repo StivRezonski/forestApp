@@ -14,6 +14,7 @@ export class NaslovnaStranaProjektaComponent implements OnInit {
   privrednaJedinica = this.opstiPodaci.privrednaJedinica;
   sumskoPrivrednoPodrucje = this.opstiPodaci.sumskoPrivrednoPodrucje;
   projektant = this.opstiPodaci.projektant;
+  sef = this.opstiPodaci.rukovodilacPripreme;
 
   constructor(private opstiPodaci: OpstiPodaci) { }
 
