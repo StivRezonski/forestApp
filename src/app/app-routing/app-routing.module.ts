@@ -8,6 +8,7 @@ import { TabelaNormiCijenaComponent } from '../components/tabela-normi-cijena/ta
 import { OpstiPodaciComponent } from '../components/opsti-podaci/opsti-podaci.component';
 import { ProjektnaDokumentacijaComponent } from '../components/projektna-dokumentacija/projektna-dokumentacija.component';
 import { NaslovnaStranaProjektaComponent } from '../components/projektna-dokumentacija/naslovna-strana-projekta/naslovna-strana-projekta.component';
+import { UvodTekstComponent } from '../components/projektna-dokumentacija/uvod-tekst/uvod-tekst.component';
 
 
 
@@ -21,8 +22,10 @@ const routes: Routes = [
   {path: 'dokumentacija', component: ProjektnaDokumentacijaComponent,
     children: [
       {
-        path: 'naslovna',
-        component: NaslovnaStranaProjektaComponent,
+        path: 'naslovna', component: NaslovnaStranaProjektaComponent
+      },
+      {
+        path: 'uvod-tekst', component: UvodTekstComponent
       },
     ]
   },

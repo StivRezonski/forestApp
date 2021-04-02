@@ -1,0 +1,31 @@
+.naslov {
+  padding-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sadrzaj-container{
+  page-break-before: always;
+}
+
+
+.sadrzaj-paragraf {
+  font-weight: bold;
+}
+
+li {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.podnaslov {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tekst-paragraf {
+  padding-top: 10px;
+  text-align: justify;
+}

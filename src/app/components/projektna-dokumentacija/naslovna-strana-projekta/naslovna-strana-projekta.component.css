@@ -172,8 +172,5 @@
   {
     content: attr(sef);
   }
-  .btn{
-    visibility: hidden;
-  }
 
 }

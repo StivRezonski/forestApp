@@ -21,8 +21,5 @@ export class NaslovnaStranaProjektaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  printPage(): void {
-    window.print();
-  }
 
 }

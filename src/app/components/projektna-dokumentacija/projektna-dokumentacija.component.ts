@@ -12,4 +12,8 @@ export class ProjektnaDokumentacijaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  printPage(): void {
+    window.print();
+  }
+
 }

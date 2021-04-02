@@ -23,6 +23,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OpstiPodaci } from './models/opsti-podaci.model';
 import { ProjektnaDokumentacijaComponent } from './components/projektna-dokumentacija/projektna-dokumentacija.component';
 import { NaslovnaStranaProjektaComponent } from './components/projektna-dokumentacija/naslovna-strana-projekta/naslovna-strana-projekta.component';
+import { UvodTekstComponent } from './components/projektna-dokumentacija/uvod-tekst/uvod-tekst.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { NaslovnaStranaProjektaComponent } from './components/projektna-dokument
     TabelaNormiCijenaComponent,
     OpstiPodaciComponent,
     ProjektnaDokumentacijaComponent,
-    NaslovnaStranaProjektaComponent
+    NaslovnaStranaProjektaComponent,
+    UvodTekstComponent
   ],
 
   providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,
