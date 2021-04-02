@@ -43,8 +43,16 @@ export class SharedService {
 
   getProjektant(): any {
     return [
-      {id: '1', name: 'Inzenjer-1'},
-      {id: '2', name: 'Inzenjer-2'},
+      {id: '1', name: 'Kratko ime'},
+      {id: '2', name: 'Dugacko imeInzenjera'},
+      {id: '3', name: 'Inzenjer-3'},
+    ];
+  }
+
+  getRukovodilacPripreme(): any {
+    return [
+      {id: '1', name: 'Kratko ime'},
+      {id: '2', name: 'Dugacko imeInzenjera'},
       {id: '3', name: 'Inzenjer-3'},
     ];
   }

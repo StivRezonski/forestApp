@@ -19,6 +19,7 @@ export class OpstiPodaciComponent implements OnInit {
   projektant = [];
   vrstaSjece = [];
   sumskoPrivrednoPodrucje = [];
+  rukovodilacPripreme = [];
   constructor(private formBuilder: FormBuilder, private sharedService: SharedService,
               public opstiPodaci: OpstiPodaci) {
     this.opstaForma = this.formBuilder.group({
@@ -28,7 +29,8 @@ export class OpstiPodaciComponent implements OnInit {
       privrednaJedinica: [''],
       projektant: [''],
       vrstaSjece: [''],
-      sumskoPrivrednoPodrucje: ['']
+      sumskoPrivrednoPodrucje: [''],
+      rukovodilacPripreme: ['']
     });
 
     this.grad = this.sharedService.getGrad();
@@ -38,6 +40,7 @@ export class OpstiPodaciComponent implements OnInit {
     this.projektant = this.sharedService.getProjektant();
     this.vrstaSjece = this.sharedService.getVrstaSjece();
     this.sumskoPrivrednoPodrucje = this.sharedService.getSumskoPrivrednoPodrucje();
+    this.rukovodilacPripreme = this.sharedService.getRukovodilacPripreme();
   }
 
   ngOnInit(): void {
@@ -52,6 +55,7 @@ export class OpstiPodaciComponent implements OnInit {
     this.opstiPodaci.projektant = this.opstaForma.get('projektant').value;
     this.opstiPodaci.sumskoPrivrednoPodrucje = this.opstaForma.get('sumskoPrivrednoPodrucje').value;
     this.opstiPodaci.grad = this.opstaForma.get('grad').value;
+    this.opstiPodaci.rukovodilacPripreme = this.opstaForma.get('rukovodilacPripreme').value;
   }
 
 }
