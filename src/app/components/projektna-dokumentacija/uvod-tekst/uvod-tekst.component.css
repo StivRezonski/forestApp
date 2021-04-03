@@ -3,6 +3,13 @@
   font-weight: bold;
   text-align: center;
 }
+.uvod{
+  page-break-before: always;
+}
+
+.tehnologija{
+  page-break-before: always;
+}
 
 .sadrzaj-container{
   page-break-before: always;
