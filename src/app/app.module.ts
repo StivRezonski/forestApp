@@ -16,7 +16,6 @@ import { Plemeniti } from './models/plemeniti.model';
 import { Cetinari } from './models/cetinari.model';
 import { Liscari } from './models/liscari.model';
 import { TabelaNormiCijenaComponent } from './components/tabela-normi-cijena/tabela-normi-cijena.component';
-import { ValutaFixed } from './models/valuta-fixed.model';
 import { OpstiPodaciComponent } from './components/opsti-podaci/opsti-podaci.component';
 import { SharedService } from './services/shared.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -49,7 +48,7 @@ import { RjesenjePracenjeComponent } from './components/projektna-dokumentacija/
   ],
 
   providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,
-    Smrca, Bukva, Plemeniti, CetinariLiscari, Cetinari, Liscari, ValutaFixed, SharedService, HttpClient,
+    Smrca, Bukva, Plemeniti, CetinariLiscari, Cetinari, Liscari, SharedService, HttpClient,
     OpstiPodaci],
   bootstrap: [AppComponent]
 })
