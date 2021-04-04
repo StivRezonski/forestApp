@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SortimentiComponent } from '../sortimenti/sortimenti.component';
-import { ValutaFixed } from '../../models/valuta-fixed.model';
 import { OpstiPodaciComponent } from '../opsti-podaci/opsti-podaci.component';
 import { TabelaNormiCijenaComponent } from '../tabela-normi-cijena/tabela-normi-cijena.component';
 
@@ -145,7 +144,6 @@ export class PrihodiComponent implements OnInit {
   odjel = this.opstiPodaciComponent.opstiPodaci.izabraniOdjel;
 
   constructor(public sortimenti: SortimentiComponent,
-              public valuta: ValutaFixed,
               private opstiPodaciComponent: OpstiPodaciComponent,
               private tabelaNormi: TabelaNormiCijenaComponent) {
   }
@@ -173,6 +171,7 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoTrecaJela = 0;
       this.ukupnoStuboviJela = 0;
       this.ukupnoRudnoJela = 0;
+      this.ukupnoKoljeJela = 0;
       this.ukupnoCelulozaJela = 0;
       this.ukupnoJela = 0;
     }
@@ -193,6 +192,7 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoTrecaSmrca = 0;
       this.ukupnoStuboviSmrca = 0;
       this.ukupnoRudnoSmrca = 0;
+      this.ukupnoKoljeSmrca = 0;
       this.ukupnoCelulozaSmrca = 0;
       this.ukupnoSmrca = 0;
     }
@@ -268,54 +268,8 @@ export class PrihodiComponent implements OnInit {
       this.ukupnoTrecaBukva + this.ukupnoCelulozaBukva + this.ukupnoOgrevPrvaBukva + this.ukupnoOgrevDrugaBukva;
 
     this.izracunajTroskove();
-    this.putValueToFixed();
   }
 
-  putValueToFixed(): void {
-    this.valuta.ukupnoFJela = this.ukupnoFJela.toFixed(2);
-    this.valuta.ukupnoPrvaJela = this.ukupnoPrvaJela.toFixed(2);
-    this.valuta.ukupnoDrugaJela = this.ukupnoDrugaJela.toFixed(2);
-    this.valuta.ukupnoTrecaJela = this.ukupnoTrecaJela.toFixed(2);
-    this.valuta.ukupnoStuboviJela = this.ukupnoStuboviJela.toFixed(2);
-    this.valuta.ukupnoRudnoJela = this.ukupnoRudnoJela.toFixed(2);
-    this.valuta.ukupnoKoljeJela = this.ukupnoKoljeJela.toFixed(2);
-    this.valuta.ukupnoCelulozaJela = this.ukupnoCelulozaJela.toFixed(2);
-    this.valuta.ukupnoFSmrca = this.ukupnoFSmrca.toFixed(2);
-    this.valuta.ukupnoPrvaSmrca = this.ukupnoPrvaSmrca.toFixed(2);
-    this.valuta.ukupnoDrugaSmrca = this.ukupnoDrugaSmrca.toFixed(2);
-    this.valuta.ukupnoTrecaSmrca = this.ukupnoTrecaSmrca.toFixed(2);
-    this.valuta.ukupnoStuboviSmrca = this.ukupnoStuboviSmrca.toFixed(2);
-    this.valuta.ukupnoRudnoSmrca = this.ukupnoRudnoSmrca.toFixed(2);
-    this.valuta.ukupnoKoljeSmrca = this.ukupnoKoljeSmrca.toFixed(2);
-    this.valuta.ukupnoCelulozaSmrca = this.ukupnoCelulozaSmrca.toFixed(2);
-    this.valuta.ukupnoFBukva = this.ukupnoFBukva.toFixed(2);
-    this.valuta.ukupnoLBukva = this.ukupnoLBukva.toFixed(2);
-    this.valuta.ukupnoPrvaBukva = this.ukupnoPrvaBukva.toFixed(2);
-    this.valuta.ukupnoDrugaBukva = this.ukupnoDrugaBukva.toFixed(2);
-    this.valuta.ukupnoTrecaBukva = this.ukupnoTrecaBukva.toFixed(2);
-    this.valuta.ukupnoOgrevBukva = this.ukupnoOgrevBukva.toFixed(2);
-    this.valuta.ogrevZajednoBukva = this.ogrevBukva.toFixed(2);
-    this.valuta.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
-    this.valuta.ukupnoValuta = this.ukupnoValuta.toFixed(2);
-    this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
-    this.valuta.cjenaSjeceCetinari = this.cjenaSjeceCetinari.toFixed(2);
-    this.valuta.trosakSjeceCetinari = this.trosakSjeceCetinari.toFixed(2);
-    this.valuta.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
-    this.valuta.cjenaSjeceLiscari = this.cjenaSjeceLiscari.toFixed(2);
-    this.valuta.trosakSjeceLiscari = this.trosakSjeceLiscari.toFixed(2);
-    this.valuta.ukupnoCetinari = this.ukupnoCetinari.toFixed(2);
-    this.valuta.cjenaDebelaTankaCet = this.cjenaDebelaTankaCet.toFixed(2);
-    this.valuta.trosakAnimalCetinari = this.trosakAnimalCetinari.toFixed(2);
-    this.valuta.ukupnoLiscari = this.ukupnoLiscari.toFixed(2);
-    this.valuta.cjenaDebelaTankaLis = this.cjenaDebelaTankaLis.toFixed(2);
-    this.valuta.trosakAnimalLiscari = this.trosakAnimalLiscari.toFixed(2);
-    this.valuta.ukupnoSortimenti = this.ukupnoSortimenti.toFixed(2);
-    this.valuta.cjenaKubik = this.cjenaKubik.toFixed(2);
-    this.valuta.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
-    this.valuta.ukupnoValuta = this.ukupnoValuta.toFixed(2);
-    this.valuta.trosakCetinariLiscari = this.trosakCetinariLiscari.toFixed(2);
-    this.valuta.dobit = this.dobit.toFixed(2);
-  }
 
   izracunajTroskove(): void {
     this.trosakSjeceCetinari = this.ukupnoCetinari * this.cjenaSjeceCetinari;
