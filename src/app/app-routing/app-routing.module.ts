@@ -11,6 +11,8 @@ import { NaslovnaStranaProjektaComponent } from '../components/projektna-dokumen
 import { UvodTekstComponent } from '../components/projektna-dokumentacija/uvod-tekst/uvod-tekst.component';
 import { OdlukaUsvajanjeComponent } from '../components/projektna-dokumentacija/odluka-usvajanje/odluka-usvajanje.component';
 import { RjesenjePracenjeComponent } from '../components/projektna-dokumentacija/rjesenje-pracenje/rjesenje-pracenje.component';
+import { SortimentnaStrukturaComponent } from '../components/sortimentna-struktura/sortimentna-struktura.component';
+import { RealizacijaComponent } from '../components/realizacija/realizacija.component';
 
 
 
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path: 'norme-cijene', component: TabelaNormiCijenaComponent},
   {path: 'sortimenti', component: SortimentiComponent },
   {path: 'prihodi', component: PrihodiComponent },
+  {path: 'sortimentna-struktura', component: SortimentnaStrukturaComponent },
+  {path: 'realizacija', component: RealizacijaComponent },
   {path: 'dokumentacija', component: ProjektnaDokumentacijaComponent,
     children: [
       {

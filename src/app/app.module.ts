@@ -25,6 +25,9 @@ import { NaslovnaStranaProjektaComponent } from './components/projektna-dokument
 import { UvodTekstComponent } from './components/projektna-dokumentacija/uvod-tekst/uvod-tekst.component';
 import { OdlukaUsvajanjeComponent } from './components/projektna-dokumentacija/odluka-usvajanje/odluka-usvajanje.component';
 import { RjesenjePracenjeComponent } from './components/projektna-dokumentacija/rjesenje-pracenje/rjesenje-pracenje.component';
+import { SortimentnaStrukturaComponent } from './components/sortimentna-struktura/sortimentna-struktura.component';
+import { RealizacijaComponent } from './components/realizacija/realizacija.component';
+import { TrupciService } from './services/trupci.service';
 
 @NgModule({
   imports: [
@@ -44,12 +47,14 @@ import { RjesenjePracenjeComponent } from './components/projektna-dokumentacija/
     NaslovnaStranaProjektaComponent,
     UvodTekstComponent,
     OdlukaUsvajanjeComponent,
-    RjesenjePracenjeComponent
+    RjesenjePracenjeComponent,
+    SortimentnaStrukturaComponent,
+    RealizacijaComponent
   ],
 
   providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,
     Smrca, Bukva, Plemeniti, CetinariLiscari, Cetinari, Liscari, SharedService, HttpClient,
-    OpstiPodaci],
+    OpstiPodaci, TrupciService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
