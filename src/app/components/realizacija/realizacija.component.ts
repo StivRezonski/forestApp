@@ -13,7 +13,12 @@ export class RealizacijaComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(
+      this.trupci.sumCet,
+      this.trupci.debelaOblovinaCet
+    );
+  }
 }
 
 

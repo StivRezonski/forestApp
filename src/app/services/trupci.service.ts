@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TrupciService {
   klase = ['F', 'L', 'I', 'II', 'III', 'TT', 'R', 'Kolje za voce', 'Celuloza', 'Ogrev I', 'ogrev II', 'Sveukupna', 'Neto'];
-    trupciJela = [];
-    trupciSmrca = [];
-    trupciBukva = [];
-    trupciHrast = [];
+  trupciJela = [];
+  trupciSmrca = [];
+  trupciBukva = [];
+  trupciHrast = [];
 
   jelaSaNeto = [];
   smrcaSaNeto = [];
@@ -24,7 +25,13 @@ export class TrupciService {
   sumLis = [];
   sumCetLis = [];
 
-  debelaOblovina = [];
+  debelaOblovinaCet = [];
+  tankaOblovinaCet = [];
+  iznosCet = [];
+
+  debelaOblovinaLis = [];
+  tankaOblovinaLis = [];
+  iznosLis = [];
 
   // sume sortimenata bez Neto i sveukupne
   ukupnoSortimenti = [];
@@ -39,5 +46,6 @@ export class TrupciService {
   cijenaHrast = [505, 410, 265, 200, 165, 52, 67, 67, 0, 0, 0];
 
 
-  constructor() { }
+  constructor() {
+  }
 }
