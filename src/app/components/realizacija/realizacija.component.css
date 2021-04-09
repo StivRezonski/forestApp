@@ -1,67 +1,9 @@
 
-.sortimentna-tabela {
-  background-color: khaki;
-  margin-top: 15px;
-  margin-left: 550px;
-  margin-right: 550px;
-  margin-bottom: 30px;
-  text-align: center;
+.table{
+  table-layout: fixed;
 }
 
-.prihodi-headers{
-  margin-left: 900px;
+.prihod{
+  margin: 100px;
+text-align: center;
 }
-
-.bg-siva{
-  background-color: #C0C0C0;
-}
-
-.circle-sizer{
-  display: block;
-  margin: 100px auto 150px;
-  width: 250px;
-  height: 250px;
-}
-
-.sikira-header{
-  margin-top: 25px;
-  margin-left: 800px;
-  font-size: 20px;
-}
-
-.btn {
-  margin-left: 1500px;
-}
-
-@media print {
-  .btn, .sikira-header  {
-    visibility: hidden;
-  }
-  .sortimentna-tabela, #section-to-print {
-    visibility: visible;
-  }
-  .sortimentna-tabela {
-    page-break-after : always;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-    height: 2px;
-    padding-top: 0;
-    padding-bottom: 0;
-    line-height: 1;
-  }
-
-  .troskovi-sjece {
-    page-break-after: avoid;
-  }
-  .dobit-tabela {
-    page-break-after: avoid;
-    width: 60%;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-left: 220px;
-  }
-
-}
-
-

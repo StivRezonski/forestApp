@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { SortimentiComponent } from './components/sortimenti/sortimenti.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UnosPodatakaSjecaComponent } from './components/unos-podataka-sjeca/unos-podataka-sjeca.component';
 import { NormeService } from './services/norme.service';
-import { PrihodiComponent } from './components/prihodi/prihodi.component';
 import { Jela } from './models/jela.model';
 import { Smrca } from './models/smrca.model';
 import { CetinariLiscari } from './models/cetinari-liscari.model';
@@ -38,9 +36,7 @@ import { TrupciService } from './services/trupci.service';
   ],
   declarations: [
     AppComponent,
-    SortimentiComponent,
     UnosPodatakaSjecaComponent,
-    PrihodiComponent,
     TabelaNormiCijenaComponent,
     OpstiPodaciComponent,
     ProjektnaDokumentacijaComponent,
@@ -52,7 +48,7 @@ import { TrupciService } from './services/trupci.service';
     RealizacijaComponent
   ],
 
-  providers: [SortimentiComponent, UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,
+  providers: [UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,
     Smrca, Bukva, Plemeniti, CetinariLiscari, Cetinari, Liscari, SharedService, HttpClient,
     OpstiPodaci, TrupciService],
   bootstrap: [AppComponent]
