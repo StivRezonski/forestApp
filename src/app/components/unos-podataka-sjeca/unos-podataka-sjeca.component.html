@@ -1,86 +1,131 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xl-4 offset-xl-4">
-            <select class="form-select" (change) = "dohvatiNagibTerena($event)">
-                <option selected>Nagib terena</option>
-                <option value=1>Do 15</option>
-                <option value=3>15-30</option>
-                <option value=11>Preko 30</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiGustinuPodmlatka($event)">
-                <option selected>Gustina podmlatka</option>
-                <option value="1">Neznatan</option>
-                <option value="4">Srednje gust</option>
-                <option value="10">Gust</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiUcesceLiscara($event)">
-                <option selected>Ucesce liscara</option>
-                <option value="1">Cisti cetinari</option>
-                <option value="3">Do 50% liscara</option>
-                <option value="6">Preko 50% liscara</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiDoznacenuMasu($event)">
-                <option selected>Doznačena masa po ha</option>
-                <option value="4">> 80 m3</option>
-                <option value="6">60-80 m3</option>
-                <option value="10">vece od 60 m3</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiNadmorskuVisinu($event)">
-                <option selected>Srednja nadmorska visina</option>
-                <option value="1">Do 1000 mnv</option>
-                <option value="3">1001-1500 mnv</option>
-                <option value="6">Veća od 1501 mnv</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiSrednjuUdaljenostOdCeste($event)">
-                <option selected>Srednja udaljenost od ceste</option>
-                <option value="3">Do 500 m</option>
-                <option value="5">1500-1500 m</option>
-                <option value="12">Veća od 1501 mnv</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiSrednjuUdaljenostOdStale($event)">
-                <option selected>Srednja udaljenost od stale</option>
-                <option value="2">Do 1 km</option>
-                <option value="5">Od 1 - 3 km</option>
-                <option value="8">Preko 3 km</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiSrednjiPrecnikCetinari($event)">
-                <option selected>Srednji prečnik četinara</option>
-                <option value="3">Veći od 46 cm</option>
-                <option value="5">31-45 cm</option>
-                <option value="12">Do 30 cm</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiSrednjiPrecnikLiscari($event)">
-                <option selected>Srednji prečnik lišćara</option>
-                <option value="3">Veći od 46 cm</option>
-                <option value="5">31-45 cm</option>
-                <option value="12">Do 30 cm</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiBonitetCetinari($event)">
-                <option selected>Bonitet</option>
-                <option value="1">Prvi</option>
-                <option value="2">Drugi</option>
-                <option value="3">Treći</option>
-                <option value="4">Četvrti</option>
-                <option value="5">Peti</option>
-            </select> <br>
-            <select class="form-select" (change) = "dohvatiBonitetLiscari($event)">
-                <option selected>Bonitet</option>
-                <option value="1">Prvi</option>
-                <option value="2">Drugi</option>
-                <option value="3">Treći</option>
-                <option value="4">Četvrti</option>
-                <option value="5">Peti</option>
-            </select> <br>
-
-            <input placeholder="Unijeti sr. precnik cetinara" (change)="unosSrednjiPrecnikCetinari($event)"> <br>
-            <input placeholder="Unijeti sr. precnik liscara" (change)="unosSrednjiPrecnikLiscari($event)"> <br>
-            <input placeholder="Unijeti distacu privlacenja" (change)="unosUdaljenostOdCeste($event)"> <br> <br>
-          
-            <button class="btn-primary" (click) = "izracunajNorme()">Potvrdi norme</button>
-
-           
+    <div class="row form-row">
+        <div class="col-4 offset-4">
+    <div class="card text-center">
+        <div class="card-header bg-info">
+          <h5>Unesite precnike po vrstama i uslove rada</h5> 
         </div>
+        <div class="card-body">
+                  <form [formGroup]='unosPrecnika'>
+            <div class="form-group">
+                <select class="form-select"   
+                        formControlName="vrsta" class="form-control" 
+                        id="vrsta"
+                        required>
+                    <option [ngValue]="null" [disabled]="true">Vrsta drveta</option>   
+                    <option [ngValue]="1">Jela</option>
+                    <option [ngValue]="2">Smrca</option>
+                    <option [ngValue]="3">B. bor</option>
+                    <option [ngValue]="4">C. bor</option>
+                    <option [ngValue]="5">Bukva</option>
+                    <option [ngValue]="6">Hrast</option>
+                    <option [ngValue]="7">Pl. liscari</option>
+                    <option [ngValue]="8">Ostali liscari</option>
+                </select></div>
+                <br>
+                <div class="form-group">
+                <input type="number" placeholder="Srednji precnik" class="form-control" formControlName="precnik">
 
+        <span *ngIf="unosPrecnika.get('precnik').errors">
+        KOKKOK
+        </span>
     </div>
+
+                     <br>
+                     <div class="form-group">
+                <button class="btn btn-warning" (click)="unesiPrecnik()">Potvrdi vrstu i precnik</button> <br> <br> <hr>
+        
+            </div>
+        </form>
+            <form [formGroup]='unosUslovaRada'>
+                <div class="form-group">
+                    <select class="form-select" formControlName="nagibSjeca">
+                        <option [ngValue]="null" [disabled]="true">Nagib terena - sjeca)</option>
+                        <option [ngValue]="1">Do 15`</option>
+                        <option [ngValue]="3">Od 15-30`</option>
+                        <option [ngValue]="11">Preko 30`</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="gustinaPodmlatkaSjeca">
+                        <option [ngValue]="null" [disabled]="true">Gustina podmlatka - sjeca</option>
+                        <option [ngValue]="1">Neznatan</option>
+                        <option [ngValue]="4">Srednje gust</option>
+                        <option [ngValue]="10">Gust</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="doznacenaMasaSjeca">
+                        <option [ngValue]="null" [disabled]="true">Doznacena masa - sjeca</option>
+                        <option [ngValue]="4">Veca od 80 m3/ha</option>
+                        <option [ngValue]="6">60-80 m3/ha</option>
+                        <option [ngValue]="10">Do 60 m3/ha</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="nadmorskaVisinaSjecaAnimal">
+                        <option [ngValue]="null" [disabled]="true">Nadmorska visina</option>
+                        <option [ngValue]="1">Do 1000 mnv</option>
+                        <option [ngValue]="3">1000-1500 mnv</option>
+                        <option [ngValue]="6">Iznad 1500 mnv</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="udaljenostOdCesteSjeca">
+                        <option [ngValue]="null" [disabled]="true">Udaljenost od ceste - sjeca</option>
+                        <option [ngValue]="3">Do 500 m</option>
+                        <option [ngValue]="5">500-1500 m</option>
+                        <option [ngValue]="12">Iznad 1500 m</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="nagibAnimal">
+                        <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
+                        <option [ngValue]="4">10`-20`</option>
+                        <option [ngValue]="6">Veci od 20`</option>
+                        <option [ngValue]="10">0`-10`</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="ucesceLiscaraAnimal">
+                        <option [ngValue]="null" [disabled]="true">Ucesce liscara - animal</option>
+                        <option [ngValue]="1">Cisti cetinari</option>
+                        <option [ngValue]="3">Do 50 %</option>
+                        <option [ngValue]="6">Preko 50 %</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="gustinaPodmlatkaAnimal">
+                        <option [ngValue]="null" [disabled]="true">Gustina podmlatka - animal</option>
+                        <option [ngValue]="2">Neznatan</option>
+                        <option [ngValue]="4">Srednje gust</option>
+                        <option [ngValue]="9">Gust</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="doznacenaMasaAnimal">
+                        <option [ngValue]="null" [disabled]="true">Doznacena masa - animal</option>
+                        <option [ngValue]="1">Veca od 80 m3/ha</option>
+                        <option [ngValue]="3">60-80 m3/ha</option>
+                        <option [ngValue]="6">Do 60 m3/ha</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="udaljenostOdStale">
+                        <option [ngValue]="null" [disabled]="true">Udaljenost od stale</option>
+                        <option [ngValue]="2">Do 1 km</option>
+                        <option [ngValue]="5">1-3 km</option>
+                        <option [ngValue]="8">Preko 3 km</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="bonitetCetinari">
+                        <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
+                        <option selected>Bonitet</option>
+                        <option value="1">Prvi</option>
+                        <option value="2">Drugi</option>
+                        <option value="3">Treći</option>
+                        <option value="4">Četvrti</option>
+                        <option value="5">Peti</option>
+                    </select> <br>
+                    <select class="form-select" formControlName="bonitetLiscari">
+                        <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
+                        <option selected>Bonitet</option>
+                        <option value="1">Prvi</option>
+                        <option value="2">Drugi</option>
+                        <option value="3">Treći</option>
+                        <option value="4">Četvrti</option>
+                        <option value="5">Peti</option>
+                    </select> <br>
+                    <input type="number" formControlName="animalDistanca" placeholder="Animal distanca" class="form-control"> <br>
+        
+                      <button type="submit" class="btn btn-primary" (click)="potvrdi()" >Submit</button>
+                </div>
+                 
+              </form>
         </div>
+      </div>
+    </div>
+    </div>
+</div>
 

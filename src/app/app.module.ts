@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SortimentiComponent } from './components/sortimenti/sortimenti.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnosPodatakaSjecaComponent } from './components/unos-podataka-sjeca/unos-podataka-sjeca.component';
 import { NormeService } from './services/norme.service';
 import { PrihodiComponent } from './components/prihodi/prihodi.component';
@@ -26,6 +26,7 @@ import { OpstiPodaci } from './models/opsti-podaci.model';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
