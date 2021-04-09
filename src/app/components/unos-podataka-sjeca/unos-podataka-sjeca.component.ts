@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SortimentiComponent } from '../sortimenti/sortimenti.component';
 import { NormeService } from '../../services/norme.service';
 
 //import { Sjeca } from '../../models/sjeca';
@@ -12,7 +11,7 @@ import { NormeService } from '../../services/norme.service';
 })
 export class UnosPodatakaSjecaComponent implements OnInit {
 
-  constructor(public sortimenti: SortimentiComponent, private norme: NormeService) {
+  constructor(private norme: NormeService) {
   }
 
   ngOnInit(): void {
@@ -38,8 +37,8 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaLisSjeca;
   p;
   j;
-  sumCetinariNeto = this.sortimenti.netoCetinari;
-  sumLiscariNeto = this.sortimenti.netoLiscari;
+  // sumCetinariNeto = this.sortimenti.netoCetinari;
+  // sumLiscariNeto = this.sortimenti.netoLiscari;
   srPr21;
   srPr22;
   srPr41;
@@ -60,7 +59,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   udaljenostOdStaleBodovi;
   bodoviCetinariAnimal;
   bodoviLiscariAnimal;
-  
+
 
 //ljetoCetinari = this.norme.ljetoCet;
 //ljetoLiscari = this.norme.ljetoLis;
