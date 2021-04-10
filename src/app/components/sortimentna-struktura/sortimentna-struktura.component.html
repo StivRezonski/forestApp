@@ -24,10 +24,13 @@
 
 <!---->
     <div class="row">
+      <div class="col-md-1" *ngIf="rezonantInputs">
+        <label for="rezonant" class="control-label">Rezonantno</label>
+      </div>
       <div class="col-md-1">
         <label for="fTrupci" class="control-label">F trupci</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="lInputs">
         <label for="lTrupci" class="control-label">L trupci</label>
       </div>
       <div class="col-md-1">
@@ -36,25 +39,25 @@
       <div class="col-md-1">
         <label for="drugaKlasa" class="control-label">Druga klasa</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="trecaKlasaInputs">
         <label for="trecaKlasa" class="control-label">Treca klasa</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="tankaOblovinaInputs">
         <label for="stuboviZaVodove" class="control-label">Stubovi za vodove</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="tankaOblovinaInputs">
         <label for="jamskoDrvo" class="control-label">Jamsko drvo</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="tankaOblovinaInputs">
         <label for="koljeZaVoce" class="control-label">Kolje za voce</label>
       </div>
       <div class="col-md-1">
         <label for="celuloznoDrvo" class="control-label">Celulozno drvo</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="ogrevInputs">
         <label for="ogrevPrveKlase" class="control-label">Ogrev prve klase</label>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" *ngIf="ogrevInputs">
         <label for="ogrevDrugeKlase" class="control-label">Ogrev druge klase</label>
       </div>
       <div class="col-md-1">
@@ -63,12 +66,20 @@
     </div>
 
 
+
+
+
+
     <div class="row">
+      <div class="col-sm-1" *ngIf="rezonantInputs">
+        <input type="number" class="form-control" formControlName="rezonant" id="rezonant"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
       <div class="col-sm-1">
         <input type="number" class="form-control bg-secondary text-white" formControlName="fTrupci" id="fTrupci"
                onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="lInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="lTrupci" id="lTrupci"
                onKeyPress="if(this.value.length==9) return false;">
       </div>
@@ -80,19 +91,19 @@
         <input type="number" class="form-control bg-secondary text-white" formControlName="drugaKlasa" id="drugaKlasa"
                onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="trecaKlasaInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="trecaKlasa" id="trecaKlasa"
                onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="tankaOblovinaInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="stuboviZaVodove"
                id="stuboviZaVodove" onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="tankaOblovinaInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="jamskoDrvo" id="jamskoDrvo"
                onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="tankaOblovinaInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="koljeZaVoce" id="koljeZaVoce"
                onKeyPress="if(this.value.length==9) return false;">
       </div>
@@ -100,11 +111,11 @@
         <input type="number" class="form-control bg-secondary text-white" formControlName="celuloznoDrvo"
                id="celuloznoDrvo" onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="ogrevInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevPrveKlase"
                id="ogrevPrveKlase" onKeyPress="if(this.value.length==9) return false;">
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1" *ngIf="ogrevInputs">
         <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevDrugeKlase"
                id="ogrevDrugeKlase" onKeyPress="if(this.value.length==9) return false;">
       </div>
