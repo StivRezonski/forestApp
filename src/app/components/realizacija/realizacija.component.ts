@@ -45,6 +45,35 @@ export class RealizacijaComponent implements OnInit {
     if (this.trupci.ostaliSaNeto[12] > 0){
       this.tabOstali = true;
     }
+
+    // console.log('debela cet', this.trupci.debelaOblovinaCet);
+    // console.log('tanka cet', this.trupci.tankaOblovinaCet);
+    // console.log('iznos cet', this.trupci.iznosCet);
+    // console.log('debela lis', this.trupci.debelaOblovinaLis);
+    // console.log('tanka lis', this.trupci.tankaOblovinaLis);
+    // console.log('iznos lis', this.trupci.iznosLis);
+    //
+    // console.log(this.trupci.vrijednostJela);
+    // console.log(this.trupci.vrijednostSmrca);
+    // console.log(this.trupci.vrijednostBijeliBor);
+    // console.log(this.trupci.vrijednostCrniBor);
+    // console.log(this.trupci.vrijednostBukva);
+    // console.log(this.trupci.vrijednostHrast);
+    // console.log(this.trupci.vrijednostBrijest);
+    // console.log(this.trupci.vrijednostOstali);
+    // console.log(this.trupci.sumCet);
+    // console.log(this.trupci.sumLis);
+    // console.log(this.trupci.sumCetLis);
+    // console.log(this.trupci.debelaOblovinaCet);
+    // console.log(this.trupci.tankaOblovinaCet);
+    // console.log(this.trupci.iznosCet);
+    // console.log(this.trupci.debelaOblovinaLis);
+    // console.log(this.trupci.tankaOblovinaLis);
+    // console.log(this.trupci.iznosLis);
+    // console.log(this.trupci.sveukupnaCet);
+    // console.log(this.trupci.sveukupnaLis);
+    // console.log(this.trupci.ukupnoSortimenti);
+
   }
 }
 
