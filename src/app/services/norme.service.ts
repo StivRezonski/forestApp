@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Sjeca } from '../models/sjeca';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NormeService {
-
-  podaci = new Sjeca();
+  podaciZaIzracunCijene = [];
+  
   cijenaRadnogDanaSjeca = 89.37;
   cijenaRadnogDanaAnimal = 124.63;
   cijenaRadnogDanaTraktor = 696.26;
   cijenaRadnogDanaIznos = 110.06;
 
-  constructor() {}
+  constructor() {
+    
+  }
 
   //Norme sjeca cetinari ljeto
 
   ljetoUslovi1Cet = [
-  {25:'1.0',30:'3.9',35:'5.79',40:'6.89',45:'8.03',50:'9.16',55:'10.3',60:'11.42',65:'12.49',70:'13.54'},
+  {25:'3.54',30:'4.69',35:'5.79',40:'6.89',45:'8.03',50:'9.16',55:'10.3',60:'11.42',65:'12.49',70:'13.54'},
   {25:'3.52',30:'4.53',35:'5.58',40:'6.64',45:'7.68',50:'8.74',55:'9.79',60:'10.78',65:'11.77',70:'12.74'},
   {25:'3.45',30:'4.42',35:'5.36',40:'6.35',45:'7.31',50:'8.24',55:'9.19',60:'10.08',65:'21.85',70:'11.80'},
   {25:'3.20',30:'4.06',35:'4.92',40:'5.82',45:'6.75',50:'7.59',55:'8.45',60:'9.25',65:'10.05',70:'10.82'},
@@ -116,7 +117,7 @@ ljetoLis = [this.ljetoUslovi1Lis, this.ljetoUslovi2Lis, this.ljetoUslovi3Lis, th
     {100:'12.81',200:'9.90',300:'8.12',400:'7.09',500:'5.88',600:'5.17',700:'4.64',800:'4.18',900:'3.82',1000:'3.52',1200:'3.08',1400:'2.68',1600:'2.40',1800:'2.16',2000:'1.96'}
   ];
 
-animalCet = [this.uslovi1AnimalCet, this.ljetoUslovi2Cet, this.uslovi3AnimalCet, this.uslovi4AnimalCet, this.uslovi5AnimalCet];
+animalCet = [this.uslovi1AnimalCet, this.uslovi2AnimalCet, this.uslovi3AnimalCet, this.uslovi4AnimalCet, this.uslovi5AnimalCet];
 
 uslovi1AnimalLis = [
   {100:'18.20',200:'14.96',300:'13.13',400:'11.51',500:'10.32',600:'9.26',700:'8.86',800:'8.34',900:'7.72',1000:'7.16',1200:'6.40',1400:'5.70',1600:'5.15',1800:'4.67',2000:'4.28'},
@@ -139,7 +140,7 @@ uslovi5AnimalLis = [
   {100:'12.81',200:'9.90',300:'8.12',400:'7.09',500:'5.88',600:'5.17',700:'4.64',800:'4.18',900:'3.82',1000:'3.52',1200:'3.08',1400:'2.68',1600:'2.40',1800:'2.16',2000:'1.96'}
 ];
 
-animalLis = [this.uslovi1AnimalLis, this.ljetoUslovi2Lis, this.uslovi3AnimalLis, this.uslovi4AnimalLis, this.uslovi5AnimalLis];
+animalLis = [this.uslovi1AnimalLis, this.uslovi2AnimalLis, this.uslovi3AnimalLis, this.uslovi4AnimalLis, this.uslovi5AnimalLis];
 
 
 }
