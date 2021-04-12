@@ -207,7 +207,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
     // this.sumTrupciAll(this.trupci.trupciJela, this.trupci.trupciSmrca, this.trupci.trupciBijeliBor, this.trupci.trupciCrniBor,
     //   this.trupci.trupciBukva, this.trupci.trupciHrast, this.trupci.trupciBrijest, this.trupci.trupciOstali);
     // promjeniti router na norme
-    this.router.navigate(['/realizacija']);
+    this.router.navigate(['/unospodataka']);
   }
 
 

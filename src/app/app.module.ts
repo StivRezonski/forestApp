@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+// import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -34,18 +34,11 @@ import { TrupciService } from './services/trupci.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RxReactiveFormsModule
+    // RxReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     UnosPodatakaSjecaComponent,
-    OpstiPodaciComponent
-  ],
-
-  providers: [UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, Jela,
-    Smrca, Bukva, Plemeniti, CetinariLiscari, Cetinari, Liscari, ValutaFixed, SharedService, HttpClient,
-    OpstiPodaci],
-    TabelaNormiCijenaComponent,
     OpstiPodaciComponent,
     ProjektnaDokumentacijaComponent,
     NaslovnaStranaProjektaComponent,
@@ -56,9 +49,10 @@ import { TrupciService } from './services/trupci.service';
     RealizacijaComponent
   ],
 
-  providers: [UnosPodatakaSjecaComponent, OpstiPodaciComponent, TabelaNormiCijenaComponent, NormeService, Jela,
+  providers: [UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, Jela,
     Smrca, Bukva, Plemeniti, CetinariLiscari, Cetinari, Liscari, SharedService, HttpClient,
     OpstiPodaci, TrupciService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
