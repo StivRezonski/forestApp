@@ -1,0 +1,287 @@
+<div class="sortimenti-wrapper">
+  <form [formGroup]="sortimentiFormGroup" (ngSubmit)="onSubmit()">
+
+
+    <div class="row">
+      <div class="form-group col-sm-1">
+        <label for="izabranaVrsta">Vrsta drveta</label>
+        <select class="form-control selectSizeCustom" formControlName="izabranaVrsta" id="izabranaVrsta" (click)="onSelectVrsta()">
+          <option value="21">Jela</option>
+          <option value="22">Smrca</option>
+          <option value="23">Bijeli Bor</option>
+          <option value="24">Crni Bor</option>
+          <option value="41">Bukva</option>
+          <option value="42">Hrast</option>
+          <option value="46">Brijest</option>
+          <option value="91">Jasika-Ostali</option>
+
+        </select>
+      </div>
+
+      <img class="rounded-circle circle-sizer" *ngIf="showVrstaImage" src="/assets/{{vrstaSlika}}.png" alt="image">
+    </div>
+
+
+<!---->
+    <div class="row">
+      <div class="col-md-1" *ngIf="rezonantInputs">
+        <label for="rezonant" class="control-label">Rezonantno</label>
+      </div>
+      <div class="col-md-1">
+        <label for="fTrupci" class="control-label">F trupci</label>
+      </div>
+      <div class="col-md-1" *ngIf="lInputs">
+        <label for="lTrupci" class="control-label">L trupci</label>
+      </div>
+      <div class="col-md-1">
+        <label for="prvaKlasa" class="control-label">Prva klasa</label>
+      </div>
+      <div class="col-md-1">
+        <label for="drugaKlasa" class="control-label">Druga klasa</label>
+      </div>
+      <div class="col-md-1" *ngIf="trecaKlasaInputs">
+        <label for="trecaKlasa" class="control-label">Treca klasa</label>
+      </div>
+      <div class="col-md-1" *ngIf="tankaOblovinaInputs">
+        <label for="stuboviZaVodove" class="control-label">Stubovi za vodove</label>
+      </div>
+      <div class="col-md-1" *ngIf="tankaOblovinaInputs">
+        <label for="jamskoDrvo" class="control-label">Jamsko drvo</label>
+      </div>
+      <div class="col-md-1" *ngIf="tankaOblovinaInputs">
+        <label for="koljeZaVoce" class="control-label">Kolje za voce</label>
+      </div>
+      <div class="col-md-1">
+        <label for="celuloznoDrvo" class="control-label">Celulozno drvo</label>
+      </div>
+      <div class="col-md-1" *ngIf="ogrevInputs">
+        <label for="ogrevPrveKlase" class="control-label">Ogrev prve klase</label>
+      </div>
+      <div class="col-md-1" *ngIf="ogrevInputs">
+        <label for="ogrevDrugeKlase" class="control-label">Ogrev druge klase</label>
+      </div>
+      <div class="col-md-1">
+        <label for="sveukupnaDrvnaMasa" class="control-label">Sveukupna masa</label>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-sm-1" *ngIf="rezonantInputs">
+        <input type="number" class="form-control" formControlName="rezonant" id="rezonant"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="fTrupci" id="fTrupci"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="lInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="lTrupci" id="lTrupci"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="prvaKlasa" id="prvaKlasa"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="drugaKlasa" id="drugaKlasa"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="trecaKlasaInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="trecaKlasa" id="trecaKlasa"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="tankaOblovinaInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="stuboviZaVodove"
+               id="stuboviZaVodove" onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="tankaOblovinaInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="jamskoDrvo" id="jamskoDrvo"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="tankaOblovinaInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="koljeZaVoce" id="koljeZaVoce"
+               onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="celuloznoDrvo"
+               id="celuloznoDrvo" onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="ogrevInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevPrveKlase"
+               id="ogrevPrveKlase" onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1" *ngIf="ogrevInputs">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="ogrevDrugeKlase"
+               id="ogrevDrugeKlase" onKeyPress="if(this.value.length==9) return false;">
+      </div>
+      <div class="col-sm-1">
+        <input type="number" class="form-control bg-secondary text-white" formControlName="sveukupnaDrvnaMasa"
+               id="sveukupnaDrvnaMasa" onKeyPress="if(this.value.length==9) return false;">
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="button" (click)="onSubmit()">Unesi</button>
+      </div>
+    </div>
+
+
+
+  </form>
+
+<!--  <div>-->
+
+<!--    <table class="sortimentnaTabela  table table-bordered">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col" style="width: 5%">Sortimentna Struktura</th>-->
+<!--        <th scope="col" style="width: 5%" class="text-dark bg-white">F</th>-->
+<!--        <th scope="col" style="width: 5%"class="text-light bg-warning">L</th>-->
+<!--        <th scope="col" style="width: 5%" class="text-light bg-primary">I klasa</th>-->
+<!--        <th scope="col" style="width: 5%" class="text-light bg-success">II klasa</th>-->
+<!--        <th scope="col" style="width: 5%" class="text-light bg-danger">III klasa</th>-->
+<!--        <th scope="col" style="width: 5%" class="text-light bg-dark">TT stubovi</th>-->
+<!--        <th scope="col" style="width: 5%" class="bg-rudno">Jamsko Drvo</th>-->
+<!--        <th scope="col" style="width: 5%" class="bg-celuloza">Kolje za voce</th>-->
+<!--        <th scope="col" style="width: 5%" class="bg-celuloza">Celulozno drvo</th>-->
+<!--        <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev I klase</th>-->
+<!--        <th scope="col" style="width: 5%" class="bg-ogrev">Ogrev II klase</th>-->
+<!--        <th scope="col" style="width: 5%" >Neto</th>-->
+<!--        <th scope="col" style="width: 5%">Sveukupna Drvna Masa</th>-->
+<!--        <th scope="col" style="width: 5%">Srednji precnik</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <th scope="row">Jela</th>-->
+<!--        <td>{{jela.fTrupci}}</td>-->
+<!--        <td></td>-->
+<!--        <td>{{jela.prvaKlasa}}</td>-->
+<!--        <td>{{jela.drugaKlasa}}</td>-->
+<!--        <td>{{jela.trecaKlasa}}</td>-->
+<!--        <td>{{jela.stubovi}}</td>-->
+<!--        <td>{{jela.jamskoDrvo}}</td>-->
+<!--        <td>{{jela.koljeZaVoce}}</td>-->
+<!--        <td>{{jela.celuloznoDrvo}}</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td>{{jela.netoJela}}</td>-->
+<!--        <td>{{jela.sveukupnaDrvnaMasa}}</td>-->
+<!--        <td>{{jela.srednjiPrecnik}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th scope="row">Smrca</th>-->
+<!--        <td>{{smrca.fTrupci}}</td>-->
+<!--        <td></td>-->
+<!--        <td>{{smrca.prvaKlasa}}</td>-->
+<!--        <td>{{smrca.drugaKlasa}}</td>-->
+<!--        <td>{{smrca.trecaKlasa}}</td>-->
+<!--        <td>{{smrca.stubovi}}</td>-->
+<!--        <td>{{smrca.jamskoDrvo}}</td>-->
+<!--        <td>{{smrca.koljeZaVoce}}</td>-->
+<!--        <td>{{smrca.celuloznoDrvo}}</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td>{{smrca.netoSmrca}}</td>-->
+<!--        <td>{{smrca.sveukupnaDrvnaMasa}}</td>-->
+<!--        <td>{{smrca.srednjiPrecnik}}</td>-->
+<!--      </tr>-->
+<!--      <tr class="bg-suma">-->
+<!--        <th scope="row">Ukupno cetinara</th>-->
+<!--        <td>{{cetinari.fKlase}}</td>-->
+<!--        <td></td>-->
+<!--        <td>{{cetinari.prvaKlasa}}</td>-->
+<!--        <td>{{cetinari.drugaKlasa}}</td>-->
+<!--        <td>{{cetinari.trecaKlasa}}</td>-->
+<!--        <td>{{cetinari.stubovi}}</td>-->
+<!--        <td>{{cetinari.jamskoDrvo}}</td>-->
+<!--        <td>{{cetinari.koljeZaVoce}}</td>-->
+<!--        <td>{{cetinari.celuloznoDrvo}}</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td>{{cetinari.netoCetinara}}</td>-->
+<!--        <td>{{cetinari.sveukupnaDrvnaMasa}}</td>-->
+<!--        <td>{{cetinari.srednjiPrecnik}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th scope="row">Bukva</th>-->
+<!--        <td>{{bukva.fTrupci}}</td>-->
+<!--        <td>{{bukva.lKlase}}</td>-->
+<!--        <td>{{bukva.prvaKlasa}}</td>-->
+<!--        <td>{{bukva.drugaKlasa}}</td>-->
+<!--        <td>{{bukva.trecaKlasa}}</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td>{{bukva.celuloznoDrvo}}</td>-->
+<!--        <td>{{bukva.ogrevPrveKlase}}</td>-->
+<!--        <td>{{bukva.ogrevDrugeKlase}}</td>-->
+<!--        <td>{{bukva.netoBukva}}</td>-->
+<!--        <td>{{bukva.sveukupnaDrvnaMasa}}</td>-->
+<!--        <td>{{bukva.srednjiPrecnik}}</td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th scope="row">Plemeniti</th>-->
+<!--        <td>{{plemeniti.fTrupci}}</td>-->
+<!--        <td>{{plemeniti.lKlase}}</td>-->
+<!--        <td>{{plemeniti.prvaKlasa}}</td>-->
+<!--        <td>{{plemeniti.drugaKlasa}}</td>-->
+<!--        <td>{{plemeniti.trecaKlasa}}</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td>{{plemeniti.celuloznoDrvo}}</td>-->
+<!--        <td>{{plemeniti.ogrevPrveKlase}}</td>-->
+<!--        <td>{{plemeniti.ogrevDrugeKlase}}</td>-->
+<!--        <td>{{plemeniti.netoPlemeniti}}</td>-->
+<!--        <td>{{plemeniti.sveukupnaDrvnaMasa}}</td>-->
+<!--        <td>{{plemeniti.srednjiPrecnik}}</td>-->
+<!--      </tr>-->
+<!--      <tr class="bg-suma">-->
+<!--        <th scope="row">Ukupno liscari</th>-->
+<!--        <td>{{liscari.fKlase}}</td>-->
+<!--        <td>{{liscari.lKlase}}</td>-->
+<!--        <td>{{liscari.prvaKlasa}}</td>-->
+<!--        <td>{{liscari.drugaKlasa}}</td>-->
+<!--        <td>{{liscari.trecaKlasa}}</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td>{{liscari.celuloznoDrvo}}</td>-->
+<!--        <td>{{liscari.ogrevPrveKlase}}</td>-->
+<!--        <td>{{liscari.ogrevDrugeKlase}}</td>-->
+<!--        <td>{{liscari.netoLiscari}}</td>-->
+<!--        <td>{{liscari.sveukupnaDrvnaMasa}}</td>-->
+<!--        <td>{{liscari.srednjiPrecnik}}</td>-->
+<!--      </tr>-->
+<!--      <tr class="bg-suma">-->
+<!--        <th scope="row">Ukupno cetinari i liscari</th>-->
+<!--        <td>{{cetinariLiscari.fKlase | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.lKlase | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.prvaKlasa | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.drugaKlasa | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.trecaKlasa | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.stubovi | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.jamskoDrvo | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.koljeZaVoce | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.celuloznoDrvo | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.ogrevPrveKlase | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.ogrevDrugeKlase | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.netoCetinariLiscari | number: '1.2-2'}}</td>-->
+<!--        <td>{{cetinariLiscari.sveukupnaDrvnaMasa | number: '1.2-2'}}</td>-->
+<!--        <td></td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+
+</div>
+
+<div>
+  <button class="btn btn-primary" type="button" (click)="calcAllAfterPush()">Sledeci korak</button>
+</div>
+

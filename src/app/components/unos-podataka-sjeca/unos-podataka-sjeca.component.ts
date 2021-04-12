@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 //import { TrupciService } from "../../services/trupci.service";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NormeService } from '../../services/norme.service';
@@ -10,15 +11,19 @@ import { NormeService } from '../../services/norme.service';
   styleUrls: ['./unos-podataka-sjeca.component.css']
 })
 
+
 export class UnosPodatakaSjecaComponent implements OnInit {
   
   constructor(/*public trupci: TrupciService*/private unosNormi: NormeService ) {
     
+
+  constructor(private norme: NormeService) {
   }
 
   ngOnInit(): void {
     
   }
+
 
 //varijable
       bodoviCetinariSjeca;
@@ -145,6 +150,61 @@ if(this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 1){
       this.srednjiPrecnikCetinariBodoviAnimal = 6
   }else{
       this.srednjiPrecnikCetinariBodoviAnimal = 10
+=======
+  //varijable
+  bonitetCetinari;
+  bonitetLiscari;
+  usloviRadaCet;
+  usloviRadaLis;
+  bodoviCetinari;
+  bodoviLiscari;
+  nagibTerena;
+  gustinaPodmlatka;
+  doznacenaMasa;
+  nadmorskaVisina;
+  udaljenostOdCeste;
+  srednjiPrecnikCetinariBodovi;
+  srednjiPrecnikLiscariBodovi;
+  srednjiPrecnikCetinari;
+  srednjiPrecnikLiscari;
+  normaCetSjeca;
+  normaLisSjeca;
+  p;
+  j;
+  // sumCetinariNeto = this.sortimenti.netoCetinari;
+  // sumLiscariNeto = this.sortimenti.netoLiscari;
+  srPr21;
+  srPr22;
+  srPr41;
+  srPr43;
+  cijenaSjecaCetinari: number;
+  cijenaSjecaLiscari;
+  cijenaRadnogDanaSjeca = 89.37;
+  cijenaRadnogDanaAnimal = 124.63;
+  cijenaRadnogDanaTraktor = 696.26;
+  cijenaRadnogDanaIznos = 110.06;
+
+//varijable
+  bodoviCetinariSjeca;
+  bodoviLiscariSjeca;
+  kljucCet;
+  kljucLis;
+  ucesceLiscara;
+  udaljenostOdStaleBodovi;
+  bodoviCetinariAnimal;
+  bodoviLiscariAnimal;
+
+
+//ljetoCetinari = this.norme.ljetoCet;
+//ljetoLiscari = this.norme.ljetoLis;
+
+
+//Funcije unosa podataka
+  dohvatiNagibTerena(event) {
+    this.norme.podaci.nagibTerena = parseInt(event.target.value);
+    //console.log("Nagib terena: " + this.norme.podaci.nagibTerena);
+    //console.log(typeof(this.norme.podaci.nagibTerena));
+
   }
 
 

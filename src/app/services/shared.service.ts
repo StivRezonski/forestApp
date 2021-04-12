@@ -43,9 +43,33 @@ export class SharedService {
 
   getProjektant(): any {
     return [
-      {id: '1', name: 'Inzenjer-1'},
-      {id: '2', name: 'Inzenjer-2'},
+      {id: '1', name: 'Kratko ime'},
+      {id: '2', name: 'Dugacko imeInzenjera'},
       {id: '3', name: 'Inzenjer-3'},
+    ];
+  }
+
+  getRukovodilacPripreme(): any {
+    return [
+      {id: '1', name: 'Kratko ime'},
+      {id: '2', name: 'Dugacko imeInzenjera'},
+      {id: '3', name: 'Inzenjer-3'},
+    ];
+  }
+
+  getSumskoPrivrednoPodrucje(): any {
+    return [
+      {id: '1', name: 'Istocnodrvarsko'},
+      {id: '2', name: 'SPP 2'},
+      {id: '3', name: 'Spp 3'},
+    ];
+  }
+
+  getGrad(): any {
+    return [
+      {id: '1', name: 'Ribnik'},
+      {id: '2', name: 'Istocni Drvar'},
+      {id: '3', name: 'Drinic'},
     ];
   }
 

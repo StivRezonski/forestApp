@@ -1,0 +1,58 @@
+
+
+.gazdinstvo{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.broj-rjesenja{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.naslov{
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+.podnaslov{
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+.odjel{
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tekst-paragraf{
+  text-align: justify;
+  font-size: 14px;
+}
+
+.dostavljeno{
+  display: flex;
+  font-size: 14px;
+}
+
+.prviDostavljeni{
+  white-space: nowrap;
+}
+
+.direktor-naslov{
+  font-size: 14px;
+text-align: right;
+}
+
+
+table {
+  border-collapse: collapse;
+}
+th, td {
+  padding: 0;
+}
+

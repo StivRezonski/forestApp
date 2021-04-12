@@ -1,0 +1,53 @@
+.sortimenti-wrapper{
+background-color: deepskyblue;
+  margin: 25px 100px 100px 100px;
+}
+.row{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.selectSizeCustom{
+  margin-left: 20px;
+  width: 100px;
+}
+
+.circle-sizer{
+  width: 100px;
+  height: 60px;
+}
+
+.bg-ogrev{
+  background-color: #D2B48C;
+}
+
+.bg-celuloza{
+  background-color: #909090;
+}
+
+.bg-suma{
+  background-color: #C0C0C0;
+}
+
+.bg-rudno{
+  background-color: #EC407A;
+}
+
+.sortimentnaTabela {
+  position: relative;
+  margin: auto;
+}
+
+.btn {
+  margin-left: 70px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

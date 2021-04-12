@@ -1,0 +1,40 @@
+.container{
+  page-break-before: always;
+}
+.memorandum{
+  margin-left: 0;
+  padding-top: 0;
+}
+
+.naslov{
+  padding-bottom: 7px;
+  padding-top: 7px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.gazdinstvo{
+  font-weight: bold;
+}
+
+.broj-rjesenja{
+  font-weight: bold;
+}
+
+.podnaslov{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tekst-paragraf{
+text-align: center;
+}
+
+.direktor-naslov{
+  text-align: right;
+}
+.direktor-padding{
+  padding-bottom: 10px;
+}
