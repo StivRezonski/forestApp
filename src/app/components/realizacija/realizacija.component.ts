@@ -45,7 +45,7 @@ export class RealizacijaComponent implements OnInit {
     if (this.trupci.ostaliSaNeto[12] > 0){
       this.tabOstali = true;
     }
-
+    console.log(this.trupci.bukvaSaNeto[12]);
     // console.log('debela cet', this.trupci.debelaOblovinaCet);
     // console.log('tanka cet', this.trupci.tankaOblovinaCet);
     // console.log('iznos cet', this.trupci.iznosCet);
