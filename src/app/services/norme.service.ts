@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { UnosNormi } from '../models/unosNormi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NormeService {
-podaci;
+  podaciZaIzracunCijene = [];
   
   cijenaRadnogDanaSjeca = 89.37;
   cijenaRadnogDanaAnimal = 124.63;
@@ -13,7 +12,7 @@ podaci;
   cijenaRadnogDanaIznos = 110.06;
 
   constructor() {
-    this.podaci = new UnosNormi();
+    
   }
 
   //Norme sjeca cetinari ljeto

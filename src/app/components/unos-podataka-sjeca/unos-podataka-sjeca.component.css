@@ -1,6 +1,10 @@
 .form-row{
     margin-top: 30px;
 }
-p {
-    background-color: mediumseagreen;
+
+.uputstvo{
+    width: 600px;
+}
+.p-upozorenje{
+    color: darkred;
 }
