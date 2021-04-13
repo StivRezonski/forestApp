@@ -25,6 +25,8 @@ export class TrupciService {
   brijestSaNeto = [];
   ostaliSaNeto = [];
 
+  
+
   vrijednostJela = [];
   vrijednostSmrca = [];
   vrijednostBijeliBor = [];

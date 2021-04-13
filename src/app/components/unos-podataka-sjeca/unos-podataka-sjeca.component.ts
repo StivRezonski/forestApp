@@ -4,6 +4,7 @@ import { TrupciService } from '../../services/trupci.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NormeService } from '../../services/norme.service';
 import { Router } from '@angular/router';
+import { disable } from '@rxweb/reactive-form-validators';
 
 
 @Component({
@@ -48,7 +49,25 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   usloviLisAnimal;
   usloviCetSjeca;
   usloviLisSjeca;
+  uneseniSviPrecnici = true;
+  zavrsenoSaUnosomPrecnika = false;
+  mase1 = this.trupci.sveukupnaCet;
+  mase2 = this.trupci.sveukupnaLis;
+  cetVrste = [1, 2, 3, 4];
+  lisVrste = [5, 6, 7, 8];
+ 
+  trueJela = true;
+  trueSmrca =true;
+  trueBb = true;
+  trueCb = true;
+  trueBukva = true;
+  trueHrast = true;
+  truePl = true;
+  trueOl = true;
 
+  trueBonitetCetinari;
+  trueBonitetLiscari;
+  
   // Forma uslova rada
   unosUslovaRada = new FormGroup({
 
@@ -61,7 +80,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     saKorom: new FormControl(),
     ucesceLiscaraAnimal: new FormControl(),
     udaljenostOdStale: new FormControl(),
-    bonitetCetinari: new FormControl(),
+    bonitetCetinari: new FormControl({bonitetCetinari: '', disabled: true}),
     bonitetLiscari: new FormControl(),
     animalDistanca: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(4)])
   });
@@ -77,17 +96,84 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   });
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService, private router: Router) {
+
+    if(this.trupci.jelaSaNeto[12] == null || this.trupci.jelaSaNeto[12] == 0){
+        this.trueJela = true
+    }else{
+      this.trueJela = false
+    }
+    if(this.trupci.smrcaSaNeto[12] == null || this.trupci.smrcaSaNeto[12] ==0){
+      this.trueSmrca = true
+    }else{
+    this.trueSmrca = false
+    }
+    if(this.trupci.bijeliBorSaNeto[12] == null || this.trupci.bijeliBorSaNeto[12] == 0){
+    this.trueBb = true
+    }else{
+    this.trueBb = false
+    }
+    if(this.trupci.crniBorSaNeto[12] == null || this.trupci.crniBorSaNeto[12] ==0){
+    this.trueCb = true
+    }else{
+    this.trueCb = false
+    }
+    if(this.trupci.bukvaSaNeto[12] == null || this.trupci.bukvaSaNeto[12] ==0){
+    this.trueBukva = true
+    }else{
+    this.trueBukva = false
+    }
+    if(this.trupci.hrastSaNeto[12] == null || this.trupci.hrastSaNeto[12] ==0){
+    this.trueHrast = true
+    }else{
+    this.trueHrast = false
+    }
+    if(this.trupci.brijestSaNeto[12] == null || this.trupci.brijestSaNeto[12] ==0){
+    this.truePl = true
+    }else{
+    this.truePl = false
+    }
+    if(this.trupci.ostaliSaNeto[12] == null || this.trupci.ostaliSaNeto[12] ==0){
+    this.trueOl = true
+    }else{
+    this.trueOl = false
+    }
+
+   
+    
+
   }
 
 
   ngOnInit(): void {
+
   }
 
 
+ 
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {
     this.sviPrecnici.push(this.unosPrecnika.value);
     this.unosPrecnika.reset();
+
+    if(this.sviPrecnici.filter(k => this.cetVrste.includes(k.vrsta)).length == 
+      this.mase1.length && this.sviPrecnici.filter(k => this.lisVrste.includes(k.vrsta)).length ==
+      this.mase2.length){
+        this.uneseniSviPrecnici = false;
+        this.zavrsenoSaUnosomPrecnika = true;
+    }else this.uneseniSviPrecnici = true;
+
+    if(this.mase1.length == 0){
+      this.trueBonitetCetinari = false;
+    } 
+    this.trueBonitetCetinari = true;
+  if (this.mase2.length == 0){
+    this.trueBonitetLiscari = false;
+  } 
+    this.trueBonitetLiscari = true;
+    
+  
+
+
     console.log(this.sviPrecnici);
   }
 
@@ -102,24 +188,23 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 // Sortiranje niza sa precnicima od manjeg ka većem
 // po vrstama iz select boxa-odabir vrste
     this.sviPrecnici.sort((a, b) => a.vrsta - b.vrsta);
-    const cetVrste = [1, 2, 3, 4];
-    const lisVrste = [5, 6, 7, 8];
+   
 
 // Sveukupna masa cetinara po vrstama čekam sa sortimenata
 //     let mase1 = [1,2];
-    const mase1 = this.trupci.sveukupnaCet;
+    
 
 // Sveukupna masa liscara po vrstama (čekam sa sortimenata)
 //     let mase2 = [1,2];
-    const mase2 = this.trupci.sveukupnaLis;
+  
 
 // Sveukupna masa cetinara
-    const masaCet = mase1.reduce(function(m, n) {
+    const masaCet = this.mase1.reduce(function(m, n) {
       return m + n;
     }, 0);
 
 // Sveukupna masa liscara
-    const masaLis = mase2.reduce(function(m, n) {
+    const masaLis = this.mase2.reduce(function(m, n) {
       return m + n;
     }, 0);
 
@@ -145,7 +230,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     this.srednjiPrecniciCetinari =
       this.sviPrecnici
-        .filter(k => cetVrste.includes(k.vrsta)).map((a, i) => a.precnik * mase1[i]).reduce(function(g, f) {
+        .filter(k => this.cetVrste.includes(k.vrsta)).map((a, i) => a.precnik * this.mase1[i]).reduce(function(g, f) {
       return (g + f);
     }, 0);
 
@@ -207,7 +292,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     // Zbir sveukupne masa pomnozena sa precnikom liscara
     this.srednjiPrecniciLiscari =
       this.sviPrecnici
-        .filter(k => lisVrste.includes(k.vrsta)).map((a, i) => a.precnik * mase2[i]).reduce(function(g, f) {
+        .filter(k => this.lisVrste.includes(k.vrsta)).map((a, i) => a.precnik * this.mase2[i]).reduce(function(g, f) {
       return (g + f);
     }, 0);
 
