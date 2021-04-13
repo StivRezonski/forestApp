@@ -256,10 +256,8 @@ export class SortimentnaStrukturaComponent implements OnInit {
     if (this.trupci.trupciJela.length <= 0) {
       for (let i = 0; i < this.trupci.klase.length; i++) {
         this.trupci.jelaSaNeto.push(0);
-        console.log('1');
       }
     } else {
-      console.log('2');
       this.trupci.jelaSaNeto = this.trupci.trupciJela.concat(this.neto(this.trupci.trupciJela));
     }
 
@@ -323,7 +321,6 @@ export class SortimentnaStrukturaComponent implements OnInit {
     }
   }
 
-  // Dodati vise vrsta kasnije i pokusati sve u jednu staviti
   prihodi(arr, arr1, arr2): any {
     let sum = 0;
     for (let i = 0; i < this.trupci.cijenaJela.length; i++) {

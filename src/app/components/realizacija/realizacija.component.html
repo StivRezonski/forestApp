@@ -1,238 +1,449 @@
 <div class="table-responsive prihod">
+  <table class="table table-bordered">
+    <thead>
+
+    <tr>
+      <td></td>
+      <th *ngFor="let klase of this.trupci.klase">
+        {{klase}}
+      </th>
+    </tr>
+
+
+    <tr *ngIf="tabJela">
+      <td>Jela</td>
+      <td *ngFor="let itemJela of this.trupci.jelaSaNeto">
+        {{itemJela}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabJela">
+      <td>Cjena jela</td>
+      <td *ngFor="let cijenaJela of this.trupci.cijenaJela">
+        {{cijenaJela}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabJela">
+      <td>Prihodi jela</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostJela">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr *ngIf="tabSmrca">
+      <td>Smrca</td>
+      <td *ngFor="let itemSmrca of this.trupci.smrcaSaNeto">
+        {{itemSmrca}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabSmrca">
+      <td>Cjena smrca</td>
+      <td *ngFor="let cijenaSmrca of this.trupci.cijenaSmrca">
+        {{cijenaSmrca}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabSmrca">
+      <td>Prihod smrca</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostSmrca">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr *ngIf="tabBijeliBor">
+      <td>Bijeli Bor</td>
+      <td *ngFor="let itemBijeliBor of this.trupci.bijeliBorSaNeto">
+        {{itemBijeliBor}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabBijeliBor">
+      <td>Cjena Bijeli Bor</td>
+      <td *ngFor="let cijenaBijeliBor of this.trupci.cijenaBijeliBor">
+        {{cijenaBijeliBor}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabBijeliBor">
+      <td>Prihodi bijeli bor</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostBijeliBor">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr *ngIf="tabCrniBor">
+      <td>Crni Bor</td>
+      <td *ngFor="let itemCrniBor of this.trupci.crniBorSaNeto">
+        {{itemCrniBor}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabCrniBor">
+      <td>Cjena crni bor</td>
+      <td *ngFor="let cijenaCrniBor of this.trupci.cijenaCrniBor">
+        {{cijenaCrniBor}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabCrniBor">
+      <td>Prihodi crni bor</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostCrniBor">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+
+    <tr class="table-warning">
+      <td>Σ cetinari</td>
+      <th *ngFor="let itemSumCet of this.trupci.sumCet">
+        {{itemSumCet}}
+      </th>
+    </tr>
+
+    <tr *ngIf="tabBukva">
+      <td>Bukva</td>
+      <td *ngFor="let itemBukva of this.trupci.bukvaSaNeto">
+        {{itemBukva}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabBukva">
+      <td>Cjena bukva</td>
+      <td *ngFor="let cijenaBukva of this.trupci.cijenaBukva">
+        {{cijenaBukva}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabBukva">
+      <td>Prihodi bukva</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostBukva">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr *ngIf="tabHrast">
+      <td>Hrast</td>
+      <td *ngFor="let itemHrast of this.trupci.hrastSaNeto">
+        {{itemHrast}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabHrast">
+      <td>Cjena hrast</td>
+      <td *ngFor="let cijenaHrast of this.trupci.cijenaHrast">
+        {{cijenaHrast}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabHrast">
+      <td>Prihodi hrast</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostHrast">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr *ngIf="tabBrijest">
+      <td>Brijest</td>
+      <td *ngFor="let itemBrijest of this.trupci.brijestSaNeto">
+        {{itemBrijest}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabBrijest">
+      <td>Cjena brijest</td>
+      <td *ngFor="let cijenaBrijest of this.trupci.cijenaBrijest">
+        {{cijenaBrijest}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabBrijest">
+      <td>Prihodi Brijest</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostBrijest">
+        {{vrijednost}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr *ngIf="tabOstali">
+      <td>Ostali</td>
+      <td *ngFor="let itemOstali of this.trupci.ostaliSaNeto">
+        {{itemOstali}}
+      </td>
+    </tr>
+
+    <tr *ngIf="tabOstali">
+      <td>Cjena ostali</td>
+      <td *ngFor="let cijenaOstali of this.trupci.cijenaOstali">
+        {{cijenaOstali}}
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr class="table-success" *ngIf="tabOstali">
+      <td>Prihodi ostali</td>
+      <td *ngFor="let vrijednost of this.trupci.vrijednostOstali">
+        {{vrijednost}}
+      </td>
+    </tr>
+
+
+    <tr class="table-dark">
+      <td>Σ Liscari</td>
+      <th *ngFor="let itemSumLis of this.trupci.sumLis">
+        {{itemSumLis}}
+      </th>
+    </tr>
+
+    <tr class="table-danger">
+      <td>Σ Cetinari i Liscari</td>
+
+      <th *ngFor="let itemSumCetLis of this.trupci.sumCetLis">
+        {{itemSumCetLis}}
+      </th>
+    </tr>
+    </thead>
+
+  </table>
+</div>
+
+
+<div class="table-responsive prihod">
+  <table class="table table-bordered">
+    <tr>
+      <th>Odjel</th>
+      <th>Faza rada</th>
+      <th>Uslovi rada</th>
+      <th>Bonitet</th>
+      <th>Srednji precnik</th>
+      <th>Srednja duzina privlacenja</th>
+      <th>Kolicina</th>
+      <th>Norma</th>
+      <th>Cijena</th>
+      <th>Broj radnih dana</th>
+    </tr>
+    <tr>
+      <th rowspan="9">69</th>
+      <td rowspan="3">Sjeca i izrada</td>
+      <td>Cetinari {{usloviRadaCet}} </td>
+      <td>{{bonitetCet}}</td>
+      <td>{{srednjiPrecnikCet}}</td>
+      <td></td>
+      <td>{{kolicinaCet}}</td>
+      <td>{{normaSjecaCet}}</td>
+      <td>{{cetinarskaCijenaSj | number : '1.2-2'}}</td>
+      <td>{{sjecaCetBrRadnihDana}}</td>
+    </tr>
+
+    <tr>
+      <td>Liscari {{usloviRadaLis}}</td>
+      <td>{{bonitetLis}}</td>
+      <td>{{srednjiPrecnikLis}}</td>
+      <td></td>
+      <td>{{kolicinaLis}}</td>
+      <td>{{normaSjecaLis}}</td>
+      <td>{{liscarskaCijenaSj | number : '1.2-2'}}</td>
+      <td>{{sjecaLisBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Σ</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ukupnaKolicina}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="3">Animal trupci</td>
+      <td>Cetinari {{usloviRadaAnimalCet}}</td>
+      <td>{{bonitetCet}}</td>
+      <td></td>
+      <td>{{distanca}}</td>
+      <td>{{kolicinaCetTrupci}}</td>
+      <td>{{normaTrupciCet}}</td>
+      <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}}</td>
+      <td>{{animalTrupciCetBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Liscari {{usloviRadaAnimalLis}}</td>
+      <td>{{bonitetLis}}</td>
+      <td></td>
+      <td>{{distanca}}</td>
+      <td>{{kolicinaLisTrupci}}</td>
+      <td>{{normaTrupciLis}}</td>
+      <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}}</td>
+      <td>{{animalLisBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Σ</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ukupnaKolicina}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td rowspan="3">Animal tanka oblovina</td>
+      <td>Cetinari {{usloviRadaAnimalCet}}</td>
+      <td>{{bonitetCet}}</td>
+      <td></td>
+      <td>{{distanca}}</td>
+      <td>{{kolicinaCetTanka}}</td>
+      <td>{{normaTankaCet}}</td>
+      <td>{{cijenaCetTankaAnimal | number : '1.2-2'}}</td>
+      <td>{{animalTankaCetBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Liscari {{usloviRadaAnimalLis}}</td>
+      <td>{{bonitetLis}}</td>
+      <td></td>
+      <td>{{distanca}}</td>
+      <td>{{kolicinaLisTanka}}</td>
+      <td>{{normaTankaLis}}</td>
+      <td>{{cijenaLisTankaAnimal | number : '1.2-2'}}</td>
+      <td>{{animalTankaLisBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Σ</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ukupnaKolicina}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+
+  </table>
+</div>
+
+
+<div class="table-responsive prihod">
 <table class="table table-bordered">
-  <thead>
+  <tr>
+    <th>Odjel</th>
+    <th>Faza rada</th>
+    <th>Vrste</th>
+    <th>Kolicina</th>
+    <th>Cijena</th>
+    <th>Ukupno</th>
+  </tr>
+  <tr>
+    <th rowspan="9">69</th>
+    <td rowspan="3">Sjeca i izrada</td>
+    <td>Cetinari {{usloviRadaCet}} </td>
+    <td>{{kolicinaCet}}</td>
+    <td>{{cetinarskaCijenaSj | number : '1.2-2'}}</td>
+    <td>{{trosakCetSj | number : '1.2-2'}}</td>
+  </tr>
 
   <tr>
+    <td>Liscari {{usloviRadaLis}}</td>
+    <td>{{kolicinaLis}}</td>
+    <td>{{liscarskaCijenaSj | number : '1.2-2'}}</td>
+    <td>{{trosakLisSj | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
     <td></td>
-    <th *ngFor="let klase of this.trupci.klase">
-      {{klase}}
-    </th>
-  </tr>
-
-
-  <tr *ngIf="tabJela">
-    <td>Jela</td>
-    <td *ngFor="let itemJela of this.trupci.jelaSaNeto">
-      {{itemJela}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabJela">
-    <td>Cjena jela</td>
-    <td *ngFor="let cijenaJela of this.trupci.cijenaJela">
-      {{cijenaJela}}
-    </td>
     <td></td>
     <td></td>
   </tr>
-
-  <tr class="table-success" *ngIf="tabJela">
-    <td>Prihodi jela</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostJela">
-      {{vrijednost}}
-    </td>
-    <td></td>
-    <td></td>
+  <tr>
+    <td rowspan="3">Animal trupci</td>
+    <td>Cetinari {{usloviRadaAnimalCet}}</td>
+    <td>{{kolicinaCetTrupci}}</td>
+    <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakCetTrupci | number : '1.2-2'}}</td>
   </tr>
-
-  <tr *ngIf="tabSmrca">
-    <td>Smrca</td>
-    <td *ngFor="let itemSmrca of this.trupci.smrcaSaNeto">
-      {{itemSmrca}}
-    </td>
+  <tr>
+    <td>Liscari {{usloviRadaAnimalLis}}</td>
+    <td>{{kolicinaLisTrupci}}</td>
+    <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakLisTrupci | number : '1.2-2'}}</td>
   </tr>
-
-  <tr *ngIf="tabSmrca">
-    <td>Cjena smrca</td>
-    <td *ngFor="let cijenaSmrca of this.trupci.cijenaSmrca">
-      {{cijenaSmrca}}
-    </td>
+  <tr>
+    <td>Σ</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
 
-  <tr class="table-success" *ngIf="tabSmrca">
-    <td>Prihod smrca</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostSmrca">
-      {{vrijednost}}
-    </td>
+  <tr>
+    <td rowspan="3">Animal tanka oblovina</td>
+    <td>Cetinari {{usloviRadaAnimalCet}}</td>
+    <td>{{kolicinaCetTanka}}</td>
+    <td>{{cijenaCetTankaAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakCetTanka | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Liscari {{usloviRadaAnimalLis}}</td>
+    <td>{{kolicinaLisTanka}}</td>
+    <td>{{cijenaLisTankaAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakLisTanka | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
 
-  <tr *ngIf="tabBijeliBor">
-    <td>Bijeli Bor</td>
-    <td *ngFor="let itemBijeliBor of this.trupci.bijeliBorSaNeto">
-      {{itemBijeliBor}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabBijeliBor">
-    <td>Cjena Bijeli Bor</td>
-    <td *ngFor="let cijenaBijeliBor of this.trupci.cijenaBijeliBor">
-      {{cijenaBijeliBor}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr class="table-success" *ngIf="tabBijeliBor">
-    <td>Prihodi bijeli bor</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostBijeliBor">
-      {{vrijednost}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr *ngIf="tabCrniBor">
-    <td>Crni Bor</td>
-    <td *ngFor="let itemCrniBor of this.trupci.crniBorSaNeto">
-      {{itemCrniBor}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabCrniBor">
-    <td>Cjena crni bor</td>
-    <td *ngFor="let cijenaCrniBor of this.trupci.cijenaCrniBor">
-      {{cijenaCrniBor}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr class="table-success" *ngIf="tabCrniBor">
-    <td>Prihodi crni bor</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostCrniBor">
-      {{vrijednost}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-
-  <tr class="table-warning">
-    <td>Σ cetinari</td>
-    <th *ngFor="let itemSumCet of this.trupci.sumCet">
-      {{itemSumCet}}
-    </th>
-  </tr>
-
-  <tr *ngIf="tabBukva">
-    <td>Bukva</td>
-    <td *ngFor="let itemBukva of this.trupci.bukvaSaNeto">
-      {{itemBukva}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabBukva">
-    <td>Cjena bukva</td>
-    <td *ngFor="let cijenaBukva of this.trupci.cijenaBukva">
-      {{cijenaBukva}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr class="table-success" *ngIf="tabBukva">
-    <td>Prihodi bukva</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostBukva">
-      {{vrijednost}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr *ngIf="tabHrast">
-    <td>Hrast</td>
-    <td *ngFor="let itemHrast of this.trupci.hrastSaNeto">
-      {{itemHrast}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabHrast">
-    <td>Cjena hrast</td>
-    <td *ngFor="let cijenaHrast of this.trupci.cijenaHrast">
-      {{cijenaHrast}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr class="table-success" *ngIf="tabHrast">
-    <td>Prihodi hrast</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostHrast">
-      {{vrijednost}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr *ngIf="tabBrijest">
-    <td>Brijest</td>
-    <td *ngFor="let itemBrijest of this.trupci.brijestSaNeto">
-      {{itemBrijest}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabBrijest">
-    <td>Cjena brijest</td>
-    <td *ngFor="let cijenaBrijest of this.trupci.cijenaBrijest">
-      {{cijenaBrijest}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr class="table-success" *ngIf="tabBrijest">
-    <td>Prihodi Brijest</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostBrijest">
-      {{vrijednost}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr *ngIf="tabOstali">
-    <td>Ostali</td>
-    <td *ngFor="let itemOstali of this.trupci.ostaliSaNeto">
-      {{itemOstali}}
-    </td>
-  </tr>
-
-  <tr *ngIf="tabOstali">
-    <td>Cjena ostali</td>
-    <td *ngFor="let cijenaOstali of this.trupci.cijenaOstali">
-      {{cijenaOstali}}
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-
-  <tr class="table-success" *ngIf="tabOstali">
-    <td>Prihodi ostali</td>
-    <td *ngFor="let vrijednost of this.trupci.vrijednostOstali">
-      {{vrijednost}}
-    </td>
-  </tr>
-
-
-  <tr class="table-dark">
-    <td>Σ Liscari</td>
-    <th *ngFor="let itemSumLis of this.trupci.sumLis">
-      {{itemSumLis}}
-    </th>
-  </tr>
-
-  <tr class="table-danger">
-    <td>Σ Cetinari i Liscari</td>
-
-    <th *ngFor="let itemSumCetLis of this.trupci.sumCetLis">
-      {{itemSumCetLis}}
-    </th>
-  </tr>
-  </thead>
 
 </table>
 </div>
 
+<div class="table-responsive prihod">
+  <table class="table table-bordered">
+    <tr>
+      <td>Prihodi</td>
+      <td>25752 lazni podatak</td>
+    </tr>
+    <tr>
+      <td>Direktni troskovi</td>
+      <td>{{ukupniDirektniTrosak | number : '1.2-2'}}</td>
+    </tr>
+
+    <tr>
+      <td>Dobit</td>
+      <td>17543 lazni podatak</td>
+    </tr>
+
+
+  </table>
+</div>
