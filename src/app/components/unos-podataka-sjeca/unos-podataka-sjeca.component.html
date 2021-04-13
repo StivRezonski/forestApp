@@ -17,19 +17,19 @@
           <h5>Unesite precnike po vrstama i uslove rada</h5>
         </div>
         <div class="card-body">
-
+         <div class="unosPrecnika" *ngIf="uneseniSviPrecnici">
           <form [formGroup]='unosPrecnika'>
             <div class="form-group">
               <select formControlName="vrsta" class="form-control" required>
                 <option [ngValue]="null" [disabled]="true">Vrsta drveta</option>
-                <option [ngValue]="1">Jela</option>
-                <option [ngValue]="2">Smrca</option>
-                <option [ngValue]="3">B. bor</option>
-                <option [ngValue]="4">C. bor</option>
-                <option [ngValue]="5">Bukva</option>
-                <option [ngValue]="6">Hrast</option>
-                <option [ngValue]="7">Pl. liscari</option>
-                <option [ngValue]="8">Ostali liscari</option>
+                <option [ngValue]="1" [hidden]="trueJela">Jela</option>
+                <option [ngValue]="2" [hidden]="trueSmrca">Smrca</option>
+                <option [ngValue]="3" [hidden]="trueBb">B. bor</option>
+                <option [ngValue]="4" [hidden]="trueCb">C. bor</option>
+                <option [ngValue]="5" [hidden]="trueBukva">Bukva</option>
+                <option [ngValue]="6" [hidden]="trueHrast">Hrast</option>
+                <option [ngValue]="7" [hidden]="truePl">Pl. liscari</option>
+                <option [ngValue]="8" [hidden]="trueOl">Ostali liscari</option>
               </select>
               <small class="text-danger"
                      *ngIf="unosPrecnika.get('vrsta').errors?.required">
@@ -51,12 +51,13 @@
             </div> <br>
 
             <div class="form-group">
-              <button class="btn btn-warning" (click)="unesiPrecnik()">
+              <button class="btn btn-warning" type="button" (click)="unesiPrecnik()">
                 Potvrdi vrstu i precnik
               </button> <br> <br> <hr>
             </div>
           </form>
-
+        </div>
+        <div class="unosNormi" *ngIf="zavrsenoSaUnosomPrecnika">
           <form [formGroup]='unosUslovaRada'>
             <div class="form-group">
               <select class="form-select" formControlName="nagibSjeca" required>
@@ -148,7 +149,8 @@
                      *ngIf="unosUslovaRada.get('udaljenostOdStale').errors?.required">
                 Unijeti udaljenost od štale!
               </small> <br>
-              <select class="form-select" formControlName="bonitetCetinari" required>
+              <div clas="bonitetCetinari" *ngIf="trueBonitetCetinari">
+              <select class="form-select"  formControlName="bonitetCetinari" required>
                 <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
                 <option value="1">Prvi</option>
                 <option value="2">Drugi</option>
@@ -159,7 +161,9 @@
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('bonitetCetinari').errors?.required">
                 Unijeti bonitet za četinare!
-              </small> <br>
+              </small>
+            </div> <br>
+            <div class="bonitetLiscari" *ngIf="trueBonitetLiscari">
               <select class="form-select" formControlName="bonitetLiscari" required>
                 <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
                 <option value="1">Prvi</option>
@@ -171,7 +175,8 @@
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('bonitetLiscari').errors?.required">
                 Unijeti bonitet za lišćare!
-              </small> <br>
+              </small>
+            </div> <br>
               <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control">
               <small class="text-danger"
                      *ngIf="
@@ -182,10 +187,12 @@
               </small> <br> <br>
 
               <button type="button" class="btn btn-primary" (click)="potvrdi()">
+                
                 Potvrdi uslove rada
               </button>
             </div>
           </form>
+        </div> 
         </div>
       </div>
     </div>

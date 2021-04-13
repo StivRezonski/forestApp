@@ -4,6 +4,7 @@ import { TrupciService } from '../../services/trupci.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NormeService } from '../../services/norme.service';
 import { Router } from '@angular/router';
+import { disable } from '@rxweb/reactive-form-validators';
 
 
 @Component({
@@ -48,7 +49,25 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   usloviLisAnimal;
   usloviCetSjeca;
   usloviLisSjeca;
+  uneseniSviPrecnici = true;
+  zavrsenoSaUnosomPrecnika = false;
+  mase1 = this.trupci.sveukupnaCet;
+  mase2 = this.trupci.sveukupnaLis;
+  cetVrste = [1, 2, 3, 4];
+  lisVrste = [5, 6, 7, 8];
+ 
+  trueJela = true;
+  trueSmrca =true;
+  trueBb = true;
+  trueCb = true;
+  trueBukva = true;
+  trueHrast = true;
+  truePl = true;
+  trueOl = true;
 
+  trueBonitetCetinari;
+  trueBonitetLiscari;
+  
   // Forma uslova rada
   unosUslovaRada = new FormGroup({
 
@@ -77,17 +96,97 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   });
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService, private router: Router) {
+
+    if(this.trupci.jelaSaNeto[12] == null || this.trupci.jelaSaNeto[12] == 0){
+        this.trueJela = true
+    }else{
+      this.trueJela = false
+    }
+    if(this.trupci.smrcaSaNeto[12] == null || this.trupci.smrcaSaNeto[12] ==0){
+      this.trueSmrca = true
+    }else{
+    this.trueSmrca = false
+    }
+    if(this.trupci.bijeliBorSaNeto[12] == null || this.trupci.bijeliBorSaNeto[12] == 0){
+    this.trueBb = true
+    }else{
+    this.trueBb = false
+    }
+    if(this.trupci.crniBorSaNeto[12] == null || this.trupci.crniBorSaNeto[12] == 0){
+    this.trueCb = true
+    }else{
+    this.trueCb = false
+    }
+    if(this.trupci.bukvaSaNeto[12] == null || this.trupci.bukvaSaNeto[12] ==0){
+    this.trueBukva = true
+    }else{
+    this.trueBukva = false
+    }
+    if(this.trupci.hrastSaNeto[12] == null || this.trupci.hrastSaNeto[12] ==0){
+    this.trueHrast = true
+    }else{
+    this.trueHrast = false
+    }
+    if(this.trupci.brijestSaNeto[12] == null || this.trupci.brijestSaNeto[12] ==0){
+    this.truePl = true
+    }else{
+    this.truePl = false
+    }
+    if(this.trupci.ostaliSaNeto[12] == null || this.trupci.ostaliSaNeto[12] ==0){
+    this.trueOl = true
+    }else{
+    this.trueOl = false
+    }
+
+   
+    
+
   }
 
 
   ngOnInit(): void {
+
   }
 
 
+ 
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {
     this.sviPrecnici.push(this.unosPrecnika.value);
     this.unosPrecnika.reset();
+
+    if(this.sviPrecnici.filter(k => this.cetVrste.includes(k.vrsta)).length == 
+      this.mase1.length && this.sviPrecnici.filter(k => this.lisVrste.includes(k.vrsta)).length ==
+      this.mase2.length){
+        this.uneseniSviPrecnici = false;
+        this.zavrsenoSaUnosomPrecnika = true;
+    }else this.uneseniSviPrecnici = true;
+
+    if(this.mase1.length == 0){
+      this.trueBonitetCetinari = false;
+    }else this.trueBonitetCetinari = true; 
+    
+  if (this.mase2.length == 0){
+    this.trueBonitetLiscari = false;
+  }else this.trueBonitetLiscari = true;
+
+
+  if(this.sviPrecnici.find(j=>j.vrsta == 1)){
+            this.trueJela = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 2)){
+            this.trueSmrca = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 3)){
+            this.trueBb = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 4)){
+            this.trueCb = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 5)){
+            this.trueBukva = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 6)){
+            this.trueHrast = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 7)){
+            this.truePl = true}
+  if(this.sviPrecnici.find(j=>j.vrsta == 8)){
+            this.trueOl = true}     
     console.log(this.sviPrecnici);
   }
 
@@ -102,24 +201,23 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 // Sortiranje niza sa precnicima od manjeg ka većem
 // po vrstama iz select boxa-odabir vrste
     this.sviPrecnici.sort((a, b) => a.vrsta - b.vrsta);
-    const cetVrste = [1, 2, 3, 4];
-    const lisVrste = [5, 6, 7, 8];
+   
 
 // Sveukupna masa cetinara po vrstama čekam sa sortimenata
 //     let mase1 = [1,2];
-    const mase1 = this.trupci.sveukupnaCet;
+    
 
 // Sveukupna masa liscara po vrstama (čekam sa sortimenata)
 //     let mase2 = [1,2];
-    const mase2 = this.trupci.sveukupnaLis;
+  
 
 // Sveukupna masa cetinara
-    const masaCet = mase1.reduce(function(m, n) {
+    const masaCet = this.mase1.reduce(function(m, n) {
       return m + n;
     }, 0);
 
 // Sveukupna masa liscara
-    const masaLis = mase2.reduce(function(m, n) {
+    const masaLis = this.mase2.reduce(function(m, n) {
       return m + n;
     }, 0);
 
@@ -145,7 +243,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     this.srednjiPrecniciCetinari =
       this.sviPrecnici
-        .filter(k => cetVrste.includes(k.vrsta)).map((a, i) => a.precnik * mase1[i]).reduce(function(g, f) {
+        .filter(k => this.cetVrste.includes(k.vrsta)).map((a, i) => a.precnik * this.mase1[i]).reduce(function(g, f) {
       return (g + f);
     }, 0);
 
@@ -153,7 +251,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     if (this.srednjiPrecniciCetinari !== 0) {
       // Srednji precnik cetinara
       this.srednjiPrecnikCetinari = (this.srednjiPrecniciCetinari / masaCet).toFixed(0);
-
+console.log(this.srednjiPrecnikCetinari)
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
       } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
@@ -170,19 +268,19 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (18 >= this.bodoviCetinariAnimal) {
         this.usloviRadaCetAnimal = 0;
-        this.usloviCetAnimal = '1';
+        this.usloviCetAnimal = 'I';
       } else if (this.bodoviCetinariAnimal >= 19 && this.bodoviCetinariAnimal <= 25) {
         this.usloviRadaCetAnimal = 1;
-        this.usloviCetAnimal = '1/2';
+        this.usloviCetAnimal = 'I/II';
       } else if (this.bodoviCetinariAnimal >= 26 && this.bodoviCetinariAnimal <= 32) {
         this.usloviRadaCetAnimal = 2;
-        this.usloviCetAnimal = '2';
+        this.usloviCetAnimal = 'II';
       } else if (this.bodoviCetinariAnimal >= 33 && this.bodoviCetinariAnimal <= 41) {
         this.usloviRadaCetAnimal = 3;
-        this.usloviCetAnimal = '2/3';
+        this.usloviCetAnimal = 'II/III';
       } else {
         this.usloviRadaCetAnimal = 4;
-        this.usloviCetAnimal = '3';
+        this.usloviCetAnimal = 'III';
       }
 
       if (this.unosUslovaRada.get('saKorom').value == true) {
@@ -207,7 +305,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     // Zbir sveukupne masa pomnozena sa precnikom liscara
     this.srednjiPrecniciLiscari =
       this.sviPrecnici
-        .filter(k => lisVrste.includes(k.vrsta)).map((a, i) => a.precnik * mase2[i]).reduce(function(g, f) {
+        .filter(k => this.lisVrste.includes(k.vrsta)).map((a, i) => a.precnik * this.mase2[i]).reduce(function(g, f) {
       return (g + f);
     }, 0);
 
@@ -232,19 +330,19 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (18 >= this.bodoviLiscariAnimal) {
         this.usloviRadaLisAnimal = 0;
-        this.usloviLisAnimal = '1';
+        this.usloviLisAnimal = 'I';
       } else if (this.bodoviLiscariAnimal >= 19 && this.bodoviLiscariAnimal <= 25) {
         this.usloviRadaLisAnimal = 1;
-        this.usloviLisAnimal = '1/2';
+        this.usloviLisAnimal = 'I/II';
       } else if (this.bodoviLiscariAnimal >= 26 && this.bodoviLiscariAnimal <= 32) {
         this.usloviRadaLisAnimal = 2;
-        this.usloviLisAnimal = '2';
+        this.usloviLisAnimal = 'II';
       } else if (this.bodoviLiscariAnimal >= 33 && this.bodoviLiscariAnimal <= 41) {
         this.usloviRadaLisAnimal = 3;
-        this.usloviLisAnimal = '2/3';
+        this.usloviLisAnimal = 'II/III';
       } else {
         this.usloviRadaLisAnimal = 4;
-        this.usloviLisAnimal = '3';
+        this.usloviLisAnimal = 'III';
       }
 
       this.normaLisAnimalTrupci =
@@ -276,28 +374,31 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (18 >= this.bodoviCetinariSjeca) {
         this.usloviRadaCetSjeca = 0;
-        this.usloviCetSjeca = '1';
+        this.usloviCetSjeca = 'I';
       } else if (this.bodoviCetinariSjeca >= 19 && this.bodoviCetinariSjeca <= 25) {
         this.usloviRadaCetSjeca = 1;
-        this.usloviCetSjeca = '1/2';
+        this.usloviCetSjeca = 'I/II';
       } else if (this.bodoviCetinariSjeca >= 26 && this.bodoviCetinariSjeca <= 32) {
         this.usloviRadaCetSjeca = 2;
-        this.usloviCetSjeca = '2';
+        this.usloviCetSjeca = 'II';
       } else if (this.bodoviCetinariSjeca >= 33 && this.bodoviCetinariSjeca <= 41) {
         this.usloviRadaCetSjeca = 3;
-        this.usloviCetSjeca = '2/3';
+        this.usloviCetSjeca = 'II/III';
       } else {
         this.usloviRadaCetSjeca = 4;
-        this.usloviCetSjeca = '3';
+        this.usloviCetSjeca = 'III';
       }
+console.log(this.usloviRadaCetSjeca)
+console.log(this.unosUslovaRada.value.bonitetCetinari)
+console.log(this.srednjiPrecnikCetinari)
 
       const a = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
-        .filter(k => k < this.srednjiPrecnikCetinari).pop();
+      .filter(k => k < this.srednjiPrecnikCetinari).pop();
       const b = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
         .filter(k => k > this.srednjiPrecnikCetinari)[0];
       const x = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
       const y = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
-
+      console.log(a)
       if (this.srednjiPrecnikCetinari ! % 5) {
         this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
           parseFloat(y)).toFixed(2);
@@ -331,19 +432,19 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (18 >= this.bodoviLiscariSjeca) {
         this.usloviRadaLisSjeca = 0;
-        this.usloviLisSjeca = '1';
+        this.usloviLisSjeca = 'I';
       } else if (this.bodoviLiscariSjeca >= 19 && this.bodoviLiscariSjeca <= 25) {
         this.usloviRadaLisSjeca = 1;
-        this.usloviLisSjeca = '1/2';
+        this.usloviLisSjeca = 'I/II';
       } else if (this.bodoviLiscariSjeca >= 26 && this.bodoviLiscariSjeca <= 32) {
         this.usloviRadaLisSjeca = 2;
-        this.usloviLisSjeca = '2';
+        this.usloviLisSjeca = 'II';
       } else if (this.bodoviLiscariSjeca >= 33 && this.bodoviLiscariSjeca <= 41) {
         this.usloviRadaLisSjeca = 3;
-        this.usloviLisSjeca = '2/3';
+        this.usloviLisSjeca = 'II/III';
       } else {
         this.usloviRadaLisSjeca = 4;
-        this.usloviLisSjeca = '3';
+        this.usloviLisSjeca = 'III';
       }
 
       const c = (Object.keys(this.unosNormi.ljetoLis[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
