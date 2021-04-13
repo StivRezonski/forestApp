@@ -271,7 +271,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
   giveValueToEmptyArrays(): void {
     if (this.trupci.trupciJela.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.jelaSaNeto.push(0);
       }
     } else {
@@ -280,7 +280,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
 
     if (this.trupci.trupciSmrca.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.smrcaSaNeto.push(0);
       }
     } else {
@@ -288,7 +288,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
     }
 
     if (this.trupci.trupciBijeliBor.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.bijeliBorSaNeto.push(0);
       }
     } else {
@@ -296,7 +296,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
     }
 
     if (this.trupci.trupciCrniBor.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.crniBorSaNeto.push(0);
       }
     } else {
@@ -305,7 +305,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
 
     if (this.trupci.trupciBukva.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.bukvaSaNeto.push(0);
       }
     } else {
@@ -314,7 +314,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
 
     if (this.trupci.trupciHrast.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.hrastSaNeto.push(0);
       }
     } else {
@@ -322,7 +322,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
     }
 
     if (this.trupci.trupciBrijest.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.brijestSaNeto.push(0);
       }
     } else {
@@ -330,7 +330,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
     }
 
     if (this.trupci.trupciOstali.length <= 0) {
-      for (let i = 0; i < this.trupci.klase.length; i++) {
+      for (let i = 0; i < this.trupci.klase.length - 1; i++) {
         this.trupci.ostaliSaNeto.push(0);
       }
     } else {
@@ -354,7 +354,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
   neto(arr): any {
     let sum = 0;
-    for (let i = 0; i < this.trupci.klase.length - 2; i++) {
+    for (let i = 0; i < this.trupci.klase.length - 3; i++) {
       sum += arr[i];
     }
     return sum;
@@ -362,21 +362,21 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
   // racunanje sume po vrstama
   sumCetinari(): any {
-    for (let i = 0; i < this.trupci.klase.length; i++) {
+    for (let i = 0; i < this.trupci.klase.length - 1; i++) {
       this.trupci.sumCet.push(
         this.trupci.jelaSaNeto[i] + this.trupci.smrcaSaNeto[i] + this.trupci.bijeliBorSaNeto[i] + this.trupci.crniBorSaNeto[i]);
     }
   }
 
   sumLiscari(): any {
-    for (let i = 0; i < this.trupci.klase.length; i++) {
+    for (let i = 0; i < this.trupci.klase.length - 1; i++) {
       this.trupci.sumLis.push(
         this.trupci.bukvaSaNeto[i] + this.trupci.hrastSaNeto[i] + this.trupci.brijestSaNeto[i] + this.trupci.ostaliSaNeto[i]);
     }
   }
 
   sumCetinariLisari(): any {
-    for (let i = 0; i < this.trupci.klase.length; i++) {
+    for (let i = 0; i < this.trupci.klase.length - 1; i++) {
       this.trupci.sumCetLis.push
       (this.trupci.jelaSaNeto[i] + this.trupci.smrcaSaNeto[i] + +this.trupci.bijeliBorSaNeto[i] + this.trupci.crniBorSaNeto[i] +
         this.trupci.bukvaSaNeto[i] + this.trupci.hrastSaNeto[i] + this.trupci.brijestSaNeto[i] + this.trupci.ostaliSaNeto[i]);
@@ -385,7 +385,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
   // suma ukupno sortimenata za sve vrste
   sumaCetLisBezNetoIsve(): any {
-    for (let i = 0; i < this.trupci.klase.length - 2; i++) {
+    for (let i = 0; i < this.trupci.klase.length - 3; i++) {
       this.trupci.ukupnoSortimenti.push
       (this.trupci.jelaSaNeto[i] + this.trupci.smrcaSaNeto[i] + this.trupci.bijeliBorSaNeto[i] + this.trupci.crniBorSaNeto[i] +
         this.trupci.bukvaSaNeto[i] + this.trupci.hrastSaNeto[i] + this.trupci.brijestSaNeto[i] + this.trupci.ostaliSaNeto[i]);
@@ -395,7 +395,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
   razvrstaniTrupci(arr): any {
     let sum = 0;
-    for (let i = 0; i < this.trupci.klase.length - 8; i++) {
+    for (let i = 0; i < this.trupci.klase.length - 9; i++) {
       sum += arr[i];
     }
     return sum;
