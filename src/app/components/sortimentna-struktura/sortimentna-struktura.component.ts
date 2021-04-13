@@ -19,6 +19,15 @@ export class SortimentnaStrukturaComponent implements OnInit {
   tankaOblovinaInputs = false;
   trecaKlasaInputs = false;
 
+  hideJela = false;
+  hideSmrca = false;
+  hideBijeliBor = false;
+  hideCrniBor = false;
+  hideBukva = false;
+  hideHrast = false;
+  hideBrijest = false;
+  hideOstali = false;
+
   trupciJela = [];
   trupciSmrca = [];
   trupciBijeliBor = [];
@@ -62,34 +71,42 @@ export class SortimentnaStrukturaComponent implements OnInit {
     if (izabranaVrsta === '21') {
       this.trupciJela.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideJela = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '22') {
       this.trupciSmrca.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideSmrca = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '23') {
       this.trupciBijeliBor.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideBijeliBor = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '24') {
       this.trupciCrniBor.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideCrniBor = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '41') {
       this.trupciBukva.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideBukva = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '42') {
       this.trupciHrast.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideHrast = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '46') {
       this.trupciBrijest.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideBrijest = true;
       this.sortimentiFormGroup.reset();
     } else if (izabranaVrsta === '91') {
       this.trupciOstali.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
+      this.hideOstali = true;
       this.sortimentiFormGroup.reset();
     }
   }
