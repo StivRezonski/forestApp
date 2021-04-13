@@ -252,16 +252,16 @@
       <th>Broj radnih dana</th>
     </tr>
     <tr>
-      <td rowspan="7">69</td>
-      <td rowspan="3" style="background-color: #eedded;width: 10%;">Sjeca i izrada</td>
+      <th rowspan="9">69</th>
+      <td rowspan="3">Sjeca i izrada</td>
       <td>Cetinari {{usloviRadaCet}} </td>
       <td>{{bonitetCet}}</td>
       <td>{{srednjiPrecnikCet}}</td>
       <td></td>
       <td>{{kolicinaCet}}</td>
       <td>{{normaSjecaCet}}</td>
-      <td>cijena</td>
-      <td>broj radnih dana</td>
+      <td>{{cetinarskaCijenaSj | number : '1.2-2'}}</td>
+      <td>{{sjecaCetBrRadnihDana}}</td>
     </tr>
 
     <tr>
@@ -271,8 +271,8 @@
       <td></td>
       <td>{{kolicinaLis}}</td>
       <td>{{normaSjecaLis}}</td>
-      <td>cijena</td>
-      <td>broj radnih dana</td>
+      <td>{{liscarskaCijenaSj | number : '1.2-2'}}</td>
+      <td>{{sjecaLisBrRadnihDana}}</td>
     </tr>
     <tr>
       <td>Σ</td>
@@ -285,25 +285,57 @@
       <td></td>
     </tr>
     <tr>
-      <td rowspan="3" style="background-color: #eedded;width: 10%;">Privlacenje</td>
+      <td rowspan="3">Animal trupci</td>
       <td>Cetinari {{usloviRadaAnimalCet}}</td>
       <td>{{bonitetCet}}</td>
       <td></td>
       <td>{{distanca}}</td>
-      <td>{{kolicinaCet}}</td>
-      <td>{{normaPrivlacenjeCet}}</td>
-      <td>cijena</td>
-      <td>broj radnih dana</td>
+      <td>{{kolicinaCetTrupci}}</td>
+      <td>{{normaTrupciCet}}</td>
+      <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}}</td>
+      <td>{{animalTrupciCetBrRadnihDana}}</td>
     </tr>
     <tr>
       <td>Liscari {{usloviRadaAnimalLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
       <td>{{distanca}}</td>
-      <td>{{kolicinaLis}}</td>
-      <td>{{normaPrivlacenjeLis}}</td>
-      <td>cijena</td>
-      <td>broj radnih dana</td>
+      <td>{{kolicinaLisTrupci}}</td>
+      <td>{{normaTrupciLis}}</td>
+      <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}}</td>
+      <td>{{animalLisBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Σ</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ukupnaKolicina}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td rowspan="3">Animal tanka oblovina</td>
+      <td>Cetinari {{usloviRadaAnimalCet}}</td>
+      <td>{{bonitetCet}}</td>
+      <td></td>
+      <td>{{distanca}}</td>
+      <td>{{kolicinaCetTanka}}</td>
+      <td>{{normaTankaCet}}</td>
+      <td>{{cijenaCetTankaAnimal | number : '1.2-2'}}</td>
+      <td>{{animalTankaCetBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Liscari {{usloviRadaAnimalLis}}</td>
+      <td>{{bonitetLis}}</td>
+      <td></td>
+      <td>{{distanca}}</td>
+      <td>{{kolicinaLisTanka}}</td>
+      <td>{{normaTankaLis}}</td>
+      <td>{{cijenaLisTankaAnimal | number : '1.2-2'}}</td>
+      <td>{{animalTankaLisBrRadnihDana}}</td>
     </tr>
     <tr>
       <td>Σ</td>
@@ -321,85 +353,95 @@
 </div>
 
 
-
 <div class="table-responsive prihod">
-  <table class="table table-bordered">
-    <tr>
-      <th>Odjel</th>
-      <th>Faza rada</th>
-      <th>Vrste</th>
-      <th>Kolicine</th>
-      <th>Cijena</th>
-      <th>Ukupno</th>
-    </tr>
-    <tr>
-      <td rowspan="7">69</td>
-      <td rowspan="3" style="background-color: #eedded;width: 10%;">Sjeca i izrada</td>
-      <td>Cetinari {{usloviRadaCet}}</td>
-      <td>{{kolicinaCet}}</td>
-      <td>{{cetinarskaCijenaSj}}</td>
-      <td>1500</td>
-    </tr>
+<table class="table table-bordered">
+  <tr>
+    <th>Odjel</th>
+    <th>Faza rada</th>
+    <th>Vrste</th>
+    <th>Kolicina</th>
+    <th>Cijena</th>
+    <th>Ukupno</th>
+  </tr>
+  <tr>
+    <th rowspan="9">69</th>
+    <td rowspan="3">Sjeca i izrada</td>
+    <td>Cetinari {{usloviRadaCet}} </td>
+    <td>{{kolicinaCet}}</td>
+    <td>{{cetinarskaCijenaSj | number : '1.2-2'}}</td>
+    <td>{{trosakCetSj | number : '1.2-2'}}</td>
+  </tr>
 
-    <tr>
-      <td>Liscari {{usloviRadaLis}}</td>
-      <td>{{kolicinaLis}}</td>
-      <td>{{liscarskaCijenaSj}}</td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <td>Σ</td>
-      <td></td>
-      <td></td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <td rowspan="3" style="background-color: #eedded;width: 10%;">Privlacenje</td>
-      <td>Cetinari {{usloviRadaAnimalCet}}</td>
-      <td>{{kolicinaCet}}</td>
-      <td>animal{{cetTrupacAnimal}}</td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <td>Liscari {{usloviRadaAnimalLis}}</td>
-      <td>{{kolicinaLis}}</td>
-      <td>{{lisTrupacAnimal}}</td>
-      <td>1500</td>
-    </tr>
-    <tr>
-      <td>Σ</td>
-      <td></td>
-      <td></td>
-      <td>1500</td>
-    </tr>
+  <tr>
+    <td>Liscari {{usloviRadaLis}}</td>
+    <td>{{kolicinaLis}}</td>
+    <td>{{liscarskaCijenaSj | number : '1.2-2'}}</td>
+    <td>{{trosakLisSj | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td rowspan="3">Animal trupci</td>
+    <td>Cetinari {{usloviRadaAnimalCet}}</td>
+    <td>{{kolicinaCetTrupci}}</td>
+    <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakCetTrupci | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Liscari {{usloviRadaAnimalLis}}</td>
+    <td>{{kolicinaLisTrupci}}</td>
+    <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakLisTrupci | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 
-    <tr>
-      <td>Ukupno</td>
-      <td></td>
-      <td></td>
-      <td>30.12</td>
-      <td>15000</td>
-    </tr>
+  <tr>
+    <td rowspan="3">Animal tanka oblovina</td>
+    <td>Cetinari {{usloviRadaAnimalCet}}</td>
+    <td>{{kolicinaCetTanka}}</td>
+    <td>{{cijenaCetTankaAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakCetTanka | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Liscari {{usloviRadaAnimalLis}}</td>
+    <td>{{kolicinaLisTanka}}</td>
+    <td>{{cijenaLisTankaAnimal | number : '1.2-2'}}</td>
+    <td>{{trosakLisTanka | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 
 
-  </table>
+</table>
 </div>
-
 
 <div class="table-responsive prihod">
   <table class="table table-bordered">
     <tr>
       <td>Prihodi</td>
-      <td>25752</td>
+      <td>25752 lazni podatak</td>
     </tr>
     <tr>
       <td>Direktni troskovi</td>
-      <td>8208</td>
+      <td>{{ukupniDirektniTrosak | number : '1.2-2'}}</td>
     </tr>
 
     <tr>
       <td>Dobit</td>
-      <td>17543</td>
+      <td>17543 lazni podatak</td>
     </tr>
 
 

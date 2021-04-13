@@ -32,9 +32,11 @@ export class RealizacijaComponent implements OnInit {
   normaSjecaCet = this.norme.podaciZaIzracunCijene[7].normaCetSjeca;
   normaSjecaLis = this.norme.podaciZaIzracunCijene[8].normaLisSjeca;
 
-  // svesti na jedne norme za vrstu
-  normaPrivlacenjeCet = this.norme.podaciZaIzracunCijene[11].normaCetAnimalTrupci;
-  normaPrivlacenjeLis = this.norme.podaciZaIzracunCijene[13].normaLisAnimalTrupci;
+  normaTrupciCet = this.norme.podaciZaIzracunCijene[11].normaCetAnimalTrupci;
+  normaTankaCet = this.norme.podaciZaIzracunCijene[12].normaCetAnimalTankaOblovina;
+
+  normaTrupciLis = this.norme.podaciZaIzracunCijene[13].normaLisAnimalTrupci;
+  normaTankaLis = this.norme.podaciZaIzracunCijene[14].normaLisAnimalTankaOblovina;
 
   distanca = this.norme.podaciZaIzracunCijene[0].distanca;
 
@@ -44,18 +46,43 @@ export class RealizacijaComponent implements OnInit {
   cetinarskaCijenaSj = this.cijenaRadnogDanaSjeca / this.normaSjecaCet;
   liscarskaCijenaSj = this.cijenaRadnogDanaSjeca / this.normaSjecaLis;
 
-  cetTrupacAnimal = (this.cijenaRadnogDanaAnimal / this.normaPrivlacenjeCet) * this.trupci.debelaOblovinaCet[0];
-  cetTankaAnimal = (this.cijenaRadnogDanaAnimal / this.normaPrivlacenjeCet) * this.trupci.tankaOblovinaCet[0];
+  cijenaCetTrupacAnimal = (this.cijenaRadnogDanaAnimal / this.normaTrupciCet) * this.trupci.debelaOblovinaCet[0];
+  cijenaCetTankaAnimal = (this.cijenaRadnogDanaAnimal / this.normaTankaCet) * this.trupci.tankaOblovinaCet[0];
 
-  lisTrupacAnimal = (this.cijenaRadnogDanaAnimal / this.normaPrivlacenjeLis) * this.trupci.debelaOblovinaLis[0];
-  lisTankaAnimal = (this.cijenaRadnogDanaAnimal / this.normaPrivlacenjeLis) * this.trupci.tankaOblovinaCet[0];
+  cijenaLisTrupacAnimal = (this.cijenaRadnogDanaAnimal / this.normaTrupciLis) * this.trupci.debelaOblovinaLis[0];
+  cijenaLisTankaAnimal = (this.cijenaRadnogDanaAnimal / this.normaTankaLis) * this.trupci.tankaOblovinaLis[0];
 
   kolicinaCet = this.trupci.sumCet[13];
   kolicinaLis = this.trupci.sumLis[13];
 
+  kolicinaCetTrupci = this.trupci.debelaOblovinaCet[0];
+  kolicinaLisTrupci = this.trupci.debelaOblovinaLis[0];
+
+  kolicinaCetTanka = this.trupci.tankaOblovinaCet[0];
+  kolicinaLisTanka = this.trupci.tankaOblovinaLis[0];
+
+  sjecaCetBrRadnihDana = Math.round(this.kolicinaCet / this.normaSjecaCet);
+  sjecaLisBrRadnihDana = Math.round(this.kolicinaLis / this.normaSjecaLis);
+
+  animalTrupciCetBrRadnihDana = Math.round(this.kolicinaCetTrupci / this.normaTrupciCet);
+  animalLisBrRadnihDana = Math.round(this.kolicinaLisTrupci / this.normaTrupciLis);
+
+  animalTankaCetBrRadnihDana = Math.round(this.kolicinaCetTanka / this.normaTankaCet);
+  animalTankaLisBrRadnihDana = Math.round(this.kolicinaLisTanka / this.normaTankaLis);
+
+  trosakCetSj = this.kolicinaCet * this.cetinarskaCijenaSj;
+  trosakLisSj = this.kolicinaLis * this.liscarskaCijenaSj;
+
+  trosakCetTrupci = this.kolicinaCetTrupci * this.cijenaCetTrupacAnimal;
+  trosakLisTrupci = this.kolicinaLisTrupci * this.cijenaLisTrupacAnimal;
+
+  trosakCetTanka = this.kolicinaCetTanka * this.cijenaCetTankaAnimal;
+  trosakLisTanka = this.kolicinaLisTanka * this.cijenaLisTankaAnimal;
+
+  ukupniDirektniTrosak = this.trosakCetSj + this.trosakLisSj + this.trosakCetTrupci +
+    this.trosakLisTrupci + this.trosakCetTanka + this.trosakLisTanka;
+
   ukupnaKolicina = this.kolicinaCet + this.kolicinaLis;
-  // prihodiCet = this.trupci.
-  //   prihodiLisc =
 
 
   constructor(public trupci: TrupciService, public norme: NormeService) {
