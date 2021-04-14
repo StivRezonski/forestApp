@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Liscari } from '../../models/liscari.model';
 import { TrupciService } from '../../services/trupci.service';
 import { Router } from '@angular/router';
@@ -18,6 +18,9 @@ export class SortimentnaStrukturaComponent implements OnInit {
   ogrevInputs = false;
   tankaOblovinaInputs = false;
   trecaKlasaInputs = false;
+  sveUkupnaFalse = false;
+  neUneseniTrupci = false;
+  readyForNormeStep = true;
 
   hideJela = false;
   hideSmrca = false;
@@ -46,14 +49,14 @@ export class SortimentnaStrukturaComponent implements OnInit {
       lTrupci: new FormControl(),
       prvaKlasa: new FormControl(),
       drugaKlasa: new FormControl(),
-      trecaKlasa: new FormControl(),
+      trecaKlasa: new FormControl('', [Validators.required]),
       stuboviZaVodove: new FormControl(),
       jamskoDrvo: new FormControl(),
       koljeZaVoce: new FormControl(),
       celuloznoDrvo: new FormControl(),
       ogrevPrveKlase: new FormControl(),
       ogrevDrugeKlase: new FormControl(),
-      sveukupnaDrvnaMasa: new FormControl(),
+      sveukupnaDrvnaMasa: new FormControl('', [Validators.required]),
     }
   );
 
@@ -64,52 +67,68 @@ export class SortimentnaStrukturaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  validateSubmit(): void{
+    if (!this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid && !this.sortimentiFormGroup.controls.trecaKlasa.valid){
+      this.sveUkupnaFalse = true;
+      this.neUneseniTrupci = true;
+      console.log('1');
+    } else if (this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid && this.sortimentiFormGroup.controls.trecaKlasa.valid){
+      this.sveUkupnaFalse = false;
+      this.neUneseniTrupci = false;
+      this.onSubmit();
+      console.log('2');
+    }
+  }
 
+  onSubmit(): void {
+    this.sveUkupnaFalse = false;
+    this.neUneseniTrupci = false;
     const izabranaVrsta = this.sortimentiFormGroup.get('izabranaVrsta').value;
 
-    if (izabranaVrsta === '21') {
+
+    if (izabranaVrsta === '21' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciJela.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideJela = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '22') {
+    } else if (izabranaVrsta === '22' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciSmrca.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideSmrca = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '23') {
+    } else if (izabranaVrsta === '23' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciBijeliBor.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideBijeliBor = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '24') {
+    } else if (izabranaVrsta === '24' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciCrniBor.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideCrniBor = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '41') {
+    } else if (izabranaVrsta === '41' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciBukva.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideBukva = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '42') {
+    } else if (izabranaVrsta === '42' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciHrast.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideHrast = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '46') {
+    } else if (izabranaVrsta === '46' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciBrijest.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideBrijest = true;
       this.sortimentiFormGroup.reset();
-    } else if (izabranaVrsta === '91') {
+    } else if (izabranaVrsta === '91' && this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid) {
       this.trupciOstali.push(this.sortimentiFormGroup.value);
       this.onSelectPush();
       this.hideOstali = true;
       this.sortimentiFormGroup.reset();
     }
   }
+
 
   onSelectVrsta(): void {
     const vrstaSlika = this.sortimentiFormGroup.get('izabranaVrsta').value;
@@ -196,6 +215,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
 
 // push na servis trupce
   pushTreeList(): void {
+    this.readyForNormeStep = false;
     this.treeList.push(
       this.treeType[0].rezonant,
       this.treeType[0].fTrupci,

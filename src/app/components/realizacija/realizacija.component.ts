@@ -16,6 +16,8 @@ export class RealizacijaComponent implements OnInit {
   tabHrast = false;
   tabBrijest = false;
   tabOstali = false;
+  tabCet = false;
+  tabLis = false;
 
   podaciNorma = this.norme.podaciZaIzracunCijene;
 
@@ -124,6 +126,12 @@ export class RealizacijaComponent implements OnInit {
     }
     if (this.trupci.ostaliSaNeto[12] > 0) {
       this.tabOstali = true;
+    }
+    if (this.trupci.sumCet[12] > 0) {
+      this.tabCet = true;
+    }
+    if (this.trupci.sumLis[12] > 0) {
+      this.tabLis = true;
     }
 
     if (this.kolicinaCet <= 0) {
