@@ -123,7 +123,7 @@
     </tr>
 
 
-    <tr class="table-warning">
+    <tr class="table-warning" *ngIf="tabCet">
       <td>Σ cetinari</td>
       <th *ngFor="let itemSumCet of this.trupci.sumCet">
         {{itemSumCet}}
@@ -244,7 +244,7 @@
     </tr>
 
 
-    <tr class="table-dark">
+    <tr class="table-dark" *ngIf="tabLis">
       <td>Σ Liscari</td>
       <th *ngFor="let itemSumLis of this.trupci.sumLis">
         {{itemSumLis}}
@@ -381,7 +381,7 @@
 </div>
 
 
-<div class="table-responsive prihod">
+<div class="table-responsive prihod suma-table">
 <table class="table table-bordered">
   <tr>
     <th>Odjel</th>
@@ -457,7 +457,7 @@
 </div>
 
 <div class="table-responsive prihod">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-sm">
     <tr>
       <td>Prihodi</td>
       <td>{{sumPrihodiCetLis}} KM</td>
