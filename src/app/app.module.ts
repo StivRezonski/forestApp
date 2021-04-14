@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -34,7 +33,6 @@ import { TrupciService } from './services/trupci.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // RxReactiveFormsModule
   ],
   declarations: [
     AppComponent,
