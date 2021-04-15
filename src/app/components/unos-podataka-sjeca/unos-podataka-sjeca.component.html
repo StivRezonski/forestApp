@@ -13,10 +13,11 @@
 
     <div class="col-4 offset-1">
       <div class="card text-center">
-        <div class="card-header bg-info">
-          <h5>Unesite precnike po vrstama i uslove rada</h5>
+        <div class="card-header bg-info" >
+          <h5 *ngIf = "uneseniUsloviRada">Unesite precnike po vrstama i uslove rada!</h5>
+          <h5 *ngIf = "!uneseniUsloviRada">Uspjesno ste unijeli uslove rada i precnike!</h5>
         </div>
-        <div class="card-body">
+        <div class="card-body" *ngIf = "akoSuUsloviZavrseni">
          <div class="unosPrecnika" *ngIf="uneseniSviPrecnici">
           <form [formGroup]='unosPrecnika'>
             <div class="form-group">
@@ -51,15 +52,16 @@
             </div> <br>
 
             <div class="form-group">
-              <button class="btn btn-warning" type="button" (click)="unesiPrecnik()">
+              <button class="btn btn-warning" type="button" [disabled]="!unosPrecnika.valid" (click)="unesiPrecnik()">
                 Potvrdi vrstu i precnik
-              </button> <br> <br> <hr>
+              </button> <br>
             </div>
           </form>
         </div>
-        <div class="unosNormi" *ngIf="zavrsenoSaUnosomPrecnika">
+        <div class="unosNormi">
           <form [formGroup]='unosUslovaRada'>
-            <div class="form-group">
+            <div class="form-group"*ngIf="zavrsenoSaUnosomPrecnika" >
+              <h5>Unesite uslove rada za sjecu!</h5>  <br>
               <select class="form-select" formControlName="nagibSjeca" required>
                 <option [ngValue]="null" [disabled]="true">Nagib terena - sjeca</option>
                 <option [ngValue]="1">Do 15`</option>
@@ -110,6 +112,39 @@
                      *ngIf="unosUslovaRada.get('udaljenostOdCesteSjeca').errors?.required">
                 Unijeti udaljenost od ceste!
               </small> <br>
+              <div clas="bonitetCetinari" *ngIf="trueBonitetCetinari">
+                <select class="form-select"  formControlName="bonitetCetinari" required>
+                  <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
+                  <option value="1">Prvi</option>
+                  <option value="2">Drugi</option>
+                  <option value="3">Treći</option>
+                  <option value="4">Četvrti</option>
+                  <option value="5">Peti</option>
+                </select>
+                <small class="text-danger"
+                       *ngIf="unosUslovaRada.get('bonitetCetinari').errors?.required">
+                  Unijeti bonitet za četinare!
+                </small>
+              </div> <br>
+              <div class="bonitetLiscari" *ngIf="trueBonitetLiscari">
+                <select class="form-select" formControlName="bonitetLiscari" required>
+                  <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
+                  <option value="1">Prvi</option>
+                  <option value="2">Drugi</option>
+                  <option value="3">Treći</option>
+                  <option value="4">Četvrti</option>
+                  <option value="5">Peti</option>
+                </select>
+                <small class="text-danger"
+                       *ngIf="unosUslovaRada.get('bonitetLiscari').errors?.required">
+                  Unijeti bonitet za lišćare!
+                </small>
+              </div> <br>
+              <div class="potvrdaNormiSjece d-grid gap-2">
+                <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi norme sjece</button> 
+              </div>
+            </div> <br>
+              <div class="aNorme" *ngIf="animalNorme">
               <select class="form-select" formControlName="nagibAnimal" required>
                 <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
                 <option [ngValue]="4">10`-20`</option>
@@ -121,13 +156,13 @@
                 Unijeti nagib za animal!
               </small> <br> <br>
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox"
+              <div class="form-check"*ngIf="imaCetinara" >
+                <input class="form-check-input" [disabled] = "nemaCetinara" type="checkbox"
                        formControlName="saKorom" id="saKorom">
                 <label class="form-check-label" for="saKorom">
                   Da li se cetinari izvlace sa korom?
-                </label> <br>
-              </div><br>
+                </label>
+              </div>
 
               <select class="form-select" formControlName="ucesceLiscaraAnimal"required >
                 <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
@@ -149,34 +184,7 @@
                      *ngIf="unosUslovaRada.get('udaljenostOdStale').errors?.required">
                 Unijeti udaljenost od štale!
               </small> <br>
-              <div clas="bonitetCetinari" *ngIf="trueBonitetCetinari">
-              <select class="form-select"  formControlName="bonitetCetinari" required>
-                <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
-                <option value="1">Prvi</option>
-                <option value="2">Drugi</option>
-                <option value="3">Treći</option>
-                <option value="4">Četvrti</option>
-                <option value="5">Peti</option>
-              </select>
-              <small class="text-danger"
-                     *ngIf="unosUslovaRada.get('bonitetCetinari').errors?.required">
-                Unijeti bonitet za četinare!
-              </small>
-            </div> <br>
-            <div class="bonitetLiscari" *ngIf="trueBonitetLiscari">
-              <select class="form-select" formControlName="bonitetLiscari" required>
-                <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
-                <option value="1">Prvi</option>
-                <option value="2">Drugi</option>
-                <option value="3">Treći</option>
-                <option value="4">Četvrti</option>
-                <option value="5">Peti</option>
-              </select>
-              <small class="text-danger"
-                     *ngIf="unosUslovaRada.get('bonitetLiscari').errors?.required">
-                Unijeti bonitet za lišćare!
-              </small>
-            </div> <br>
+       
               <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control">
               <small class="text-danger"
                      *ngIf="
@@ -184,17 +192,47 @@
                             unosUslovaRada.get('animalDistanca').errors?.minlength ||
                             unosUslovaRada.get('animalDistanca').errors?.maxlength">
                 Distanca mora biti trocifren ili četvorocifren broj.
-              </small> <br> <br>
+              </small> <br>
 
-              <button type="button" class="btn btn-primary" (click)="potvrdi()">
-                
-                Potvrdi uslove rada
-              </button>
-            </div>
+              <div class="iznos-btn d-grid gap-2">
+                <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button> 
+              </div>
+            </div><br>
+
+              <div class="iznos" *ngIf = "imaIznos">
+                <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
+                <small class="text-danger"
+                       *ngIf="
+                              unosUslovaRada.get('iznosDistanca').errors?.required ||
+                              unosUslovaRada.get('iznosDistanca').errors?.minlength ||
+                              unosUslovaRada.get('iznosDistanca').errors?.maxlength">
+                  Distanca mora biti trocifren ili četvorocifren broj.
+                </small> <br>
+                <select class="form-select" (change)='zavrsenUnos($event)' formControlName="vrstaTla" required>
+                  <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
+                  <option [ngValue]="2">Bez kamenja</option>
+                  <option [ngValue]="4">Sa povrsinskim kamenjem</option>
+                  <option [ngValue]="9">Kamenito preko 30%</option>
+                </select>
+                <small class="text-danger"
+                       *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
+                  Unijeti vrstu tla!
+                </small> 
+              </div><br>
+              
+            
           </form>
-        </div> 
+         
+        
         </div>
       </div>
+      <br>
+      <div class="potvrdjivanjeNormi" *ngIf = "zavrsenUnosUslovaRada">
+        <button type="button" class="btn btn-primary" (click)="potvrdi()">
+          Potvrdi uslove rada
+        </button>
+      </div>
+
     </div>
   </div> <br> <br>
 

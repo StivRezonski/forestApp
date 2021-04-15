@@ -8,3 +8,18 @@
 .p-upozorenje{
     color: darkred;
 }
+.unosNormi {
+    border: double;
+    padding: 10px;
+  }
+.unosPrecnika {
+    border: double;
+    padding: 10px;
+  }
+  .form-check{
+    border: double;  
+  }
+  .iznos{
+    border: double;
+    padding: 10px;
+  }

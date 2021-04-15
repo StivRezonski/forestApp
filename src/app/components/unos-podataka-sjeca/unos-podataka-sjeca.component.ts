@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { TrupciService } from '../../services/trupci.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NormeService } from '../../services/norme.service';
 import { Router } from '@angular/router';
-import { disable } from '@rxweb/reactive-form-validators';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+
 
 
 @Component({
@@ -42,6 +42,19 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaCetAnimalTankaOblovina;
   normaLisAnimalTankaOblovina;
   normaLisAnimalTrupci;
+
+  nagibTerenaIznos;
+  gustinaPodmlatkaIznos;
+  doznakaIznos;
+  bodoviCetinariLiscariIznos;
+  usloviRadaCetinariIznos;
+  usloviRadaLiscariIznos;
+  usloviCetIznos;
+  usloviLisIznos; 
+  normaCetinariIznos;
+  normaLiscariIznos;
+
+
   sviPrecnici = [];
   usloviRada = [];
   podaciZaIzracunCijene = this.unosNormi.podaciZaIzracunCijene = [];
@@ -67,6 +80,13 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
   trueBonitetCetinari;
   trueBonitetLiscari;
+
+  animalNorme = false;
+  imaCetinara = true;
+  imaIznos = false;
+  zavrsenUnosUslovaRada = false;
+  akoSuUsloviZavrseni = true;
+  uneseniUsloviRada = true;
   
   // Forma uslova rada
   unosUslovaRada = new FormGroup({
@@ -82,7 +102,9 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     udaljenostOdStale: new FormControl(),
     bonitetCetinari: new FormControl(),
     bonitetLiscari: new FormControl(),
-    animalDistanca: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(4)])
+    animalDistanca: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]),
+    vrstaTla: new FormControl(),
+    iznosDistanca: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(4)])
   });
 
 // Forma unosa precnika
@@ -189,6 +211,24 @@ export class UnosPodatakaSjecaComponent implements OnInit {
             this.trueOl = true}     
     console.log(this.sviPrecnici);
   }
+// Funkcija potvrde normi sjece i prelazak na nnorme za animal
+potvrdiNormeSjece(){
+  this.animalNorme = true;
+  this.zavrsenoSaUnosomPrecnika = false;
+  if(  this.mase1.length == 0){
+    this.imaCetinara = false;
+  }
+}
+iznosBtn(){
+  this.animalNorme = false;
+  this.imaIznos = true; 
+}
+zavrsenUnos($event){
+  this.zavrsenUnosUslovaRada = true;
+  this.imaIznos = false;
+  this.akoSuUsloviZavrseni = false;
+  this.uneseniUsloviRada = false; 
+}
 
 // Funkcija prikupljanja podataka potrebnih za izracun normi
   potvrdi(): void {
@@ -225,18 +265,24 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     // Animal norma
     if (this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 1) {
       this.gustinaPodmlatkaAnimal = 2;
+      this.gustinaPodmlatkaIznos = 2;
     } else if (this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 4) {
       this.gustinaPodmlatkaAnimal = 4;
+      this.gustinaPodmlatkaIznos = 3;
     } else {
       this.gustinaPodmlatkaAnimal = 9;
+      this.gustinaPodmlatkaIznos = 3;
     }
 
     if (this.unosUslovaRada.value.doznacenaMasaSjeca == 4) {
       this.doznacenaMasaAnimal = 1;
+      this.doznakaIznos = 3;
     } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 6) {
       this.doznacenaMasaAnimal = 3;
+      this.doznakaIznos = 6;
     } else {
       this.doznacenaMasaAnimal = 6;
+      this.doznakaIznos = 11;
     }
 
 // Zbir sveukupne masa pomnozena sa precnikom cetinara
@@ -250,8 +296,15 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     if (this.srednjiPrecniciCetinari !== 0) {
       // Srednji precnik cetinara
-      this.srednjiPrecnikCetinari = (this.srednjiPrecniciCetinari / masaCet).toFixed(0);
-console.log(this.srednjiPrecnikCetinari)
+      if((this.srednjiPrecniciCetinari / masaCet) <= 25){
+        this.srednjiPrecnikCetinari = 25
+      }else{
+        this.srednjiPrecnikCetinari = (this.srednjiPrecniciCetinari / masaCet).toFixed(0);
+
+      }
+
+     
+      
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
       } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
@@ -311,8 +364,14 @@ console.log(this.srednjiPrecnikCetinari)
 
 
     if (this.srednjiPrecniciLiscari !== 0) {
+
       // Srednji precnik lišćara
-      this.srednjiPrecnikLiscari = (this.srednjiPrecniciLiscari / masaLis).toFixed(0);
+      if((this.srednjiPrecniciLiscari / masaLis) <= 25){
+        this.srednjiPrecnikLiscari = 25
+      }else{
+        this.srednjiPrecnikLiscari = (this.srednjiPrecniciLiscari / masaLis).toFixed(0);
+
+      }
 
       if (this.srednjiPrecnikLiscari > 45) {
         this.srednjiPrecnikLiscariBodoviAnimal = 4;
@@ -355,7 +414,58 @@ console.log(this.srednjiPrecnikCetinari)
       this.bodoviLiscariAnimal = 0;
       this.srednjiPrecnikLiscariBodoviAnimal = 'Nema unijetih srednjih precnika za liscare!';
     }
+// Iznos norme
+if(this.unosUslovaRada.value.nagibAnimal == 4){
+  this.nagibTerenaIznos = 5
+}else if(this.unosUslovaRada.value.nagibAnimal == 6){
+  this.nagibTerenaIznos = 10
+}else { this.nagibTerenaIznos = 15 }
 
+if(this.unosUslovaRada.value.nagibAnimal == 4){
+  this.nagibTerenaIznos = 5
+}else if(this.unosUslovaRada.value.nagibAnimal == 6){
+  this.nagibTerenaIznos = 10
+}else { this.nagibTerenaIznos = 15 }
+ 
+this.bodoviCetinariLiscariIznos = this.nagibTerenaIznos + this.unosUslovaRada.value.vrstaTla
++ this.gustinaPodmlatkaIznos + this.doznakaIznos + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal
++ this.unosUslovaRada.value.udaljenostOdStale; 
+
+
+if (18 >= this.bodoviCetinariLiscariIznos) {
+  this.usloviRadaCetinariIznos = 0;
+  this.usloviRadaLiscariIznos = 0;
+  this.usloviCetIznos = 'I';
+  this.usloviLisIznos = 'I';
+} else if (this.bodoviCetinariLiscariIznos >= 19 && this.bodoviCetinariLiscariIznos <= 25) {
+  this.usloviRadaCetinariIznos = 1;
+  this.usloviRadaLiscariIznos = 1;
+  this.usloviCetIznos = 'I/II';
+  this.usloviLisIznos = 'I/II';
+} else if (this.bodoviCetinariLiscariIznos >= 26 && this.bodoviCetinariLiscariIznos <= 32) {
+  this.usloviRadaCetinariIznos = 2;
+  this.usloviRadaLiscariIznos = 2;
+  this.usloviCetIznos = 'II';
+  this.usloviLisIznos = 'II';
+} else if (this.bodoviCetinariLiscariIznos >= 33 && this.bodoviCetinariLiscariIznos <= 41) {
+  this.usloviRadaCetinariIznos = 3;
+  this.usloviRadaLiscariIznos = 3;
+  this.usloviCetIznos = 'II/III';
+  this.usloviLisIznos = 'II/III';
+} else {
+  this.usloviRadaCetinariIznos = 4;
+  this.usloviRadaLiscariIznos = 4;
+  this.usloviCetIznos = 'III';
+  this.usloviLisIznos = 'III';
+}
+
+this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.unosUslovaRada.value.iznosDistanca];
+this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.unosUslovaRada.value.iznosDistanca];
+
+console.log(this.usloviRadaCetinariIznos);
+console.log(this.unosUslovaRada.value.iznosDistanca);
+console.log(this.normaCetinariIznos);
+console.log(this.normaLiscariIznos);
 // Sjeca norma
 
     if (this.srednjiPrecniciCetinari !== 0) {
@@ -487,6 +597,10 @@ console.log(this.srednjiPrecnikCetinari)
       {normaCetAnimalTankaOblovina: parseFloat(this.normaCetAnimalTankaOblovina)},
       {normaLisAnimalTrupci: parseFloat(this.normaLisAnimalTrupci)},
       {normaLisAnimalTankaOblovina: parseFloat(this.normaLisAnimalTankaOblovina)},
+      {normaLisAnimalTankaOblovina: this.usloviLisIznos},
+      {normaLisAnimalTankaOblovina: this.usloviCetIznos},
+      {normaLisAnimalTankaOblovina: this.normaCetinariIznos},
+      {normaLisAnimalTankaOblovina: this.normaLiscariIznos},
     );
     console.log(this.unosNormi.podaciZaIzracunCijene);
 
