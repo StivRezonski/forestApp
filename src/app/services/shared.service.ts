@@ -70,7 +70,7 @@ export class SharedService {
     return [
       {id: '1', name: 'Кнежевић Велибор'},
       {id: '2', name: 'Тадић Милан'},
-      {id: '3', name: 'Лукац Драган'},
+      {id: '3', name: 'Лукач Драган'},
     ];
   }
 
