@@ -10,9 +10,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="/opsti-podaci">Opsti podaci</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/unospodataka">Unos podataka</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" aria-current="page" routerLink="/unospodataka">Unos podataka</a>-->
+<!--        </li>-->
 
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link" aria-current="page">Norme i cijene</a>-->
@@ -39,10 +39,6 @@
 <!--          <a class="nav-link" aria-current="page" routerLink="dokumentacija/rjesenje-pracenje">Rjesenje za pracenje</a>-->
 <!--        </li>-->
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
@@ -54,11 +50,13 @@
 <body class="d-flex flex-column">
 
 <!-- Footer -->
+<div id="content-wrap">
 <footer class="bg-white">
   <div class="container py-5">
     <div class="row py-4">
       <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="assets/logo.jpg" alt="" width="35" class="mb-3">
-        <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        <p class="font-italic text-muted">Iz potrebe i pada u kvalitetu inzenjerskog kadra koji izlaze sa sumarskog fakulteta,
+          kako u Beogradu tako i na Banjoluckom Univerzitetu rodila se zelja za digitalnom automatizacijom izrade projekata u sumarstvu.</p>
         <ul class="list-inline mt-4">
           <li class="list-inline-item"><a routerLink="#" target="_blank" title="twitter"><i class="bi bi-twitter"></i></a></li>
           <li class="list-inline-item"><a routerLink="#" target="_blank" title="facebook"><i class="bi bi-facebook"></i></a></li>
@@ -68,26 +66,15 @@
         </ul>
       </div>
       <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-        <h6 class="text-uppercase font-weight-bold mb-4">Shop</h6>
+        <h6 class="text-uppercase font-weight-bold mb-4">Korisni linkovi</h6>
         <ul class="list-unstyled mb-0">
-          <li class="mb-2"><a routerLink="#" class="text-muted">For Women</a></li>
-          <li class="mb-2"><a routerLink="#" class="text-muted">For Men</a></li>
-          <li class="mb-2"><a routerLink="#" class="text-muted">Stores</a></li>
-          <li class="mb-2"><a routerLink="#" class="text-muted">Our Blog</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-        <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-2"><a routerLink="sortimenti" class="text-muted">Login</a></li>
-          <li class="mb-2"><a routerLink="#" class="text-muted">Register</a></li>
-          <li class="mb-2"><a routerLink="#" class="text-muted">Wishlist</a></li>
-          <li class="mb-2"><a routerLink="#" class="text-muted">Our Products</a></li>
+          <li class="mb-2"><a routerLink="https://sumerepublikesrpske.org/" class="text-muted">Sajt suma RS</a></li>
+          <li class="mb-2"><a routerLink="www.fsc.org" class="text-muted">FSC</a></li>
         </ul>
       </div>
       <div class="col-lg-4 col-md-6 mb-lg-0">
-        <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
-        <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+        <h6 class="text-uppercase font-weight-bold mb-4">Obavjestenje</h6>
+        <p class="text-muted mb-4">Trenutno koristite alfa verziju nove web aplikacije za projektovanje u sumarstvu</p>
         <div class="p-1 rounded border">
           <div class="input-group">
             <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
@@ -107,5 +94,6 @@
     </div>
   </div>
 </footer>
+</div>
 
 </body>
