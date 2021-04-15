@@ -8,4 +8,5 @@ export class OpstiPodaci {
   sumskoPrivrednoPodrucje = [];
   izabraniOdjel: number;
   rukovodilacPripreme = [];
+  direktor = [];
 }

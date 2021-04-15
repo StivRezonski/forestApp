@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrupciService } from '../../services/trupci.service';
 import { NormeService } from '../../services/norme.service';
+import { OpstiPodaci } from '../../models/opsti-podaci.model';
 
 @Component({
   selector: 'app-realizacija',
@@ -98,7 +99,8 @@ export class RealizacijaComponent implements OnInit {
   sumPrihodiCetLis = this.sumPrihodiCet + this.sumPrihodiLis;
   dobit = this.sumPrihodiCetLis - this.ukupniDirektniTrosak;
 
-  constructor(public trupci: TrupciService, public norme: NormeService) {
+  odjel = this.opstiPodaci.odjel;
+  constructor(public trupci: TrupciService, public norme: NormeService, private opstiPodaci: OpstiPodaci) {
   }
 
 

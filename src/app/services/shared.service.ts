@@ -66,6 +66,14 @@ export class SharedService {
     ];
   }
 
+  getDirektor(): any {
+    return [
+      {id: '1', name: 'Гојковић Славен'},
+      {id: '2', name: 'Кецман Милан'},
+      {id: '3', name: 'Петар Петровић'},
+    ];
+  }
+
   getRukovodilacPripreme(): any {
     return [
       {id: '1', name: 'Кнежевић Велибор'},
