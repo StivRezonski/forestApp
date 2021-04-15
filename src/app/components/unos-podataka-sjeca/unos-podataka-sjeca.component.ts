@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
-
 @Component({
   selector: 'app-unos-podataka-sjeca',
   templateUrl: './unos-podataka-sjeca.component.html',
@@ -68,7 +67,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   mase2 = this.trupci.sveukupnaLis;
   cetVrste = [1, 2, 3, 4];
   lisVrste = [5, 6, 7, 8];
- 
+
   trueJela = true;
   trueSmrca =true;
   trueBb = true;
@@ -80,6 +79,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
   trueBonitetCetinari;
   trueBonitetLiscari;
+
 
   animalNorme = false;
   imaCetinara = true;
@@ -160,8 +160,8 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     this.trueOl = false
     }
 
-   
-    
+
+
 
   }
 
@@ -171,13 +171,13 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   }
 
 
- 
+
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {
     this.sviPrecnici.push(this.unosPrecnika.value);
     this.unosPrecnika.reset();
 
-    if(this.sviPrecnici.filter(k => this.cetVrste.includes(k.vrsta)).length == 
+    if(this.sviPrecnici.filter(k => this.cetVrste.includes(k.vrsta)).length ==
       this.mase1.length && this.sviPrecnici.filter(k => this.lisVrste.includes(k.vrsta)).length ==
       this.mase2.length){
         this.uneseniSviPrecnici = false;
@@ -186,8 +186,8 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     if(this.mase1.length == 0){
       this.trueBonitetCetinari = false;
-    }else this.trueBonitetCetinari = true; 
-    
+    }else this.trueBonitetCetinari = true;
+
   if (this.mase2.length == 0){
     this.trueBonitetLiscari = false;
   }else this.trueBonitetLiscari = true;
@@ -208,7 +208,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   if(this.sviPrecnici.find(j=>j.vrsta == 7)){
             this.truePl = true}
   if(this.sviPrecnici.find(j=>j.vrsta == 8)){
-            this.trueOl = true}     
+            this.trueOl = true}
     console.log(this.sviPrecnici);
   }
 // Funkcija potvrde normi sjece i prelazak na nnorme za animal
@@ -241,15 +241,15 @@ zavrsenUnos($event){
 // Sortiranje niza sa precnicima od manjeg ka većem
 // po vrstama iz select boxa-odabir vrste
     this.sviPrecnici.sort((a, b) => a.vrsta - b.vrsta);
-   
+
 
 // Sveukupna masa cetinara po vrstama čekam sa sortimenata
 //     let mase1 = [1,2];
-    
+
 
 // Sveukupna masa liscara po vrstama (čekam sa sortimenata)
 //     let mase2 = [1,2];
-  
+
 
 // Sveukupna masa cetinara
     const masaCet = this.mase1.reduce(function(m, n) {

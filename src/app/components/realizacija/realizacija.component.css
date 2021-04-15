@@ -1,9 +1,17 @@
 
 .table{
   table-layout: fixed;
+  line-height: 1.0;
 }
 
 .prihod{
   margin: 100px;
 text-align: center;
+
 }
+
+.suma-table{
+  margin: 100px;
+}
+
+

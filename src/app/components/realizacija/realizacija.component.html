@@ -15,6 +15,7 @@
       <td *ngFor="let itemJela of this.trupci.jelaSaNeto">
         {{itemJela}}
       </td>
+      <td rowspan="3">{{prihodJela}} KM</td>
     </tr>
 
     <tr *ngIf="tabJela">
@@ -22,6 +23,7 @@
       <td *ngFor="let cijenaJela of this.trupci.cijenaJela">
         {{cijenaJela}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -33,6 +35,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr *ngIf="tabSmrca">
@@ -40,6 +43,7 @@
       <td *ngFor="let itemSmrca of this.trupci.smrcaSaNeto">
         {{itemSmrca}}
       </td>
+      <td rowspan="3">{{prihodSmrca}} KM</td>
     </tr>
 
     <tr *ngIf="tabSmrca">
@@ -47,6 +51,7 @@
       <td *ngFor="let cijenaSmrca of this.trupci.cijenaSmrca">
         {{cijenaSmrca}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -58,6 +63,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr *ngIf="tabBijeliBor">
@@ -65,6 +71,7 @@
       <td *ngFor="let itemBijeliBor of this.trupci.bijeliBorSaNeto">
         {{itemBijeliBor}}
       </td>
+      <td rowspan="3">{{prihodBijeliBor}} KM</td>
     </tr>
 
     <tr *ngIf="tabBijeliBor">
@@ -72,6 +79,7 @@
       <td *ngFor="let cijenaBijeliBor of this.trupci.cijenaBijeliBor">
         {{cijenaBijeliBor}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -83,6 +91,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr *ngIf="tabCrniBor">
@@ -90,6 +99,7 @@
       <td *ngFor="let itemCrniBor of this.trupci.crniBorSaNeto">
         {{itemCrniBor}}
       </td>
+      <td rowspan="3">{{prihodCrniBor}} KM</td>
     </tr>
 
     <tr *ngIf="tabCrniBor">
@@ -97,6 +107,7 @@
       <td *ngFor="let cijenaCrniBor of this.trupci.cijenaCrniBor">
         {{cijenaCrniBor}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -108,14 +119,16 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
 
-    <tr class="table-warning">
+    <tr class="table-warning" *ngIf="tabCet">
       <td>Σ cetinari</td>
       <th *ngFor="let itemSumCet of this.trupci.sumCet">
         {{itemSumCet}}
       </th>
+      <td>{{sumPrihodiCet}} KM</td>
     </tr>
 
     <tr *ngIf="tabBukva">
@@ -123,6 +136,7 @@
       <td *ngFor="let itemBukva of this.trupci.bukvaSaNeto">
         {{itemBukva}}
       </td>
+      <td rowspan="3">{{prihodBukva}} KM</td>
     </tr>
 
     <tr *ngIf="tabBukva">
@@ -130,6 +144,7 @@
       <td *ngFor="let cijenaBukva of this.trupci.cijenaBukva">
         {{cijenaBukva}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -141,6 +156,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr *ngIf="tabHrast">
@@ -148,6 +164,7 @@
       <td *ngFor="let itemHrast of this.trupci.hrastSaNeto">
         {{itemHrast}}
       </td>
+      <td rowspan="3">{{prihodHrast}} KM</td>
     </tr>
 
     <tr *ngIf="tabHrast">
@@ -155,6 +172,7 @@
       <td *ngFor="let cijenaHrast of this.trupci.cijenaHrast">
         {{cijenaHrast}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -166,6 +184,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr *ngIf="tabBrijest">
@@ -173,6 +192,7 @@
       <td *ngFor="let itemBrijest of this.trupci.brijestSaNeto">
         {{itemBrijest}}
       </td>
+      <td rowspan="3">{{prihodBrijest}} KM</td>
     </tr>
 
     <tr *ngIf="tabBrijest">
@@ -180,6 +200,7 @@
       <td *ngFor="let cijenaBrijest of this.trupci.cijenaBrijest">
         {{cijenaBrijest}}
       </td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
@@ -191,6 +212,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr *ngIf="tabOstali">
@@ -198,6 +220,7 @@
       <td *ngFor="let itemOstali of this.trupci.ostaliSaNeto">
         {{itemOstali}}
       </td>
+      <td rowspan="3">{{prihodOstali}} KM</td>
     </tr>
 
     <tr *ngIf="tabOstali">
@@ -207,6 +230,7 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
 
     <tr class="table-success" *ngIf="tabOstali">
@@ -214,22 +238,26 @@
       <td *ngFor="let vrijednost of this.trupci.vrijednostOstali">
         {{vrijednost}}
       </td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
 
 
-    <tr class="table-dark">
+    <tr class="table-dark" *ngIf="tabLis">
       <td>Σ Liscari</td>
       <th *ngFor="let itemSumLis of this.trupci.sumLis">
         {{itemSumLis}}
       </th>
+      <td>{{sumPrihodiLis}} KM</td>
     </tr>
 
     <tr class="table-danger">
       <td>Σ Cetinari i Liscari</td>
-
       <th *ngFor="let itemSumCetLis of this.trupci.sumCetLis">
         {{itemSumCetLis}}
       </th>
+      <td>{{sumPrihodiCetLis}} KM</td>
     </tr>
     </thead>
 
@@ -254,32 +282,32 @@
     <tr>
       <th rowspan="9">69</th>
       <td rowspan="3">Sjeca i izrada</td>
-      <td>Cetinari {{usloviRadaCet}} </td>
+      <td>Cetinari {{usloviRadaCet}}</td>
       <td>{{bonitetCet}}</td>
-      <td>{{srednjiPrecnikCet}}</td>
+      <td>{{srednjiPrecnikCet}} cm</td>
       <td></td>
-      <td>{{kolicinaCet}}</td>
+      <td>{{kolicinaCet}} m³</td>
       <td>{{normaSjecaCet}}</td>
-      <td>{{cetinarskaCijenaSj | number : '1.2-2'}}</td>
-      <td>{{sjecaCetBrRadnihDana}}</td>
+      <td>{{cetCijenaSj | number : '1.2-2'}} KM/m³</td>
+      <td>{{sjecaCetBrRadDana}}</td>
     </tr>
 
     <tr>
       <td>Liscari {{usloviRadaLis}}</td>
       <td>{{bonitetLis}}</td>
-      <td>{{srednjiPrecnikLis}}</td>
+      <td>{{srednjiPrecnikLis}} cm</td>
       <td></td>
-      <td>{{kolicinaLis}}</td>
+      <td>{{kolicinaLis}} m³</td>
       <td>{{normaSjecaLis}}</td>
-      <td>{{liscarskaCijenaSj | number : '1.2-2'}}</td>
-      <td>{{sjecaLisBrRadnihDana}}</td>
+      <td>{{lisCijenaSj | number : '1.2-2'}} KM/m³</td>
+      <td>{{sjecaLisBrRadDana}}</td>
     </tr>
     <tr>
       <td>Σ</td>
       <td></td>
       <td></td>
       <td></td>
-      <td>{{ukupnaKolicina}}</td>
+      <td>{{ukupnaKolicina}} m³</td>
       <td></td>
       <td></td>
       <td></td>
@@ -289,20 +317,20 @@
       <td>Cetinari {{usloviRadaAnimalCet}}</td>
       <td>{{bonitetCet}}</td>
       <td></td>
-      <td>{{distanca}}</td>
-      <td>{{kolicinaCetTrupci}}</td>
+      <td>{{distanca}} m</td>
+      <td>{{kolicinaCetTrupci}} m³</td>
       <td>{{normaTrupciCet}}</td>
-      <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}}</td>
+      <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalTrupciCetBrRadnihDana}}</td>
     </tr>
     <tr>
       <td>Liscari {{usloviRadaAnimalLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
-      <td>{{distanca}}</td>
-      <td>{{kolicinaLisTrupci}}</td>
+      <td>{{distanca}} m</td>
+      <td>{{kolicinaLisTrupci}} m³</td>
       <td>{{normaTrupciLis}}</td>
-      <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}}</td>
+      <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalLisBrRadnihDana}}</td>
     </tr>
     <tr>
@@ -310,7 +338,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>{{ukupnaKolicina}}</td>
+      <td>{{ukupnaKolicina}} m³</td>
       <td></td>
       <td></td>
       <td></td>
@@ -321,20 +349,20 @@
       <td>Cetinari {{usloviRadaAnimalCet}}</td>
       <td>{{bonitetCet}}</td>
       <td></td>
-      <td>{{distanca}}</td>
-      <td>{{kolicinaCetTanka}}</td>
+      <td>{{distanca}} m</td>
+      <td>{{kolicinaCetTanka}} m³</td>
       <td>{{normaTankaCet}}</td>
-      <td>{{cijenaCetTankaAnimal | number : '1.2-2'}}</td>
+      <td>{{cijenaCetTankaAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalTankaCetBrRadnihDana}}</td>
     </tr>
     <tr>
       <td>Liscari {{usloviRadaAnimalLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
-      <td>{{distanca}}</td>
-      <td>{{kolicinaLisTanka}}</td>
+      <td>{{distanca}} m</td>
+      <td>{{kolicinaLisTanka}} m³</td>
       <td>{{normaTankaLis}}</td>
-      <td>{{cijenaLisTankaAnimal | number : '1.2-2'}}</td>
+      <td>{{cijenaLisTankaAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalTankaLisBrRadnihDana}}</td>
     </tr>
     <tr>
@@ -342,7 +370,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>{{ukupnaKolicina}}</td>
+      <td>{{ukupnaKolicina}} m³</td>
       <td></td>
       <td></td>
       <td></td>
@@ -353,7 +381,7 @@
 </div>
 
 
-<div class="table-responsive prihod">
+<div class="table-responsive prihod suma-table">
 <table class="table table-bordered">
   <tr>
     <th>Odjel</th>
@@ -366,17 +394,17 @@
   <tr>
     <th rowspan="9">69</th>
     <td rowspan="3">Sjeca i izrada</td>
-    <td>Cetinari {{usloviRadaCet}} </td>
-    <td>{{kolicinaCet}}</td>
-    <td>{{cetinarskaCijenaSj | number : '1.2-2'}}</td>
-    <td>{{trosakCetSj | number : '1.2-2'}}</td>
+    <td>Cetinari</td>
+    <td>{{kolicinaCet}} m³</td>
+    <td>{{cetCijenaSj | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakCetSj | number : '1.2-2'}} KM</td>
   </tr>
 
   <tr>
-    <td>Liscari {{usloviRadaLis}}</td>
-    <td>{{kolicinaLis}}</td>
-    <td>{{liscarskaCijenaSj | number : '1.2-2'}}</td>
-    <td>{{trosakLisSj | number : '1.2-2'}}</td>
+    <td>Liscari</td>
+    <td>{{kolicinaLis}} m³</td>
+    <td>{{lisCijenaSj | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakLisSj | number : '1.2-2'}} KM</td>
   </tr>
   <tr>
     <td>Σ</td>
@@ -386,16 +414,16 @@
   </tr>
   <tr>
     <td rowspan="3">Animal trupci</td>
-    <td>Cetinari {{usloviRadaAnimalCet}}</td>
-    <td>{{kolicinaCetTrupci}}</td>
-    <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}}</td>
-    <td>{{trosakCetTrupci | number : '1.2-2'}}</td>
+    <td>Cetinari</td>
+    <td>{{kolicinaCetTrupci}} m³</td>
+    <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakCetTrupci | number : '1.2-2'}} KM</td>
   </tr>
   <tr>
-    <td>Liscari {{usloviRadaAnimalLis}}</td>
-    <td>{{kolicinaLisTrupci}}</td>
-    <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}}</td>
-    <td>{{trosakLisTrupci | number : '1.2-2'}}</td>
+    <td>Liscari</td>
+    <td>{{kolicinaLisTrupci}} m³</td>
+    <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakLisTrupci | number : '1.2-2'}} KM</td>
   </tr>
   <tr>
     <td>Σ</td>
@@ -406,16 +434,16 @@
 
   <tr>
     <td rowspan="3">Animal tanka oblovina</td>
-    <td>Cetinari {{usloviRadaAnimalCet}}</td>
-    <td>{{kolicinaCetTanka}}</td>
-    <td>{{cijenaCetTankaAnimal | number : '1.2-2'}}</td>
-    <td>{{trosakCetTanka | number : '1.2-2'}}</td>
+    <td>Cetinari</td>
+    <td>{{kolicinaCetTanka}} m³</td>
+    <td>{{cijenaCetTankaAnimal | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakCetTanka | number : '1.2-2'}} KM</td>
   </tr>
   <tr>
-    <td>Liscari {{usloviRadaAnimalLis}}</td>
-    <td>{{kolicinaLisTanka}}</td>
-    <td>{{cijenaLisTankaAnimal | number : '1.2-2'}}</td>
-    <td>{{trosakLisTanka | number : '1.2-2'}}</td>
+    <td>Liscari</td>
+    <td>{{kolicinaLisTanka}} m³</td>
+    <td>{{cijenaLisTankaAnimal | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakLisTanka | number : '1.2-2'}} KM</td>
   </tr>
   <tr>
     <td>Σ</td>
@@ -429,19 +457,19 @@
 </div>
 
 <div class="table-responsive prihod">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-sm">
     <tr>
       <td>Prihodi</td>
-      <td>25752 lazni podatak</td>
+      <td>{{sumPrihodiCetLis}} KM</td>
     </tr>
     <tr>
       <td>Direktni troskovi</td>
-      <td>{{ukupniDirektniTrosak | number : '1.2-2'}}</td>
+      <td>{{ukupniDirektniTrosak | number : '1.2-2'}} KM</td>
     </tr>
 
     <tr>
       <td>Dobit</td>
-      <td>17543 lazni podatak</td>
+      <td>{{dobit | number : '1.2-2'}} KM</td>
     </tr>
 
 

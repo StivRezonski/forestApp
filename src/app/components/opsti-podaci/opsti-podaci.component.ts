@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OpstiPodaci } from '../../models/opsti-podaci.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-opsti-podaci',
@@ -21,7 +22,7 @@ export class OpstiPodaciComponent implements OnInit {
   sumskoPrivrednoPodrucje = [];
   rukovodilacPripreme = [];
   constructor(private formBuilder: FormBuilder, private sharedService: SharedService,
-              public opstiPodaci: OpstiPodaci) {
+              public opstiPodaci: OpstiPodaci, private router: Router) {
     this.opstaForma = this.formBuilder.group({
       grad: [''],
       odjel: [''],
@@ -56,6 +57,7 @@ export class OpstiPodaciComponent implements OnInit {
     this.opstiPodaci.sumskoPrivrednoPodrucje = this.opstaForma.get('sumskoPrivrednoPodrucje').value;
     this.opstiPodaci.grad = this.opstaForma.get('grad').value;
     this.opstiPodaci.rukovodilacPripreme = this.opstaForma.get('rukovodilacPripreme').value;
+    this.router.navigate(['/sortimentna-struktura']);
   }
 
 }
