@@ -60,8 +60,12 @@ export class RealizacijaComponent implements OnInit {
   kolicinaCetTrupci = this.trupci.debelaOblovinaCet[0];
   kolicinaLisTrupci = this.trupci.debelaOblovinaLis[0];
 
+  trupciKolicina = this.kolicinaCetTrupci + this.kolicinaLisTrupci;
+
   kolicinaCetTanka = this.trupci.tankaOblovinaCet[0];
   kolicinaLisTanka = this.trupci.tankaOblovinaLis[0];
+
+  tankaKolicina = this.kolicinaCetTanka + this.kolicinaLisTanka;
 
   sjecaCetBrRadDana = Math.round(this.kolicinaCet / this.normaSjecaCet);
   sjecaLisBrRadDana = Math.round(this.kolicinaLis / this.normaSjecaLis);
@@ -100,6 +104,7 @@ export class RealizacijaComponent implements OnInit {
   dobit = this.sumPrihodiCetLis - this.ukupniDirektniTrosak;
 
   odjel = this.opstiPodaci.odjel;
+
   constructor(public trupci: TrupciService, public norme: NormeService, private opstiPodaci: OpstiPodaci) {
   }
 

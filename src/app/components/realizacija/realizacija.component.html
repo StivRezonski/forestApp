@@ -264,7 +264,7 @@
       <th>Broj radnih dana</th>
     </tr>
     <tr>
-      <th rowspan="9">{{odjel}}</th>
+      <th rowspan="12">{{odjel}}</th>
       <td rowspan="3">Sjeca i izrada</td>
       <td>Cetinari {{usloviRadaCet}}</td>
       <td>{{bonitetCet}}</td>
@@ -286,7 +286,7 @@
       <td>{{lisCijenaSj | number : '1.2-2'}} KM/m³</td>
       <td>{{sjecaLisBrRadDana}}</td>
     </tr>
-    <tr>
+    <tr class="table-secondary">
       <td>Σ</td>
       <td></td>
       <td></td>
@@ -322,7 +322,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>{{ukupnaKolicina  | number : '1.2-2'}} m³</td>
+      <td class="table-warning">{{trupciKolicina  | number : '1.2-2'}} m³</td>
       <td></td>
       <td></td>
       <td></td>
@@ -354,11 +354,44 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>{{ukupnaKolicina | number : '1.2-2'}} m³</td>
+      <td class="table-warning">{{tankaKolicina | number : '1.2-2'}} m³</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
+
+    <tr>
+      <td rowspan="3">Iznos</td>
+      <td>Cetinari {{usloviRadaAnimalCet}}</td>
+      <td>{{bonitetCet}}</td>
+      <td></td>
+      <td>{{distanca}} m</td>
+      <td>{{kolicinaCetTanka | number : '1.2-2'}} m³</td>
+      <td>{{normaTankaCet | number : '1.2-2'}}</td>
+      <td>{{cijenaCetTankaAnimal | number : '1.2-2'}} KM/m³</td>
+      <td>{{animalTankaCetBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Liscari {{usloviRadaAnimalLis}}</td>
+      <td>{{bonitetLis}}</td>
+      <td></td>
+      <td>{{distanca}} m</td>
+      <td>{{kolicinaLisTanka | number : '1.2-2'}} m³</td>
+      <td>{{normaTankaLis | number : '1.2-2'}}</td>
+      <td>{{cijenaLisTankaAnimal | number : '1.2-2'}} KM/m³</td>
+      <td>{{animalTankaLisBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Σ</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td  class="table-warning">{{tankaKolicina | number : '1.2-2'}} m³</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
 
 
   </table>
@@ -376,7 +409,7 @@
     <th>Ukupno</th>
   </tr>
   <tr>
-    <th rowspan="9">{{odjel}}</th>
+    <th rowspan="12">{{odjel}}</th>
     <td rowspan="3">Sjeca i izrada</td>
     <td>Cetinari</td>
     <td>{{kolicinaCet | number : '1.2-2'}} m³</td>
@@ -418,6 +451,26 @@
 
   <tr>
     <td rowspan="3">Animal tanka oblovina</td>
+    <td>Cetinari</td>
+    <td>{{kolicinaCetTanka | number : '1.2-2'}} m³</td>
+    <td>{{cijenaCetTankaAnimal | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakCetTanka | number : '1.2-2'}} KM</td>
+  </tr>
+  <tr>
+    <td>Liscari</td>
+    <td>{{kolicinaLisTanka | number : '1.2-2'}} m³</td>
+    <td>{{cijenaLisTankaAnimal | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakLisTanka | number : '1.2-2'}} KM</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td rowspan="3">Iznos</td>
     <td>Cetinari</td>
     <td>{{kolicinaCetTanka | number : '1.2-2'}} m³</td>
     <td>{{cijenaCetTankaAnimal | number : '1.2-2'}} KM/m³</td>
