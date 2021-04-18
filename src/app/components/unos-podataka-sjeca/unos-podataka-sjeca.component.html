@@ -17,7 +17,9 @@
           <h5 *ngIf = "uneseniUsloviRada">Unesite precnike po vrstama i uslove rada!</h5>
           <h5 *ngIf = "!uneseniUsloviRada">Uspjesno ste unijeli uslove rada i precnike!</h5>
         </div>
-        <div class="card-body" *ngIf = "akoSuUsloviZavrseni">
+        <div class="card-body" *ngIf="akoSuUsloviZavrseni">
+
+
          <div class="unosPrecnika" *ngIf="uneseniSviPrecnici">
           <form [formGroup]='unosPrecnika'>
             <div class="form-group">
@@ -58,9 +60,13 @@
             </div>
           </form>
         </div>
-        <div class="unosNormi">
+
+
+        <div class="unosNormi" *ngIf="zavrsenoSaUnosomPrecnika">
           <form [formGroup]='unosUslovaRada'>
-            <div class="form-group"*ngIf="zavrsenoSaUnosomPrecnika" >
+            <div class="form-group">
+
+              <div class="sjecaNorme" *ngIf="zavrsenoSaUnosomUslovaSjeca">
               <h5>Unesite uslove rada za sjecu!</h5>  <br>
               <select class="form-select" formControlName="nagibSjeca" required>
                 <option [ngValue]="null" [disabled]="true">Nagib terena - sjeca</option>
@@ -141,10 +147,12 @@
                 </small>
               </div> <br>
               <div class="potvrdaNormiSjece d-grid gap-2">
-                <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi norme sjece</button> 
+                <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
               </div>
-            </div> <br>
-              <div class="aNorme" *ngIf="animalNorme">
+            </div>
+
+              <div class="animalNorme" *ngIf="animalNorme">
+                <h5>Unesite uslove rada za animal!</h5>  <br> 
               <select class="form-select" formControlName="nagibAnimal" required>
                 <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
                 <option [ngValue]="4">10`-20`</option>
@@ -154,7 +162,7 @@
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('nagibAnimal').errors?.required">
                 Unijeti nagib za animal!
-              </small> <br> <br>
+              </small> <br>
 
               <div class="form-check"*ngIf="imaCetinara" >
                 <input class="form-check-input" [disabled] = "nemaCetinara" type="checkbox"
@@ -185,7 +193,7 @@
                 Unijeti udaljenost od štale!
               </small> <br>
        
-              <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control">
+              <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control" required>
               <small class="text-danger"
                      *ngIf="
                             unosUslovaRada.get('animalDistanca').errors?.required ||
@@ -193,59 +201,73 @@
                             unosUslovaRada.get('animalDistanca').errors?.maxlength">
                 Distanca mora biti trocifren ili četvorocifren broj.
               </small> <br>
-
-
               <div class="iznos-btn d-grid gap-2">
                 <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button> 
               </div>
-            </div><br>
+            <br>
+              <div class="iznos-btn d-grid gap-2">
+                <button type="button" class="btn btn-success" (click)="potvrdaAnimal()">Potvrdi uslove animala</button> 
+              </div>
+            </div><br> 
+
+            
 
               <div class="iznos" *ngIf = "imaIznos">
+                <h5>Unesite uslove rada za iznos!</h5>  <br>
                 <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
-                <small class="text-danger"
+
+               <!--  <small class="text-danger"
                        *ngIf="
                               unosUslovaRada.get('iznosDistanca').errors?.required ||
                               unosUslovaRada.get('iznosDistanca').errors?.minlength ||
                               unosUslovaRada.get('iznosDistanca').errors?.maxlength">
                   Distanca mora biti trocifren ili četvorocifren broj.
-                </small> <br>
-                <select class="form-select" (change)='zavrsenUnos($event)' formControlName="vrstaTla" required>
+                </small> --> <br>
+                <select class="form-select" formControlName="vrstaTla">
                   <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
                   <option [ngValue]="2">Bez kamenja</option>
                   <option [ngValue]="4">Sa povrsinskim kamenjem</option>
                   <option [ngValue]="9">Kamenito preko 30%</option>
                 </select>
-                <small class="text-danger"
+              <!--   <small class="text-danger"
                        *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
                   Unijeti vrstu tla!
-                </small> 
+                </small> --> 
+                <div class="potvrdjivanjeIznosa">
+                  <button type="button" class="btn btn-primary" (click)="zavrsenUnos()">
+                    Potvrdi uslove iznosa
+                  </button>
+                </div>
               </div><br>
               
-            
-          </form>
-         
-        
-
-              <button type="button" class="btn btn-primary" (click)="potvrdi()">
-
-                Potvrdi uslove rada
-              </button>
             </div>
           </form>
+         
+      
+
+             
+            </div>
+          
+        
         </div>
+
+        <div class="potvrdjivanjeNormi" *ngIf = "zavrsenUnosUslovaRada">
+          <button type="button" class="btn btn-primary" [disabled]="!unosUslovaRada.valid" (click)="potvrdi()">
+            Potvrdi uslove rada
+          </button>
         </div>
+
+      </div>
+
       </div>
       <br>
-      <div class="potvrdjivanjeNormi" *ngIf = "zavrsenUnosUslovaRada">
-        <button type="button" class="btn btn-primary" (click)="potvrdi()">
-          Potvrdi uslove rada
-        </button>
-      </div>
+
+     
 
     </div>
   </div> <br> <br>
 
-  <table class="table table-bordered table-sm">
+ <!--  <table class="table table-bordered table-sm">
     <thead>
     <tr>
       <th scope="col">#</th>
@@ -326,4 +348,5 @@
     </tr>
     </tbody>
   </table>
-</div>
+
+ -->
