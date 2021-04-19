@@ -147,6 +147,7 @@
                 </small>
               </div> <br>
               <div class="potvrdaNormiSjece d-grid gap-2">
+
                 <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
               </div>
             </div>
@@ -192,8 +193,10 @@
                      *ngIf="unosUslovaRada.get('udaljenostOdStale').errors?.required">
                 Unijeti udaljenost od štale!
               </small> <br>
+
        
               <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control" required>
+
               <small class="text-danger"
                      *ngIf="
                             unosUslovaRada.get('animalDistanca').errors?.required ||
@@ -202,7 +205,7 @@
                 Distanca mora biti trocifren ili četvorocifren broj.
               </small> <br>
               <div class="iznos-btn d-grid gap-2">
-                <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button> 
+                <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button>
               </div>
             <br>
               <div class="iznos-btn d-grid gap-2">
@@ -232,6 +235,7 @@
               <!--   <small class="text-danger"
                        *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
                   Unijeti vrstu tla!
+
                 </small> --> 
                 <div class="potvrdjivanjeIznosa">
                   <button type="button" class="btn btn-primary" (click)="zavrsenUnos()">
@@ -249,6 +253,7 @@
             </div>
           
         
+
         </div>
 
         <div class="potvrdjivanjeNormi" *ngIf = "zavrsenUnosUslovaRada">
