@@ -18,6 +18,7 @@ export class OpstiPodaciComponent implements OnInit {
   gazdinstvo = [];
   privrednaJedinica = [];
   projektant = [];
+  direktor = [];
   vrstaSjece = [];
   sumskoPrivrednoPodrucje = [];
   rukovodilacPripreme = [];
@@ -29,6 +30,7 @@ export class OpstiPodaciComponent implements OnInit {
       gazdinstvo: [''],
       privrednaJedinica: [''],
       projektant: [''],
+      direktor: [''],
       vrstaSjece: [''],
       sumskoPrivrednoPodrucje: [''],
       rukovodilacPripreme: ['']
@@ -42,6 +44,7 @@ export class OpstiPodaciComponent implements OnInit {
     this.vrstaSjece = this.sharedService.getVrstaSjece();
     this.sumskoPrivrednoPodrucje = this.sharedService.getSumskoPrivrednoPodrucje();
     this.rukovodilacPripreme = this.sharedService.getRukovodilacPripreme();
+    this.direktor = this.sharedService.getDirektor();
   }
 
   ngOnInit(): void {
@@ -57,6 +60,7 @@ export class OpstiPodaciComponent implements OnInit {
     this.opstiPodaci.sumskoPrivrednoPodrucje = this.opstaForma.get('sumskoPrivrednoPodrucje').value;
     this.opstiPodaci.grad = this.opstaForma.get('grad').value;
     this.opstiPodaci.rukovodilacPripreme = this.opstaForma.get('rukovodilacPripreme').value;
+    this.opstiPodaci.direktor = this.opstaForma.get('direktor').value;
     this.router.navigate(['/sortimentna-struktura']);
   }
 

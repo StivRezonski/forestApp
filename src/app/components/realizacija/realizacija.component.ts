@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrupciService } from '../../services/trupci.service';
 import { NormeService } from '../../services/norme.service';
+import { OpstiPodaci } from '../../models/opsti-podaci.model';
 
 @Component({
   selector: 'app-realizacija',
@@ -59,8 +60,12 @@ export class RealizacijaComponent implements OnInit {
   kolicinaCetTrupci = this.trupci.debelaOblovinaCet[0];
   kolicinaLisTrupci = this.trupci.debelaOblovinaLis[0];
 
+  trupciKolicina = this.kolicinaCetTrupci + this.kolicinaLisTrupci;
+
   kolicinaCetTanka = this.trupci.tankaOblovinaCet[0];
   kolicinaLisTanka = this.trupci.tankaOblovinaLis[0];
+
+  tankaKolicina = this.kolicinaCetTanka + this.kolicinaLisTanka;
 
   sjecaCetBrRadDana = Math.round(this.kolicinaCet / this.normaSjecaCet);
   sjecaLisBrRadDana = Math.round(this.kolicinaLis / this.normaSjecaLis);
@@ -98,7 +103,9 @@ export class RealizacijaComponent implements OnInit {
   sumPrihodiCetLis = this.sumPrihodiCet + this.sumPrihodiLis;
   dobit = this.sumPrihodiCetLis - this.ukupniDirektniTrosak;
 
-  constructor(public trupci: TrupciService, public norme: NormeService) {
+  odjel = this.opstiPodaci.odjel;
+
+  constructor(public trupci: TrupciService, public norme: NormeService, private opstiPodaci: OpstiPodaci) {
   }
 
 

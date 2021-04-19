@@ -141,7 +141,7 @@
                 </small>
               </div> <br>
               <div class="potvrdaNormiSjece d-grid gap-2">
-                <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi norme sjece</button> 
+                <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi norme sjece</button>
               </div>
             </div> <br>
               <div class="aNorme" *ngIf="animalNorme">
@@ -184,7 +184,7 @@
                      *ngIf="unosUslovaRada.get('udaljenostOdStale').errors?.required">
                 Unijeti udaljenost od štale!
               </small> <br>
-       
+
               <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control">
               <small class="text-danger"
                      *ngIf="
@@ -196,7 +196,7 @@
 
 
               <div class="iznos-btn d-grid gap-2">
-                <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button> 
+                <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button>
               </div>
             </div><br>
 
@@ -218,20 +218,20 @@
                 <small class="text-danger"
                        *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
                   Unijeti vrstu tla!
-                </small> 
+                </small>
               </div><br>
-              
-            
-          </form>
-         
-        
 
-              <button type="button" class="btn btn-primary" (click)="potvrdi()">
 
-                Potvrdi uslove rada
-              </button>
-            </div>
           </form>
+
+
+
+<!--              <button type="button" class="btn btn-primary" (click)="potvrdi()">-->
+
+<!--                Potvrdi uslove rada-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </form>-->
         </div>
         </div>
       </div>

@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TrupciService {
-  klase = ['R', 'F', 'L', 'I', 'II', 'III', 'TT', 'Rudno', 'Kolje za voce', 'Celuloza', 'Ogrev I', 'Ogrev II', 'Sveukupna', 'Neto', 'Prihod'];
+  klase = ['R', 'F', 'L', 'I', 'II', 'III', 'TT', 'Rudno', 'Kolje za voce',
+    'Celuloza', 'Ogrev I', 'Ogrev II', 'Sveukupna', 'Neto', 'Prihod'];
   trupciJela = [];
   trupciSmrca = [];
   trupciBijeliBor = [];
@@ -56,18 +57,18 @@ export class TrupciService {
 
   // kod cetinari cijene celuloze dodati oblo i cjepano kasnije
   // cijenovnik cetinari
-  cijenaJela = [0, 200, 147, 124, 106, 143, 72, 44, 50, 42, 0];
-  cijenaSmrca = [552, 0, 202, 150, 127, 109, 143, 72, 50, 42, 0];
+  cijenaJela = [null, 200, null, 147, 124, 106, 143, 72, 44, 50, null, null];
+  cijenaSmrca = [552, 202, null, 150, 127, 109, 143, 72, 44, 50, null, null];
   // mozda bude bug zbog L u borovima
-  cijenaBijeliBor = [0, 200, 170, 147, 124, 106, 110, 72, 44, 50, 42];
-  cijenaCrniBor = [0, 166, 146, 126, 105, 88, 110, 72, 44, 50, 42];
+  cijenaBijeliBor = [null, 200, 170, 147, 124, 106, 110, 72, 44, 50, null, null];
+  cijenaCrniBor = [null, 166, 146, 126, 105, 88, 110, 72, 44, 50, null, null];
 
   // cijenovnik liscari - provjeriti cijene
-  cijenaBukva = [0, 282, 192, 127, 101, 79, 63, 55, 57.5, 50, 0];
-  cijenaHrast = [505, 410, 265, 200, 165, 63, 55, 57.5, 50, 0, 0];
+  cijenaBukva = [null, 282, 192, 127, 101, 79, null, 63, 44, 63, 63, 55];
+  cijenaHrast = [null, 505, 410, 265, 200, 165, 136, 80, 44, 63, 63, 55];
   // cijene dve klase za rezanje
-  cijenaBrijest = [0, 364, 227, 184, 0, 63, 55, 57.5, 50, 0, 0];
-  cijenaOstali = [0, 94, 84, 65, 54, 0, 55.5, 41.5, 38, 0, 0];
+  cijenaBrijest = [null, 364, null, 227, 184, null, null, 63, 44, 63, 63, 54];
+  cijenaOstali = [null, 94, 84, 65, 54, null, null, null, 44, 58, 46, 42];
 
 
   constructor() {
