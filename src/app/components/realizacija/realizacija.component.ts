@@ -43,22 +43,30 @@ export class RealizacijaComponent implements OnInit {
   normaTrupciLis = this.podaciNorma[13].normaLisAnimalTrupci;
   normaTankaLis = this.podaciNorma[14].normaLisAnimalTankaOblovina;
 
+  normaIznosCet = this.podaciNorma[17].normaCetinariIznos;
+  normaIznosLis = this.podaciNorma[18].normaLiscariIznos;
+
   distanca = this.podaciNorma[0].distanca;
 
   cetCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaCet;
   lisCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaLis;
 
-  cijenaCetTrupacAnimal = (this.norme.cijenaRadnogDanaAnimal / this.normaTrupciCet) * this.trupci.debelaOblovinaCet[0];
-  cijenaCetTankaAnimal = (this.norme.cijenaRadnogDanaAnimal / this.normaTankaCet) * this.trupci.tankaOblovinaCet[0];
+  cijenaCetTrupacAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTrupciCet;
+  cijenaCetTankaAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTankaCet;
+  cijenaCetIznos = this.norme.cijenaRadnogDanaIznos / this.normaIznosCet;
 
-  cijenaLisTrupacAnimal = (this.norme.cijenaRadnogDanaAnimal / this.normaTrupciLis) * this.trupci.debelaOblovinaLis[0];
-  cijenaLisTankaAnimal = (this.norme.cijenaRadnogDanaAnimal / this.normaTankaLis) * this.trupci.tankaOblovinaLis[0];
+  cijenaLisTrupacAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTrupciLis;
+  cijenaLisTankaAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTankaLis;
+  cijenaLisIznos = this.norme.cijenaRadnogDanaIznos / this.normaIznosLis;
 
   kolicinaCet = this.trupci.sumCet[13];
   kolicinaLis = this.trupci.sumLis[13];
 
   kolicinaCetTrupci = this.trupci.debelaOblovinaCet[0];
   kolicinaLisTrupci = this.trupci.debelaOblovinaLis[0];
+
+  kolicinaIznosCet = this.trupci.iznosCet[0];
+  kolicinaIznosLis = this.trupci.iznosLis[0];
 
   trupciKolicina = this.kolicinaCetTrupci + this.kolicinaLisTrupci;
 
@@ -76,6 +84,9 @@ export class RealizacijaComponent implements OnInit {
   animalTankaCetBrRadnihDana = Math.round(this.kolicinaCetTanka / this.normaTankaCet);
   animalTankaLisBrRadnihDana = Math.round(this.kolicinaLisTanka / this.normaTankaLis);
 
+  iznosCetBrRadnihDana = Math.round(this.kolicinaIznosCet / this.normaIznosCet);
+  iznosLisBrRadnihDana = Math.round(this.kolicinaIznosLis / this.normaIznosLis);
+
   trosakCetSj = this.kolicinaCet * this.cetCijenaSj;
   trosakLisSj = this.kolicinaLis * this.lisCijenaSj;
 
@@ -84,6 +95,9 @@ export class RealizacijaComponent implements OnInit {
 
   trosakCetTanka = this.kolicinaCetTanka * this.cijenaCetTankaAnimal;
   trosakLisTanka = this.kolicinaLisTanka * this.cijenaLisTankaAnimal;
+
+  trosakCetIznos = this.kolicinaIznosCet * this.cijenaCetIznos;
+  trosakLisIznos = this.kolicinaIznosLis * this.cijenaLisIznos;
 
   ukupniDirektniTrosak = this.trosakCetSj + this.trosakLisSj + this.trosakCetTrupci +
     this.trosakLisTrupci + this.trosakCetTanka + this.trosakLisTanka;
