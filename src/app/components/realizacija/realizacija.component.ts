@@ -87,17 +87,17 @@ export class RealizacijaComponent implements OnInit {
   iznosCetBrRadnihDana = Math.round(this.kolicinaIznosCet / this.normaIznosCet);
   iznosLisBrRadnihDana = Math.round(this.kolicinaIznosLis / this.normaIznosLis);
 
-  trosakCetSj = this.kolicinaCet * this.cetCijenaSj;
-  trosakLisSj = this.kolicinaLis * this.lisCijenaSj;
+  trosakCetSj = this.kolicinaCet * parseFloat(this.cetCijenaSj.toFixed(2));
+  trosakLisSj = this.kolicinaLis * parseFloat(this.lisCijenaSj.toFixed(2));
 
-  trosakCetTrupci = this.kolicinaCetTrupci * this.cijenaCetTrupacAnimal;
-  trosakLisTrupci = this.kolicinaLisTrupci * this.cijenaLisTrupacAnimal;
+  trosakCetTrupci = this.kolicinaCetTrupci * parseFloat(this.cijenaCetTrupacAnimal.toFixed(2));
+  trosakLisTrupci = this.kolicinaLisTrupci * parseFloat(this.cijenaLisTrupacAnimal.toFixed(2));
 
-  trosakCetTanka = this.kolicinaCetTanka * this.cijenaCetTankaAnimal;
-  trosakLisTanka = this.kolicinaLisTanka * this.cijenaLisTankaAnimal;
+  trosakCetTanka = this.kolicinaCetTanka * parseFloat(this.cijenaCetTankaAnimal.toFixed(2));
+  trosakLisTanka = this.kolicinaLisTanka * parseFloat(this.cijenaLisTankaAnimal.toFixed(2));
 
-  trosakCetIznos = this.kolicinaIznosCet * this.cijenaCetIznos;
-  trosakLisIznos = this.kolicinaIznosLis * this.cijenaLisIznos;
+  trosakCetIznos = this.kolicinaIznosCet * parseFloat(this.cijenaCetIznos.toFixed(2));
+  trosakLisIznos = this.kolicinaIznosLis * parseFloat(this.cijenaLisIznos.toFixed(2));
 
   ukupniDirektniTrosak = this.trosakCetSj + this.trosakLisSj + this.trosakCetTrupci +
     this.trosakLisTrupci + this.trosakCetTanka + this.trosakLisTanka;
