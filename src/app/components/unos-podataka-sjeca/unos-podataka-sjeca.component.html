@@ -1,7 +1,7 @@
 
 <div class="container">
-  <div class="row form-row">
-    <div class="col-4 uputstvo">
+  
+<!--     <div class="col-4 uputstvo">
       <div class="card text-dark bg-warning mb-3" style="max-width: 80%;">
         <div class="card-header">Uputstvo za izradu projekta</div>
         <div class="card-body">
@@ -9,18 +9,14 @@
           <p class="card-text">Platiti pa se klatiti.</p>
         </div>
       </div>
-    </div>
-
-    <div class="col-4 offset-1">
+    </div> -->
       <div class="card text-center">
-        <div class="card-header bg-info" >
-          <h5 *ngIf = "uneseniUsloviRada">Unesite precnike po vrstama i uslove rada!</h5>
-          <h5 *ngIf = "!uneseniUsloviRada">Uspjesno ste unijeli uslove rada i precnike!</h5>
-        </div>
+   
         <div class="card-body" *ngIf="akoSuUsloviZavrseni">
 
 
          <div class="unosPrecnika" *ngIf="uneseniSviPrecnici">
+           <h5>Unesite precnike po vrstama!</h5>
           <form [formGroup]='unosPrecnika'>
             <div class="form-group">
               <select formControlName="vrsta" class="form-control" required>
@@ -54,7 +50,7 @@
             </div> <br>
 
             <div class="form-group">
-              <button class="btn btn-warning" type="button" [disabled]="!unosPrecnika.valid" (click)="unesiPrecnik()">
+              <button class="btn btn-success" type="button" [disabled]="!unosPrecnika.valid" (click)="unesiPrecnik()">
                 Potvrdi vrstu i precnik
               </button> <br>
             </div>
@@ -146,11 +142,19 @@
                   Unijeti bonitet za lišćare!
                 </small>
               </div> <br>
-              <div class="potvrdaNormiSjece d-grid gap-2">
+        <!--       <div class="potvrdaNormiSjece d-grid gap-2">
 
                 <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
-              </div>
+              </div> -->
+            <div class="btnGrupa">
+              <div class="btnAnimal">
+                <button type="button" class="btn-primary btn-sm" (click) = 'btnAnimal()' >Animal uslovi</button>
+              </div> <br>
+              <div class="btnTraktor">
+                <button type="button" class="btn-primary btn-sm" (click) = 'btnTraktor()' >Traktor uslovi</button>
+              </div> <br>
             </div>
+          </div>
 
               <div class="animalNorme" *ngIf="animalNorme">
                 <h5>Unesite uslove rada za animal!</h5>  <br> 
@@ -204,14 +208,22 @@
                             unosUslovaRada.get('animalDistanca').errors?.maxlength">
                 Distanca mora biti trocifren ili četvorocifren broj.
               </small> <br>
-              <div class="iznos-btn d-grid gap-2">
+           <!--    <div class="iznos-btn d-grid gap-2">
                 <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button>
               </div>
-            <br>
-              <div class="iznos-btn d-grid gap-2">
+            <br> -->
+              <!-- <div class="iznos-btn d-grid gap-2">
                 <button type="button" class="btn btn-success" (click)="potvrdaAnimal()">Potvrdi uslove animala</button> 
+              </div> --> <br>
+            <div class="btnGrupa1">
+              <div class="btnTraktor">
+                <button type="button" class="btn-primary btn-sm" (click) = 'btnTraktor()' >Traktor uslovi</button>
+              </div> <br>
+              <div class="btnSamarica">
+                <button type="button" class="btn-primary btn-sm" (click) = 'btnSamarica()' >Samarica uslovi</button>
               </div>
-            </div><br> 
+            </div>
+            </div> 
 
             
 
@@ -236,9 +248,9 @@
                        *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
                   Unijeti vrstu tla!
 
-                </small> --> 
+                </small> --> <br>  
                 <div class="potvrdjivanjeIznosa">
-                  <button type="button" class="btn btn-primary" (click)="zavrsenUnos()">
+                  <button type="button" class="btn btn-success" (click)="zavrsenUnos()">
                     Potvrdi uslove iznosa
                   </button>
                 </div>
@@ -257,20 +269,20 @@
         </div>
 
         <div class="potvrdjivanjeNormi" *ngIf = "zavrsenUnosUslovaRada">
-          <button type="button" class="btn btn-primary" [disabled]="!unosUslovaRada.valid" (click)="potvrdi()">
+          <button type="button" class="btn btn-success btn-block" [disabled]="!unosUslovaRada.valid" (click)="potvrdi()">
             Potvrdi uslove rada
           </button>
         </div>
 
       </div>
 
-      </div>
-      <br>
+      
+      
 
      
 
-    </div>
-  </div> <br> <br>
+    
+  </div> 
 
  <!--  <table class="table table-bordered table-sm">
     <thead>

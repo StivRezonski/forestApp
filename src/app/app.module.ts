@@ -25,6 +25,7 @@ import { RjesenjePracenjeComponent } from './components/projektna-dokumentacija/
 import { SortimentnaStrukturaComponent } from './components/sortimentna-struktura/sortimentna-struktura.component';
 import { RealizacijaComponent } from './components/realizacija/realizacija.component';
 import { TrupciService } from './services/trupci.service';
+import { TraktorComponent } from './components/traktor/traktor.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { TrupciService } from './services/trupci.service';
     OdlukaUsvajanjeComponent,
     RjesenjePracenjeComponent,
     SortimentnaStrukturaComponent,
-    RealizacijaComponent
+    RealizacijaComponent,
+    TraktorComponent
   ],
 
   providers: [UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, Jela,

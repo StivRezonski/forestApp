@@ -43,57 +43,23 @@
   </div>
 </nav>
 
-
-<router-outlet></router-outlet>
-
-
-<body class="d-flex flex-column">
-
-<!-- Footer -->
-<!-- <div id="content-wrap">
-<footer class="bg-white">
-  <div class="container py-5">
-    <div class="row py-4">
-      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="assets/logo.jpg" alt="" width="35" class="mb-3">
-        <p class="font-italic text-muted">Iz potrebe i pada u kvalitetu inzenjerskog kadra koji izlaze sa sumarskog fakulteta,
-          kako u Beogradu tako i na Banjoluckom Univerzitetu rodila se zelja za digitalnom automatizacijom izrade projekata u sumarstvu.</p>
-        <ul class="list-inline mt-4">
-          <li class="list-inline-item"><a routerLink="#" target="_blank" title="twitter"><i class="bi bi-twitter"></i></a></li>
-          <li class="list-inline-item"><a routerLink="#" target="_blank" title="facebook"><i class="bi bi-facebook"></i></a></li>
-          <li class="list-inline-item"><a routerLink="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
-          <li class="list-inline-item"><a routerLink="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
-          <li class="list-inline-item"><a routerLink="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>
-        </ul>
-      </div>
-      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-        <h6 class="text-uppercase font-weight-bold mb-4">Korisni linkovi</h6>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-2"><a routerLink="https://sumerepublikesrpske.org/" class="text-muted">Sajt suma RS</a></li>
-          <li class="mb-2"><a routerLink="www.fsc.org" class="text-muted">FSC</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-lg-0">
-        <h6 class="text-uppercase font-weight-bold mb-4">Obavjestenje</h6>
-        <p class="text-muted mb-4">Trenutno koristite alfa verziju nove web aplikacije za projektovanje u sumarstvu</p>
-        <div class="p-1 rounded border">
-          <div class="input-group">
-            <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
-            <div class="input-group-append">
-              <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
-            </div>
-          </div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="uputstvo">
+      <div class="card text-dark bg-warning mb-3" style="max-width: 80%;">
+        <div class="card-header">Uputstvo za izradu projekta</div>
+        <div class="card-body">
+          <h5 class="card-title">Korak 1.</h5>
+          <p class="card-text">Platiti pa se klatiti.</p>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div class="bg-light py-4">
-    <div class="container text-center">
-      <p class="text-muted mb-0 py-2">© 2021 Knez && Alex All rights reserved.</p>
-    </div>
+  <div class="col-lg-4 border border-secondary">
+    <router-outlet></router-outlet>
   </div>
-</footer> 
-</div> -->
+</div>
 
-</body>
+
+
+

@@ -86,7 +86,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   imaIznos = false;
   zavrsenUnosUslovaRada = false;
   akoSuUsloviZavrseni = true;
-  uneseniUsloviRada = true;
+  uneseniUsloviRada = false;
   zavrsenoSaUnosomUslovaSjeca;
   
   // Forma uslova rada
@@ -212,14 +212,30 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   if(this.sviPrecnici.find(j=>j.vrsta == 8)){
             this.trueOl = true}
     console.log(this.sviPrecnici);
+
+    this.uneseniUsloviRada = false
   }
 // Funkcija potvrde normi sjece i prelazak na nnorme za animal
-potvrdiNormeSjece(){
+/* potvrdiNormeSjece(){
   this.animalNorme = true;
   this.zavrsenoSaUnosomUslovaSjeca = false;
   if(  this.mase1.length == 0){
     this.imaCetinara = false;
   }
+} */
+btnAnimal(){
+  this.zavrsenoSaUnosomUslovaSjeca = false;
+  this.animalNorme = true;
+}
+btnTraktor(){
+  this.zavrsenoSaUnosomUslovaSjeca = false;
+  this.animalNorme = false;
+  this.router.navigate(['/traktor']);
+}
+btnSamarica(){
+  this.zavrsenoSaUnosomUslovaSjeca = false;
+  this.animalNorme = false;
+  this.imaIznos = true;
 }
 
 potvrdaAnimal(){
@@ -228,10 +244,6 @@ potvrdaAnimal(){
   this.akoSuUsloviZavrseni = false;
 }
 
-iznosBtn(){
-  this.animalNorme = false;
-  this.imaIznos = true; 
-}
 zavrsenUnos(){
   this.uneseniUsloviRada = false;
   this.akoSuUsloviZavrseni = false;
