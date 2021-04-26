@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TrupciService } from '../../services/trupci.service';
 import { NormeService } from '../../services/norme.service';
 import { OpstiPodaci } from '../../models/opsti-podaci.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-realizacija',
@@ -119,7 +120,7 @@ export class RealizacijaComponent implements OnInit {
 
   odjel = this.opstiPodaci.odjel;
 
-  constructor(public trupci: TrupciService, public norme: NormeService, private opstiPodaci: OpstiPodaci) {
+  constructor(public trupci: TrupciService, public norme: NormeService, private opstiPodaci: OpstiPodaci, private router: Router) {
   }
 
 
@@ -205,6 +206,10 @@ export class RealizacijaComponent implements OnInit {
       this.dobit = this.sumPrihodiCet - this.ukupniDirektniTrosak;
     }
 
+  }
+
+  goToDokumentacija(): void {
+    this.router.navigate(['/dokumentacija']);
   }
 }
 

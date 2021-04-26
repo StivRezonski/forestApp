@@ -19,7 +19,7 @@
           </option>
         </select>
       </div>
-    
+
       <div class="odjel">
         <label for="odjel">Odjel</label>
         <select class="form-select" formControlName="odjel" id="odjel">
@@ -28,7 +28,7 @@
           </option>
         </select>
       </div>
-    
+
       <div class="vrstaSjece">
         <label for="vrstaSjece">Vrsta sjece</label>
         <select class="form-select" formControlName="vrstaSjece" id="vrstaSjece">
@@ -37,7 +37,7 @@
           </option>
         </select>
       </div>
-    
+
 
       <div class="projektant">
         <label for="projektant">Projektant</label>
@@ -47,7 +47,7 @@
           </option>
         </select>
       </div>
-    
+
       <div class="rukovodilacPripreme">
         <label for="rukovodilacPripreme">Rukovodilac pripreme</label>
         <select class="form-select" formControlName="rukovodilacPripreme" id="rukovodilacPripreme">
@@ -83,7 +83,24 @@
           </option>
         </select>
       </div>
-    
+
+    <div class="liceZaUzgoj">
+      <label for="liceZaUzgoj">Izaberi lice za uzgoj i zastitu</label>
+      <select class="form-select" formControlName="liceZaUzgoj" id="liceZaUzgoj">
+        <option *ngFor="let list of liceZaUzgoj; let i = index" [value]="liceZaUzgoj[i].name">
+          {{liceZaUzgoj[i].name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="liceZaEksploataciju">
+      <label for="liceZaEksploataciju">Izaberi lice zaduzeno za eksploataciju</label>
+      <select class="form-select" formControlName="liceZaEksploataciju" id="liceZaEksploataciju">
+        <option *ngFor="let list of liceZaEksploataciju; let i = index" [value]="liceZaEksploataciju[i].name">
+          {{liceZaEksploataciju[i].name}}
+        </option>
+      </select>
+    </div>
 
     <button class="btn btn-primary">Potvrdi opste podatke</button>
   </div>

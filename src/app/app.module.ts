@@ -26,6 +26,7 @@ import { SortimentnaStrukturaComponent } from './components/sortimentna-struktur
 import { RealizacijaComponent } from './components/realizacija/realizacija.component';
 import { TrupciService } from './services/trupci.service';
 import { TraktorComponent } from './components/traktor/traktor.component';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { TraktorComponent } from './components/traktor/traktor.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPrintModule
   ],
   declarations: [
     AppComponent,

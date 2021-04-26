@@ -22,6 +22,8 @@ export class OpstiPodaciComponent implements OnInit {
   vrstaSjece = [];
   sumskoPrivrednoPodrucje = [];
   rukovodilacPripreme = [];
+  liceZaEksploataciju = [];
+  liceZaUzgoj = [];
   constructor(private formBuilder: FormBuilder, private sharedService: SharedService,
               public opstiPodaci: OpstiPodaci, private router: Router) {
     this.opstaForma = this.formBuilder.group({
@@ -33,7 +35,9 @@ export class OpstiPodaciComponent implements OnInit {
       direktor: [''],
       vrstaSjece: [''],
       sumskoPrivrednoPodrucje: [''],
-      rukovodilacPripreme: ['']
+      rukovodilacPripreme: [''],
+      liceZaEksploataciju: [''],
+      liceZaUzgoj: ['']
     });
 
     this.grad = this.sharedService.getGrad();
@@ -45,6 +49,8 @@ export class OpstiPodaciComponent implements OnInit {
     this.sumskoPrivrednoPodrucje = this.sharedService.getSumskoPrivrednoPodrucje();
     this.rukovodilacPripreme = this.sharedService.getRukovodilacPripreme();
     this.direktor = this.sharedService.getDirektor();
+    this.liceZaEksploataciju = this.sharedService.getLiceZaEksploataciju();
+    this.liceZaUzgoj = this.sharedService.getLiceZaUzgoj();
   }
 
   ngOnInit(): void {
@@ -61,6 +67,8 @@ export class OpstiPodaciComponent implements OnInit {
     this.opstiPodaci.grad = this.opstaForma.get('grad').value;
     this.opstiPodaci.rukovodilacPripreme = this.opstaForma.get('rukovodilacPripreme').value;
     this.opstiPodaci.direktor = this.opstaForma.get('direktor').value;
+    this.opstiPodaci.liceZaEksploataciju = this.opstaForma.get('liceZaEksploataciju').value;
+    this.opstiPodaci.liceZaUzgoj = this.opstaForma.get('liceZaUzgoj').value;
     this.router.navigate(['/sortimentna-struktura']);
   }
 

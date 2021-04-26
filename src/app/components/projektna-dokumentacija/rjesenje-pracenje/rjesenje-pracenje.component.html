@@ -1,7 +1,9 @@
 <div class="container">
-  <div class="memo"><img class="memorandum" src="/assets/memorandum.png" alt="image"></div>
+<!--  <div class="memo">-->
+    <img class="memorandum" src="/assets/memorandum.png" alt="image">
+<!--  </div>-->
 
-  <div class="gazdinstvo">Шумско Газдинство „Klekovaca-potoci“ Istocni Drvar</div>
+  <div class="gazdinstvo">Шумско Газдинство „{{gazdinstvo}}“ {{ grad}}</div>
   <div class="broj-rjesenja">Број: ______________/21</div>
   <div class="broj-rjesenja"> Дана: _____________2021. године</div>
 
@@ -17,7 +19,7 @@
     извршених радова по Пројекту за извођење радова
   </div>
 
-  <div class="odjel">Одјел бр. __22__ Г.Ј. „Потоци-Ресановача“</div>
+  <div class="odjel">Одјел бр. {{odjel}} Г.Ј. „{{privrednaJedinica}}“</div>
 
   <table class="table table-bordered">
 
@@ -43,13 +45,13 @@
 
     <tr>
       <td>Радови на експлоатацији шума</td>
-      <td>Ime i prezime</td>
+      <td>{{liceZaEksploataciju}}</td>
       <td></td>
     </tr>
 
     <tr>
       <td>Радови на узгоју и заштити</td>
-      <td>Ime i prezime</td>
+      <td>{{liceZaUzgoj}}</td>
       <td></td>
     </tr>
   </table>
@@ -76,6 +78,6 @@
 
   <div class="direktor-naslov">
     <div class="direktor-padding">Директор:</div>
-    <div class="direktor">Милан Кецман, дипл.инж.шум.</div>
+    <div class="direktor">{{direktor}}, дипл.инж.шум.</div>
   </div>
 </div>

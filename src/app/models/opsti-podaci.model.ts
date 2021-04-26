@@ -9,4 +9,6 @@ export class OpstiPodaci {
   izabraniOdjel: number;
   rukovodilacPripreme = [];
   direktor = [];
+  liceZaUzgoj = [];
+  liceZaEksploataciju = [];
 }

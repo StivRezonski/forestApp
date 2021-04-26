@@ -110,4 +110,16 @@ export class SharedService {
   }
 
 
+  getLiceZaEksploataciju(): any {
+    return [
+      {id: '1', name: 'Рајко Граховац'},
+    ];
+  }
+
+
+  getLiceZaUzgoj(): any {
+    return [
+      {id: '1', name: 'Кнежевић Велибор'},
+    ];
+  }
 }
