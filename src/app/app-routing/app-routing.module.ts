@@ -10,6 +10,7 @@ import { OdlukaUsvajanjeComponent } from '../components/projektna-dokumentacija/
 import { RjesenjePracenjeComponent } from '../components/projektna-dokumentacija/rjesenje-pracenje/rjesenje-pracenje.component';
 import { SortimentnaStrukturaComponent } from '../components/sortimentna-struktura/sortimentna-struktura.component';
 import { RealizacijaComponent } from '../components/realizacija/realizacija.component';
+import { TraktorComponent } from '../components/traktor/traktor.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'unospodataka', component: UnosPodatakaSjecaComponent },
   {path: 'sortimentna-struktura', component: SortimentnaStrukturaComponent },
   {path: 'realizacija', component: RealizacijaComponent },
+  {path: 'traktor', component: TraktorComponent },
   {path: 'dokumentacija', component: ProjektnaDokumentacijaComponent,
     children: [
       {

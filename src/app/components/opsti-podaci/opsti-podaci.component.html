@@ -2,19 +2,16 @@
 
 
   <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
+    <div class="gazdinstvo">
         <label for="gazdinstvo">Izaberi gazdinstvo</label>
         <select class="form-select" formControlName="gazdinstvo" id="gazdinstvo">
           <option *ngFor="let list of gazdinstvo; let i = index" [value]="gazdinstvo[i].name">
             {{gazdinstvo[i].name}}
           </option>
         </select>
-      </div>
     </div>
 
-    <div class="row">
-      <div class="col-xl-4">
+      <div class="privrednaJedinica">
         <label for="privrednaJedinica">Izaberi privrednu jedinicu</label>
         <select class="form-select" formControlName="privrednaJedinica" id="privrednaJedinica">
           <option *ngFor="let list of privrednaJedinica; let i = index" [value]="privrednaJedinica[i].name">
@@ -22,10 +19,8 @@
           </option>
         </select>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xl-4">
+    
+      <div class="odjel">
         <label for="odjel">Odjel</label>
         <select class="form-select" formControlName="odjel" id="odjel">
           <option *ngFor="let list of odjel; let i = index" [value]="odjel[i].name">
@@ -33,10 +28,8 @@
           </option>
         </select>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xl-4">
+    
+      <div class="vrstaSjece">
         <label for="vrstaSjece">Vrsta sjece</label>
         <select class="form-select" formControlName="vrstaSjece" id="vrstaSjece">
           <option *ngFor="let list of vrstaSjece; let i = index" [value]="vrstaSjece[i].name">
@@ -44,10 +37,9 @@
           </option>
         </select>
       </div>
-    </div>
+    
 
-    <div class="row">
-      <div class="col-xl-4">
+      <div class="projektant">
         <label for="projektant">Projektant</label>
         <select class="form-select" formControlName="projektant" id="projektant">
           <option *ngFor="let list of projektant; let i = index" [value]="projektant[i].name">
@@ -55,10 +47,8 @@
           </option>
         </select>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4">
+    
+      <div class="rukovodilacPripreme">
         <label for="rukovodilacPripreme">Rukovodilac pripreme</label>
         <select class="form-select" formControlName="rukovodilacPripreme" id="rukovodilacPripreme">
           <option *ngFor="let list of rukovodilacPripreme; let i = index" [value]="rukovodilacPripreme[i].name">
@@ -66,10 +56,8 @@
           </option>
         </select>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-4">
+      <div class="direktor">
         <label for="direktor">Direktor gazdinstva</label>
         <select class="form-select" formControlName="direktor" id="direktor">
           <option *ngFor="let list of direktor; let i = index" [value]="direktor[i].name">
@@ -77,10 +65,8 @@
           </option>
         </select>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-4">
+      <div class="spp">
         <label for="sumskoPrivrednoPodrucje">Izaberi SPP</label>
         <select class="form-select" formControlName="sumskoPrivrednoPodrucje" id="sumskoPrivrednoPodrucje">
           <option *ngFor="let list of sumskoPrivrednoPodrucje; let i = index" [value]="sumskoPrivrednoPodrucje[i].name">
@@ -88,10 +74,8 @@
           </option>
         </select>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-4">
+      <div class="grad">
         <label for="grad">Izaberi Grad</label>
         <select class="form-select" formControlName="grad" id="grad">
           <option *ngFor="let list of grad; let i = index" [value]="grad[i].name">
@@ -99,9 +83,9 @@
           </option>
         </select>
       </div>
-    </div>
+    
 
-    <button class="btn btn-primary">submit</button>
+    <button class="btn btn-primary">Potvrdi opste podatke</button>
   </div>
 </form>
 
