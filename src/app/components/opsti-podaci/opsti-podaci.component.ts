@@ -22,6 +22,12 @@ export class OpstiPodaciComponent implements OnInit {
   vrstaSjece = [];
   sumskoPrivrednoPodrucje = [];
   rukovodilacPripreme = [];
+  liceZaEksploataciju = [];
+  liceZaUzgoj = [];
+  liceZaNadzor = [];
+  brojCekica = [];
+  godina = [];
+  mjesec = [];
   constructor(private formBuilder: FormBuilder, private sharedService: SharedService,
               public opstiPodaci: OpstiPodaci, private router: Router) {
     this.opstaForma = this.formBuilder.group({
@@ -33,7 +39,13 @@ export class OpstiPodaciComponent implements OnInit {
       direktor: [''],
       vrstaSjece: [''],
       sumskoPrivrednoPodrucje: [''],
-      rukovodilacPripreme: ['']
+      rukovodilacPripreme: [''],
+      liceZaEksploataciju: [''],
+      liceZaUzgoj: [''],
+      liceZaNadzor: [''],
+      brojCekica: [''],
+      godina: [''],
+      mjesec: ['']
     });
 
     this.grad = this.sharedService.getGrad();
@@ -45,6 +57,12 @@ export class OpstiPodaciComponent implements OnInit {
     this.sumskoPrivrednoPodrucje = this.sharedService.getSumskoPrivrednoPodrucje();
     this.rukovodilacPripreme = this.sharedService.getRukovodilacPripreme();
     this.direktor = this.sharedService.getDirektor();
+    this.liceZaEksploataciju = this.sharedService.getLiceZaEksploataciju();
+    this.liceZaUzgoj = this.sharedService.getLiceZaUzgoj();
+    this.liceZaNadzor = this.sharedService.getLiceZaNadzor();
+    this.brojCekica = this.sharedService.getBrojCekica();
+    this.godina = this.sharedService.getGodina();
+    this.mjesec = this.sharedService.getMjesec();
   }
 
   ngOnInit(): void {
@@ -61,6 +79,12 @@ export class OpstiPodaciComponent implements OnInit {
     this.opstiPodaci.grad = this.opstaForma.get('grad').value;
     this.opstiPodaci.rukovodilacPripreme = this.opstaForma.get('rukovodilacPripreme').value;
     this.opstiPodaci.direktor = this.opstaForma.get('direktor').value;
+    this.opstiPodaci.liceZaEksploataciju = this.opstaForma.get('liceZaEksploataciju').value;
+    this.opstiPodaci.liceZaUzgoj = this.opstaForma.get('liceZaUzgoj').value;
+    this.opstiPodaci.liceZaNadzor = this.opstaForma.get('liceZaNadzor').value;
+    this.opstiPodaci.brojCekica = this.opstaForma.get('brojCekica').value;
+    this.opstiPodaci.godina = this.opstaForma.get('godina').value;
+    this.opstiPodaci.mjesec = this.opstaForma.get('mjesec').value;
     this.router.navigate(['/sortimentna-struktura']);
   }
 

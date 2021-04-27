@@ -1,31 +1,31 @@
 .memorandum{
-  margin-left: 600px;
+  margin-left: 100px;
   padding-top: 0;
 }
 
 .gazdinstvo{
   font-weight: bold;
-  margin-left: 600px;
+  padding-top: 0;
 }
 
 .broj-rjesenja{
-  margin-left: 600px;
+  padding-top: 0;
 }
 
 .naslov{
   text-align: center;
-  font-size: 25px;
+  /*font-size: 25px;*/
   font-weight: bold;
   padding-top: 170px;
 }
 
 .odjel{
-  padding-top: 25px;
+  padding-top: 15px;
   text-align: center;
 }
 
 .privredna-jedinica{
-  padding-top: 30px;
+  padding-top: 15px;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
@@ -39,7 +39,7 @@
 }
 
 .container-bottom{
-  padding-top: 500px;
+  padding-top: 230px;
   display: flex;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .titula-projektant{
-  margin-left: 600px;
+  /*margin-left: 600px;*/
   text-align: left;
   white-space: nowrap;
 }
@@ -73,9 +73,10 @@
 
 
 .titula-sef{
-  margin-right: 650px;
-  text-align: right;
-  white-space: nowrap;
+        margin-right: 0;
+        margin-left: 0;
+      text-align: left;
+      white-space: nowrap;
 }
 
 .titula-sef::after
@@ -83,94 +84,97 @@
   content: attr(sef);
 }
 
-@media print {
 
-.memorandum{
-  margin-left: 100px;
-  padding-top: 0;
-}
+/*@media print {*/
 
-
-.gazdinstvo{
-  font-weight: bold;
-  margin-left: 100px;
-}
-
-.broj-rjesenja{
-  margin-left: 100px;
-}
-
-.naslov{
-  text-align: center;
-  font-size: 25px;
-  font-weight: bold;
-  padding-top: 100px;
-}
-
-.odjel{
-  padding-top: 7px;
-  text-align: center;
-}
-
-.privredna-jedinica{
-  padding-top: 7px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-  .privredno-podrucje{
-    padding-top: 5px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-.container-bottom{
-  padding-top: 150px;
-  display: flex;
-}
-
-.jc-center {
-  justify-content: center;
-}
-
-.projektant{
-  margin-right: 350px;
-}
-
-.rukovodilac{
-  margin-right: 50px;
-}
+/*.memorandum{*/
+/*  !*margin-left: 100px;*!*/
+/*  padding-top: 0;*/
+/*  width:700px;*/
+/*  height: 350px;*/
+/*}*/
 
 
-  .titula-wrapper{
-    display: flex;
-    justify-content: space-between;
-  }
+/*.gazdinstvo{*/
+/*  font-weight: bold;*/
+/*  margin-left: 100px;*/
+/*}*/
 
-  .titula-projektant{
-      margin-right: 0;
-      margin-left: 0;
-    text-align: left;
-    white-space: nowrap;
-  }
+/*.broj-rjesenja{*/
+/*  margin-left: 100px;*/
+/*}*/
 
-  .titula-projektant::before
-  {
-    content: attr(inzenjer);
-  }
+/*.naslov{*/
+/*  text-align: center;*/
+/*  font-size: 25px;*/
+/*  font-weight: bold;*/
+/*  padding-top: 100px;*/
+/*}*/
+
+/*.odjel{*/
+/*  padding-top: 7px;*/
+/*  text-align: center;*/
+/*}*/
+
+/*.privredna-jedinica{*/
+/*  padding-top: 7px;*/
+/*  text-align: center;*/
+/*  font-size: 18px;*/
+/*  font-weight: bold;*/
+/*}*/
+
+/*  .privredno-podrucje{*/
+/*    padding-top: 5px;*/
+/*    text-align: center;*/
+/*    font-size: 18px;*/
+/*    font-weight: bold;*/
+/*  }*/
+
+/*.container-bottom{*/
+/*  padding-top: 150px;*/
+/*  display: flex;*/
+/*}*/
+
+/*.jc-center {*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.projektant{*/
+/*  margin-right: 350px;*/
+/*}*/
+
+/*.rukovodilac{*/
+/*  margin-right: 50px;*/
+/*}*/
 
 
-  .titula-sef{
-    margin-right: 50px;
-    text-align: right;
-    white-space: nowrap;
-  }
+/*  .titula-wrapper{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*  }*/
 
-  .titula-sef::after
-  {
-    content: attr(sef);
-  }
+/*  .titula-projektant{*/
+/*      margin-right: 0;*/
+/*      margin-left: 0;*/
+/*    text-align: left;*/
+/*    white-space: nowrap;*/
+/*  }*/
 
-}
+/*  .titula-projektant::before*/
+/*  {*/
+/*    content: attr(inzenjer);*/
+/*  }*/
+
+
+/*  .titula-sef{*/
+/*    margin-right: 50px;*/
+/*    text-align: right;*/
+/*    white-space: nowrap;*/
+/*  }*/
+
+/*  .titula-sef::after*/
+/*  {*/
+/*    content: attr(sef);*/
+/*  }*/
+
+/*}*/

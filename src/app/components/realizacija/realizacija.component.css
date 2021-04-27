@@ -1,17 +1,26 @@
 
-.table{
+.table {
   table-layout: fixed;
-  line-height: 1.0;
+  /*line-height: 1.0;*/
+  size: landscape;
+  page-break-before: always;
 }
 
-.prihod{
-  margin: 100px;
-text-align: center;
-
+.prihod {
+  /*margin: 100px;*/
+  text-align: center;
 }
 
-.suma-table{
-  margin: 100px;
+.suma-table {
+  /*margin: 100px;*/
 }
+@media print  {
+  .btn{
+    visibility: hidden;
+  }
+}
+
+
+
 
 
