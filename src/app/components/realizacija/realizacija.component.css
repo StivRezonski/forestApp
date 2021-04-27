@@ -15,11 +15,11 @@
   /*margin: 100px;*/
 }
 @media print  {
-  .landscape { size : landscape }
   .btn{
     visibility: hidden;
   }
 }
+
 
 
 

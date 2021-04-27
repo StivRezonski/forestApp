@@ -11,4 +11,8 @@ export class OpstiPodaci {
   direktor = [];
   liceZaUzgoj = [];
   liceZaEksploataciju = [];
+  liceZaNadzor = [];
+  brojCekica = [];
+  godina = [];
+  mjesec = [];
 }

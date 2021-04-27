@@ -18,6 +18,7 @@ export class RjesenjePracenjeComponent implements OnInit {
   direktor = this.opstiPodaci.direktor;
   liceZaEksploataciju = this.opstiPodaci.liceZaUzgoj;
   liceZaUzgoj = this.opstiPodaci.liceZaEksploataciju;
+  godina = this.opstiPodaci.godina;
   constructor(private opstiPodaci: OpstiPodaci) { }
 
   ngOnInit(): void {

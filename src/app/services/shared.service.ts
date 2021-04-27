@@ -122,4 +122,36 @@ export class SharedService {
       {id: '1', name: 'Кнежевић Велибор'},
     ];
   }
+
+  getLiceZaNadzor(): any {
+    return [
+      {id: '1', name: 'Рајко Кнежевић'},
+    ];
+  }
+
+  getBrojCekica(): any {
+    return [
+      {id: '1'},
+      {id: '2'},
+      {id: '3'},
+    ];
+  }
+
+  getGodina(): any {
+    return [
+      {id: '2021'},
+      {id: '2022'},
+      {id: '2023'},
+    ];
+  }
+
+  getMjesec(): any {
+    return [
+      {name: 'Јануар'},
+      {name: 'Фебруар'},
+      {name: 'Март'},
+    ];
+  }
+
+
 }

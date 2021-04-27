@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OpstiPodaci } from '../../../models/opsti-podaci.model';
 
 @Component({
   selector: 'app-uvod-tekst',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./uvod-tekst.component.css']
 })
 export class UvodTekstComponent implements OnInit {
-
-  constructor() { }
+  gazdinstvo = this.opstiPodaci.gazdinstvo;
+  odjel = this.opstiPodaci.odjel;
+  mjesec = this.opstiPodaci.mjesec;
+  godina = this.opstiPodaci.godina;
+  brojCekica = this.opstiPodaci.brojCekica;
+  constructor(private opstiPodaci: OpstiPodaci) { }
 
   ngOnInit(): void {
   }
