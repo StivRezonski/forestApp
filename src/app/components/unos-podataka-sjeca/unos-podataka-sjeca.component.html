@@ -6,104 +6,69 @@
 
 <div class="container">
   <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
+    <div class="accordion-item" *ngIf="precnik">
       <h2 class="accordion-header" id="flush-headingOne">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Accordion Item #1
+         Unos srednjeg prečnika po vrstama
         </button>
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+        
+        <div class="unosPrecnika">
+          <h6>Unesite precnike po vrstama!</h6>
+         <form [formGroup]='unosPrecnika'>
+           <div class="form-group">
+             <select formControlName="vrsta" class="form-control" required>
+               <option [ngValue]="null" [disabled]="true">Vrsta drveta</option>
+               <option [ngValue]="1" [hidden]="trueJela">Jela</option>
+               <option [ngValue]="2" [hidden]="trueSmrca">Smrca</option>
+               <option [ngValue]="3" [hidden]="trueBb">B. bor</option>
+               <option [ngValue]="4" [hidden]="trueCb">C. bor</option>
+               <option [ngValue]="5" [hidden]="trueBukva">Bukva</option>
+               <option [ngValue]="6" [hidden]="trueHrast">Hrast</option>
+               <option [ngValue]="7" [hidden]="truePl">Pl. liscari</option>
+               <option [ngValue]="8" [hidden]="trueOl">Ostali liscari</option>
+             </select>
+             <small class="text-danger"
+                    *ngIf="unosPrecnika.get('vrsta').errors?.required">
+               Unijeti vrstu drveta.
+             </small>
+           </div><br>
+
+           <div class="form-group">
+             <input
+               placeholder="Srednji precnik"
+               class="form-control"
+               formControlName="precnik">
+             <small class="text-danger"
+                    *ngIf="unosPrecnika.get('precnik').errors?.required ||
+                           unosPrecnika.get('precnik').errors?.minlength ||
+                           unosPrecnika.get('precnik').errors?.maxlength">
+               Precnik mora biti dvocifren.
+             </small>
+           </div> <br>
+
+           <div class="form-group">
+             <button class="btn btn-success" type="button" [disabled]="!unosPrecnika.valid" (click)="unesiPrecnik()">
+               Potvrdi vrstu i precnik
+             </button> <br>
+           </div>
+         </form>
+       </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Accordion Item #2
+          Unijeti uslove rada za sjecu
         </button>
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-      </div>
-    </div>
-  </div>
-<!--     <div class="col-4 uputstvo">
-      <div class="card text-dark bg-warning mb-3" style="max-width: 80%;">
-        <div class="card-header">Uputstvo za izradu projekta</div>
-        <div class="card-body">
-          <h5 class="card-title">Korak 1.</h5>
-          <p class="card-text">Platiti pa se klatiti.</p>
-        </div>
-      </div>
-    </div> -->
-
-
-
-
-    
-      <div class="card text-center">
-   
-        <div class="card-body" *ngIf="akoSuUsloviZavrseni">
-
-
-         <div class="unosPrecnika" *ngIf="uneseniSviPrecnici">
-           <h5>Unesite precnike po vrstama!</h5>
-          <form [formGroup]='unosPrecnika'>
-            <div class="form-group">
-              <select formControlName="vrsta" class="form-control" required>
-                <option [ngValue]="null" [disabled]="true">Vrsta drveta</option>
-                <option [ngValue]="1" [hidden]="trueJela">Jela</option>
-                <option [ngValue]="2" [hidden]="trueSmrca">Smrca</option>
-                <option [ngValue]="3" [hidden]="trueBb">B. bor</option>
-                <option [ngValue]="4" [hidden]="trueCb">C. bor</option>
-                <option [ngValue]="5" [hidden]="trueBukva">Bukva</option>
-                <option [ngValue]="6" [hidden]="trueHrast">Hrast</option>
-                <option [ngValue]="7" [hidden]="truePl">Pl. liscari</option>
-                <option [ngValue]="8" [hidden]="trueOl">Ostali liscari</option>
-              </select>
-              <small class="text-danger"
-                     *ngIf="unosPrecnika.get('vrsta').errors?.required">
-                Unijeti vrstu drveta.
-              </small>
-            </div><br>
-
-            <div class="form-group">
-              <input
-                placeholder="Srednji precnik"
-                class="form-control"
-                formControlName="precnik">
-              <small class="text-danger"
-                     *ngIf="unosPrecnika.get('precnik').errors?.required ||
-                            unosPrecnika.get('precnik').errors?.minlength ||
-                            unosPrecnika.get('precnik').errors?.maxlength">
-                Precnik mora biti dvocifren.
-              </small>
-            </div> <br>
-
-            <div class="form-group">
-              <button class="btn btn-success" type="button" [disabled]="!unosPrecnika.valid" (click)="unesiPrecnik()">
-                Potvrdi vrstu i precnik
-              </button> <br>
-            </div>
-          </form>
-        </div>
-
-
-        <div class="unosNormi" *ngIf="zavrsenoSaUnosomPrecnika">
+        <div class="unosNormi">
           <form [formGroup]='unosUslovaRada'>
             <div class="form-group">
 
-              <div class="sjecaNorme" *ngIf="zavrsenoSaUnosomUslovaSjeca">
+              <div class="sjecaNorme">
               <h5>Unesite uslove rada za sjecu!</h5>  <br>
               <select class="form-select" formControlName="nagibSjeca" required>
                 <option [ngValue]="null" [disabled]="true">Nagib terena - sjeca</option>
@@ -182,134 +147,205 @@
                        *ngIf="unosUslovaRada.get('bonitetLiscari').errors?.required">
                   Unijeti bonitet za lišćare!
                 </small>
-              </div> <br>
-        <!--       <div class="potvrdaNormiSjece d-grid gap-2">
+              </div>
+              <select class="form-select" formControlName="ucesceAnimala" required>
+                <option [ngValue]="null" [disabled]="true">Ucesce animala</option>
+                <option *ngFor="let list of ucesceAnimal; let i = index" [value]="list">
+                  {{list}}
+                </option>
+              </select>
+              <small class="text-danger"
+              *ngIf="unosUslovaRada.get('ucesceAnimala').errors?.required">
+         Unijeti procenat predvidjen za animal!
+       </small> <br>
+        <div class="potvrdaNormiSjece d-grid gap-2">
 
                 <button type="button" class="btn btn-success"  (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
-              </div> -->
-            <div class="btnGrupa">
-              <div class="btnAnimal">
-                <button type="button" class="btn-primary btn-sm" (click) = 'btnAnimal()' >Animal uslovi</button>
-              </div> <br>
-              <div class="btnTraktor">
-                <button type="button" class="btn-primary btn-sm" (click) = 'btnTraktor()' >Traktor uslovi</button>
-              </div> <br>
-            </div>
-          </div>
-
-              <div class="animalNorme" *ngIf="animalNorme">
-                <h5>Unesite uslove rada za animal!</h5>  <br> 
-              <select class="form-select" formControlName="nagibAnimal" required>
-                <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
-                <option [ngValue]="4">10`-20`</option>
-                <option [ngValue]="6">Veci od 20`</option>
-                <option [ngValue]="10">0`-10`</option>
-              </select>
-              <small class="text-danger"
-                     *ngIf="unosUslovaRada.get('nagibAnimal').errors?.required">
-                Unijeti nagib za animal!
-              </small> <br>
-
-              <div class="form-check"*ngIf="imaCetinara" >
-                <input class="form-check-input" [disabled] = "nemaCetinara" type="checkbox"
-                       formControlName="saKorom" id="saKorom">
-                <label class="form-check-label" for="saKorom">
-                  Da li se cetinari izvlace sa korom?
-                </label>
-              </div>
-
-              <select class="form-select" formControlName="ucesceLiscaraAnimal"required >
-                <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
-                <option [ngValue]="1">Cisti cetinari</option>
-                <option [ngValue]="3">Do 50 %</option>
-                <option [ngValue]="6">Preko 50 %</option>
-              </select>
-              <small class="text-danger"
-                     *ngIf="unosUslovaRada.get('ucesceLiscaraAnimal').errors?.required">
-                Unijeti učešće lišćara!
-              </small> <br>
-              <select class="form-select" formControlName="udaljenostOdStale" required>
-                <option [ngValue]="null" [disabled]="true">Udaljenost od stale</option>
-                <option [ngValue]="2">Do 1 km</option>
-                <option [ngValue]="5">1-3 km</option>
-                <option [ngValue]="8">Preko 3 km</option>
-              </select>
-              <small class="text-danger"
-                     *ngIf="unosUslovaRada.get('udaljenostOdStale').errors?.required">
-                Unijeti udaljenost od štale!
-              </small> <br>
-
-       
-              <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control" required>
-
-              <small class="text-danger"
-                     *ngIf="
-                            unosUslovaRada.get('animalDistanca').errors?.required ||
-                            unosUslovaRada.get('animalDistanca').errors?.minlength ||
-                            unosUslovaRada.get('animalDistanca').errors?.maxlength">
-                Distanca mora biti trocifren ili četvorocifren broj.
-              </small> <br>
-           <!--    <div class="iznos-btn d-grid gap-2">
-                <button type="button" class="btn btn-success" (click)="iznosBtn()">Iznos</button>
-              </div>
-            <br> -->
-              <!-- <div class="iznos-btn d-grid gap-2">
-                <button type="button" class="btn btn-success" (click)="potvrdaAnimal()">Potvrdi uslove animala</button> 
-              </div> --> <br>
-            <div class="btnGrupa1">
-              <div class="btnTraktor">
-                <button type="button" class="btn-primary btn-sm" (click) = 'btnTraktor()' >Traktor uslovi</button>
-              </div> <br>
-              <div class="btnSamarica">
-                <button type="button" class="btn-primary btn-sm" (click) = 'btnSamarica()' >Samarica uslovi</button>
-              </div>
-            </div>
-            </div> 
-
-            
-
-              <div class="iznos" *ngIf = "imaIznos">
-                <h5>Unesite uslove rada za iznos!</h5>  <br>
-                <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
-
-               <!--  <small class="text-danger"
-                       *ngIf="
-                              unosUslovaRada.get('iznosDistanca').errors?.required ||
-                              unosUslovaRada.get('iznosDistanca').errors?.minlength ||
-                              unosUslovaRada.get('iznosDistanca').errors?.maxlength">
-                  Distanca mora biti trocifren ili četvorocifren broj.
-                </small> --> <br>
-                <select class="form-select" formControlName="vrstaTla">
-                  <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
-                  <option [ngValue]="2">Bez kamenja</option>
-                  <option [ngValue]="4">Sa povrsinskim kamenjem</option>
-                  <option [ngValue]="9">Kamenito preko 30%</option>
-                </select>
-              <!--   <small class="text-danger"
-                       *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
-                  Unijeti vrstu tla!
-
-                </small> --> <br>  
-                <div class="potvrdjivanjeIznosa">
-                  <button type="button" class="btn btn-success" (click)="zavrsenUnos()">
-                    Potvrdi uslove iznosa
-                  </button>
-                </div>
-              </div><br>
-              
-            </div>
+              </div> 
+          </div>   
+      </div>
           </form>
-         
-      
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" *ngIf="animal">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Unijeti uslove rada za animal
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="animal">
+          <h5>Unesite uslove rada za animal!</h5>  <br>
+          <form [formGroup]="usloviAnimal">
+            <div class="form-group">
+        <select class="form-select" formControlName="nagibAnimal" required>
+          <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
+          <option [ngValue]="4">10`-20`</option>
+          <option [ngValue]="6">Veci od 20`</option>
+          <option [ngValue]="10">0`-10`</option>
+        </select>
+       <small class="text-danger"
+               *ngIf="usloviAnimal.get('nagibAnimal').errors?.required">
+          Unijeti nagib za animal!
+        </small>  <br> <br>
 
-             
-            </div>
+        <div class="form-check" *ngIf="imaCetinara" >
+          <input class="form-check-input" [disabled] = "nemaCetinara" type="checkbox"
+                 formControlName="saKorom" id="saKorom">
+          <label class="form-check-label" for="saKorom">
+            Da li se cetinari izvlace sa korom?
+          </label>
+        </div> <br>
+
+        <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
+          <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
+          <option [ngValue]="1">Cisti cetinari</option>
+          <option [ngValue]="3">Do 50 %</option>
+          <option [ngValue]="6">Preko 50 %</option>
+        </select>
+        <small class="text-danger"
+               *ngIf="usloviAnimal.get('ucesceLiscaraAnimal').errors?.required">
+          Unijeti učešće lišćara!
+        </small> <br>
+        <select class="form-select" formControlName="udaljenostOdStale" required>
+          <option [ngValue]="null" [disabled]="true">Udaljenost od stale</option>
+          <option [ngValue]="2">Do 1 km</option>
+          <option [ngValue]="5">1-3 km</option>
+          <option [ngValue]="8">Preko 3 km</option>
+        </select>
+      <small class="text-danger"
+               *ngIf="usloviAnimal.get('udaljenostOdStale').errors?.required">
+          Unijeti udaljenost od štale!
+        </small> <br> 
+
+ 
+        <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control" required>
+
+       <small class="text-danger"
+               *ngIf="
+               usloviAnimal.get('animalDistanca').errors?.required ||
+               usloviAnimal.get('animalDistanca').errors?.minlength ||
+               usloviAnimal.get('animalDistanca').errors?.maxlength">
+          Distanca mora biti trocifren ili četvorocifren broj.
+        </small> <br> <br>
+     <div class="d-grid gap-2">
+      <button class="btn btn-success" (click)="animalBtn()">Animal</button>
+     </div>
+
+
+      
+    </div>
+  </form>
+</div>
+</div> 
+    </div>
+     
+    <div class="accordion-item" *ngIf="traktor">
+      <h2 class="accordion-header" id="flush-headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+          Unijeti uslove rada za traktor
+        </button>
+      </h2>
+      <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+          Unijeti uslove rada za iznos
+        </button>
+      </h2>
+      <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+        <div class="iznos">
+          <div class="animal" *ngIf="!animal">
+            <h5>Unesite uslove rada za animal!</h5>  <br>
+            <form [formGroup]="usloviAnimal">
+              <div class="form-group">
+          <select class="form-select" formControlName="nagibAnimal" required>
+            <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
+            <option [ngValue]="4">10`-20`</option>
+            <option [ngValue]="6">Veci od 20`</option>
+            <option [ngValue]="10">0`-10`</option>
+          </select>
+       <br>
+  
+          <select class="form-select" formControlName="udaljenostOdStale" required>
+            <option [ngValue]="null" [disabled]="true">Udaljenost od stale</option>
+            <option [ngValue]="2">Do 1 km</option>
+            <option [ngValue]="5">1-3 km</option>
+            <option [ngValue]="8">Preko 3 km</option>
+          </select> <br>
+       <!--    <small class="text-danger"
+                 *ngIf="unosUslovaRada.get('udaljenostOdStale').errors?.required">
+            Unijeti udaljenost od štale!
+          </small> <br> -->
+  
+
+      </div>
+    </form>
+  </div>
+          <form [formGroup]="usloviIznos"  >
+          <h5>Unesite uslove rada za iznos!</h5>  <br>
+          <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
+
+         <!--  <small class="text-danger"
+                 *ngIf="
+                        unosUslovaRada.get('iznosDistanca').errors?.required ||
+                        unosUslovaRada.get('iznosDistanca').errors?.minlength ||
+                        unosUslovaRada.get('iznosDistanca').errors?.maxlength">
+            Distanca mora biti trocifren ili četvorocifren broj.
+          </small> --> <br>
+          <select class="form-select" formControlName="vrstaTla">
+            <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
+            <option [ngValue]="2">Bez kamenja</option>
+            <option [ngValue]="4">Sa povrsinskim kamenjem</option>
+            <option [ngValue]="9">Kamenito preko 30%</option>
+          </select>
+        <!--   <small class="text-danger"
+                 *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
+            Unijeti vrstu tla!
+
+          </small> --> <br>  
+          <div class="potvrdjivanjeIznosa">
+            <button type="button" class="btn btn-success" (click)="iznosBtn()">
+              Potvrdi uslove iznosa
+            </button>
+          </div>
+        </form>
+        </div><br>
+      </div>
+    </div>
+  
+<!--     <div class="col-4 uputstvo">
+      <div class="card text-dark bg-warning mb-3" style="max-width: 80%;">
+        <div class="card-header">Uputstvo za izradu projekta</div>
+        <div class="card-body">
+          <h5 class="card-title">Korak 1.</h5>
+          <p class="card-text">Platiti pa se klatiti.</p>
+        </div>
+      </div>
+    </div> -->
+
+
+
+
+    
+      <div class="card text-center">
+   
+        <div class="card-body" *ngIf="akoSuUsloviZavrseni">
+
+
+
+
+
           
         
 
         </div>
 
-        <div class="potvrdjivanjeNormi" *ngIf = "zavrsenUnosUslovaRada">
+        <div class="potvrdjivanjeNormi">
           <button type="button" class="btn btn-success btn-block" [disabled]="!unosUslovaRada.valid" (click)="potvrdi()">
             Potvrdi uslove rada
           </button>
