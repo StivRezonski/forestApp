@@ -1,62 +1,70 @@
+.container{
+  page-break-after: always;
+}
 
 
-.gazdinstvo{
+.gazdinstvo {
   font-weight: bold;
   font-size: 14px;
 }
 
-.broj-rjesenja{
+.broj-rjesenja {
   font-weight: bold;
   font-size: 14px;
 }
 
 
-.naslov{
-  font-weight: bold;
-  text-align: center;
-  font-size: 14px;
-}
-
-.podnaslov{
+.naslov {
   font-weight: bold;
   text-align: center;
   font-size: 14px;
 }
 
-.odjel{
+.podnaslov {
   font-weight: bold;
   text-align: center;
   font-size: 14px;
 }
 
-.tekst-paragraf{
+.odjel {
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tekst-paragraf {
   text-align: justify;
   font-size: 14px;
 }
 
-.dostavljeno{
+.dostavljeno {
   display: flex;
   font-size: 14px;
 }
 
-.prviDostavljeni{
+.prviDostavljeni {
   white-space: nowrap;
 }
 
-.direktor-naslov{
+.direktor-naslov {
   font-size: 14px;
-text-align: right;
+  text-align: right;
 }
 
 
 table {
   border-collapse: collapse;
 }
+
 th, td {
   padding: 0;
 }
 
-.memorandum{
+.memorandum {
   margin-left: 100px;
   padding-top: 0;
 }
+
+
+
+
