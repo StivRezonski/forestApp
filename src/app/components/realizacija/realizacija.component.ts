@@ -125,6 +125,9 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if (this.normaIznosCet === 'string') {
+      this.normaIznosCet = null;
+    }
     if (this.trupci.jelaSaNeto[12] > 0) {
       this.tabJela = true;
     }

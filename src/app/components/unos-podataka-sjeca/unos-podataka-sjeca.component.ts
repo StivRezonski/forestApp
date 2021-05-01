@@ -46,7 +46,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   usloviRadaCetinariIznos;
   usloviRadaLiscariIznos;
   usloviCetIznos;
-  usloviLisIznos; 
+  usloviLisIznos;
   normaCetinariIznos;
   normaLiscariIznos;
 
@@ -94,12 +94,12 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 // Forma unosa precnika
 unosPrecnika = new FormGroup({
   vrsta: new FormControl(),
-  precnik: new FormControl('', 
+  precnik: new FormControl('',
     [Validators.required,
     Validators.minLength(2),
     Validators.maxLength(2)])
 });
-  
+
 // Forma uslova sjeca
   unosUslovaRada = new FormGroup({
     nagibSjeca: new FormControl(),
@@ -109,7 +109,7 @@ unosPrecnika = new FormGroup({
     udaljenostOdCesteSjeca: new FormControl(),
     bonitetCetinari: new FormControl(),
     bonitetLiscari: new FormControl(),
-    ucesceAnimala: new FormControl() 
+    ucesceAnimala: new FormControl()
   });
 
 // Forma unosa animal
@@ -132,7 +132,7 @@ unosPrecnika = new FormGroup({
     }
   iznosBtn(){
     console.log(this.usloviIznos.value)
-    
+
   }
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService, private router: Router) {
@@ -184,7 +184,7 @@ unosPrecnika = new FormGroup({
   }
 
   ngOnInit(): void {
-    
+
   }
   potvrdiNormeSjece(){
     console.log(this.unosUslovaRada.value.ucesceAnimala)
@@ -305,8 +305,8 @@ unosPrecnika = new FormGroup({
 
       }
 
-     
-      
+
+
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
       } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
@@ -431,20 +431,20 @@ if(this.unosUslovaRada.value.nagibAnimal == 4){
 
 if(this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == null){
   this.bodoviCetinariLiscariIznos = 0;
- 
+
 }else {
   this.bodoviCetinariLiscariIznos = this.nagibTerenaIznos + this.usloviIznos.value.vrstaTla
 + this.gustinaPodmlatkaIznos + this.doznakaIznos + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal
-+ this.unosUslovaRada.value.udaljenostOdStale; 
++ this.unosUslovaRada.value.udaljenostOdStale;
 }
 
 if (this.bodoviCetinariLiscariIznos == 0){
-  this.usloviRadaCetinariIznos = 'Nema iznosa!';
-  this.usloviRadaLiscariIznos = 'Nema iznosa!';
-  this.usloviCetIznos = 'Nema iznosa!';
-  this.usloviLisIznos = 'Nema iznosa!';
-  this.normaCetinariIznos = "Nema iznosa!";
-this.normaLiscariIznos = "Nema iznosa!"
+  this.usloviRadaCetinariIznos = null;
+  this.usloviRadaLiscariIznos = null;
+  this.usloviCetIznos = null;
+  this.usloviLisIznos = null;
+  this.normaCetinariIznos = null;
+  this.normaLiscariIznos = null;
 }
 else if (18 >= this.bodoviCetinariLiscariIznos) {
   this.usloviRadaCetinariIznos = 0;
