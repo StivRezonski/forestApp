@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OpstiPodaci } from '../../models/opsti-podaci.model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-opsti-podaci',
@@ -12,13 +13,19 @@ import { Router } from '@angular/router';
 
 
 export class OpstiPodaciComponent implements OnInit {
+  gazdGrad: boolean;
+  sppPj: boolean;
+  odjelProjGodinaCekic: boolean;
+  dirRukovod: boolean;
+  licaNadzor: boolean;
+  sakrijIdiDalje: boolean;
   opstaForma: FormGroup;
   grad = [];
   odjel = [];
   gazdinstvo = [];
   privrednaJedinica = [];
   projektant = [];
-  direktor = [];
+  direktor: any = [];
   vrstaSjece = [];
   sumskoPrivrednoPodrucje = [];
   rukovodilacPripreme = [];
@@ -28,25 +35,27 @@ export class OpstiPodaciComponent implements OnInit {
   brojCekica = [];
   godina = [];
   mjesec = [];
-  constructor(private formBuilder: FormBuilder, private sharedService: SharedService,
-              public opstiPodaci: OpstiPodaci, private router: Router) {
+
+  constructor(private formBuilder: FormBuilder, public sharedService: SharedService,
+              public opstiPodaci: OpstiPodaci, private router: Router, private httpClient: HttpClient) {
     this.opstaForma = this.formBuilder.group({
-      grad: [''],
-      odjel: [''],
-      gazdinstvo: [''],
-      privrednaJedinica: [''],
-      projektant: [''],
-      direktor: [''],
-      vrstaSjece: [''],
-      sumskoPrivrednoPodrucje: [''],
-      rukovodilacPripreme: [''],
-      liceZaEksploataciju: [''],
-      liceZaUzgoj: [''],
-      liceZaNadzor: [''],
-      brojCekica: [''],
-      godina: [''],
-      mjesec: ['']
+      grad: new FormControl('', [Validators.required]),
+      odjel: new FormControl('', [Validators.required]),
+      gazdinstvo: new FormControl('', [Validators.required]),
+      privrednaJedinica: new FormControl('', [Validators.required]),
+      projektant: new FormControl('', [Validators.required]),
+      direktor: new FormControl('', [Validators.required]),
+      vrstaSjece: new FormControl('', [Validators.required]),
+      sumskoPrivrednoPodrucje: new FormControl('', [Validators.required]),
+      rukovodilacPripreme: new FormControl('', [Validators.required]),
+      liceZaEksploataciju: new FormControl('', [Validators.required]),
+      liceZaUzgoj: new FormControl('', [Validators.required]),
+      liceZaNadzor: new FormControl('', [Validators.required]),
+      brojCekica: new FormControl('', [Validators.required]),
+      godina: new FormControl('', [Validators.required]),
+      mjesec: new FormControl('', [Validators.required]),
     });
+
 
     this.grad = this.sharedService.getGrad();
     this.odjel = this.sharedService.getOdjel();
@@ -63,9 +72,15 @@ export class OpstiPodaciComponent implements OnInit {
     this.brojCekica = this.sharedService.getBrojCekica();
     this.godina = this.sharedService.getGodina();
     this.mjesec = this.sharedService.getMjesec();
+
+    this.httpClient.get('assets/direktori.json').subscribe(data => {
+      this.direktor = data;
+    });
   }
 
   ngOnInit(): void {
+    this.gazdGrad = true;
+    this.sakrijIdiDalje = true;
   }
 
   submit(): void {
@@ -88,4 +103,53 @@ export class OpstiPodaciComponent implements OnInit {
     this.router.navigate(['/sortimentna-struktura']);
   }
 
+  goNext(): void {
+    this.gazdGrad = true;
+    if (this.opstaForma.controls.grad.valid && this.opstaForma.controls.gazdinstvo.valid) {
+      this.gazdGrad = false;
+      this.sppPj = true;
+    }
+
+    if (this.opstaForma.controls.privrednaJedinica.valid && this.opstaForma.controls.sumskoPrivrednoPodrucje.valid) {
+      this.sppPj = false;
+      this.gazdGrad = false;
+      this.odjelProjGodinaCekic = true;
+    }
+
+    if (this.opstaForma.controls.odjel.valid && this.opstaForma.controls.vrstaSjece.valid &&
+      this.opstaForma.controls.projektant.valid && this.opstaForma.controls.mjesec.valid &&
+      this.opstaForma.controls.godina.valid && this.opstaForma.controls.brojCekica.valid) {
+      this.sppPj = false;
+      this.gazdGrad = false;
+      this.odjelProjGodinaCekic = false;
+      this.dirRukovod = true;
+    }
+
+    if (this.opstaForma.controls.rukovodilacPripreme.valid && this.opstaForma.controls.direktor.valid) {
+      this.sppPj = false;
+      this.gazdGrad = false;
+      this.odjelProjGodinaCekic = false;
+      this.dirRukovod = false;
+      this.licaNadzor = true;
+    }
+
+    if (this.opstaForma.controls.liceZaEksploataciju.valid && this.opstaForma.controls.liceZaNadzor.valid &&
+      this.opstaForma.controls.liceZaUzgoj.valid) {
+      this.sppPj = false;
+      this.gazdGrad = false;
+      this.odjelProjGodinaCekic = false;
+      this.dirRukovod = false;
+      this.licaNadzor = false;
+      this.sakrijIdiDalje = false;
+      this.submit();
+    }
+
+  }
+
+
+  noviDirektor(newDirektor: string): any {
+    if (newDirektor) {
+      console.log(newDirektor);
+    }
+  }
 }

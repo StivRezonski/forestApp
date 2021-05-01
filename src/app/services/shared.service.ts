@@ -77,7 +77,6 @@ export class SharedService {
       {id: '1', name: 'Гојковић Славен'},
       {id: '2', name: 'Кецман Милан'},
       {id: '3', name: 'Јаћимовић Небојша'},
-      {id: '4', name: 'Дујаковић Радомир'},
       {id: '5', name: 'Бјељац Милош'},
 
     ];
@@ -152,6 +151,7 @@ export class SharedService {
       {name: 'Март'},
     ];
   }
+
 
 
 }

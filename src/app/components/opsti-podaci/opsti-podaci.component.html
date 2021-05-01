@@ -2,143 +2,539 @@
 
 
   <div class="container">
-    <div class="gazdinstvo">
+    <div class="row">
+
+      <div *ngIf="gazdGrad">
         <label for="gazdinstvo">Izaberi gazdinstvo</label>
-        <select class="form-select" formControlName="gazdinstvo" id="gazdinstvo">
-          <option *ngFor="let list of gazdinstvo; let i = index" [value]="gazdinstvo[i].name">
-            {{gazdinstvo[i].name}}
-          </option>
-        </select>
-    </div>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="gazdinstvo" id="gazdinstvo">
+            <option *ngFor="let list of gazdinstvo; let i = index" [value]="gazdinstvo[i].name">
+              {{gazdinstvo[i].name}}
+            </option>
+          </select>
+          <div class="input-group-append">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gazdinstvoModal">unesi
+            </button>
+            <button type="button" class="btn btn-danger">obrisi</button>
+          </div>
+        </div>
 
-      <div class="privrednaJedinica">
+        <!-- Modal -->
+        <div class="modal fade" id="gazdinstvoModal" tabindex="-1" role="dialog"
+             aria-labelledby="gazdinstvoModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="gazdinstvoModalLongTitle">Naziv gazdinstva</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" aria-describedby="basic-addon1" #newGazdinstvo>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary"
+                        (click)="noviDirektor(newGazdinstvo.value)"
+                >Sacuvaj
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label for="grad">Izaberi Grad</label>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="grad" id="grad">
+            <option *ngFor="let list of grad; let i = index" [value]="grad[i].name">
+              {{grad[i].name}}
+            </option>
+          </select>
+          <div class="input-group-append">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gradModal">unesi</button>
+            <button type="button" class="btn btn-danger">obrisi</button>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="gradModal" tabindex="-1" role="dialog" aria-labelledby="gradModalCenterTitle"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="gradModalLongTitle">Naziv grada</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" aria-describedby="basic-addon1" #newGrad>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary"
+                        (click)="noviDirektor(newGrad.value)"
+                >Sacuvaj
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="sppPj">
+        <label for="sumskoPrivrednoPodrucje">Izaberi SPP</label>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="sumskoPrivrednoPodrucje" id="sumskoPrivrednoPodrucje">
+            <option *ngFor="let list of sumskoPrivrednoPodrucje; let i = index"
+                    [value]="sumskoPrivrednoPodrucje[i].name">
+              {{sumskoPrivrednoPodrucje[i].name}}
+            </option>
+          </select>
+          <div class="input-group-append">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sppModal">unesi</button>
+            <button type="button" class="btn btn-danger">obrisi</button>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="sppModal" tabindex="-1" role="dialog" aria-labelledby="sppModalCenterTitle"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="sppModalLongTitle">Naziv spp</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" aria-describedby="basic-addon1" #newSpp>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary"
+                        (click)="noviDirektor(newSpp.value)"
+                >Sacuvaj
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <label for="privrednaJedinica">Izaberi privrednu jedinicu</label>
-        <select class="form-select" formControlName="privrednaJedinica" id="privrednaJedinica">
-          <option *ngFor="let list of privrednaJedinica; let i = index" [value]="privrednaJedinica[i].name">
-            {{privrednaJedinica[i].name}}
-          </option>
-        </select>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="privrednaJedinica" id="privrednaJedinica">
+            <option *ngFor="let list of privrednaJedinica; let i = index" [value]="privrednaJedinica[i].name">
+              {{privrednaJedinica[i].name}}
+            </option>
+          </select>
+          <div class="input-group-append">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#privrednaJedinicaModal">unesi
+            </button>
+            <button type="button" class="btn btn-danger">obrisi</button>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="privrednaJedinicaModal" tabindex="-1" role="dialog"
+             aria-labelledby="privrednaJedinicaModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="privrednaJedinicaModalLongTitle">Naziv privredne jedinice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" aria-describedby="basic-addon1" #newPrivrednaJedinica>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary"
+                        (click)="noviDirektor(newPrivrednaJedinica.value)"
+                >Sacuvaj
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="odjel">
+
+      <div *ngIf="odjelProjGodinaCekic">
         <label for="odjel">Odjel</label>
-        <select class="form-select" formControlName="odjel" id="odjel">
-          <option *ngFor="let list of odjel; let i = index" [value]="odjel[i].name">
-            {{odjel[i].name}}
-          </option>
-        </select>
-      </div>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="odjel" id="odjel">
+            <option *ngFor="let list of odjel; let i = index" [value]="odjel[i].name">
+              {{odjel[i].name}}
+            </option>
+          </select>
+          <div class="input-group-append">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#odjelJedinicaModal">unesi
+            </button>
+            <button type="button" class="btn btn-danger">obrisi</button>
+          </div>
+        </div>
 
-      <div class="vrstaSjece">
+        <!-- Modal -->
+        <div class="modal fade" id="odjelJedinicaModal" tabindex="-1" role="dialog"
+             aria-labelledby="odjelJedinicaModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="odjelJedinicaModalLongTitle">Broj odjela</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" aria-describedby="basic-addon1" #newOdjel>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary"
+                        (click)="noviDirektor(newOdjel.value)"
+                >Sacuvaj
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <label for="vrstaSjece">Vrsta sjece</label>
-        <select class="form-select" formControlName="vrstaSjece" id="vrstaSjece">
-          <option *ngFor="let list of vrstaSjece; let i = index" [value]="vrstaSjece[i].name">
-            {{vrstaSjece[i].name}}
-          </option>
-        </select>
-      </div>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="vrstaSjece" id="vrstaSjece">
+            <option *ngFor="let list of vrstaSjece; let i = index" [value]="vrstaSjece[i].name">
+              {{vrstaSjece[i].name}}
+            </option>
+          </select>
+          <!--        <div class="input-group-append">-->
+          <!--          <button class="btn btn-primary">unesi</button>-->
+          <!--          <button class="btn btn-danger">obrisi</button>-->
+          <!--        </div>-->
+        </div>
 
-
-      <div class="projektant">
         <label for="projektant">Projektant</label>
-        <select class="form-select" formControlName="projektant" id="projektant">
-          <option *ngFor="let list of projektant; let i = index" [value]="projektant[i].name">
-            {{projektant[i].name}}
-          </option>
-        </select>
-      </div>
+        <div class="input-group sirina-input">
+          <select class="form-select mr-2" formControlName="projektant" id="projektant">
+            <option *ngFor="let list of projektant; let i = index" [value]="projektant[i].name">
+              {{projektant[i].name}}
+            </option>
+          </select>
+          <div class="input-group-append">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projektantModal">unesi</button>
+            <button type="button" class="btn btn-danger">obrisi</button>
+          </div>
+        </div>
 
-    <div class="mjesec">
+        <!-- Modal -->
+        <div class="modal fade" id="projektantModal" tabindex="-1" role="dialog"
+             aria-labelledby="projektantModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="projektantModalLongTitle">Ime i prezime projektanta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" aria-describedby="basic-addon1" #newProjektant>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary"
+                        (click)="noviDirektor(newProjektant.value)"
+                >Sacuvaj
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       <label for="mjesec">Mjesec doznake</label>
-      <select class="form-select" formControlName="mjesec" id="mjesec">
-        <option *ngFor="let list of mjesec; let i = index" [value]="mjesec[i].name">
-          {{mjesec[i].name}}
-        </option>
-      </select>
-    </div>
-
-    <div class="godina">
-      <label for="godina">Godina doznake</label>
-      <select class="form-select" formControlName="godina" id="godina">
-        <option *ngFor="let list of godina; let i = index" [value]="godina[i].id">
-          {{godina[i].id}}
-        </option>
-      </select>
-    </div>
-
-    <div class="brojCekica">
-      <label for="brojCekica">Broj cekica</label>
-      <select class="form-select" formControlName="brojCekica" id="brojCekica">
-        <option *ngFor="let list of brojCekica; let i = index" [value]="brojCekica[i].id">
-          {{brojCekica[i].id}}
-        </option>
-      </select>
-    </div>
-
-      <div class="rukovodilacPripreme">
-        <label for="rukovodilacPripreme">Rukovodilac pripreme</label>
-        <select class="form-select" formControlName="rukovodilacPripreme" id="rukovodilacPripreme">
-          <option *ngFor="let list of rukovodilacPripreme; let i = index" [value]="rukovodilacPripreme[i].name">
-            {{rukovodilacPripreme[i].name}}
+      <div class="input-group sirina-input">
+        <select class="form-select mr-2" formControlName="mjesec" id="mjesec">
+          <option *ngFor="let list of mjesec; let i = index" [value]="mjesec[i].name">
+            {{mjesec[i].name}}
           </option>
         </select>
       </div>
 
-      <div class="direktor">
-        <label for="direktor">Direktor gazdinstva</label>
-        <select class="form-select" formControlName="direktor" id="direktor">
+      <label for="godina">Godina doznake</label>
+      <div class="input-group sirina-input">
+        <select class="form-select mr-2" formControlName="godina" id="godina">
+          <option *ngFor="let list of godina; let i = index" [value]="godina[i].id">
+            {{godina[i].id}}
+          </option>
+        </select>
+        <div class="input-group-append">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#godinaModal">unesi
+          </button>
+          <button type="button" class="btn btn-danger">obrisi</button>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="godinaModal" tabindex="-1" role="dialog"
+           aria-labelledby="godinaModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="godinaModalLongTitle">Unesi godinu</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" aria-describedby="basic-addon1" #newGodina>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+              <button type="button" class="btn btn-primary"
+                      (click)="noviDirektor(newGodina.value)"
+              >Sacuvaj
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <label for="brojCekica">Broj cekica</label>
+      <div class="input-group sirina-input">
+        <select class="form-select mr-2" formControlName="brojCekica" id="brojCekica">
+          <option *ngFor="let list of brojCekica; let i = index" [value]="brojCekica[i].id">
+            {{brojCekica[i].id}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+
+    <div *ngIf="dirRukovod">
+      <label for="direktor">Direktor gazdinstva</label>
+      <div class="input-group sirina-input">
+        <select class="form-select mr-2" formControlName="direktor" id="direktor">
           <option *ngFor="let list of direktor; let i = index" [value]="direktor[i].name">
             {{direktor[i].name}}
           </option>
         </select>
+        <div class="input-group-append">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#direktorModal">unesi</button>
+          <button type="button" class="btn btn-danger">obrisi</button>
+        </div>
       </div>
 
-      <div class="spp">
-        <label for="sumskoPrivrednoPodrucje">Izaberi SPP</label>
-        <select class="form-select" formControlName="sumskoPrivrednoPodrucje" id="sumskoPrivrednoPodrucje">
-          <option *ngFor="let list of sumskoPrivrednoPodrucje; let i = index" [value]="sumskoPrivrednoPodrucje[i].name">
-            {{sumskoPrivrednoPodrucje[i].name}}
+      <!-- Modal -->
+      <div class="modal fade" id="direktorModal" tabindex="-1" role="dialog" aria-labelledby="direktorModalCenterTitle"
+           aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="direktorModalLongTitle">Ime i prezime</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" aria-describedby="basic-addon1" #newDirektor>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+              <button type="button" class="btn btn-primary"
+                      (click)="noviDirektor(newDirektor.value)"
+              >Sacuvaj
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <label for="rukovodilacPripreme">Rukovodilac pripreme</label>
+      <div class="input-group sirina-input">
+        <select class="form-select mr-2" formControlName="rukovodilacPripreme" id="rukovodilacPripreme">
+          <option *ngFor="let list of rukovodilacPripreme; let i = index" [value]="rukovodilacPripreme[i].name">
+            {{rukovodilacPripreme[i].name}}
           </option>
         </select>
+        <div class="input-group-append">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sefModal">unesi
+          </button>
+          <button type="button" class="btn btn-danger">obrisi</button>
+        </div>
       </div>
 
-      <div class="grad">
-        <label for="grad">Izaberi Grad</label>
-        <select class="form-select" formControlName="grad" id="grad">
-          <option *ngFor="let list of grad; let i = index" [value]="grad[i].name">
-            {{grad[i].name}}
-          </option>
-        </select>
+      <!-- Modal -->
+      <div class="modal fade" id="sefModal" tabindex="-1" role="dialog"
+           aria-labelledby="sefModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sefModalLongTitle">Ime i prezime</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" aria-describedby="basic-addon1" #newSef>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+              <button type="button" class="btn btn-primary"
+                      (click)="noviDirektor(newSef.value)"
+              >Sacuvaj
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
-    <div class="liceZaUzgoj">
-      <label for="liceZaUzgoj">Izaberi lice za uzgoj i zastitu</label>
-      <select class="form-select" formControlName="liceZaUzgoj" id="liceZaUzgoj">
-        <option *ngFor="let list of liceZaUzgoj; let i = index" [value]="liceZaUzgoj[i].name">
-          {{liceZaUzgoj[i].name}}
-        </option>
-      </select>
     </div>
 
-    <div class="liceZaEksploataciju">
-      <label for="liceZaEksploataciju">Izaberi lice zaduzeno za eksploataciju</label>
-      <select class="form-select" formControlName="liceZaEksploataciju" id="liceZaEksploataciju">
+
+    <div *ngIf="licaNadzor">
+      <label for="liceZaUzgoj">Izaberi lice za uzgoj i zastitu</label>
+      <div class="input-group sirina-input">
+        <select class="form-select mr-2" formControlName="liceZaUzgoj" id="liceZaUzgoj">
+          <option *ngFor="let list of liceZaUzgoj; let i = index" [value]="liceZaUzgoj[i].name">
+            {{liceZaUzgoj[i].name}}
+          </option>
+        </select>
+        <div class="input-group-append">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#liceZaUzgojModal">unesi
+          </button>
+          <button type="button" class="btn btn-danger">obrisi</button>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="liceZaUzgojModal" tabindex="-1" role="dialog"
+           aria-labelledby="liceZaUzgojModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="liceZaUzgojModalLongTitle">Ime i prezime</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" aria-describedby="basic-addon1" #newLiceZaUzgoj>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+              <button type="button" class="btn btn-primary"
+                      (click)="noviDirektor(newLiceZaUzgoj.value)"
+              >Sacuvaj
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <label for="liceZaEksploataciju">Izaberi lice zaduzeno za eksploataciju</label>
+    <div class="input-group sirina-input">
+      <select class="form-select mr-2" formControlName="liceZaEksploataciju" id="liceZaEksploataciju">
         <option *ngFor="let list of liceZaEksploataciju; let i = index" [value]="liceZaEksploataciju[i].name">
           {{liceZaEksploataciju[i].name}}
         </option>
       </select>
+      <div class="input-group-append">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#liceZaEksploatacijuModal">unesi
+        </button>
+        <button type="button" class="btn btn-danger">obrisi</button>
+      </div>
     </div>
 
-    <div class="liceZaNadzor">
-      <label for="liceZaNadzor">Izaberi lice zaduzeno za nadzor</label>
-      <select class="form-select" formControlName="liceZaNadzor" id="liceZaNadzor">
+    <!-- Modal -->
+    <div class="modal fade" id="liceZaEksploatacijuModal" tabindex="-1" role="dialog"
+         aria-labelledby="liceZaUzgojModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="liceZaEksploatacijuModalLongTitle">Ime i prezime</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control" aria-describedby="basic-addon1" #newLiceZaEksploataciju>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+            <button type="button" class="btn btn-primary"
+                    (click)="noviDirektor(newLiceZaEksploataciju.value)"
+            >Sacuvaj
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <label for="liceZaNadzor">Izaberi lice zaduzeno za nadzor</label>
+    <div class="input-group sirina-input">
+      <select class="form-select mr-2" formControlName="liceZaNadzor" id="liceZaNadzor">
         <option *ngFor="let list of liceZaNadzor; let i = index" [value]="liceZaNadzor[i].name">
           {{liceZaNadzor[i].name}}
         </option>
       </select>
+      <div class="input-group-append">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#liceZaNadzorModal">unesi
+        </button>
+        <button type="button" class="btn btn-danger">obrisi</button>
+      </div>
     </div>
 
-    <button class="btn btn-primary">Potvrdi opste podatke</button>
+    <!-- Modal -->
+    <div class="modal fade" id="liceZaNadzorModal" tabindex="-1" role="dialog"
+         aria-labelledby="liceZaNadzorModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="liceZaNadzorModalLongTitle">Ime i prezime</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control" aria-describedby="basic-addon1" #newLiceZaNadzor>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+            <button type="button" class="btn btn-primary"
+                    (click)="noviDirektor(newLiceZaNadzor.value)"
+            >Sacuvaj
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="col text-center" *ngIf="sakrijIdiDalje">
+      <button type="button" class="btn btn-secondary" (click)="goNext()">Idi dalje</button>
+    </div>
+
+  </div>
   </div>
 </form>
 
