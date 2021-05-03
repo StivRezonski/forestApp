@@ -1,8 +1,8 @@
-<div class="sortimenti">
+<div class="container">
   <form [formGroup]="sortimentiFormGroup" (ngSubmit)="onSubmit()">
-      <div class="form-group">
+      <div class="form-group col-xs-6">
         <label for="izabranaVrsta">Vrsta drveta</label>
-        <select class="form-select"
+        <select class="form-select input-group-lg reg_name"
                 formControlName="izabranaVrsta" id="izabranaVrsta"
                 (click)="onSelectVrsta()" required>
           <option value="21" [hidden]="hideJela">Jela</option>
@@ -61,77 +61,81 @@
 <!--      </div>-->
 <!--    </div>-->
 
-    <div class="d-inline">
-      <div class="rezonant" *ngIf="rezonantInputs">
-        <input type="number" class="form-control" formControlName="rezonant" id="rezonant"
+<!--        <div class="">-->
+    <div class="row">
+      <div class="rezonant form-group col-xs-6" *ngIf="rezonantInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="rezonant" id="rezonant"
                onKeyPress="if(this.value.length==9) return false;" placeholder="rezonantni trupac">
       </div>
-      <div class="fTrupci">
-        <input type="number" class="form-control" formControlName="fTrupci" id="fTrupci"
+      <div class="fTrupci form-group col-xs-6">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="fTrupci" id="fTrupci"
                onKeyPress="if(this.value.length==9) return false;" placeholder="F Trupci">
       </div>
-      <div class="lTrupci" *ngIf="lInputs">
-        <input type="number" class="form-control" formControlName="lTrupci" id="lTrupci"
+      <div class="lTrupci form-group col-xs-6" *ngIf="lInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="lTrupci" id="lTrupci"
                onKeyPress="if(this.value.length==9) return false;" placeholder="L Trupci">
       </div>
-      <div class="prvaKlasa">
-        <input type="number" class="form-control" formControlName="prvaKlasa" id="prvaKlasa"
+      <div class="prvaKlasa form-group col-xs-6">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="prvaKlasa" id="prvaKlasa"
                onKeyPress="if(this.value.length==9) return false;" placeholder="I klasa">
       </div>
-      <div class="drugaKlasa">
-        <input type="number" class="form-control" formControlName="drugaKlasa" id="drugaKlasa"
+      <div class="drugaKlasa form-group col-xs-6">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="drugaKlasa" id="drugaKlasa"
                onKeyPress="if(this.value.length==9) return false;" placeholder="II klasa">
       </div>
-      <div class="trecaKlasa" *ngIf="trecaKlasaInputs">
-        <input type="number" class="form-control" formControlName="trecaKlasa" id="trecaKlasa"
+      <div class="trecaKlasa form-group col-xs-6" *ngIf="trecaKlasaInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="trecaKlasa" id="trecaKlasa"
                onKeyPress="if(this.value.length==9) return false;" required placeholder="III klasa">
       </div>
-      <div class="stuboviZaVodove" *ngIf="tankaOblovinaInputs">
-        <input type="number" class="form-control" formControlName="stuboviZaVodove"
+      <div class="stuboviZaVodove form-group col-xs-6" *ngIf="tankaOblovinaInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="stuboviZaVodove"
                id="stuboviZaVodove" onKeyPress="if(this.value.length==9) return false;" placeholder="TT stubovi">
       </div>
-      <div class="jamskoDrvo" *ngIf="tankaOblovinaInputs">
-        <input type="number" class="form-control" formControlName="jamskoDrvo" id="jamskoDrvo"
+      <div class="jamskoDrvo form-group col-xs-6" *ngIf="tankaOblovinaInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="jamskoDrvo" id="jamskoDrvo"
                onKeyPress="if(this.value.length==9) return false;" placeholder="Jamsko drvo">
       </div>
-      <div class="koljeZaVoce" *ngIf="tankaOblovinaInputs">
-        <input type="number" class="form-control" formControlName="koljeZaVoce" id="koljeZaVoce"
+      <div class="koljeZaVoce form-group col-xs-6" *ngIf="tankaOblovinaInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="koljeZaVoce" id="koljeZaVoce"
                onKeyPress="if(this.value.length==9) return false;" placeholder="Kolje za voce">
       </div>
-      <div class="celuloznoDrvo">
-        <input type="number" class="form-control" formControlName="celuloznoDrvo"
+      <div class="celuloznoDrvo form-group col-xs-6">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="celuloznoDrvo"
                id="celuloznoDrvo" onKeyPress="if(this.value.length==9) return false;" placeholder="Celulozno drvo">
       </div>
-      <div class="ogrevPrveKlase" *ngIf="ogrevInputs">
-        <input type="number" class="form-control" formControlName="ogrevPrveKlase"
+      <div class="ogrevPrveKlase form-group col-xs-6" *ngIf="ogrevInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="ogrevPrveKlase"
                id="ogrevPrveKlase" onKeyPress="if(this.value.length==9) return false;" placeholder="Ogrev I klase">
       </div>
-      <div class="ogrevDrugeKlase" *ngIf="ogrevInputs">
-        <input type="number" class="form-control" formControlName="ogrevDrugeKlase"
+      <div class="ogrevDrugeKlase form-group col-xs-6" *ngIf="ogrevInputs">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="ogrevDrugeKlase"
                id="ogrevDrugeKlase" onKeyPress="if(this.value.length==9) return false;" placeholder="Ogrev II klase">
       </div>
-      <div class="sveukupnaDrvnaMasa">
-        <input type="number" class="form-control" formControlName="sveukupnaDrvnaMasa"
+      <div class="sveukupnaDrvnaMasa form-group col-xs-6">
+        <input type="number" class="form-control input-group-lg reg_name" formControlName="sveukupnaDrvnaMasa"
                id="sveukupnaDrvnaMasa" onKeyPress="if(this.value.length==9) return false;" required placeholder="Sveukupna masa">
-        <div class="text-danger" *ngIf="neIzabranaVrsta">
+      </div>
+
+        <div class="text-danger form-group col-xs-6" *ngIf="neIzabranaVrsta">
           Izaberite vrstu
         </div>
-        <div class="text-danger" *ngIf="sveUkupnaFalse">
+        <div class="text-danger form-group col-xs-6" *ngIf="sveUkupnaFalse">
           Unijeti sveukupnu masu
         </div>
-        <div class="text-danger" *ngIf="neUneseniTrupci">
+        <div class="text-danger form-group col-xs-6" *ngIf="neUneseniTrupci">
           Nedostaju podaci za trupce i tanku oblovinu
         </div>
-      </div>
+<!--      </div>-->
 
       <div class="potvrdaMasaBtn text-center">
         <button class="btn btn-primary" type="button" (click)="validateSubmit()">Unesi</button>
       </div> <hr>
-      <div class="zavrsiUnosMasaBtn">
-        <button class="btn btn-success" type="button"
-                [disabled]="readyForNormeStep"
-                (click)="calcAllAfterPush()">Zavrsi unos masa</button>
-      </div>
+
+    </div>
+    <div class="zavrsiUnosMasaBtn">
+      <button class="btn btn-success" type="button"
+              [disabled]="readyForNormeStep"
+              (click)="calcAllAfterPush()">Zavrsi unos masa</button>
     </div>
   </form>
 </div>

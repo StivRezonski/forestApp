@@ -1,61 +1,15 @@
-/* .row{
-  display: grid;
-  padding-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  place-items: center;
+
+.reg_name {
+  max-width:200px;
 }
 
-.form-control{
-  margin-bottom: 20px;
-} */
-
-
-/*.selectSizeCustom {*/
-/*  margin-left: 20px;*/
-/*  width: 100px;*/
-/*}*/
-
-.circle-sizer {
-  width: 100px;
-  height: 60px;
+.form-group{
+  margin-left: 550px;
 }
 
-/*.bg-ogrev {*/
-/*  background-color: #D2B48C;*/
-/*}*/
-
-/*.bg-celuloza {*/
-/*  background-color: #909090;*/
-/*}*/
-
-/*.bg-suma {*/
-/*  background-color: #C0C0C0;*/
-/*}*/
-
-/*.bg-rudno {*/
-/*  background-color: #EC407A;*/
-/*}*/
-
-/*.sortimentnaTabela {*/
-/*  position: relative;*/
-/*  margin: auto;*/
-/*}*/
-
-.btn {
-  /*display: grid;*/
-  /*margin-left: 70px;*/
-  margin-top: 20px;
-  width: 220px;
-  margin-bottom: 30px;
+.zavrsiUnosMasaBtn{
+float: right;
 }
-
-.next-step-button{
-position: absolute;
-  right: 150px;
-  margin-bottom: 100px;
-}
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
