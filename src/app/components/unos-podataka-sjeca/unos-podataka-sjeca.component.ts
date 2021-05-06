@@ -50,6 +50,18 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaCetinariIznos;
   normaLiscariIznos;
 
+  nagibTerenaTraktor;
+  nadmorskaVisinaTraktor;
+  srPrecnikCetinariTraktor;
+  srPrecnikLiscariTraktor;
+  bodoviCetinariTraktor;
+  bodoviLiscariTraktor;
+  usloviRadaCetinariTraktor;
+  usloviRadaLiscariTraktor;
+  normaCetinariTraktor;
+  normaLiscariTraktor;
+
+
   precnik = true;
   sjeca = true;
   sviPrecnici = [];
@@ -121,6 +133,17 @@ unosPrecnika = new FormGroup({
     animalDistanca: new FormControl()
   });
 
+// Forma unosa traktor
+  usloviTraktor = new FormGroup({
+    nagibTraktor: new FormControl(),
+    vrstaTlaTraktor: new FormControl(),
+    udaljenostOdGaraza: new FormControl(),
+    traktorDistanca: new FormControl('',
+    [Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(2)])
+  });   
+
 // Forma unosa iznos
   usloviIznos = new FormGroup({
     vrstaTla: new FormControl(),
@@ -133,6 +156,9 @@ unosPrecnika = new FormGroup({
   iznosBtn(){
     console.log(this.usloviIznos.value)
 
+  }
+  traktorBtn(){
+    console.log(this.usloviTraktor.value)
   }
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService, private router: Router) {
@@ -187,7 +213,7 @@ unosPrecnika = new FormGroup({
 
   }
   potvrdiNormeSjece(){
-    console.log(this.unosUslovaRada.value.ucesceAnimala)
+    console.log(this.unosUslovaRada.value)
     if(this.unosUslovaRada.value.ucesceAnimala == null){
       this.traktor = true;
     }else if(this.unosUslovaRada.value.ucesceAnimala > 0 && this.unosUslovaRada.value.ucesceAnimala < 100){
@@ -309,10 +335,13 @@ unosPrecnika = new FormGroup({
 
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
+        this.srPrecnikCetinariTraktor = 2;
       } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
         this.srednjiPrecnikCetinariBodoviAnimal = 6;
+        this.srPrecnikCetinariTraktor = 5;
       } else {
         this.srednjiPrecnikCetinariBodoviAnimal = 10;
+        this.srPrecnikCetinariTraktor = 8;
       }
 
 
@@ -377,10 +406,13 @@ unosPrecnika = new FormGroup({
 
       if (this.srednjiPrecnikLiscari > 45) {
         this.srednjiPrecnikLiscariBodoviAnimal = 4;
+        this.srPrecnikLiscariTraktor = 2;
       } else if (30 < this.srednjiPrecnikLiscari && this.srednjiPrecnikLiscari < 46) {
         this.srednjiPrecnikLiscariBodoviAnimal = 6;
+        this.srPrecnikLiscariTraktor = 5;
       } else {
         this.srednjiPrecnikLiscariBodoviAnimal = 10;
+        this.srPrecnikLiscariTraktor = 8;
       }
 
 
@@ -596,6 +628,17 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       this.normaSjeceLiscari = 0;
     }
 
+// Norme za traktor
+this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+  this.usloviTraktor.value.vrstaTlaTraktor + this.usloviAnimal.value.nadmorskaVisinaSjecaAnimal +
+  this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikCetinariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+
+  this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+  this.usloviTraktor.value.vrstaTlaTraktor + this.usloviAnimal.value.nadmorskaVisinaSjecaAnimal +
+  this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+
+console.log(this.srPrecnikCetinariTraktor)
+console.log(this.bodoviCetinariTraktor)
 // Podaci za dalji izračun cijena i za potrebe tabele u html-u
     this.podaciZaIzracunCijene.push(
       {distanca: uslovi.animalDistanca},
@@ -617,7 +660,9 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       {usloviRadaLiscariIznos: this.usloviCetIznos},
       {normaCetinariIznos: this.normaCetinariIznos},
       {normaLiscariIznos: this.normaLiscariIznos},
-      {ucesceAnimala: this.procenatAnimala}
+      {ucesceAnimala: this.procenatAnimala},
+      {distancaIznos: this.usloviIznos.value.iznosDistanca}
+
     );
     console.log(this.unosNormi.podaciZaIzracunCijene);
 
