@@ -638,6 +638,7 @@ this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTr
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
 
 console.log(this.srPrecnikCetinariTraktor)
+console.log(this.srPrecnikCetinariTraktor)
 console.log(this.bodoviCetinariTraktor)
 // Podaci za dalji izračun cijena i za potrebe tabele u html-u
     this.podaciZaIzracunCijene.push(
