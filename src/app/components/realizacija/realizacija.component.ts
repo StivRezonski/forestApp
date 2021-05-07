@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./realizacija.component.css']
 })
 export class RealizacijaComponent implements OnInit {
+
   tabJela = false;
   tabSmrca = false;
   tabBijeliBor = false;
@@ -47,7 +48,9 @@ export class RealizacijaComponent implements OnInit {
   normaIznosCet = this.podaciNorma[17].normaCetinariIznos;
   normaIznosLis = this.podaciNorma[18].normaLiscariIznos;
 
-  distanca = this.podaciNorma[0].distanca;
+  distancaTraktor;
+  distancaAnimal = this.podaciNorma[0].distanca;
+  distanca;
 
   cetCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaCet;
   lisCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaLis;
@@ -68,6 +71,8 @@ export class RealizacijaComponent implements OnInit {
 
   kolicinaIznosCet = this.trupci.iznosCet[0];
   kolicinaIznosLis = this.trupci.iznosLis[0];
+
+  iznosKolicina = this.kolicinaIznosCet + this.kolicinaIznosLis;
 
   trupciKolicina = this.kolicinaCetTrupci + this.kolicinaLisTrupci;
 
@@ -125,9 +130,6 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.normaIznosCet === 'string') {
-      this.normaIznosCet = null;
-    }
     if (this.trupci.jelaSaNeto[12] > 0) {
       this.tabJela = true;
     }

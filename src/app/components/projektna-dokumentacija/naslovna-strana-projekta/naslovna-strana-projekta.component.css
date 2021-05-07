@@ -1,45 +1,48 @@
 .memorandum{
-  margin-left: 100px;
+  margin-left: 250px;
   padding-top: 0;
 }
 
 .gazdinstvo{
   font-weight: bold;
   padding-top: 0;
+  font-size: 20px;
 }
 
 .broj-rjesenja{
   padding-top: 0;
+  font-size: 20px;
 }
 
 .naslov{
   text-align: center;
-  /*font-size: 25px;*/
+  font-size: 25px;
   font-weight: bold;
   padding-top: 170px;
 }
 
 .odjel{
   padding-top: 15px;
+  font-size: 20px;
   text-align: center;
 }
 
 .privredna-jedinica{
   padding-top: 15px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .privredno-podrucje{
   padding-top: 5px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .container-bottom{
-  padding-top: 230px;
+  padding-top: 600px;
   display: flex;
 }
 
@@ -48,11 +51,13 @@
 }
 
 .projektant{
-  margin-right: 350px;
+  margin-right: 510px;
+  font-size: 20px;
 }
 
 .rukovodilac{
-  margin-right: 50px;
+  margin-right: 70px;
+  font-size: 20px;
 }
 
 .titula-wrapper{
@@ -63,6 +68,7 @@
 .titula-projektant{
   /*margin-left: 600px;*/
   text-align: left;
+  font-size: 20px;
   white-space: nowrap;
 }
 
@@ -75,6 +81,7 @@
 .titula-sef{
         margin-right: 0;
         margin-left: 0;
+  font-size: 20px;
       text-align: left;
       white-space: nowrap;
 }

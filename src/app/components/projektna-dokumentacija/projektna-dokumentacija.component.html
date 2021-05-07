@@ -1,3 +1,10 @@
+<button class="btn btn-primary"
+        [useExistingCss]="true"
+        printSectionId="print-section"
+        ngxPrint>
+  Print
+</button>
+
 <div id="print-section">
 <app-naslovna-strana-projekta></app-naslovna-strana-projekta>
 <app-uvod-tekst></app-uvod-tekst>
@@ -5,9 +12,4 @@
 <app-rjesenje-pracenje></app-rjesenje-pracenje>
 <app-realizacija></app-realizacija>
 </div>
-<button class="btn btn-primary"
-        [useExistingCss]="true"
-        printSectionId="print-section"
-        ngxPrint>
-  Print
-</button>
+
