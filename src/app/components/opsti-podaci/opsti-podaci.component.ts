@@ -54,6 +54,21 @@ export class OpstiPodaciComponent implements OnInit {
       brojCekica: new FormControl('', [Validators.required]),
       godina: new FormControl('', [Validators.required]),
       mjesec: new FormControl('', [Validators.required]),
+      // grad: new FormControl(''),
+      // odjel: new FormControl(''),
+      // gazdinstvo: new FormControl(''),
+      // privrednaJedinica: new FormControl(''),
+      // projektant: new FormControl(''),
+      // direktor: new FormControl(''),
+      // vrstaSjece: new FormControl(''),
+      // sumskoPrivrednoPodrucje: new FormControl(''),
+      // rukovodilacPripreme: new FormControl(''),
+      // liceZaEksploataciju: new FormControl(''),
+      // liceZaUzgoj: new FormControl(''),
+      // liceZaNadzor: new FormControl(''),
+      // brojCekica: new FormControl(''),
+      // godina: new FormControl(''),
+      // mjesec: new FormControl(''),
     });
 
 

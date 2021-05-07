@@ -1,45 +1,47 @@
 .container{
-  page-break-after: always;
+  page-break-before: always;
 }
 
 
 .gazdinstvo {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .broj-rjesenja {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 
 .naslov {
   font-weight: bold;
   text-align: center;
-  font-size: 14px;
+  font-size: 25px;
 }
 
 .podnaslov {
   font-weight: bold;
   text-align: center;
-  font-size: 14px;
+  font-size: 22px;
+  padding-bottom: 15px;
 }
 
 .odjel {
   font-weight: bold;
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .tekst-paragraf {
   text-align: justify;
-  font-size: 14px;
+  font-size: 18px;
+  padding-top: 15px;
 }
 
 .dostavljeno {
   display: flex;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .prviDostavljeni {
@@ -47,7 +49,8 @@
 }
 
 .direktor-naslov {
-  font-size: 14px;
+  padding-top: 430px;
+  font-size: 18px;
   text-align: right;
 }
 
@@ -61,7 +64,7 @@ th, td {
 }
 
 .memorandum {
-  margin-left: 100px;
+  margin-left: 250px;
   padding-top: 0;
 }
 
