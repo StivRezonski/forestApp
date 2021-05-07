@@ -50,6 +50,20 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaCetinariIznos;
   normaLiscariIznos;
 
+  nagibTerenaTraktor;
+  nadmorskaVisinaTraktor;
+  srPrecnikCetinariTraktor;
+  srPrecnikLiscariTraktor;
+  bodoviCetinariTraktor;
+  bodoviLiscariTraktor;
+  usloviRadaCetinariTraktor;
+  usloviRadaLiscariTraktor;
+  usloviCetTraktor;
+  usloviLisTraktor;
+  normaCetinariTraktor;
+  normaLiscariTraktor;
+
+
   precnik = true;
   sjeca = true;
   sviPrecnici = [];
@@ -121,6 +135,17 @@ unosPrecnika = new FormGroup({
     animalDistanca: new FormControl()
   });
 
+// Forma unosa traktor
+  usloviTraktor = new FormGroup({
+    nagibTraktor: new FormControl(),
+    vrstaTlaTraktor: new FormControl(),
+    udaljenostOdGaraza: new FormControl(),
+    traktorDistanca: new FormControl('',
+    [Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(3)])
+  });   
+
 // Forma unosa iznos
   usloviIznos = new FormGroup({
     vrstaTla: new FormControl(),
@@ -133,6 +158,9 @@ unosPrecnika = new FormGroup({
   iznosBtn(){
     console.log(this.usloviIznos.value)
 
+  }
+  traktorBtn(){
+    console.log(this.usloviTraktor.value)
   }
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService, private router: Router) {
@@ -187,15 +215,17 @@ unosPrecnika = new FormGroup({
 
   }
   potvrdiNormeSjece(){
-    console.log(this.unosUslovaRada.value.ucesceAnimala)
+    console.log(this.unosUslovaRada.value)
     if(this.unosUslovaRada.value.ucesceAnimala == null){
       this.traktor = true;
+      this.procenatAnimala = null;
     }else if(this.unosUslovaRada.value.ucesceAnimala > 0 && this.unosUslovaRada.value.ucesceAnimala < 100){
       this.traktor = true;
-      this.animal = true
+      this.animal = true;
+      this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }else if(this.unosUslovaRada.value.ucesceAnimala == 100){
-    this.traktor = false;
-    this.animal = true
+      this.traktor = false;
+      this.animal = true
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
   }
@@ -305,14 +335,15 @@ unosPrecnika = new FormGroup({
 
       }
 
-
-
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
+        this.srPrecnikCetinariTraktor = 2;
       } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
         this.srednjiPrecnikCetinariBodoviAnimal = 6;
+        this.srPrecnikCetinariTraktor = 5;
       } else {
         this.srednjiPrecnikCetinariBodoviAnimal = 10;
+        this.srPrecnikCetinariTraktor = 8;
       }
 
 
@@ -377,10 +408,13 @@ unosPrecnika = new FormGroup({
 
       if (this.srednjiPrecnikLiscari > 45) {
         this.srednjiPrecnikLiscariBodoviAnimal = 4;
+        this.srPrecnikLiscariTraktor = 2;
       } else if (30 < this.srednjiPrecnikLiscari && this.srednjiPrecnikLiscari < 46) {
         this.srednjiPrecnikLiscariBodoviAnimal = 6;
+        this.srPrecnikLiscariTraktor = 5;
       } else {
         this.srednjiPrecnikLiscariBodoviAnimal = 10;
+        this.srPrecnikLiscariTraktor = 8;
       }
 
 
@@ -484,9 +518,6 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
 }
 
 // Sjeca norma
-
-
-
     if (this.srednjiPrecniciCetinari !== 0) {
 
       if (this.srednjiPrecnikCetinari > 45) {
@@ -596,6 +627,56 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       this.normaSjeceLiscari = 0;
     }
 
+// Norme za traktor
+this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+  this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
+  this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikCetinariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+
+this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+  this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
+  this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+
+  if (18 >= this.bodoviCetinariTraktor) {
+    this.usloviRadaCetinariTraktor = 0;
+    this.usloviCetTraktor = 'I';
+  } else if (this.bodoviCetinariTraktor >= 19 && this.bodoviCetinariTraktor <= 25) {
+    this.usloviRadaCetinariTraktor = 1;
+    this.usloviCetTraktor = 'I/II';
+  } else if (this.bodoviCetinariTraktor >= 26 && this.bodoviCetinariTraktor <= 32) {
+    this.usloviRadaCetinariTraktor = 2;
+    this.usloviCetTraktor = 'II';
+  } else if (this.bodoviCetinariTraktor >= 33 && this.bodoviCetinariTraktor <= 41) {
+    this.usloviRadaCetinariTraktor = 3;
+    this.usloviCetTraktor = 'II/III';
+  } else {
+    this.usloviRadaCetinariTraktor = 4;
+    this.usloviCetTraktor = 'III';
+  }
+
+  if (18 >= this.bodoviLiscariTraktor) {
+    this.usloviRadaLiscariTraktor = 0;
+    this.usloviLisTraktor = 'I';
+  } else if (this.bodoviLiscariTraktor >= 19 && this.bodoviLiscariTraktor <= 25) {
+    this.usloviRadaLiscariTraktor = 1;
+    this.usloviLisTraktor = 'I/II';
+  } else if (this.bodoviLiscariTraktor >= 26 && this.bodoviLiscariTraktor <= 32) {
+    this.usloviRadaLiscariTraktor = 2;
+    this.usloviLisTraktor = 'II';
+  } else if (this.bodoviLiscariTraktor >= 33 && this.bodoviLiscariTraktor <= 41) {
+    this.usloviRadaLiscariTraktor = 3;
+    this.usloviLisTraktor = 'II/III';
+  } else {
+    this.usloviRadaLiscariTraktor = 4;
+    this.usloviLisTraktor = 'III';
+  }
+
+console.log(this.srPrecnikCetinariTraktor)
+console.log(this.usloviTraktor.value.vrstaTlaTraktor)
+console.log(this.usloviTraktor.value.nagibTraktor)
+console.log(this.usloviTraktor.value.udaljenostOdGaraza)
+console.log(this.bodoviCetinariTraktor)
+console.log(this.bodoviLiscariTraktor)
+
 // Podaci za dalji izračun cijena i za potrebe tabele u html-u
     this.podaciZaIzracunCijene.push(
       {distanca: uslovi.animalDistanca},
@@ -617,7 +698,13 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       {usloviRadaLiscariIznos: this.usloviCetIznos},
       {normaCetinariIznos: this.normaCetinariIznos},
       {normaLiscariIznos: this.normaLiscariIznos},
-      {ucesceAnimala: this.procenatAnimala}
+      {ucesceAnimala: this.procenatAnimala},
+      {distancaIznos: this.usloviIznos.value.iznosDistanca},
+      {usloviRadaCetinariTraktor: this.usloviCetTraktor},
+      {usloviRadaCetinariTraktor: this.usloviLisTraktor},
+      {procenatAnimal: this.procenatAnimala}
+
+
     );
     console.log(this.unosNormi.podaciZaIzracunCijene);
 
