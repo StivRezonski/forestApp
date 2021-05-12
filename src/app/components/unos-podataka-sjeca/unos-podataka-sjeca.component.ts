@@ -144,7 +144,7 @@ unosPrecnika = new FormGroup({
     [Validators.required,
     Validators.minLength(3),
     Validators.maxLength(3)])
-  });   
+  });
 
 // Forma unosa iznos
   usloviIznos = new FormGroup({
@@ -694,8 +694,8 @@ console.log(this.bodoviLiscariTraktor)
       {normaCetAnimalTankaOblovina: parseFloat(this.normaCetAnimalTankaOblovina).toFixed(2)},
       {normaLisAnimalTrupci: parseFloat(this.normaLisAnimalTrupci).toFixed(2)},
       {normaLisAnimalTankaOblovina: parseFloat(this.normaLisAnimalTankaOblovina).toFixed(0)},
-      {usloviRadaCetinariIznos: this.usloviLisIznos},
-      {usloviRadaLiscariIznos: this.usloviCetIznos},
+      {usloviRadaCetinariIznos: this.usloviCetIznos},
+      {usloviRadaLiscariIznos: this.usloviLisIznos},
       {normaCetinariIznos: this.normaCetinariIznos},
       {normaLiscariIznos: this.normaLiscariIznos},
       {ucesceAnimala: this.procenatAnimala},
