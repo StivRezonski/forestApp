@@ -57,7 +57,9 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   bodoviCetinariTraktor;
   bodoviLiscariTraktor;
   usloviRadaCetinariTraktor;
+  usloviCetTraktor;
   usloviRadaLiscariTraktor;
+  usloviLisTraktor;
   normaCetinariTraktor;
   normaLiscariTraktor;
 
@@ -628,14 +630,55 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       this.normaSjeceLiscari = 0;
     }
 
-// Norme za traktor
+// Traktor
+
+// Bodovi traktor cetinari
 this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
   this.usloviTraktor.value.vrstaTlaTraktor + this.usloviAnimal.value.nadmorskaVisinaSjecaAnimal +
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikCetinariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
-
+// Bodovi traktor liscari
   this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
   this.usloviTraktor.value.vrstaTlaTraktor + this.usloviAnimal.value.nadmorskaVisinaSjecaAnimal +
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+
+// Uslovi rada cetinari traktor
+  if (18 >= this.bodoviCetinariTraktor) {
+    this.usloviRadaCetinariTraktor = 0;
+    this.usloviCetTraktor = 'I';
+  } else if (this.bodoviCetinariTraktor >= 19 && this.bodoviCetinariTraktor <= 25) {
+    this.usloviRadaCetinariTraktor = 1;
+    this.usloviCetTraktor = 'I/II';
+  } else if (this.bodoviCetinariTraktor >= 26 && this.bodoviCetinariTraktor <= 32) {
+    this.usloviRadaCetinariTraktor = 2;
+    this.usloviCetTraktor = 'II';
+  } else if (this.bodoviCetinariTraktor >= 33 && this.bodoviCetinariTraktor <= 41) {
+    this.usloviRadaCetinariTraktor = 3;
+    this.usloviCetTraktor = 'II/III';
+  } else {
+    this.usloviRadaCetinariTraktor = 4;
+    this.usloviCetTraktor = 'III';
+  }
+
+// Uslovi rada liscari traktor
+  if (18 >= this.bodoviLiscariTraktor) {
+    this.usloviRadaLiscariTraktor = 0;
+    this.usloviLisTraktor = 'I';
+  } else if (this.bodoviLiscariTraktor >= 19 && this.bodoviLiscariTraktor <= 25) {
+    this.usloviRadaLiscariTraktor = 1;
+    this.usloviLisTraktor = 'I/II';
+  } else if (this.bodoviLiscariTraktor >= 26 && this.bodoviLiscariTraktor <= 32) {
+    this.usloviRadaLiscariTraktor = 2;
+    this.usloviLisTraktor = 'II';
+  } else if (this.bodoviLiscariTraktor >= 33 && this.bodoviLiscariTraktor <= 41) {
+    this.usloviRadaLiscariTraktor = 3;
+    this.usloviLisTraktor = 'II/III';
+  } else {
+    this.usloviRadaLiscariTraktor = 4;
+    this.usloviLisTraktor = 'III';
+  }
+
+// Norma cetinari traktor
+
 
 console.log(this.srPrecnikCetinariTraktor)
 console.log(this.srPrecnikCetinariTraktor)
@@ -662,7 +705,10 @@ console.log(this.bodoviCetinariTraktor)
       {normaCetinariIznos: this.normaCetinariIznos},
       {normaLiscariIznos: this.normaLiscariIznos},
       {ucesceAnimala: this.procenatAnimala},
-      {distancaIznos: this.usloviIznos.value.iznosDistanca}
+      {distancaIznos: this.usloviIznos.value.iznosDistanca},
+      {usloviRadaCetTraktor: this.usloviCetTraktor},
+      {usloviRadaLisTraktor: this.usloviLisTraktor}
+
 
     );
     console.log(this.unosNormi.podaciZaIzracunCijene);
