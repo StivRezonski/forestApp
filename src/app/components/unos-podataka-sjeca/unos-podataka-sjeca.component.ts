@@ -679,6 +679,7 @@ this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTr
 
 // Norma cetinari traktor
 
+normaCetinariTraktor =  
 
 console.log(this.srPrecnikCetinariTraktor)
 console.log(this.srPrecnikCetinariTraktor)
