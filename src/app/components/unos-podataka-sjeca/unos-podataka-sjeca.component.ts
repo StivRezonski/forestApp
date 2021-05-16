@@ -57,8 +57,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   bodoviCetinariTraktor;
   bodoviLiscariTraktor;
   usloviRadaCetinariTraktor;
-  usloviRadaLiscariTraktor;
   usloviCetTraktor;
+  usloviRadaLiscariTraktor;
+
+
   usloviLisTraktor;
   normaCetinariTraktor;
   normaLiscariTraktor;
@@ -157,6 +159,7 @@ unosPrecnika = new FormGroup({
     }
   iznosBtn(){
     console.log(this.usloviIznos.value)
+    console.log(this.unosNormi.traktorLJetoNorme[0][0][0][0][100])
 
   }
   traktorBtn(){
@@ -627,14 +630,19 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       this.normaSjeceLiscari = 0;
     }
 
-// Norme za traktor
+// Traktor
+
+// Bodovi traktor cetinari
 this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
   this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikCetinariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
 
+
 this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
   this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+
+// Uslovi rada cetinari traktor
 
   if (18 >= this.bodoviCetinariTraktor) {
     this.usloviRadaCetinariTraktor = 0;
@@ -653,6 +661,9 @@ this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTra
     this.usloviCetTraktor = 'III';
   }
 
+
+// Uslovi rada liscari traktor
+
   if (18 >= this.bodoviLiscariTraktor) {
     this.usloviRadaLiscariTraktor = 0;
     this.usloviLisTraktor = 'I';
@@ -669,6 +680,12 @@ this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTra
     this.usloviRadaLiscariTraktor = 4;
     this.usloviLisTraktor = 'III';
   }
+
+
+// Norma cetinari traktor
+
+//normaCetinariTraktor =  
+
 
 console.log(this.srPrecnikCetinariTraktor)
 console.log(this.usloviTraktor.value.vrstaTlaTraktor)
@@ -700,9 +717,14 @@ console.log(this.bodoviLiscariTraktor)
       {normaLiscariIznos: this.normaLiscariIznos},
       {ucesceAnimala: this.procenatAnimala},
       {distancaIznos: this.usloviIznos.value.iznosDistanca},
+
       {usloviRadaCetinariTraktor: this.usloviCetTraktor},
       {usloviRadaCetinariTraktor: this.usloviLisTraktor},
-      {procenatAnimal: this.procenatAnimala}
+      {procenatAnimal: this.procenatAnimala},
+
+      {usloviRadaCetTraktor: this.usloviCetTraktor},
+      {usloviRadaLisTraktor: this.usloviLisTraktor}
+
 
 
     );
