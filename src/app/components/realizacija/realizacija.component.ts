@@ -91,13 +91,14 @@ export class RealizacijaComponent implements OnInit {
   kolicinaCetTanka = this.trupci.tankaOblovinaCet[0];
   kolicinaLisTanka = this.trupci.tankaOblovinaLis[0];
 
-  tankaKolicina = this.kolicinaCetTanka + this.kolicinaLisTanka;
+  tankaKolicina;
 
   trupacCetAnimal = this.kolicinaCetTrupci * this.procenatAnimal;
   trupacLisAnimal = this.kolicinaLisTrupci * this.procenatAnimal;
   tankaCetAnimal = this.kolicinaCetTanka * this.procenatAnimal;
   tankaLisAnimal = this.kolicinaLisTanka * this.procenatAnimal;
 
+  trupciTraktorKolicina;
   trupciCetTraktor;
   trupciLisTraktor;
   tankaCetTraktor;
@@ -168,13 +169,17 @@ export class RealizacijaComponent implements OnInit {
       this.tankaCetTraktor = 0;
       this.tankaLisTraktor = 0;
       this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
+      this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
     } else {
       this.trupciCetTraktor = this.kolicinaCetTrupci;
       this.trupciLisTraktor = this.kolicinaLisTrupci;
+      console.log(this.trupciCetTraktor, this.kolicinaCetTrupci );
+      console.log(this.trupciLisTraktor, this.kolicinaLisTrupci );
       this.tankaCetTraktor = this.kolicinaCetTanka;
       this.tankaLisTraktor = this.kolicinaLisTanka;
       this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
-      console.log(this.trupciCetTraktor);
+      this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
+      this.trupciTraktorKolicina = this.trupciCetTraktor + this.trupciLisTraktor;
     }
 
     if (this.trupci.jelaSaNeto[12] > 0) {
