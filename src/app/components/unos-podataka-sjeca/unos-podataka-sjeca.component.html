@@ -154,6 +154,15 @@
                      *ngIf="unosUslovaRada.get('ucesceAnimala').errors?.required">
                 Unijeti procenat predvidjen za animal!
               </small> <br>
+              <select class="form-select" formControlName="periodSjece" required>
+                <option [ngValue]="null" [disabled]="true">Period sjece</option>
+                <option [ngValue]="0">Ljeto</option>
+                <option [ngValue]="1">Zima</option>
+              </select>
+            <small class="text-danger"
+                   *ngIf="unosUslovaRada.get('periodSjece').errors?.required">
+              Unijeti period sjece!
+            </small><br>
                   <div class="potvrdaNormiSjece d-grid gap-2">
                     <button type="button" class="btn btn-success" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
                   </div> 
@@ -197,6 +206,12 @@
           <option [ngValue]="1">Do 2 km</option>
           <option [ngValue]="3">2-6 km</option>
           <option [ngValue]="6">Preko 6 km</option>
+        </select> <br>
+        <select class="form-select" formControlName="primicanjeTraktor" required>
+          <option [ngValue]="null" [disabled]="true">Duzina primicanja</option>
+          <option [ngValue]="0">10 m</option>
+          <option [ngValue]="1">20 m</option>
+          <option [ngValue]="2">30 m</option>
         </select> <br>
  
         <input formControlName="traktorDistanca" placeholder="Traktor distanca" class="form-control" required>
