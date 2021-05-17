@@ -59,6 +59,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   usloviRadaCetinariTraktor;
   usloviCetTraktor;
   usloviRadaLiscariTraktor;
+  prosjecnoStablo;
 
 
   usloviLisTraktor;
@@ -125,7 +126,8 @@ unosPrecnika = new FormGroup({
     udaljenostOdCesteSjeca: new FormControl(),
     bonitetCetinari: new FormControl(),
     bonitetLiscari: new FormControl(),
-    ucesceAnimala: new FormControl()
+    ucesceAnimala: new FormControl(),
+    periodSjece: new FormControl()
   });
 
 // Forma unosa animal
@@ -145,7 +147,9 @@ unosPrecnika = new FormGroup({
     traktorDistanca: new FormControl('',
     [Validators.required,
     Validators.minLength(3),
-    Validators.maxLength(3)])
+    Validators.maxLength(3)]),
+    primicanjeTraktor: new FormControl()
+
   });   
 
 // Forma unosa iznos
@@ -159,8 +163,6 @@ unosPrecnika = new FormGroup({
     }
   iznosBtn(){
     console.log(this.usloviIznos.value)
-    console.log(this.unosNormi.traktorLJetoNorme[0][0][0][0][100])
-
   }
   traktorBtn(){
     console.log(this.usloviTraktor.value)
@@ -683,11 +685,33 @@ this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTra
 
 
 // Norma cetinari traktor
+if(this.srednjiPrecnikCetinari > 45){
+  this.prosjecnoStablo = 1
+  }else this.prosjecnoStablo = 0
 
-//normaCetinariTraktor =  
+
+  if(this.unosUslovaRada.value.periodSjece == 0){
+  
+this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
+                            [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+                            [this.usloviTraktor.value.traktorDistanca] 
+
+this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
+                            [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+                            [this.usloviTraktor.value.traktorDistanca] }
+else this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
+[this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+[this.usloviTraktor.value.traktorDistanca] 
+
+this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
+[this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+[this.usloviTraktor.value.traktorDistanca]
+
+console.log(this.normaCetinariTraktor)
+console.log(this.normaLiscariTraktor)
 
 
-console.log(this.srPrecnikCetinariTraktor)
+//console.log(this.normaCetAnimalTankaOblovina.normaCetinariTraktor)
 console.log(this.usloviTraktor.value.vrstaTlaTraktor)
 console.log(this.usloviTraktor.value.nagibTraktor)
 console.log(this.usloviTraktor.value.udaljenostOdGaraza)
@@ -723,7 +747,10 @@ console.log(this.bodoviLiscariTraktor)
       {procenatAnimal: this.procenatAnimala},
 
       {usloviRadaCetTraktor: this.usloviCetTraktor},
-      {usloviRadaLisTraktor: this.usloviLisTraktor}
+      {usloviRadaLisTraktor: this.usloviLisTraktor},
+      {normaCetinariTraktor: this.normaCetinariTraktor},
+      {normaLiscariTraktor: this.normaLiscariTraktor}
+
 
 
 
