@@ -45,6 +45,14 @@ export class RealizacijaComponent implements OnInit {
   normaSjecaCet = this.podaciNorma[7].normaCetSjeca;
   normaSjecaLis = this.podaciNorma[8].normaLisSjeca;
 
+  normaCetTraktor = this.podaciNorma[25].normaCetinariTraktor;
+  normaLisTraktor = this.podaciNorma[26].normaLiscariTraktor;
+  // normaTrupciCetTraktor = this.podaciNorma[];
+  normaTrupciLisTraktor;
+
+  normaTankaCetTraktor;
+  normaTankaLisTraktor;
+
   normaTrupciCet = this.podaciNorma[11].normaCetAnimalTrupci;
   normaTankaCet = this.podaciNorma[12].normaCetAnimalTankaOblovina;
 
@@ -54,7 +62,7 @@ export class RealizacijaComponent implements OnInit {
   normaIznosCet = this.podaciNorma[17].normaCetinariIznos;
   normaIznosLis = this.podaciNorma[18].normaLiscariIznos;
 
-  // distancaTraktor = this.podaciNorma[].distanca;
+  distancaTraktor = this.podaciNorma[24].distancaTraktor;
   distancaAnimal = this.podaciNorma[0].distanca;
   distancaIznos = this.podaciNorma[20].distancaIznos;
 
@@ -99,6 +107,10 @@ export class RealizacijaComponent implements OnInit {
   tankaLisAnimal = this.kolicinaLisTanka * this.procenatAnimal;
 
   trupciTraktorKolicina;
+  tankaTraktorKolicina;
+  trupciTankaTraktorKolicina;
+  trupciTankaCetTraktor;
+  trupciTankaLisTraktor;
   trupciCetTraktor;
   trupciLisTraktor;
   tankaCetTraktor;
@@ -163,23 +175,27 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.procenatAnimal === 1){
+    console.log(this.trupci.vrijednostJela);
+    if (this.procenatAnimal === 1) {
       this.trupciCetTraktor = 0;
       this.trupciLisTraktor = 0;
       this.tankaCetTraktor = 0;
       this.tankaLisTraktor = 0;
       this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
       this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
+      this.tankaTraktorKolicina = 0;
     } else {
       this.trupciCetTraktor = this.kolicinaCetTrupci;
       this.trupciLisTraktor = this.kolicinaLisTrupci;
-      console.log(this.trupciCetTraktor, this.kolicinaCetTrupci );
-      console.log(this.trupciLisTraktor, this.kolicinaLisTrupci );
       this.tankaCetTraktor = this.kolicinaCetTanka;
       this.tankaLisTraktor = this.kolicinaLisTanka;
       this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
       this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
       this.trupciTraktorKolicina = this.trupciCetTraktor + this.trupciLisTraktor;
+      this.tankaTraktorKolicina = this.tankaCetTraktor + this.tankaLisTraktor;
+      this.trupciTankaTraktorKolicina = this.trupciTraktorKolicina + this.tankaTraktorKolicina;
+      this.trupciTankaCetTraktor = this.trupciCetTraktor + this.tankaCetTraktor;
+      this.trupciTankaLisTraktor = this.trupciLisTraktor + this.tankaLisTraktor;
     }
 
     if (this.trupci.jelaSaNeto[12] > 0) {
