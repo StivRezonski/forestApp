@@ -1,5 +1,6 @@
-.container{
+.container {
   page-break-before: always;
+  page-break-after: always;
 }
 
 
@@ -49,7 +50,7 @@
 }
 
 .direktor-naslov {
-  padding-top: 430px;
+  padding-top: 240px;
   font-size: 18px;
   text-align: right;
 }

@@ -24,11 +24,17 @@ export class RealizacijaComponent implements OnInit {
 
   podaciNorma = this.norme.podaciZaIzracunCijene;
 
-  usloviRadaCet = this.podaciNorma[5].usloviRadaCetSjeca;
-  usloviRadaLis = this.podaciNorma[6].usloviRadaLisSjeca;
+  usloviRadaCetSj = this.podaciNorma[5].usloviRadaCetSjeca;
+  usloviRadaLisSj = this.podaciNorma[6].usloviRadaLisSjeca;
 
   usloviRadaAnimalCet = this.podaciNorma[9].usloviRadaCetAnimal;
   usloviRadaAnimalLis = this.podaciNorma[10].usloviRadaLisAnimal;
+
+  usloviRadaIznosCet = this.podaciNorma[15].usloviCetIznos;
+  usloviRadaIznosLis = this.podaciNorma[16].usloviLisIznos;
+
+  usloviRadaTraktorCet = this.podaciNorma[21].usloviCetTraktor;
+  usloviRadaTraktorLis = this.podaciNorma[22].usloviLisTraktor;
 
   bonitetCet = this.podaciNorma[1].bonitetCetinari;
   bonitetLis = this.podaciNorma[2].bonitetLiscari;
@@ -48,17 +54,23 @@ export class RealizacijaComponent implements OnInit {
   normaIznosCet = this.podaciNorma[17].normaCetinariIznos;
   normaIznosLis = this.podaciNorma[18].normaLiscariIznos;
 
-  distancaTraktor;
+  // distancaTraktor = this.podaciNorma[].distanca;
   distancaAnimal = this.podaciNorma[0].distanca;
-  distanca;
+  distancaIznos = this.podaciNorma[20].distancaIznos;
+
+  ucesceAnimala = this.podaciNorma[19].ucesceAnimala;
+  procenatAnimal = this.podaciNorma[23].procenatAnimal;
 
   cetCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaCet;
   lisCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaLis;
 
+
+  cijenaCetTraktor = this.norme.cijenaRadnogDanaTraktor / this.normaTrupciCet; // normu za traktor podjeliti
   cijenaCetTrupacAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTrupciCet;
   cijenaCetTankaAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTankaCet;
   cijenaCetIznos = this.norme.cijenaRadnogDanaIznos / this.normaIznosCet;
 
+  cijenaLisTraktor = this.norme.cijenaRadnogDanaTraktor / this.normaTrupciLis; // normu za traktor podjeliti
   cijenaLisTrupacAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTrupciLis;
   cijenaLisTankaAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTankaLis;
   cijenaLisIznos = this.norme.cijenaRadnogDanaIznos / this.normaIznosLis;
@@ -79,10 +91,25 @@ export class RealizacijaComponent implements OnInit {
   kolicinaCetTanka = this.trupci.tankaOblovinaCet[0];
   kolicinaLisTanka = this.trupci.tankaOblovinaLis[0];
 
-  tankaKolicina = this.kolicinaCetTanka + this.kolicinaLisTanka;
+  tankaKolicina;
+
+  trupacCetAnimal = this.kolicinaCetTrupci * this.procenatAnimal;
+  trupacLisAnimal = this.kolicinaLisTrupci * this.procenatAnimal;
+  tankaCetAnimal = this.kolicinaCetTanka * this.procenatAnimal;
+  tankaLisAnimal = this.kolicinaLisTanka * this.procenatAnimal;
+
+  trupciTraktorKolicina;
+  trupciCetTraktor;
+  trupciLisTraktor;
+  tankaCetTraktor;
+  tankaLisTraktor;
 
   sjecaCetBrRadDana = Math.round(this.kolicinaCet / this.normaSjecaCet);
   sjecaLisBrRadDana = Math.round(this.kolicinaLis / this.normaSjecaLis);
+
+  // traktor broj radnih dana provjera
+  traktorCetBrRadnihDana = Math.round(this.kolicinaCetTrupci / this.normaTrupciCet);
+  traktorLisBrRadnihDana = Math.round(this.kolicinaLisTrupci / this.normaTrupciLis);
 
   animalTrupciCetBrRadnihDana = Math.round(this.kolicinaCetTrupci / this.normaTrupciCet);
   animalLisBrRadnihDana = Math.round(this.kolicinaLisTrupci / this.normaTrupciLis);
@@ -96,6 +123,10 @@ export class RealizacijaComponent implements OnInit {
   trosakCetSj = this.kolicinaCet * parseFloat(this.cetCijenaSj.toFixed(2));
   trosakLisSj = this.kolicinaLis * parseFloat(this.lisCijenaSj.toFixed(2));
 
+  // trosak za traktor provjera
+  trosakCetTraktor = this.kolicinaCetTrupci * parseFloat(this.cijenaCetTraktor.toFixed(2));
+  trosakLisTraktor = this.kolicinaLisTrupci * parseFloat(this.cijenaLisTraktor.toFixed(2));
+
   trosakCetTrupci = this.kolicinaCetTrupci * parseFloat(this.cijenaCetTrupacAnimal.toFixed(2));
   trosakLisTrupci = this.kolicinaLisTrupci * parseFloat(this.cijenaLisTrupacAnimal.toFixed(2));
 
@@ -105,10 +136,12 @@ export class RealizacijaComponent implements OnInit {
   trosakCetIznos = this.kolicinaIznosCet * parseFloat(this.cijenaCetIznos.toFixed(2));
   trosakLisIznos = this.kolicinaIznosLis * parseFloat(this.cijenaLisIznos.toFixed(2));
 
-  ukupniDirektniTrosak = this.trosakCetSj + this.trosakLisSj + this.trosakCetTrupci +
-    this.trosakLisTrupci + this.trosakCetTanka + this.trosakLisTanka;
+  ukupniDirektniTrosak = this.trosakCetSj + this.trosakLisSj + this.trosakCetTraktor + this.trosakCetTrupci +
+    this.trosakLisTraktor + this.trosakLisTrupci + this.trosakCetTanka + this.trosakLisTanka;
 
   ukupnaKolicina = this.kolicinaCet + this.kolicinaLis;
+
+  cjenaUkupnoKubik = this.ukupniDirektniTrosak / this.ukupnaKolicina;
 
   prihodJela = this.trupci.vrijednostJela.reduce((a, b) => a + b, 0);
   prihodSmrca = this.trupci.vrijednostSmrca.reduce((a, b) => a + b, 0);
@@ -130,6 +163,25 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if (this.procenatAnimal === 1){
+      this.trupciCetTraktor = 0;
+      this.trupciLisTraktor = 0;
+      this.tankaCetTraktor = 0;
+      this.tankaLisTraktor = 0;
+      this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
+      this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
+    } else {
+      this.trupciCetTraktor = this.kolicinaCetTrupci;
+      this.trupciLisTraktor = this.kolicinaLisTrupci;
+      console.log(this.trupciCetTraktor, this.kolicinaCetTrupci );
+      console.log(this.trupciLisTraktor, this.kolicinaLisTrupci );
+      this.tankaCetTraktor = this.kolicinaCetTanka;
+      this.tankaLisTraktor = this.kolicinaLisTanka;
+      this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
+      this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
+      this.trupciTraktorKolicina = this.trupciCetTraktor + this.trupciLisTraktor;
+    }
+
     if (this.trupci.jelaSaNeto[12] > 0) {
       this.tabJela = true;
     }
@@ -162,7 +214,7 @@ export class RealizacijaComponent implements OnInit {
     }
 
     if (this.kolicinaCet <= 0) {
-      this.usloviRadaCet = null;
+      this.usloviRadaCetSj = null;
       this.usloviRadaAnimalCet = null;
       this.bonitetCet = null;
       this.srednjiPrecnikCet = 0;
@@ -184,10 +236,11 @@ export class RealizacijaComponent implements OnInit {
       this.ukupniDirektniTrosak = this.trosakLisSj + this.trosakLisTrupci + this.trosakLisTanka;
       this.sumPrihodiCetLis = this.sumPrihodiLis;
       this.dobit = this.sumPrihodiLis - this.ukupniDirektniTrosak;
+      this.cjenaUkupnoKubik = this.ukupniDirektniTrosak / this.ukupnaKolicina;
     }
 
     if (this.kolicinaLis <= 0) {
-      this.usloviRadaLis = null;
+      this.usloviRadaLisSj = null;
       this.usloviRadaAnimalLis = null;
       this.bonitetLis = null;
       this.srednjiPrecnikLis = 0;
@@ -209,6 +262,7 @@ export class RealizacijaComponent implements OnInit {
       this.ukupniDirektniTrosak = this.trosakCetSj + this.trosakCetTrupci + this.trosakCetTanka;
       this.sumPrihodiCetLis = this.sumPrihodiCet;
       this.dobit = this.sumPrihodiCet - this.ukupniDirektniTrosak;
+      this.cjenaUkupnoKubik = this.ukupniDirektniTrosak / this.ukupnaKolicina;
     }
 
   }

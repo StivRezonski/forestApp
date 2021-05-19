@@ -1,6 +1,8 @@
-<div class="landscape">
-<div class="table-responsive prihod tabela-prihod">
-  <table class="table table-bordered">
+
+<div class="">
+<div class="">
+  <table class="table table-bordered tabela-prihod">
+    <caption>Tabela prihoda od realizacije drvnih sortimenata</caption>
     <thead>
 
     <tr>
@@ -252,6 +254,7 @@
 
 <div class="table-responsive prihod table-faza-rada">
   <table class="table table-bordered">
+    <caption>Cijena sjece i izrade, privlacenja i iznosenja drvnih sortimenata</caption>
     <tr>
       <th>Odjel</th>
       <th>Faza rada</th>
@@ -265,9 +268,9 @@
       <th>Broj radnih dana</th>
     </tr>
     <tr>
-      <th rowspan="12">{{odjel}}</th>
+      <th rowspan="16">{{odjel}}</th>
       <td rowspan="3">Sjeca i izrada</td>
-      <td>Cetinari {{usloviRadaCet}}</td>
+      <td>Cetinari {{usloviRadaCetSj}}</td>
       <td>{{bonitetCet}}</td>
       <td>{{srednjiPrecnikCet}} cm</td>
       <td></td>
@@ -278,7 +281,7 @@
     </tr>
 
     <tr>
-      <td>Liscari {{usloviRadaLis}}</td>
+      <td>Liscari {{usloviRadaLisSj}}</td>
       <td>{{bonitetLis}}</td>
       <td>{{srednjiPrecnikLis}} cm</td>
       <td></td>
@@ -297,13 +300,46 @@
       <td></td>
       <td></td>
     </tr>
+
+    <tr>
+      <td rowspan="3">Traktor</td>
+      <td>Cetinari {{usloviRadaTraktorCet}}</td>
+      <td>{{bonitetCet}}</td>
+      <td></td>
+      <td>{{distancaAnimal}} traktor m</td>
+      <td>{{trupciCetTraktor | number : '1.2-2'}} m³</td>
+      <td>{{normaTrupciCet | number : '1.2-2'}}</td>
+      <td>{{cijenaCetTraktor | number : '1.2-2'}} KM/m³</td>
+      <td>{{traktorCetBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Liscari {{usloviRadaTraktorLis}}</td>
+      <td>{{bonitetLis}}</td>
+      <td></td>
+      <td>{{distancaAnimal}} m</td>
+      <td>{{trupciLisTraktor | number : '1.2-2'}} m³</td>
+      <td>{{normaTrupciLis | number : '1.2-2'}}</td>
+      <td>{{cijenaLisTraktor | number : '1.2-2'}} KM/m³</td>
+      <td>{{traktorLisBrRadnihDana}}</td>
+    </tr>
+    <tr>
+      <td>Σ</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="table-warning">{{trupciTraktorKolicina  | number : '1.2-2'}} m³</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
     <tr>
       <td rowspan="3">Animal trupci</td>
       <td>Cetinari {{usloviRadaAnimalCet}}</td>
       <td>{{bonitetCet}}</td>
       <td></td>
-      <td>{{distanca}} m</td>
-      <td>{{kolicinaCetTrupci | number : '1.2-2'}} m³</td>
+      <td>{{distancaAnimal}} m</td>
+      <td>{{trupacCetAnimal | number : '1.2-2'}} m³</td>
       <td>{{normaTrupciCet | number : '1.2-2'}}</td>
       <td>{{cijenaCetTrupacAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalTrupciCetBrRadnihDana}}</td>
@@ -312,8 +348,8 @@
       <td>Liscari {{usloviRadaAnimalLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
-      <td>{{distanca}} m</td>
-      <td>{{kolicinaLisTrupci | number : '1.2-2'}} m³</td>
+      <td>{{distancaAnimal}} m</td>
+      <td>{{trupacLisAnimal | number : '1.2-2'}} m³</td>
       <td>{{normaTrupciLis | number : '1.2-2'}}</td>
       <td>{{cijenaLisTrupacAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalLisBrRadnihDana}}</td>
@@ -334,8 +370,8 @@
       <td>Cetinari {{usloviRadaAnimalCet}}</td>
       <td>{{bonitetCet}}</td>
       <td></td>
-      <td>{{distanca}} m</td>
-      <td>{{kolicinaCetTanka | number : '1.2-2'}} m³</td>
+      <td>{{distancaAnimal}} m</td>
+      <td>{{tankaCetAnimal | number : '1.2-2'}} m³</td>
       <td>{{normaTankaCet | number : '1.2-2'}}</td>
       <td>{{cijenaCetTankaAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalTankaCetBrRadnihDana}}</td>
@@ -344,8 +380,8 @@
       <td>Liscari {{usloviRadaAnimalLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
-      <td>{{distanca}} m</td>
-      <td>{{kolicinaLisTanka | number : '1.2-2'}} m³</td>
+      <td>{{distancaAnimal}} m</td>
+      <td>{{tankaLisAnimal | number : '1.2-2'}} m³</td>
       <td>{{normaTankaLis | number : '1.2-2'}}</td>
       <td>{{cijenaLisTankaAnimal | number : '1.2-2'}} KM/m³</td>
       <td>{{animalTankaLisBrRadnihDana}}</td>
@@ -363,20 +399,20 @@
 
     <tr>
       <td rowspan="3">Iznos</td>
-      <td>Cetinari {{usloviRadaAnimalCet}}</td>
+      <td>Cetinari {{usloviRadaIznosCet}}</td>
       <td>{{bonitetCet}}</td>
       <td></td>
-      <td>{{distanca}} m</td>
+      <td>{{distancaIznos}} m</td>
       <td>{{kolicinaIznosCet | number : '1.2-2'}} m³</td>
       <td>{{normaIznosCet | number : '1.2-2'}}</td>
       <td>{{cijenaCetIznos | number : '1.2-2'}} KM/m³</td>
       <td>{{iznosCetBrRadnihDana}}</td>
     </tr>
     <tr>
-      <td>Liscari {{usloviRadaAnimalLis}}</td>
+      <td>Liscari {{usloviRadaIznosLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
-      <td>{{distanca}} m</td>
+      <td>{{distancaIznos}} m</td>
       <td>{{kolicinaIznosLis | number : '1.2-2'}} m³</td>
       <td>{{normaIznosLis | number : '1.2-2'}}</td>
       <td>{{cijenaLisIznos | number : '1.2-2'}} KM/m³</td>
@@ -401,6 +437,7 @@
 
 <div class="table-responsive prihod suma-table table-faza-rada-kratka">
 <table class="table table-bordered">
+  <caption>Troskovi sjece i izrade, privlacenja i iznosenja drvnih sortimenata</caption>
   <tr>
     <th>Odjel</th>
     <th>Faza rada</th>
@@ -410,7 +447,7 @@
     <th>Ukupno</th>
   </tr>
   <tr>
-    <th rowspan="12">{{odjel}}</th>
+    <th rowspan="18">{{odjel}}</th>
     <td rowspan="3">Sjeca i izrada</td>
     <td>Cetinari</td>
     <td>{{kolicinaCet | number : '1.2-2'}} m³</td>
@@ -430,6 +467,27 @@
     <td></td>
     <td></td>
   </tr>
+
+  <tr>
+    <td rowspan="3">Traktor</td>
+    <td>Cetinari</td>
+    <td>{{trupciCetTraktor | number : '1.2-2'}} m³</td>
+    <td>{{cijenaCetTraktor | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakCetTraktor | number : '1.2-2'}} KM</td>
+  </tr>
+  <tr>
+    <td>Liscari</td>
+    <td>{{trupciLisTraktor | number : '1.2-2'}} m³</td>
+    <td>{{cijenaLisTraktor | number : '1.2-2'}} KM/m³</td>
+    <td>{{trosakLisTraktor | number : '1.2-2'}} KM</td>
+  </tr>
+  <tr>
+    <td>Σ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
   <tr>
     <td rowspan="3">Animal trupci</td>
     <td>Cetinari</td>
@@ -490,12 +548,21 @@
     <td></td>
   </tr>
 
+  <tr class="ukupno-tabela">
+    <td rowspan="3" >Ukupno</td>
+    <td></td>
+    <td>{{ukupnaKolicina | number : '1.2-2'}} m³</td>
+    <td>{{cjenaUkupnoKubik | number : '1.2-2'}} KM/m³</td>
+    <td>{{ukupniDirektniTrosak | number : '1.2-2'}} KM</td>
+  </tr>
 
 </table>
 </div>
 
+<div>
 <div class="table-responsive prihod table-balance">
-  <table class="table table-bordered">
+  <table class="table table-bordered caption-top">
+    <caption>Tabela ostrvarene dobiti</caption>
     <tr>
       <td>Prihodi</td>
       <td>{{sumPrihodiCetLis | number : '1.2-2'}} KM</td>
@@ -512,6 +579,7 @@
 
 
   </table>
+</div>
 </div>
 <button class="btn btn-primary" (click)="goToDokumentacija()">Pregledaj projekat</button>
 

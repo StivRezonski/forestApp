@@ -39,36 +39,36 @@ export class OpstiPodaciComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public sharedService: SharedService,
               public opstiPodaci: OpstiPodaci, private router: Router, private httpClient: HttpClient) {
     this.opstaForma = this.formBuilder.group({
-      grad: new FormControl('', [Validators.required]),
-      odjel: new FormControl('', [Validators.required]),
-      gazdinstvo: new FormControl('', [Validators.required]),
-      privrednaJedinica: new FormControl('', [Validators.required]),
-      projektant: new FormControl('', [Validators.required]),
-      direktor: new FormControl('', [Validators.required]),
-      vrstaSjece: new FormControl('', [Validators.required]),
-      sumskoPrivrednoPodrucje: new FormControl('', [Validators.required]),
-      rukovodilacPripreme: new FormControl('', [Validators.required]),
-      liceZaEksploataciju: new FormControl('', [Validators.required]),
-      liceZaUzgoj: new FormControl('', [Validators.required]),
-      liceZaNadzor: new FormControl('', [Validators.required]),
-      brojCekica: new FormControl('', [Validators.required]),
-      godina: new FormControl('', [Validators.required]),
-      mjesec: new FormControl('', [Validators.required]),
-      // grad: new FormControl(''),
-      // odjel: new FormControl(''),
-      // gazdinstvo: new FormControl(''),
-      // privrednaJedinica: new FormControl(''),
-      // projektant: new FormControl(''),
-      // direktor: new FormControl(''),
-      // vrstaSjece: new FormControl(''),
-      // sumskoPrivrednoPodrucje: new FormControl(''),
-      // rukovodilacPripreme: new FormControl(''),
-      // liceZaEksploataciju: new FormControl(''),
-      // liceZaUzgoj: new FormControl(''),
-      // liceZaNadzor: new FormControl(''),
-      // brojCekica: new FormControl(''),
-      // godina: new FormControl(''),
-      // mjesec: new FormControl(''),
+      // grad: new FormControl('', [Validators.required]),
+      // odjel: new FormControl('', [Validators.required]),
+      // gazdinstvo: new FormControl('', [Validators.required]),
+      // privrednaJedinica: new FormControl('', [Validators.required]),
+      // projektant: new FormControl('', [Validators.required]),
+      // direktor: new FormControl('', [Validators.required]),
+      // vrstaSjece: new FormControl('', [Validators.required]),
+      // sumskoPrivrednoPodrucje: new FormControl('', [Validators.required]),
+      // rukovodilacPripreme: new FormControl('', [Validators.required]),
+      // liceZaEksploataciju: new FormControl('', [Validators.required]),
+      // liceZaUzgoj: new FormControl('', [Validators.required]),
+      // liceZaNadzor: new FormControl('', [Validators.required]),
+      // brojCekica: new FormControl('', [Validators.required]),
+      // godina: new FormControl('', [Validators.required]),
+      // mjesec: new FormControl('', [Validators.required]),
+      grad: new FormControl(''),
+      odjel: new FormControl(''),
+      gazdinstvo: new FormControl(''),
+      privrednaJedinica: new FormControl(''),
+      projektant: new FormControl(''),
+      direktor: new FormControl(''),
+      vrstaSjece: new FormControl(''),
+      sumskoPrivrednoPodrucje: new FormControl(''),
+      rukovodilacPripreme: new FormControl(''),
+      liceZaEksploataciju: new FormControl(''),
+      liceZaUzgoj: new FormControl(''),
+      liceZaNadzor: new FormControl(''),
+      brojCekica: new FormControl(''),
+      godina: new FormControl(''),
+      mjesec: new FormControl(''),
     });
 
 
@@ -164,7 +164,7 @@ export class OpstiPodaciComponent implements OnInit {
 
   noviDirektor(newDirektor: string): any {
     if (newDirektor) {
-      console.log(newDirektor);
+      // console.log(newDirektor);
     }
   }
 }

@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TrupciService {
-  klase = ['R', 'F', 'L', 'I', 'II', 'III', 'TT', 'Rudno', 'Kolje za voce',
-    'Celuloza', 'OgrevI', 'OgrevII', 'Sveukupna', 'Neto', 'Prihod'];
+  klase = ['R', 'F', 'L', 'I', 'II', 'III', 'TT', 'Rudno', 'Kolje',
+    'Celuloza', 'Ogr. I', 'Ogr. II', 'Sveukupna', 'Neto', 'Prihod'];
   trupciJela = [];
   trupciSmrca = [];
   trupciBijeliBor = [];
