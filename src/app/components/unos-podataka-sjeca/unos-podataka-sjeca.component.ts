@@ -144,7 +144,7 @@ unosPrecnika = new FormGroup({
     nagibTraktor: new FormControl(0),
     vrstaTlaTraktor: new FormControl(0),
     udaljenostOdGaraza: new FormControl(0),
-    traktorDistanca: new FormControl(0,
+    traktorDistanca: new FormControl('',
     [Validators.required,
     Validators.minLength(3),
     Validators.maxLength(3)]),

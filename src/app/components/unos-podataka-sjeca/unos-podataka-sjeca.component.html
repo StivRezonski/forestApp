@@ -185,7 +185,7 @@
           <form [formGroup]="usloviTraktor">
             <div class="form-group">
           <select class="form-select" formControlName="nagibTraktor" required>
-          <option [ngValue]="null" [disabled]="true">Nagib traktorskog puta</option>
+          <option [ngValue]="0" [disabled]="true">Nagib traktorskog puta</option>
           <option [ngValue]="1">10-15%</option>
           <option [ngValue]="3">5-10 i veci od 15%</option>
           <option [ngValue]="6">0-5%-mocvarno</option>
@@ -196,19 +196,19 @@
         </small>  <br> 
 
         <select class="form-select" formControlName="vrstaTlaTraktor" required>
-          <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
+          <option [ngValue]="0" [disabled]="true">Vrsta tla</option>
           <option [ngValue]="2">Plitko</option>
           <option [ngValue]="4">Sr.duboko ili kamen</option>
           <option [ngValue]="9">Duboko-mocvarno</option>
         </select> <br>
         <select class="form-select" formControlName="udaljenostOdGaraza" required>
-          <option [ngValue]="null" [disabled]="true">Udaljenost od garaza</option>
+          <option [ngValue]="0" [disabled]="true">Udaljenost od garaza</option>
           <option [ngValue]="1">Do 2 km</option>
           <option [ngValue]="3">2-6 km</option>
           <option [ngValue]="6">Preko 6 km</option>
         </select> <br>
         <select class="form-select" formControlName="primicanjeTraktor" required>
-          <option [ngValue]="null" [disabled]="true">Duzina primicanja</option>
+          <option [ngValue]="0" [disabled]="true">Duzina primicanja</option>
           <option [ngValue]="0">10 m</option>
           <option [ngValue]="1">20 m</option>
           <option [ngValue]="2">30 m</option>
