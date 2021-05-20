@@ -164,7 +164,7 @@ export class OpstiPodaciComponent implements OnInit {
 
   noviDirektor(newDirektor: string): any {
     if (newDirektor) {
-      console.log(newDirektor);
+      // console.log(newDirektor);
     }
   }
 }
