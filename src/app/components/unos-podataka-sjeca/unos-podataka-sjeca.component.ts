@@ -149,7 +149,7 @@ unosPrecnika = new FormGroup({
     Validators.minLength(3),
     Validators.maxLength(3)]),
     primicanjeTraktor: new FormControl()
-  });   
+  });
 
 // Forma unosa iznos
   usloviIznos = new FormGroup({
@@ -690,17 +690,17 @@ if(this.srednjiPrecnikCetinari > 45){
 
 
   if(this.unosUslovaRada.value.periodSjece == 0){
-  
+
 this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
                             [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-                            [this.usloviTraktor.value.traktorDistanca] 
+                            [this.usloviTraktor.value.traktorDistanca]
 
 this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
                             [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
                             [this.usloviTraktor.value.traktorDistanca] }
 else this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
 [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-[this.usloviTraktor.value.traktorDistanca] 
+[this.usloviTraktor.value.traktorDistanca]
 
 this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
 [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
@@ -719,7 +719,7 @@ console.log(this.bodoviLiscariTraktor)
 
 // Podaci za dalji izračun cijena i za potrebe tabele u html-u
     this.podaciZaIzracunCijene.push(
-      {distanca: uslovi.animalDistanca},
+      {distanca: this.usloviAnimal.value.animalDistanca},
       {bonitetCetinari: parseInt(uslovi.bonitetCetinari)},
       {bonitetLiscari: parseInt(uslovi.bonitetLiscari)},
       {srPrCet: parseInt(this.srednjiPrecnikCetinari)},
@@ -742,11 +742,9 @@ console.log(this.bodoviLiscariTraktor)
       {distancaIznos: this.usloviIznos.value.iznosDistanca},
 
       {usloviRadaCetinariTraktor: this.usloviCetTraktor},
-      {usloviRadaCetinariTraktor: this.usloviLisTraktor},
+      {usloviRadaLiscariTraktor: this.usloviLisTraktor},
       {procenatAnimal: this.procenatAnimala},
-
-      {usloviRadaCetTraktor: this.usloviCetTraktor},
-      {usloviRadaLisTraktor: this.usloviLisTraktor},
+      {distancaTraktor: this.usloviTraktor.value.traktorDistanca},
       {normaCetinariTraktor: this.normaCetinariTraktor},
       {normaLiscariTraktor: this.normaLiscariTraktor}
 

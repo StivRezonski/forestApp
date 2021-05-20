@@ -23,6 +23,10 @@ caption {
   font-weight: bold;
 }
 
+.vertical{
+  text-align: center;
+}
+
 /*novi print*/
 .tabela-prihod {
 
