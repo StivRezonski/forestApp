@@ -148,9 +148,9 @@ unosPrecnika = new FormGroup({
     [Validators.required,
     Validators.minLength(3),
     Validators.maxLength(3)]),
-    primicanjeTraktor: new FormControl(0)
 
-  });   
+    primicanjeTraktor: new FormControl()
+  });
 
 // Forma unosa iznos
   usloviIznos = new FormGroup({
@@ -750,10 +750,10 @@ if(this.srednjiPrecnikCetinari > 45){
 
 
   if(this.unosUslovaRada.value.periodSjece == 0){
-  
+
 this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
                             [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-                            [this.usloviTraktor.value.traktorDistanca] 
+                            [this.usloviTraktor.value.traktorDistanca]
 
 this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
                             [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
@@ -761,7 +761,7 @@ this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
                           }
 else this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
 [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-[this.usloviTraktor.value.traktorDistanca] 
+[this.usloviTraktor.value.traktorDistanca]
 
 this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
 [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
@@ -795,8 +795,8 @@ console.log(this.bodoviLiscariTraktor)
       {normaCetAnimalTankaOblovina: parseFloat(this.normaCetAnimalTankaOblovina).toFixed(2)},
       {normaLisAnimalTrupci: parseFloat(this.normaLisAnimalTrupci).toFixed(2)},
       {normaLisAnimalTankaOblovina: parseFloat(this.normaLisAnimalTankaOblovina).toFixed(0)},
-      {usloviRadaCetinariIznos: this.usloviLisIznos},
-      {usloviRadaLiscariIznos: this.usloviCetIznos},
+      {usloviRadaCetinariIznos: this.usloviCetIznos},
+      {usloviRadaLiscariIznos: this.usloviLisIznos},
       {normaCetinariIznos: this.normaCetinariIznos},
       {normaLiscariIznos: this.normaLiscariIznos},
       {ucesceAnimala: this.procenatAnimala},
@@ -806,7 +806,6 @@ console.log(this.bodoviLiscariTraktor)
       {usloviRadaLiscariTraktor: this.usloviLisTraktor},
       {procenatAnimal: this.procenatAnimala},
       {distancaTraktor: this.usloviTraktor.value.traktorDistanca},
-
       
       {normaCetinariTraktor: this.normaCetinariTraktor},
       {normaLiscariTraktor: this.normaLiscariTraktor}
