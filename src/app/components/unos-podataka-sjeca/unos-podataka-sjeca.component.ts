@@ -248,6 +248,7 @@ unosPrecnika = new FormGroup({
 
     if(this.mase1.length == 0){
       this.trueBonitetCetinari = false;
+      this.imaCetinara = false
     }else this.trueBonitetCetinari = true;
 
   if (this.mase2.length == 0){
