@@ -141,13 +141,14 @@ unosPrecnika = new FormGroup({
 
 // Forma unosa traktor
   usloviTraktor = new FormGroup({
-    nagibTraktor: new FormControl(),
-    vrstaTlaTraktor: new FormControl(),
-    udaljenostOdGaraza: new FormControl(),
-    traktorDistanca: new FormControl('',
+    nagibTraktor: new FormControl(0),
+    vrstaTlaTraktor: new FormControl(0),
+    udaljenostOdGaraza: new FormControl(0),
+    traktorDistanca: new FormControl(0,
     [Validators.required,
     Validators.minLength(3),
     Validators.maxLength(3)]),
+
     primicanjeTraktor: new FormControl()
   });
 
@@ -373,7 +374,7 @@ unosPrecnika = new FormGroup({
         this.usloviCetAnimal = 'III';
       }
 
-      if (this.usloviAnimal.get('saKorom').value == true) {
+      if (this.usloviAnimal.get('saKorom').value == 1) {
         this.normaCetAnimalTrupci =
           (this.unosNormi.animalCet[this.usloviRadaCetAnimal][0][this.usloviAnimal.value.animalDistanca.toString()]) * 0.8;
         this.normaCetAnimalTankaOblovina =
@@ -553,13 +554,69 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
         this.usloviCetSjeca = 'III';
       }
 
+      if (this.usloviAnimal.get('saKorom').value == 1){
+        if(this.unosUslovaRada.value.periodSjece == 1){
+          console.log("bez koranja zima")
+          const a = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+        .filter(k => k < this.srednjiPrecnikCetinari).pop();
+        const b = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+          .filter(k => k > this.srednjiPrecnikCetinari)[0];
+        const x = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+        const y = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+        if (this.srednjiPrecnikCetinari ! % 5) {
+          this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
+            parseFloat(y)).toFixed(2);
+        } else {
+          this.kljucCet = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca]
+            [this.unosUslovaRada.value.bonitetCetinari - 1])).filter(k => k == this.srednjiPrecnikCetinari)[0];
+  
+          this.normaSjeceCetinari = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca]
+            [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
+        }
+        }else{ console.log("bez koranja ljeto")
+        const a = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+        .filter(k => k < this.srednjiPrecnikCetinari).pop();
+        const b = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+          .filter(k => k > this.srednjiPrecnikCetinari)[0];
+        const x = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+        const y = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+        if (this.srednjiPrecnikCetinari ! % 5) {
+          this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
+            parseFloat(y)).toFixed(2);
+        } else {
+          this.kljucCet = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca]
+            [this.unosUslovaRada.value.bonitetCetinari - 1])).filter(k => k == this.srednjiPrecnikCetinari)[0];
+  
+          this.normaSjeceCetinari = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca]
+            [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
+        }
+      }
+    
+    }else if(this.usloviAnimal.get('saKorom').value == 0){
+        if(this.unosUslovaRada.value.periodSjece == 1){ console.log("sa koranjem zima")
+          const a = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+          .filter(k => k < this.srednjiPrecnikCetinari).pop();
+          const b = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+            .filter(k => k > this.srednjiPrecnikCetinari)[0];
+          const x = this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+          const y = this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+          if (this.srednjiPrecnikCetinari ! % 5) {
+            this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
+              parseFloat(y)).toFixed(2);
+          } else {
+            this.kljucCet = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca]
+              [this.unosUslovaRada.value.bonitetCetinari - 1])).filter(k => k == this.srednjiPrecnikCetinari)[0];
+    
+            this.normaSjeceCetinari = this.unosNormi.zimaCet[this.usloviRadaCetSjeca]
+              [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
+          }
+        }else { console.log("sa koranjem ljeto")
       const a = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
       .filter(k => k < this.srednjiPrecnikCetinari).pop();
       const b = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
         .filter(k => k > this.srednjiPrecnikCetinari)[0];
       const x = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
       const y = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
-      console.log(a)
       if (this.srednjiPrecnikCetinari ! % 5) {
         this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
           parseFloat(y)).toFixed(2);
@@ -570,12 +627,15 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
         this.normaSjeceCetinari = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca]
           [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
       }
+
+    }}
     } else {
       this.bodoviCetinariSjeca = 0;
       this.srednjiPrecnikSjecaCetinariBodovi = 'Nema unijetih srednjih precnika za cetinare!';
       this.unosUslovaRada.get('bonitetCetinari').patchValue('0');
       this.normaSjeceCetinari = 0;
     }
+
 
     if (this.srednjiPrecniciLiscari !== 0) {
 
@@ -697,7 +757,8 @@ this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
 
 this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
                             [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-                            [this.usloviTraktor.value.traktorDistanca] }
+                            [this.usloviTraktor.value.traktorDistanca] 
+                          }
 else this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
 [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
 [this.usloviTraktor.value.traktorDistanca]
@@ -745,6 +806,7 @@ console.log(this.bodoviLiscariTraktor)
       {usloviRadaLiscariTraktor: this.usloviLisTraktor},
       {procenatAnimal: this.procenatAnimala},
       {distancaTraktor: this.usloviTraktor.value.traktorDistanca},
+      
       {normaCetinariTraktor: this.normaCetinariTraktor},
       {normaLiscariTraktor: this.normaLiscariTraktor}
 

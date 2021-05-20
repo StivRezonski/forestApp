@@ -254,12 +254,16 @@
           Unijeti nagib za animal!
         </small>  <br> <br>
 
-        <div class="form-check" *ngIf="imaCetinara" >
-          <input class="form-check-input" [disabled] = "nemaCetinara" type="checkbox"
-                 formControlName="saKorom" id="saKorom">
-          <label class="form-check-label" for="saKorom">
-            Da li se cetinari izvlace sa korom?
-          </label>
+        <div class="saKorom" *ngIf="imaCetinara" >
+          <select class="form-select" formControlName="saKorom" required>
+            <option [ngValue]="null" [disabled]="true">Sa korom</option>
+            <option [ngValue]="0">Sa koranjem</option>
+            <option [ngValue]="1">Bez koranja</option>
+          </select>
+        <small class="text-danger"
+               *ngIf="usloviAnimal.get('saKorom').errors?.required">
+          Da li se cetinari koraju!
+        </small>
         </div> <br>
 
           <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
