@@ -275,8 +275,6 @@ unosPrecnika = new FormGroup({
     console.log(this.sviPrecnici);
 
     this.uneseniUsloviRada = false
-
-
   }
 
 // Funkcija prikupljanja podataka potrebnih za izracun normi
@@ -477,6 +475,8 @@ if(this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == nu
 + this.gustinaPodmlatkaIznos + this.doznakaIznos + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal
 + this.unosUslovaRada.value.udaljenostOdStale;
 }
+
+
 
 if (this.bodoviCetinariLiscariIznos == 0){
   this.usloviRadaCetinariIznos = null;
@@ -768,8 +768,17 @@ this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
 [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
 [this.usloviTraktor.value.traktorDistanca]
 
-console.log(this.normaCetinariTraktor)
-console.log(this.normaLiscariTraktor)
+if(this.mase1.length == 0){
+  this.normaCetinariIznos = 0
+  this.normaCetAnimalTrupci = 0
+  this.normaCetAnimalTankaOblovina = 0
+  this.normaCetinariTraktor = 0
+}else if(this.mase2.length == 0){
+  this.normaLiscariIznos = 0
+  this.normaLisAnimalTrupci = 0
+  this.normaLisAnimalTankaOblovina = 0
+  this.normaLiscariTraktor = 0
+}else {console.log("Postoje cetinari i liscari")}
 
 
 //console.log(this.normaCetAnimalTankaOblovina.normaCetinariTraktor)
