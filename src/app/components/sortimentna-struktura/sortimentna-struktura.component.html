@@ -132,7 +132,7 @@
       </div> <hr>
 
     </div>
-    <div class="zavrsiUnosMasaBtn">
+    <div class="zavrsiUnosMasaBtn" *ngIf="uneseneMase">
       <button class="btn btn-success" type="button"
               [disabled]="readyForNormeStep"
               (click)="calcAllAfterPush()">Zavrsi unos masa</button>
