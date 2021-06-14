@@ -240,8 +240,11 @@ export class RealizacijaComponent implements OnInit {
       this.bonitetCet = null;
       this.srednjiPrecnikCet = 0;
       this.normaSjecaCet = 0;
+      this.normaCetTraktor = 0;
+      this.trupacCetAnimal = 0;
       this.normaTrupciCet = 0;
       this.normaTankaCet = 0;
+      this.normaIznosCet = 0;
       this.cetCijenaSj = 0;
       this.cijenaCetTrupacAnimal = 0;
       this.cijenaCetTankaAnimal = 0;
