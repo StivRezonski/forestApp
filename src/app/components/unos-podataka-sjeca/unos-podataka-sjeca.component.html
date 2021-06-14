@@ -146,7 +146,7 @@
               </div>
               <select class="form-select" formControlName="ucesceAnimala" required>
                 <option [ngValue]="null" [disabled]="true">Ucesce animala</option>
-                <option *ngFor="let procenat of ucesceAnimal; let i = index" [value]="procenat">
+                <option *ngFor="let procenat of ucesceAnimal; let i = index" [ngValue]="procenat">
                   {{procenat}}
                 </option>
               </select>
@@ -350,7 +350,10 @@
       </div>
     </div>
 
-      <div class="d-grid gap-2">
+      <div class="d-grid gap-2" *ngIf = "unosUslovaRada.valid && 
+                                         validnaFormaTraktora && 
+                                         validnaFormaAnimala && 
+                                         validnaFormaIznosa">
         <button class="btn btn-success" (click)="potvrdi()">Izracunaj norme</button>
       </div>
 

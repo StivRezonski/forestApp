@@ -106,6 +106,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   zavrsenUnosUslovaRada = false;
   akoSuUsloviZavrseni = true;
   uneseniUsloviRada = false;
+  imaAnimala = false;
+  validnaFormaAnimala = false;
+  validnaFormaTraktora = false;
+  validnaFormaIznosa = false;
   zavrsenoSaUnosomUslovaSjeca;
 
 // Forma unosa precnika
@@ -159,12 +163,21 @@ unosPrecnika = new FormGroup({
   });
 
   animalBtn(){
+    if(this.usloviAnimal.valid){
+      this.validnaFormaAnimala = true
+    }
       console.log(this.usloviAnimal.value)
     }
   iznosBtn(){
+    if(this.usloviIznos.valid){
+      this.validnaFormaIznosa = true;
+    }
     console.log(this.usloviIznos.value)
   }
   traktorBtn(){
+    if(this.usloviTraktor.valid){
+      this.validnaFormaTraktora = true;
+    }
     console.log(this.usloviTraktor.value)
   }
 
@@ -221,7 +234,9 @@ unosPrecnika = new FormGroup({
   }
   potvrdiNormeSjece(){
     console.log(this.unosUslovaRada.value)
-    if(this.unosUslovaRada.value.ucesceAnimala == null){
+    if(this.unosUslovaRada.value.ucesceAnimala == 0){
+      this.validnaFormaAnimala = true;
+      console.log(this.imaAnimala)
       this.traktor = true;
       this.procenatAnimala = null;
     }else if(this.unosUslovaRada.value.ucesceAnimala > 0 && this.unosUslovaRada.value.ucesceAnimala < 100){
@@ -230,6 +245,7 @@ unosPrecnika = new FormGroup({
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }else if(this.unosUslovaRada.value.ucesceAnimala == 100){
       this.traktor = false;
+      this.validnaFormaTraktora = true;
       this.animal = true
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
