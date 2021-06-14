@@ -9,7 +9,7 @@
         </button>
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-        
+
         <div class="unosPrecnika">
           <h6>Unesite precnike po vrstama!</h6>
          <form [formGroup]='unosPrecnika'>
@@ -164,9 +164,9 @@
               Unijeti period sjece!
             </small><br>
                   <div class="potvrdaNormiSjece d-grid gap-2">
-                    <button *ngIf="potvrdjenaSjeca" type="button" class="btn btn-success" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
-                  </div> 
-                </div>   
+                    <button *ngIf="potvrdjenaSjeca" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -193,7 +193,7 @@
        <small class="text-danger"
                *ngIf="usloviTraktor.get('nagibTraktor').errors?.required">
           Unijeti nagib za traktor!
-        </small>  <br> 
+        </small>  <br>
 
         <select class="form-select" formControlName="vrstaTlaTraktor" required>
           <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
@@ -225,7 +225,7 @@
         *ngIf="usloviTraktor.get('primicanjeTraktor').errors?.required">
    Unijeti udaljenost primicanja za traktor!
  </small><br>
- 
+
         <input formControlName="traktorDistanca" placeholder="Traktor distanca" class="form-control" required>
 
         <small class="text-danger"
@@ -236,12 +236,12 @@
           Distanca mora biti trocifren ili četvorocifren broj.
         </small> <br> <br>
               <div class="d-grid gap-2">
-                <button *ngIf="potvrdjenTraktor" class="btn btn-success" (click)="traktorBtn()">Traktor</button>
-              </div> 
+                <button *ngIf="potvrdjenTraktor" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" type="button" class="btn btn-success collapsed" (click)="traktorBtn()">Traktor</button>
+              </div>
             </div>
           </form>
         </div>
-      </div> 
+      </div>
     </div>
 
     <div class="accordion-item4" *ngIf="animal">
@@ -297,9 +297,9 @@
         <small class="text-danger"
                *ngIf="usloviAnimal.get('udaljenostOdStale').errors?.required">
           Unijeti udaljenost od štale!
-        </small> <br> 
+        </small> <br>
 
- 
+
           <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control" required>
 
         <small class="text-danger"
@@ -311,15 +311,15 @@
         </small> <br> <br>
 
               <div class="d-grid gap-2">
-                <button *ngIf="potvrdjenAnimal" class="btn btn-success" (click)="animalBtn()">Animal</button>
+                <button *ngIf="potvrdjenAnimal" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" type="button" class="btn btn-success collapsed" (click)="animalBtn()">Animal</button>
               </div>
 
             </div>
           </form>
         </div>
-      </div> 
+      </div>
     </div>
-  
+
     <div class="accordion-item5">
       <h2 class="accordion-header" id="flush-headingFive">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
@@ -352,20 +352,20 @@
 
           </small> --> <br>
 
-            <div *ngIf="potvrdjenIznos" class="potvrdjivanjeIznosa">
-              <button type="button" class="btn btn-success" (click)="iznosBtn()">
+            <div class="potvrdjivanjeIznosa">
+              <button *ngIf="potvrdjenIznos" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive" type="button" class="btn btn-success collapsed" type="button" (click)="iznosBtn()">
               Potvrdi uslove iznosa
               </button>
             </div>
-            
+
           </form> <br>
         </div>
       </div>
     </div>
 
-      <div class="d-grid gap-2" *ngIf = "unosUslovaRada.valid && 
-                                         validnaFormaTraktora && 
-                                         validnaFormaAnimala && 
+      <div class="d-grid gap-2" *ngIf = "unosUslovaRada.valid &&
+                                         validnaFormaTraktora &&
+                                         validnaFormaAnimala &&
                                          validnaFormaIznosa">
         <button class="btn btn-success" (click)="potvrdi()">Izracunaj norme</button>
       </div>
