@@ -110,6 +110,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   validnaFormaAnimala = false;
   validnaFormaTraktora = false;
   validnaFormaIznosa = false;
+  potvrdjenaSjeca = true;
+  potvrdjenAnimal = true;
+  potvrdjenTraktor = true;
+  potvrdjenIznos = true;
   zavrsenoSaUnosomUslovaSjeca;
 
 // Forma unosa precnika
@@ -145,13 +149,13 @@ unosPrecnika = new FormGroup({
 
 // Forma unosa traktor
   usloviTraktor = new FormGroup({
-    nagibTraktor: new FormControl(0),
-    vrstaTlaTraktor: new FormControl(0),
-    udaljenostOdGaraza: new FormControl(0),
+    nagibTraktor: new FormControl(),
+    vrstaTlaTraktor: new FormControl(),
+    udaljenostOdGaraza: new FormControl(),
     traktorDistanca: new FormControl('',
     [Validators.required,
     Validators.minLength(3),
-    Validators.maxLength(3)]),
+    Validators.maxLength(4)]),
 
     primicanjeTraktor: new FormControl()
   });
@@ -159,26 +163,29 @@ unosPrecnika = new FormGroup({
 // Forma unosa iznos
   usloviIznos = new FormGroup({
     vrstaTla: new FormControl(),
-    iznosDistanca: new FormControl()
+    iznosDistanca: new FormControl('',
+    [Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(4)])
   });
 
   animalBtn(){
     if(this.usloviAnimal.valid){
       this.validnaFormaAnimala = true
     }
-      console.log(this.usloviAnimal.value)
+      this.potvrdjenAnimal = false;
     }
   iznosBtn(){
     if(this.usloviIznos.valid){
       this.validnaFormaIznosa = true;
     }
-    console.log(this.usloviIznos.value)
+    this.potvrdjenIznos = false;
   }
   traktorBtn(){
     if(this.usloviTraktor.valid){
       this.validnaFormaTraktora = true;
     }
-    console.log(this.usloviTraktor.value)
+    this.potvrdjenTraktor = false;
   }
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService, private router: Router) {
@@ -249,6 +256,7 @@ unosPrecnika = new FormGroup({
       this.animal = true
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
+    this.potvrdjenaSjeca = false;
   }
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {

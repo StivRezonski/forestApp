@@ -115,7 +115,7 @@
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('udaljenostOdCesteSjeca').errors?.required">
                 Unijeti udaljenost od ceste!
-              </small> <br>
+              </small>
               <div clas="bonitetCetinari" *ngIf="trueBonitetCetinari">
                 <select class="form-select"  formControlName="bonitetCetinari" required>
                   <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
@@ -129,7 +129,7 @@
                        *ngIf="unosUslovaRada.get('bonitetCetinari').errors?.required">
                   Unijeti bonitet za četinare!
                 </small>
-              </div> <br>
+              </div>
               <div class="bonitetLiscari" *ngIf="trueBonitetLiscari">
                 <select class="form-select" formControlName="bonitetLiscari" required>
                   <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
@@ -164,7 +164,7 @@
               Unijeti period sjece!
             </small><br>
                   <div class="potvrdaNormiSjece d-grid gap-2">
-                    <button type="button" class="btn btn-success" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
+                    <button *ngIf="potvrdjenaSjeca" type="button" class="btn btn-success" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button> 
                   </div> 
                 </div>   
               </div>
@@ -185,7 +185,7 @@
           <form [formGroup]="usloviTraktor">
             <div class="form-group">
           <select class="form-select" formControlName="nagibTraktor" required>
-          <option [ngValue]="0" [disabled]="true">Nagib traktorskog puta</option>
+          <option [ngValue]="null" [disabled]="true">Nagib traktorskog puta</option>
           <option [ngValue]="1">10-15%</option>
           <option [ngValue]="3">5-10 i veci od 15%</option>
           <option [ngValue]="6">0-5%-mocvarno</option>
@@ -196,23 +196,35 @@
         </small>  <br> 
 
         <select class="form-select" formControlName="vrstaTlaTraktor" required>
-          <option [ngValue]="0" [disabled]="true">Vrsta tla</option>
+          <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
           <option [ngValue]="2">Plitko</option>
           <option [ngValue]="4">Sr.duboko ili kamen</option>
           <option [ngValue]="9">Duboko-mocvarno</option>
-        </select> <br>
+        </select> 
+        <small class="text-danger"
+               *ngIf="usloviTraktor.get('vrstaTlaTraktor').errors?.required">
+          Unijeti vrstu tla za traktor!
+        </small><br>
         <select class="form-select" formControlName="udaljenostOdGaraza" required>
-          <option [ngValue]="0" [disabled]="true">Udaljenost od garaza</option>
+          <option [ngValue]="null" [disabled]="true">Udaljenost od garaza</option>
           <option [ngValue]="1">Do 2 km</option>
           <option [ngValue]="3">2-6 km</option>
           <option [ngValue]="6">Preko 6 km</option>
-        </select> <br>
+        </select> 
+        <small class="text-danger"
+        *ngIf="usloviTraktor.get('udaljenostOdGaraza').errors?.required">
+   Unijeti udaljenost od garaža!
+ </small><br>
         <select class="form-select" formControlName="primicanjeTraktor" required>
-          <option [ngValue]="0" [disabled]="true">Duzina primicanja</option>
+          <option [ngValue]="null" [disabled]="true">Duzina primicanja</option>
           <option [ngValue]="0">10 m</option>
           <option [ngValue]="1">20 m</option>
           <option [ngValue]="2">30 m</option>
-        </select> <br>
+        </select> 
+        <small class="text-danger"
+        *ngIf="usloviTraktor.get('primicanjeTraktor').errors?.required">
+   Unijeti udaljenost primicanja za traktor!
+ </small><br>
  
         <input formControlName="traktorDistanca" placeholder="Traktor distanca" class="form-control" required>
 
@@ -224,7 +236,7 @@
           Distanca mora biti trocifren ili četvorocifren broj.
         </small> <br> <br>
               <div class="d-grid gap-2">
-                <button class="btn btn-success" (click)="traktorBtn()">Traktor</button>
+                <button *ngIf="potvrdjenTraktor" class="btn btn-success" (click)="traktorBtn()">Traktor</button>
               </div> 
             </div>
           </form>
@@ -252,7 +264,7 @@
         <small class="text-danger"
                *ngIf="usloviAnimal.get('nagibAnimal').errors?.required">
           Unijeti nagib za animal!
-        </small>  <br> <br>
+        </small><br>
 
         <div class="saKorom" *ngIf="imaCetinara" >
           <select class="form-select" formControlName="saKorom" required>
@@ -264,7 +276,7 @@
                *ngIf="usloviAnimal.get('saKorom').errors?.required">
           Da li se cetinari koraju!
         </small>
-        </div> <br>
+        </div>
 
           <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
             <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
@@ -299,7 +311,7 @@
         </small> <br> <br>
 
               <div class="d-grid gap-2">
-                <button class="btn btn-success" (click)="animalBtn()">Animal</button>
+                <button *ngIf="potvrdjenAnimal" class="btn btn-success" (click)="animalBtn()">Animal</button>
               </div>
 
             </div>
@@ -320,13 +332,14 @@
               <h5>Unesite uslove rada za iznos!</h5>  <br>
                 <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
 
-         <!--  <small class="text-danger"
+         <small class="text-danger"
                  *ngIf="
-                        unosUslovaRada.get('iznosDistanca').errors?.required ||
-                        unosUslovaRada.get('iznosDistanca').errors?.minlength ||
-                        unosUslovaRada.get('iznosDistanca').errors?.maxlength">
+                        usloviIznos.get('iznosDistanca').errors?.required ||
+                        usloviIznos.get('iznosDistanca').errors?.minlength ||
+                        usloviIznos.get('iznosDistanca').errors?.maxlength
+                      ">
             Distanca mora biti trocifren ili četvorocifren broj.
-          </small> --> <br>
+          </small> <br>
           <select class="form-select" formControlName="vrstaTla">
             <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
             <option [ngValue]="2">Bez kamenja</option>
@@ -339,7 +352,7 @@
 
           </small> --> <br>
 
-            <div class="potvrdjivanjeIznosa">
+            <div *ngIf="potvrdjenIznos" class="potvrdjivanjeIznosa">
               <button type="button" class="btn btn-success" (click)="iznosBtn()">
               Potvrdi uslove iznosa
               </button>
