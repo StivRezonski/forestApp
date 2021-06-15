@@ -478,6 +478,18 @@ unosPrecnika = new FormGroup({
       this.bodoviLiscariAnimal = 0;
       this.srednjiPrecnikLiscariBodoviAnimal = 'Nema unijetih srednjih precnika za liscare!';
     }
+
+    console.log(this.bodoviCetinariAnimal)
+    console.log(this.bodoviLiscariAnimal)
+    console.log(this.usloviAnimal.value.nagibAnimal)
+    console.log(this.usloviAnimal.value.ucesceLiscaraAnimal)
+    console.log(this.doznacenaMasaAnimal)
+    console.log(this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal)
+    console.log(this.usloviAnimal.value.udaljenostOdStale)
+    console.log(this.srednjiPrecnikLiscariBodoviAnimal)
+    console.log(this.srednjiPrecnikCetinariBodoviAnimal)
+    console.log(this.usloviRadaCetAnimal)
+    console.log(this.usloviRadaLisAnimal)
 // Iznos norme
 if(this.unosUslovaRada.value.nagibAnimal == 4){
   this.nagibTerenaIznos = 5
@@ -693,6 +705,26 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
         this.usloviLisSjeca = 'III';
       }
 
+      if(this.unosUslovaRada.value.periodSjece == 1){
+        
+      const c = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
+      .filter(k => k < this.srednjiPrecnikLiscari).pop();
+    const d = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
+      .filter(k => k > this.srednjiPrecnikLiscari)[0];
+    const z = this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1][d];
+    const q = this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1][c];
+
+    if (this.srednjiPrecnikLiscari ! % 5) {
+      this.normaSjeceLiscari = (((z - q) / 5) * (this.srednjiPrecnikLiscari - parseInt(c)) +
+        parseFloat(q)).toFixed(2);
+    } else {
+      this.kljucLis = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca]
+        [this.unosUslovaRada.value.bonitetLiscari - 1])).filter(k => k == this.srednjiPrecnikLiscari)[0];
+      this.normaSjeceLiscari = this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca]
+        [this.unosUslovaRada.value.bonitetLiscari - 1][this.kljucLis];
+    }
+      }else{
+
       const c = (Object.keys(this.unosNormi.ljetoLis[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
         .filter(k => k < this.srednjiPrecnikLiscari).pop();
       const d = (Object.keys(this.unosNormi.ljetoLis[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
@@ -709,6 +741,7 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
         this.normaSjeceLiscari = this.unosNormi.ljetoLis[this.usloviRadaLisSjeca]
           [this.unosUslovaRada.value.bonitetLiscari - 1][this.kljucLis];
       }
+    }
     } else {
       this.bodoviLiscariSjeca = 0;
       this.srednjiPrecnikSjecaLiscariBodovi = 'Nema unijetih srednjih precnika za liscare!';
@@ -774,8 +807,14 @@ if(this.srednjiPrecnikCetinari > 45){
   }else this.prosjecnoStablo = 0
 
 
-  if(this.unosUslovaRada.value.periodSjece == 0){
+  if(this.unosUslovaRada.value.periodSjece == 0){    
 
+if(this.unosUslovaRada.value.ucesceAnimala == 100){
+  this.usloviCetTraktor = 0;
+  this.usloviLisTraktor = 0;
+  this.normaCetinariTraktor = 0;
+  this.normaLiscariTraktor = 0;
+}else
 this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
                             [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
                             [this.usloviTraktor.value.traktorDistanca]
@@ -784,13 +823,14 @@ this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
                             [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
                             [this.usloviTraktor.value.traktorDistanca] 
                           }
-else this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
-[this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-[this.usloviTraktor.value.traktorDistanca]
+else 
+    this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
+    [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+    [this.usloviTraktor.value.traktorDistanca]
 
-this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
-[this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-[this.usloviTraktor.value.traktorDistanca]
+    this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
+    [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+    [this.usloviTraktor.value.traktorDistanca]
 
 if(this.mase1.length == 0){
   this.normaCetinariIznos = 0
