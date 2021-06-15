@@ -115,8 +115,8 @@
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('udaljenostOdCesteSjeca').errors?.required">
                 Unijeti udaljenost od ceste!
-              </small>
-              <div clas="bonitetCetinari" *ngIf="trueBonitetCetinari">
+              </small><br>  
+              <div class="bonitetCetinari" *ngIf="trueBonitetCetinari">
                 <select class="form-select"  formControlName="bonitetCetinari" required>
                   <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
                   <option value="1">Prvi</option>
@@ -128,8 +128,8 @@
                 <small class="text-danger"
                        *ngIf="unosUslovaRada.get('bonitetCetinari').errors?.required">
                   Unijeti bonitet za četinare!
-                </small>
-              </div>
+                </small> <br>
+              </div> 
               <div class="bonitetLiscari" *ngIf="trueBonitetLiscari">
                 <select class="form-select" formControlName="bonitetLiscari" required>
                   <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
@@ -142,8 +142,8 @@
                 <small class="text-danger"
                        *ngIf="unosUslovaRada.get('bonitetLiscari').errors?.required">
                   Unijeti bonitet za lišćare!
-                </small>
-              </div>
+                </small> <br>
+              </div> 
               <select class="form-select" formControlName="ucesceAnimala" required>
                 <option [ngValue]="null" [disabled]="true">Ucesce animala</option>
                 <option *ngFor="let procenat of ucesceAnimal; let i = index" [ngValue]="procenat">

@@ -480,6 +480,18 @@ this.boja = 'bg-warning';
       this.bodoviLiscariAnimal = 0;
       this.srednjiPrecnikLiscariBodoviAnimal = 'Nema unijetih srednjih precnika za liscare!';
     }
+
+    console.log(this.bodoviCetinariAnimal)
+    console.log(this.bodoviLiscariAnimal)
+    console.log(this.usloviAnimal.value.nagibAnimal)
+    console.log(this.usloviAnimal.value.ucesceLiscaraAnimal)
+    console.log(this.doznacenaMasaAnimal)
+    console.log(this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal)
+    console.log(this.usloviAnimal.value.udaljenostOdStale)
+    console.log(this.srednjiPrecnikLiscariBodoviAnimal)
+    console.log(this.srednjiPrecnikCetinariBodoviAnimal)
+    console.log(this.usloviRadaCetAnimal)
+    console.log(this.usloviRadaLisAnimal)
 // Iznos norme
     if (this.unosUslovaRada.value.nagibAnimal == 4){
   this.nagibTerenaIznos = 5;
@@ -695,6 +707,26 @@ else if (18 >= this.bodoviCetinariLiscariIznos) {
         this.usloviLisSjeca = 'III';
       }
 
+      if(this.unosUslovaRada.value.periodSjece == 1){
+        
+      const c = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
+      .filter(k => k < this.srednjiPrecnikLiscari).pop();
+    const d = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
+      .filter(k => k > this.srednjiPrecnikLiscari)[0];
+    const z = this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1][d];
+    const q = this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1][c];
+
+    if (this.srednjiPrecnikLiscari ! % 5) {
+      this.normaSjeceLiscari = (((z - q) / 5) * (this.srednjiPrecnikLiscari - parseInt(c)) +
+        parseFloat(q)).toFixed(2);
+    } else {
+      this.kljucLis = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca]
+        [this.unosUslovaRada.value.bonitetLiscari - 1])).filter(k => k == this.srednjiPrecnikLiscari)[0];
+      this.normaSjeceLiscari = this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca]
+        [this.unosUslovaRada.value.bonitetLiscari - 1][this.kljucLis];
+    }
+      }else{
+
       const c = (Object.keys(this.unosNormi.ljetoLis[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
         .filter(k => k < this.srednjiPrecnikLiscari).pop();
       const d = (Object.keys(this.unosNormi.ljetoLis[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
@@ -711,6 +743,7 @@ else if (18 >= this.bodoviCetinariLiscariIznos) {
         this.normaSjeceLiscari = this.unosNormi.ljetoLis[this.usloviRadaLisSjeca]
           [this.unosUslovaRada.value.bonitetLiscari - 1][this.kljucLis];
       }
+    }
     } else {
       this.bodoviLiscariSjeca = 0;
       this.srednjiPrecnikSjecaLiscariBodovi = 'Nema unijetih srednjih precnika za liscare!';
@@ -782,6 +815,7 @@ else if (18 >= this.bodoviCetinariLiscariIznos) {
     }
 
     if (this.unosUslovaRada.value.periodSjece == 0){
+
 
       if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === ''){
         this.usloviTraktor.value.primicanjeTraktor = 0;
