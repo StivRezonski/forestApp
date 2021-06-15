@@ -66,7 +66,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaCetinariTraktor;
   normaLiscariTraktor;
 
-
+  boja = 'bg-info';
   precnik = true;
   sjeca = true;
   sviPrecnici = [];
@@ -237,7 +237,7 @@ unosPrecnika = new FormGroup({
   }
 
   ngOnInit(): void {
-
+this.boja = 'bg-warning';
   }
   potvrdiNormeSjece(){
     console.log(this.unosUslovaRada.value);
