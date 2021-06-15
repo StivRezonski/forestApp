@@ -175,7 +175,6 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.trupci.vrijednostJela);
     if (this.procenatAnimal === 1) {
       this.trupciCetTraktor = 0;
       this.trupciLisTraktor = 0;
@@ -184,6 +183,10 @@ export class RealizacijaComponent implements OnInit {
       this.trupciKolicina = this.trupacCetAnimal + this.trupacLisAnimal;
       this.tankaKolicina = this.tankaCetAnimal + this.tankaLisAnimal;
       this.tankaTraktorKolicina = 0;
+      this.cijenaCetTraktor = 0;
+      this.cijenaLisTraktor = 0;
+      this.traktorCetBrRadnihDana = 0;
+      this.traktorLisBrRadnihDana = 0;
     } else {
       this.trupciCetTraktor = this.kolicinaCetTrupci;
       this.trupciLisTraktor = this.kolicinaLisTrupci;
@@ -197,6 +200,8 @@ export class RealizacijaComponent implements OnInit {
       this.trupciTankaCetTraktor = this.trupciCetTraktor + this.tankaCetTraktor;
       this.trupciTankaLisTraktor = this.trupciLisTraktor + this.tankaLisTraktor;
     }
+
+
 
     if (this.trupci.jelaSaNeto[12] > 0) {
       this.tabJela = true;
@@ -235,8 +240,11 @@ export class RealizacijaComponent implements OnInit {
       this.bonitetCet = null;
       this.srednjiPrecnikCet = 0;
       this.normaSjecaCet = 0;
+      this.normaCetTraktor = 0;
+      this.trupacCetAnimal = 0;
       this.normaTrupciCet = 0;
       this.normaTankaCet = 0;
+      this.normaIznosCet = 0;
       this.cetCijenaSj = 0;
       this.cijenaCetTrupacAnimal = 0;
       this.cijenaCetTankaAnimal = 0;
@@ -249,6 +257,12 @@ export class RealizacijaComponent implements OnInit {
       this.trosakCetSj = 0;
       this.trosakCetTrupci = 0;
       this.trosakCetTanka = 0;
+      this.cijenaCetTraktor = 0;
+      this.traktorCetBrRadnihDana = 0;
+      this.cijenaCetIznos = 0;
+      this.iznosCetBrRadnihDana = 0;
+      this.trosakCetIznos = 0;
+      this.trosakCetTraktor = 0;
       this.ukupniDirektniTrosak = this.trosakLisSj + this.trosakLisTrupci + this.trosakLisTanka;
       this.sumPrihodiCetLis = this.sumPrihodiLis;
       this.dobit = this.sumPrihodiLis - this.ukupniDirektniTrosak;
@@ -275,6 +289,12 @@ export class RealizacijaComponent implements OnInit {
       this.trosakLisSj = 0;
       this.trosakLisTrupci = 0;
       this.trosakLisTanka = 0;
+      this.cijenaLisTraktor = 0;
+      this.traktorLisBrRadnihDana = 0;
+      this.cijenaLisIznos = 0;
+      this.iznosLisBrRadnihDana = 0;
+      this.trosakLisIznos = 0;
+      this.trosakLisTraktor = 0;
       this.ukupniDirektniTrosak = this.trosakCetSj + this.trosakCetTrupci + this.trosakCetTanka;
       this.sumPrihodiCetLis = this.sumPrihodiCet;
       this.dobit = this.sumPrihodiCet - this.ukupniDirektniTrosak;

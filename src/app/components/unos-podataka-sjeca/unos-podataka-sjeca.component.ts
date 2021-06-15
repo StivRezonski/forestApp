@@ -66,7 +66,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaCetinariTraktor;
   normaLiscariTraktor;
 
-
+  boja = 'bg-info';
   precnik = true;
   sjeca = true;
   sviPrecnici = [];
@@ -84,7 +84,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   lisVrste = [5, 6, 7, 8];
 
   trueJela = true;
-  trueSmrca =true;
+  trueSmrca = true;
   trueBb = true;
   trueCb = true;
   trueBukva = true;
@@ -170,19 +170,19 @@ unosPrecnika = new FormGroup({
   });
 
   animalBtn(){
-    if(this.usloviAnimal.valid){
-      this.validnaFormaAnimala = true
+    if (this.usloviAnimal.valid){
+      this.validnaFormaAnimala = true;
     }
-      this.potvrdjenAnimal = false;
+    this.potvrdjenAnimal = false;
     }
   iznosBtn(){
-    if(this.usloviIznos.valid){
+    if (this.usloviIznos.valid){
       this.validnaFormaIznosa = true;
     }
     this.potvrdjenIznos = false;
   }
   traktorBtn(){
-    if(this.usloviTraktor.valid){
+    if (this.usloviTraktor.valid){
       this.validnaFormaTraktora = true;
     }
     this.potvrdjenTraktor = false;
@@ -192,68 +192,68 @@ unosPrecnika = new FormGroup({
 
   const range = (from, to, step) =>
   [...Array(Math.floor((to - from) / step) + 1)].map((_, i) => from + i * step);
-  this.ucesceAnimal= range(0,100,5);
+  this.ucesceAnimal = range(0, 100, 5);
 
-    if(this.trupci.jelaSaNeto[12] == null || this.trupci.jelaSaNeto[12] == 0){
-        this.trueJela = true
+  if (this.trupci.jelaSaNeto[12] == null || this.trupci.jelaSaNeto[12] == 0){
+        this.trueJela = true;
     }else{
-      this.trueJela = false
+      this.trueJela = false;
     }
-    if(this.trupci.smrcaSaNeto[12] == null || this.trupci.smrcaSaNeto[12] ==0){
-      this.trueSmrca = true
+  if (this.trupci.smrcaSaNeto[12] == null || this.trupci.smrcaSaNeto[12] == 0){
+      this.trueSmrca = true;
     }else{
-    this.trueSmrca = false
+    this.trueSmrca = false;
     }
-    if(this.trupci.bijeliBorSaNeto[12] == null || this.trupci.bijeliBorSaNeto[12] == 0){
-    this.trueBb = true
+  if (this.trupci.bijeliBorSaNeto[12] == null || this.trupci.bijeliBorSaNeto[12] == 0){
+    this.trueBb = true;
     }else{
-    this.trueBb = false
+    this.trueBb = false;
     }
-    if(this.trupci.crniBorSaNeto[12] == null || this.trupci.crniBorSaNeto[12] == 0){
-    this.trueCb = true
+  if (this.trupci.crniBorSaNeto[12] == null || this.trupci.crniBorSaNeto[12] == 0){
+    this.trueCb = true;
     }else{
-    this.trueCb = false
+    this.trueCb = false;
     }
-    if(this.trupci.bukvaSaNeto[12] == null || this.trupci.bukvaSaNeto[12] ==0){
-    this.trueBukva = true
+  if (this.trupci.bukvaSaNeto[12] == null || this.trupci.bukvaSaNeto[12] == 0){
+    this.trueBukva = true;
     }else{
-    this.trueBukva = false
+    this.trueBukva = false;
     }
-    if(this.trupci.hrastSaNeto[12] == null || this.trupci.hrastSaNeto[12] ==0){
-    this.trueHrast = true
+  if (this.trupci.hrastSaNeto[12] == null || this.trupci.hrastSaNeto[12] == 0){
+    this.trueHrast = true;
     }else{
-    this.trueHrast = false
+    this.trueHrast = false;
     }
-    if(this.trupci.brijestSaNeto[12] == null || this.trupci.brijestSaNeto[12] ==0){
-    this.truePl = true
+  if (this.trupci.brijestSaNeto[12] == null || this.trupci.brijestSaNeto[12] == 0){
+    this.truePl = true;
     }else{
-    this.truePl = false
+    this.truePl = false;
     }
-    if(this.trupci.ostaliSaNeto[12] == null || this.trupci.ostaliSaNeto[12] ==0){
-    this.trueOl = true
+  if (this.trupci.ostaliSaNeto[12] == null || this.trupci.ostaliSaNeto[12] == 0){
+    this.trueOl = true;
     }else{
-    this.trueOl = false
+    this.trueOl = false;
     }
   }
 
   ngOnInit(): void {
-
+this.boja = 'bg-warning';
   }
   potvrdiNormeSjece(){
-    console.log(this.unosUslovaRada.value)
-    if(this.unosUslovaRada.value.ucesceAnimala == 0){
+    console.log(this.unosUslovaRada.value);
+    if (this.unosUslovaRada.value.ucesceAnimala == 0){
       this.validnaFormaAnimala = true;
-      console.log(this.imaAnimala)
+      console.log(this.imaAnimala);
       this.traktor = true;
       this.procenatAnimala = null;
-    }else if(this.unosUslovaRada.value.ucesceAnimala > 0 && this.unosUslovaRada.value.ucesceAnimala < 100){
+    }else if (this.unosUslovaRada.value.ucesceAnimala > 0 && this.unosUslovaRada.value.ucesceAnimala < 100){
       this.traktor = true;
       this.animal = true;
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
-    }else if(this.unosUslovaRada.value.ucesceAnimala == 100){
+    }else if (this.unosUslovaRada.value.ucesceAnimala == 100){
       this.traktor = false;
       this.validnaFormaTraktora = true;
-      this.animal = true
+      this.animal = true;
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
     this.potvrdjenaSjeca = false;
@@ -263,42 +263,42 @@ unosPrecnika = new FormGroup({
     this.sviPrecnici.push(this.unosPrecnika.value);
     this.unosPrecnika.reset();
 
-    if(this.sviPrecnici.filter(k => this.cetVrste.includes(k.vrsta)).length ==
+    if (this.sviPrecnici.filter(k => this.cetVrste.includes(k.vrsta)).length ==
       this.mase1.length && this.sviPrecnici.filter(k => this.lisVrste.includes(k.vrsta)).length ==
       this.mase2.length){
         this.uneseniSviPrecnici = false;
         this.precnik = false;
-    }else this.uneseniSviPrecnici = true;
+    }else { this.uneseniSviPrecnici = true; }
 
-    if(this.mase1.length == 0){
+    if (this.mase1.length == 0){
       this.trueBonitetCetinari = false;
-      this.imaCetinara = false
-    }else this.trueBonitetCetinari = true;
+      this.imaCetinara = false;
+    }else { this.trueBonitetCetinari = true; }
 
-  if (this.mase2.length == 0){
+    if (this.mase2.length == 0){
     this.trueBonitetLiscari = false;
-  }else this.trueBonitetLiscari = true;
+  }else { this.trueBonitetLiscari = true; }
 
 
-  if(this.sviPrecnici.find(j=>j.vrsta == 1)){
-            this.trueJela = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 2)){
-            this.trueSmrca = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 3)){
-            this.trueBb = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 4)){
-            this.trueCb = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 5)){
-            this.trueBukva = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 6)){
-            this.trueHrast = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 7)){
-            this.truePl = true}
-  if(this.sviPrecnici.find(j=>j.vrsta == 8)){
-            this.trueOl = true}
+    if (this.sviPrecnici.find(j => j.vrsta == 1)){
+            this.trueJela = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 2)){
+            this.trueSmrca = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 3)){
+            this.trueBb = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 4)){
+            this.trueCb = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 5)){
+            this.trueBukva = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 6)){
+            this.trueHrast = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 7)){
+            this.truePl = true; }
+    if (this.sviPrecnici.find(j => j.vrsta == 8)){
+            this.trueOl = true; }
     console.log(this.sviPrecnici);
 
-    this.uneseniUsloviRada = false
+    this.uneseniUsloviRada = false;
   }
 
 // Funkcija prikupljanja podataka potrebnih za izracun normi
@@ -335,10 +335,10 @@ unosPrecnika = new FormGroup({
       this.gustinaPodmlatkaIznos = 3;
     }
 
-    if (this.unosUslovaRada.value.doznacenaMasaSjeca == 4) {
+    if (this.unosUslovaRada.value.doznacenaMasaSjeca == 1) {
       this.doznacenaMasaAnimal = 1;
       this.doznakaIznos = 3;
-    } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 6) {
+    } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 3) {
       this.doznacenaMasaAnimal = 3;
       this.doznakaIznos = 6;
     } else {
@@ -356,8 +356,8 @@ unosPrecnika = new FormGroup({
 
     if (this.srednjiPrecniciCetinari !== 0) {
       // Srednji precnik cetinara
-      if((this.srednjiPrecniciCetinari / masaCet) <= 25){
-        this.srednjiPrecnikCetinari = 25
+      if ((this.srednjiPrecniciCetinari / masaCet) <= 25){
+        this.srednjiPrecnikCetinari = 25;
       }else{
         this.srednjiPrecnikCetinari = (this.srednjiPrecniciCetinari / masaCet).toFixed(0);
 
@@ -379,6 +379,7 @@ unosPrecnika = new FormGroup({
         + this.gustinaPodmlatkaAnimal + this.doznacenaMasaAnimal
         + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal + this.usloviAnimal.value.udaljenostOdStale
         + this.srednjiPrecnikCetinariBodoviAnimal;
+      console.log(this.bodoviCetinariAnimal)
 
       if (18 >= this.bodoviCetinariAnimal) {
         this.usloviRadaCetAnimal = 0;
@@ -427,8 +428,8 @@ unosPrecnika = new FormGroup({
     if (this.srednjiPrecniciLiscari !== 0) {
 
 // Srednji precnik lišćara
-      if((this.srednjiPrecniciLiscari / masaLis) <= 25){
-        this.srednjiPrecnikLiscari = 25
+      if ((this.srednjiPrecniciLiscari / masaLis) <= 25){
+        this.srednjiPrecnikLiscari = 25;
       }else{
         this.srednjiPrecnikLiscari = (this.srednjiPrecniciLiscari / masaLis).toFixed(0);
 
@@ -450,6 +451,7 @@ unosPrecnika = new FormGroup({
         + this.gustinaPodmlatkaAnimal + this.doznacenaMasaAnimal
         + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal + this.usloviAnimal.value.udaljenostOdStale
         + this.srednjiPrecnikLiscariBodoviAnimal;
+      console.log(this.bodoviLiscariAnimal)
 
       if (18 >= this.bodoviLiscariAnimal) {
         this.usloviRadaLisAnimal = 0;
@@ -491,19 +493,19 @@ unosPrecnika = new FormGroup({
     console.log(this.usloviRadaCetAnimal)
     console.log(this.usloviRadaLisAnimal)
 // Iznos norme
-if(this.unosUslovaRada.value.nagibAnimal == 4){
-  this.nagibTerenaIznos = 5
-}else if(this.unosUslovaRada.value.nagibAnimal == 6){
-  this.nagibTerenaIznos = 10
-}else { this.nagibTerenaIznos = 15 }
+    if (this.unosUslovaRada.value.nagibAnimal == 4){
+  this.nagibTerenaIznos = 5;
+}else if (this.unosUslovaRada.value.nagibAnimal == 6){
+  this.nagibTerenaIznos = 10;
+}else { this.nagibTerenaIznos = 15; }
 
-if(this.unosUslovaRada.value.nagibAnimal == 4){
-  this.nagibTerenaIznos = 5
-}else if(this.unosUslovaRada.value.nagibAnimal == 6){
-  this.nagibTerenaIznos = 10
-}else { this.nagibTerenaIznos = 15 }
+    if (this.unosUslovaRada.value.nagibAnimal == 4){
+  this.nagibTerenaIznos = 5;
+}else if (this.unosUslovaRada.value.nagibAnimal == 6){
+  this.nagibTerenaIznos = 10;
+}else { this.nagibTerenaIznos = 15; }
 
-if(this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == null){
+    if (this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == null){
   this.bodoviCetinariLiscariIznos = 0;
 
 }else {
@@ -514,7 +516,7 @@ if(this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == nu
 
 
 
-if (this.bodoviCetinariLiscariIznos == 0){
+    if (this.bodoviCetinariLiscariIznos == 0){
   this.usloviRadaCetinariIznos = null;
   this.usloviRadaLiscariIznos = null;
   this.usloviCetIznos = null;
@@ -535,28 +537,28 @@ else if (18 >= this.bodoviCetinariLiscariIznos) {
   this.usloviCetIznos = 'I/II';
   this.usloviLisIznos = 'I/II';
   this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+  this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
 } else if (this.bodoviCetinariLiscariIznos >= 26 && this.bodoviCetinariLiscariIznos <= 32) {
   this.usloviRadaCetinariIznos = 2;
   this.usloviRadaLiscariIznos = 2;
   this.usloviCetIznos = 'II';
   this.usloviLisIznos = 'II';
   this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+  this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
 } else if (this.bodoviCetinariLiscariIznos >= 33 && this.bodoviCetinariLiscariIznos <= 41) {
   this.usloviRadaCetinariIznos = 3;
   this.usloviRadaLiscariIznos = 3;
   this.usloviCetIznos = 'II/III';
   this.usloviLisIznos = 'II/III';
   this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+  this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
 } else {
   this.usloviRadaCetinariIznos = 4;
   this.usloviRadaLiscariIznos = 4;
   this.usloviCetIznos = 'III';
   this.usloviLisIznos = 'III';
   this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+  this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
 }
 
 // Sjeca norma
@@ -592,69 +594,69 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
       }
 
       if (this.usloviAnimal.get('saKorom').value == 1){
-        if(this.unosUslovaRada.value.periodSjece == 1){
-          console.log("bez koranja zima")
+        if (this.unosUslovaRada.value.periodSjece == 1){
+          console.log('bez koranja zima');
           const a = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
         .filter(k => k < this.srednjiPrecnikCetinari).pop();
-        const b = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+          const b = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
           .filter(k => k > this.srednjiPrecnikCetinari)[0];
-        const x = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
-        const y = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
-        if (this.srednjiPrecnikCetinari ! % 5) {
+          const x = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+          const y = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+          if (this.srednjiPrecnikCetinari ! % 5) {
           this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
             parseFloat(y)).toFixed(2);
         } else {
           this.kljucCet = (Object.keys(this.unosNormi.zimaCet1[this.usloviRadaCetSjeca]
             [this.unosUslovaRada.value.bonitetCetinari - 1])).filter(k => k == this.srednjiPrecnikCetinari)[0];
-  
+
           this.normaSjeceCetinari = this.unosNormi.zimaCet1[this.usloviRadaCetSjeca]
             [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
         }
-        }else{ console.log("bez koranja ljeto")
-        const a = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+        }else{ console.log('bez koranja ljeto');
+               const a = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
         .filter(k => k < this.srednjiPrecnikCetinari).pop();
-        const b = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+               const b = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
           .filter(k => k > this.srednjiPrecnikCetinari)[0];
-        const x = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
-        const y = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
-        if (this.srednjiPrecnikCetinari ! % 5) {
+               const x = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+               const y = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+               if (this.srednjiPrecnikCetinari ! % 5) {
           this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
             parseFloat(y)).toFixed(2);
         } else {
           this.kljucCet = (Object.keys(this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca]
             [this.unosUslovaRada.value.bonitetCetinari - 1])).filter(k => k == this.srednjiPrecnikCetinari)[0];
-  
+
           this.normaSjeceCetinari = this.unosNormi.ljetoCet1[this.usloviRadaCetSjeca]
             [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
         }
       }
-    
-    }else if(this.usloviAnimal.get('saKorom').value == 0){
-        if(this.unosUslovaRada.value.periodSjece == 1){ console.log("sa koranjem zima")
-          const a = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+
+    }else if (this.usloviAnimal.get('saKorom').value == 0){
+        if (this.unosUslovaRada.value.periodSjece == 1){ console.log('sa koranjem zima');
+                                                        const a = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
           .filter(k => k < this.srednjiPrecnikCetinari).pop();
-          const b = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+                                                        const b = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
             .filter(k => k > this.srednjiPrecnikCetinari)[0];
-          const x = this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
-          const y = this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
-          if (this.srednjiPrecnikCetinari ! % 5) {
+                                                        const x = this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+                                                        const y = this.unosNormi.zimaCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+                                                        if (this.srednjiPrecnikCetinari ! % 5) {
             this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
               parseFloat(y)).toFixed(2);
           } else {
             this.kljucCet = (Object.keys(this.unosNormi.zimaCet[this.usloviRadaCetSjeca]
               [this.unosUslovaRada.value.bonitetCetinari - 1])).filter(k => k == this.srednjiPrecnikCetinari)[0];
-    
+
             this.normaSjeceCetinari = this.unosNormi.zimaCet[this.usloviRadaCetSjeca]
               [this.unosUslovaRada.value.bonitetCetinari - 1][this.kljucCet];
           }
-        }else { console.log("sa koranjem ljeto")
-      const a = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+        }else { console.log('sa koranjem ljeto');
+                const a = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
       .filter(k => k < this.srednjiPrecnikCetinari).pop();
-      const b = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
+                const b = (Object.keys(this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1]))
         .filter(k => k > this.srednjiPrecnikCetinari)[0];
-      const x = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
-      const y = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
-      if (this.srednjiPrecnikCetinari ! % 5) {
+                const x = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][b];
+                const y = this.unosNormi.ljetoCet[this.usloviRadaCetSjeca][this.unosUslovaRada.value.bonitetCetinari - 1][a];
+                if (this.srednjiPrecnikCetinari ! % 5) {
         this.normaSjeceCetinari = (((x - y) / 5) * (this.srednjiPrecnikCetinari - parseInt(a)) +
           parseFloat(y)).toFixed(2);
       } else {
@@ -752,18 +754,18 @@ this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][th
 // Traktor
 
 // Bodovi traktor cetinari
-this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+    this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
   this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikCetinariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
 
 
-this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+    this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
   this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
   this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
 
 // Uslovi rada cetinari traktor
 
-  if (18 >= this.bodoviCetinariTraktor) {
+    if (18 >= this.bodoviCetinariTraktor) {
     this.usloviRadaCetinariTraktor = 0;
     this.usloviCetTraktor = 'I';
   } else if (this.bodoviCetinariTraktor >= 19 && this.bodoviCetinariTraktor <= 25) {
@@ -783,7 +785,7 @@ this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTra
 
 // Uslovi rada liscari traktor
 
-  if (18 >= this.bodoviLiscariTraktor) {
+    if (18 >= this.bodoviLiscariTraktor) {
     this.usloviRadaLiscariTraktor = 0;
     this.usloviLisTraktor = 'I';
   } else if (this.bodoviLiscariTraktor >= 19 && this.bodoviLiscariTraktor <= 25) {
@@ -802,55 +804,62 @@ this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTra
 
 
 // Norma cetinari traktor
-if(this.srednjiPrecnikCetinari > 45){
-  this.prosjecnoStablo = 1
-  }else this.prosjecnoStablo = 0
+    if (this.srednjiPrecnikCetinari > 45){
+  this.prosjecnoStablo = 1;
+  } else { this.prosjecnoStablo = 0;
+    }
+
+    if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === ''){
+      this.usloviTraktor.value.primicanjeTraktor = 0;
+      this.usloviTraktor.value.traktorDistanca = 0;
+    }
+
+    if (this.unosUslovaRada.value.periodSjece == 0){
 
 
-  if(this.unosUslovaRada.value.periodSjece == 0){    
+      if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === ''){
+        this.usloviTraktor.value.primicanjeTraktor = 0;
+        this.usloviTraktor.value.traktorDistanca = 0;
+      }
 
-if(this.unosUslovaRada.value.ucesceAnimala == 100){
-  this.usloviCetTraktor = 0;
-  this.usloviLisTraktor = 0;
-  this.normaCetinariTraktor = 0;
-  this.normaLiscariTraktor = 0;
-}else
-this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
+      this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0]
                             [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-                            [this.usloviTraktor.value.traktorDistanca]
+                            [this.usloviTraktor.value.traktorDistanca];
 
-this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
+      this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1]
                             [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-                            [this.usloviTraktor.value.traktorDistanca] 
+                            [this.usloviTraktor.value.traktorDistanca];
                           }
-else 
-    this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
-    [this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-    [this.usloviTraktor.value.traktorDistanca]
+else {
+  this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0]
+[this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+[this.usloviTraktor.value.traktorDistanca];
+
 
     this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1]
-    [this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
-    [this.usloviTraktor.value.traktorDistanca]
+[this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor]
+[this.usloviTraktor.value.traktorDistanca];
+    }
 
-if(this.mase1.length == 0){
-  this.normaCetinariIznos = 0
-  this.normaCetAnimalTrupci = 0
-  this.normaCetAnimalTankaOblovina = 0
-  this.normaCetinariTraktor = 0
-}else if(this.mase2.length == 0){
-  this.normaLiscariIznos = 0
-  this.normaLisAnimalTrupci = 0
-  this.normaLisAnimalTankaOblovina = 0
-  this.normaLiscariTraktor = 0
-}else {console.log("Postoje cetinari i liscari")}
+    if (this.mase1.length == 0){
+  this.normaCetinariIznos = 0;
+  this.normaCetAnimalTrupci = 0;
+  this.normaCetAnimalTankaOblovina = 0;
+  this.normaCetinariTraktor = 0;
+}else if (this.mase2.length == 0){
+  this.normaLiscariIznos = 0;
+  this.normaLisAnimalTrupci = 0;
+  this.normaLisAnimalTankaOblovina = 0;
+  this.normaLiscariTraktor = 0;
+}else {console.log('Postoje cetinari i liscari'); }
 
 
-//console.log(this.normaCetAnimalTankaOblovina.normaCetinariTraktor)
-console.log(this.usloviTraktor.value.vrstaTlaTraktor)
-console.log(this.usloviTraktor.value.nagibTraktor)
-console.log(this.usloviTraktor.value.udaljenostOdGaraza)
-console.log(this.bodoviCetinariTraktor)
-console.log(this.bodoviLiscariTraktor)
+// console.log(this.normaCetAnimalTankaOblovina.normaCetinariTraktor)
+    console.log(this.usloviTraktor.value.vrstaTlaTraktor);
+    console.log(this.usloviTraktor.value.nagibTraktor);
+    console.log(this.usloviTraktor.value.udaljenostOdGaraza);
+    console.log(this.bodoviCetinariTraktor);
+    console.log(this.bodoviLiscariTraktor);
 
 // Podaci za dalji izračun cijena i za potrebe tabele u html-u
     this.podaciZaIzracunCijene.push(
@@ -868,7 +877,7 @@ console.log(this.bodoviLiscariTraktor)
       {normaCetAnimalTrupci: parseFloat(this.normaCetAnimalTrupci).toFixed(2)},
       {normaCetAnimalTankaOblovina: parseFloat(this.normaCetAnimalTankaOblovina).toFixed(2)},
       {normaLisAnimalTrupci: parseFloat(this.normaLisAnimalTrupci).toFixed(2)},
-      {normaLisAnimalTankaOblovina: parseFloat(this.normaLisAnimalTankaOblovina).toFixed(0)},
+      {normaLisAnimalTankaOblovina: parseFloat(this.normaLisAnimalTankaOblovina).toFixed(2)},
       {usloviRadaCetinariIznos: this.usloviCetIznos},
       {usloviRadaLiscariIznos: this.usloviLisIznos},
       {normaCetinariIznos: this.normaCetinariIznos},
@@ -880,12 +889,9 @@ console.log(this.bodoviLiscariTraktor)
       {usloviRadaLiscariTraktor: this.usloviLisTraktor},
       {procenatAnimal: this.procenatAnimala},
       {distancaTraktor: this.usloviTraktor.value.traktorDistanca},
-      
+
       {normaCetinariTraktor: this.normaCetinariTraktor},
       {normaLiscariTraktor: this.normaLiscariTraktor}
-
-
-
 
     );
     console.log(this.unosNormi.podaciZaIzracunCijene);

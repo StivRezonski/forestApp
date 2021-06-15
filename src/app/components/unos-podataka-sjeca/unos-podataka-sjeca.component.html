@@ -56,8 +56,8 @@
 
     <div class="accordion-item2">
       <h2 class="accordion-header" id="flush-headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Unijeti uslove rada za sjecu
+        <button class="accordion-button collapsed {{boja}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          Unijeti uslove rada za sjecu <i class="bi bi-check2-square"> </i>
         </button>
       </h2>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -200,7 +200,7 @@
           <option [ngValue]="2">Plitko</option>
           <option [ngValue]="4">Sr.duboko ili kamen</option>
           <option [ngValue]="9">Duboko-mocvarno</option>
-        </select> 
+        </select>
         <small class="text-danger"
                *ngIf="usloviTraktor.get('vrstaTlaTraktor').errors?.required">
           Unijeti vrstu tla za traktor!
@@ -210,7 +210,7 @@
           <option [ngValue]="1">Do 2 km</option>
           <option [ngValue]="3">2-6 km</option>
           <option [ngValue]="6">Preko 6 km</option>
-        </select> 
+        </select>
         <small class="text-danger"
         *ngIf="usloviTraktor.get('udaljenostOdGaraza').errors?.required">
    Unijeti udaljenost od garaža!
@@ -220,7 +220,7 @@
           <option [ngValue]="0">10 m</option>
           <option [ngValue]="1">20 m</option>
           <option [ngValue]="2">30 m</option>
-        </select> 
+        </select>
         <small class="text-danger"
         *ngIf="usloviTraktor.get('primicanjeTraktor').errors?.required">
    Unijeti udaljenost primicanja za traktor!
@@ -322,8 +322,8 @@
 
     <div class="accordion-item5">
       <h2 class="accordion-header" id="flush-headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-          Unijeti uslove rada za iznos
+        <button class="accordion-button collapsed  bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+          Unijeti uslove rada za iznos<i class="bi bi-exclamation-lg"></i>
         </button>
       </h2>
         <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">

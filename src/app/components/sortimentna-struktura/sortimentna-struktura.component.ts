@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sortimentna-struktura.component.css']
 })
 export class SortimentnaStrukturaComponent implements OnInit {
+  uneseneMase = false;
   vrstaSlika;
   // showVrstaImage = false;
   lInputs = false;
@@ -69,6 +70,8 @@ export class SortimentnaStrukturaComponent implements OnInit {
   }
 
   validateSubmit(): void{
+    this.uneseneMase = true;
+    this.readyForNormeStep = false;
     if (!this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid){
       this.sveUkupnaFalse = true;
     }
