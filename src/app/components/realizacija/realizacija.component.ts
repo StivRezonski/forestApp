@@ -175,6 +175,8 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.normaIznosCet);
+    console.log(this.normaIznosLis);
     if (this.procenatAnimal === 1) {
       this.trupciCetTraktor = 0;
       this.trupciLisTraktor = 0;
