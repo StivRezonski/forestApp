@@ -74,6 +74,21 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   accordionTraktor = this.accordionNotValid;
   accordionAnimal = this.accordionNotValid;
   accordionIznos = this.accordionNotValid;
+
+  accordionTextValid = 'text-light';
+  accordionTextNotValid = 'text-dark';
+  accordionTextValidSjeca = this.accordionTextNotValid;
+  accordionTextValidTraktor = this.accordionTextNotValid;
+  accordionTextValidAnimal = this.accordionTextNotValid;
+  accordionTextValidIznos = this.accordionTextNotValid;
+
+  accordionIconWarning = 'bi bi-exclamation-lg';
+  accordionIconCheck = 'bi bi-check2-square';
+  accordionIconSjeca = this.accordionIconWarning;
+  accordionIconTraktor = this.accordionIconWarning;
+  accordionIconAnimal = this.accordionIconWarning;
+  accordionIconIznos = this.accordionIconWarning;
+
   precnik = true;
   sjeca = true;
   sviPrecnici = [];
@@ -273,15 +288,23 @@ unosPrecnika = new FormGroup({
   // mjenja boju accordiona
   promjeniBojuAccordionSjeca(): void{
     this.accordionSjeca = this.accordionValid;
+    this.accordionTextValidSjeca = this.accordionTextValid;
+    this.accordionIconSjeca = this.accordionIconCheck;
   }
   promjeniBojuAccordionTraktor(): void{
     this.accordionTraktor = this.accordionValid;
+    this.accordionTextValidTraktor = this.accordionTextValid;
+    this.accordionIconTraktor = this.accordionIconCheck;
   }
   promjeniBojuAccordionAnimal(): void{
     this.accordionAnimal = this.accordionValid;
+    this.accordionTextValidAnimal = this.accordionTextValid;
+    this.accordionIconAnimal = this.accordionIconCheck;
   }
   promjeniBojuAccordionIznos(): void{
     this.accordionIznos = this.accordionValid;
+    this.accordionTextValidIznos = this.accordionTextValid;
+    this.accordionIconIznos = this.accordionIconCheck;
   }
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {
