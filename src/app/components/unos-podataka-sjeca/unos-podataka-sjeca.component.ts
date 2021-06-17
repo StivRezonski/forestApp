@@ -67,27 +67,30 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaLiscariTraktor;
 
   // accordion boje
+  accordIsValid = false;
   accordionValid = 'bg-info';
   accordionNotValid = 'bg-warning';
-  accordionPrecnik = this.accordionNotValid;
-  accordionSjeca = this.accordionNotValid;
-  accordionTraktor = this.accordionNotValid;
-  accordionAnimal = this.accordionNotValid;
-  accordionIznos = this.accordionNotValid;
+  accordionPrecnik;
+  accordionSjeca = this.accordColor;
+  accordionTraktor = this.accordColor;
+  accordionAnimal = this.accordColor;
+  accordionIznos = this.accordColor;
 
-  accordionTextValid = 'text-light';
-  accordionTextNotValid = 'text-dark';
-  accordionTextValidSjeca = this.accordionTextNotValid;
-  accordionTextValidTraktor = this.accordionTextNotValid;
-  accordionTextValidAnimal = this.accordionTextNotValid;
-  accordionTextValidIznos = this.accordionTextNotValid;
+  accordTextValid = false;
+  // accordionTextValid = 'text-light';
+  // accordionTextNotValid = 'text-dark';
+  accordionTextValidSjeca = this.accordTextColor;
+  accordionTextValidTraktor = this.accordTextColor;;
+  accordionTextValidAnimal = this.accordTextColor;
+  accordionTextValidIznos = this.accordTextColor;
 
-  accordionIconWarning = 'bi bi-exclamation-lg';
-  accordionIconCheck = 'bi bi-check2-square';
-  accordionIconSjeca = this.accordionIconWarning;
-  accordionIconTraktor = this.accordionIconWarning;
-  accordionIconAnimal = this.accordionIconWarning;
-  accordionIconIznos = this.accordionIconWarning;
+  accordIconValid = false;
+  // accordionIconWarning = 'bi bi-exclamation-lg';
+  // accordionIconCheck = 'bi bi-check2-square';
+  accordionIconSjeca = this.accordIcon;
+  accordionIconTraktor = this.accordIcon;
+  accordionIconAnimal = this.accordIcon;
+  accordionIconIznos = this.accordIcon;
 
   precnik = true;
   sjeca = true;
@@ -262,6 +265,9 @@ unosPrecnika = new FormGroup({
   }
 
   ngOnInit(): void {
+    this.accordColor;
+    this.accordTextColor;
+    this.accordIcon;
   }
 
   potvrdiNormeSjece(){
@@ -287,25 +293,51 @@ unosPrecnika = new FormGroup({
 
   // mjenja boju accordiona
   promjeniBojuAccordionSjeca(): void{
-    this.accordionSjeca = this.accordionValid;
-    this.accordionTextValidSjeca = this.accordionTextValid;
-    this.accordionIconSjeca = this.accordionIconCheck;
+    this.setTrueAccordForm();
+    this.accordionSjeca = this.accordColor;
+    // this.accordionSjeca = this.accordionValid;
+    this.accordionTextValidSjeca = this.accordTextColor;
+    // this.accordionTextValidSjeca = this.accordionTextValid;
+    this.accordionIconSjeca = this.accordIcon;
+    // this.accordionIconSjeca = this.accordionIconCheck;
   }
   promjeniBojuAccordionTraktor(): void{
-    this.accordionTraktor = this.accordionValid;
-    this.accordionTextValidTraktor = this.accordionTextValid;
-    this.accordionIconTraktor = this.accordionIconCheck;
+    this.setTrueAccordForm();
+    this.accordionTraktor = this.accordColor;
+    this.accordionTextValidTraktor = this.accordTextColor;
+    this.accordionIconTraktor = this.accordIcon;
   }
   promjeniBojuAccordionAnimal(): void{
-    this.accordionAnimal = this.accordionValid;
-    this.accordionTextValidAnimal = this.accordionTextValid;
-    this.accordionIconAnimal = this.accordionIconCheck;
+    this.setTrueAccordForm();
+    this.accordionAnimal = this.accordColor;
+    this.accordionTextValidAnimal = this.accordTextColor;
+    this.accordionIconAnimal = this.accordIcon;
   }
   promjeniBojuAccordionIznos(): void{
-    this.accordionIznos = this.accordionValid;
-    this.accordionTextValidIznos = this.accordionTextValid;
-    this.accordionIconIznos = this.accordionIconCheck;
+    this.setTrueAccordForm();
+    this.accordionIznos = this.accordColor;
+    this.accordionTextValidIznos = this.accordTextColor;
+    this.accordionIconIznos = this.accordIcon;
   }
+
+  setTrueAccordForm(){
+    this.accordIsValid = true;
+    this.accordTextValid = true;
+    this.accordIconValid = true;
+  }
+
+  public get accordColor(): string{
+    return this.accordIsValid ? 'bg-info' : 'bg-warning';
+  }
+
+  public get accordTextColor(): string{
+    return this.accordTextValid ? 'text-light' : 'text-dark';
+  }
+
+  public get accordIcon(): string{
+    return this.accordIconValid ? 'bi bi-check2-square' : 'bi bi-exclamation-lg';
+  }
+
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {
     this.sviPrecnici.push(this.unosPrecnika.value);
