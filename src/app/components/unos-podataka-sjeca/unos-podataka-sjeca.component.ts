@@ -335,13 +335,13 @@ unosPrecnika = new FormGroup({
       this.gustinaPodmlatkaIznos = 3;
     } else {
       this.gustinaPodmlatkaAnimal = 9;
-      this.gustinaPodmlatkaIznos = 3;
+      this.gustinaPodmlatkaIznos = 5;
     }
 
-    if (this.unosUslovaRada.value.doznacenaMasaSjeca == 1) {
+    if (this.unosUslovaRada.value.doznacenaMasaSjeca == 4) {
       this.doznacenaMasaAnimal = 1;
       this.doznakaIznos = 3;
-    } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 3) {
+    } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 6) {
       this.doznacenaMasaAnimal = 3;
       this.doznakaIznos = 6;
     } else {
@@ -382,7 +382,7 @@ unosPrecnika = new FormGroup({
         + this.gustinaPodmlatkaAnimal + this.doznacenaMasaAnimal
         + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal + this.usloviAnimal.value.udaljenostOdStale
         + this.srednjiPrecnikCetinariBodoviAnimal;
-      console.log(this.bodoviCetinariAnimal)
+      
 
       if (18 >= this.bodoviCetinariAnimal) {
         this.usloviRadaCetAnimal = 0;
@@ -495,26 +495,22 @@ unosPrecnika = new FormGroup({
     console.log('srednji precnik cetinari',this.srednjiPrecnikCetinariBodoviAnimal)
     console.log('uslovi rada cetinar',this.usloviRadaCetAnimal)
     console.log('uslovi rada liscar',this.usloviRadaLisAnimal)
+
 // Iznos norme
-    if (this.unosUslovaRada.value.nagibAnimal == 4){
+    if (this.usloviAnimal.value.nagibAnimal == 4){
   this.nagibTerenaIznos = 5;
 }else if (this.unosUslovaRada.value.nagibAnimal == 6){
   this.nagibTerenaIznos = 10;
 }else { this.nagibTerenaIznos = 15; }
 
-    if (this.unosUslovaRada.value.nagibAnimal == 4){
-  this.nagibTerenaIznos = 5;
-}else if (this.unosUslovaRada.value.nagibAnimal == 6){
-  this.nagibTerenaIznos = 10;
-}else { this.nagibTerenaIznos = 15; }
 
-    if (this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == null){
+  if (this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == null){
   this.bodoviCetinariLiscariIznos = 0;
 
 }else {
   this.bodoviCetinariLiscariIznos = this.nagibTerenaIznos + this.usloviIznos.value.vrstaTla
 + this.gustinaPodmlatkaIznos + this.doznakaIznos + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal
-+ this.unosUslovaRada.value.udaljenostOdStale;
++ this.usloviAnimal.value.udaljenostOdStale;
 }
 
 

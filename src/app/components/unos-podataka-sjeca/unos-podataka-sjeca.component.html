@@ -7,11 +7,9 @@
         <button class="accordion-button collapsed {{bojaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
          Unos srednjeg prečnika po vrstama
         </button>
-      </h2>
+      </h2> <br>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-
         <div class="unosPrecnika">
-          <h6>Unesite precnike po vrstama!</h6>
          <form [formGroup]='unosPrecnika'>
            <div class="form-group">
              <select formControlName="vrsta" class="form-control" required>
@@ -29,7 +27,7 @@
                     *ngIf="unosPrecnika.get('vrsta').errors?.required">
                Unijeti vrstu drveta.
              </small>
-           </div><br>
+           </div>
 
            <div class="form-group">
              <input
@@ -42,7 +40,7 @@
                            unosPrecnika.get('precnik').errors?.maxlength">
                Precnik mora biti dvocifren.
              </small>
-           </div> <br>
+           </div>
 
            <div class="form-group">
              <button class="btn btn-success" type="button" [disabled]="!unosPrecnika.valid" (click)="unesiPrecnik()">
@@ -59,23 +57,22 @@
         <button class="accordion-button collapsed {{bojaSjecaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
           Unijeti uslove rada za sjecu <i class="bi bi-check2-square"> </i>
         </button>
-      </h2>
+      </h2> <br>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
           <div class="unosNormi">
             <form [formGroup]='unosUslovaRada'>
               <div class="form-group">
                 <div class="sjecaNorme">
-                  <h5>Unesite uslove rada za sjecu!</h5>  <br>
                 <select class="form-select" formControlName="nagibSjeca" required>
                   <option [ngValue]="null" [disabled]="true">Nagib terena - sjeca</option>
                   <option [ngValue]="1">Do 15`</option>
                   <option [ngValue]="3">Od 15-30`</option>
                   <option [ngValue]="11">Preko 30`</option>
-                </select>
+                </select> 
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('nagibSjeca').errors?.required">
                 Unijeti nagib za sjecu!
-              </small><br>
+              </small> <br>
                 <select class="form-select" formControlName="gustinaPodmlatkaSjeca" required>
                   <option [ngValue]="null" [disabled]="true">Gustina podmlatka</option>
                   <option [ngValue]="1">Neznatan</option>
@@ -162,9 +159,9 @@
             <small class="text-danger"
                    *ngIf="unosUslovaRada.get('periodSjece').errors?.required">
               Unijeti period sjece!
-            </small><br>
+            </small><br> <br>
                   <div class="potvrdaNormiSjece d-grid gap-2">
-                    <button *ngIf="potvrdjenaSjeca" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
+                    <button *ngIf="potvrdjenaSjeca && unosUslovaRada.valid" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
                   </div>
                 </div>
               </div>
@@ -181,7 +178,6 @@
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
         <div class="traktor">
-          <h5>Unesite uslove rada za traktor!</h5>  <br>
           <form [formGroup]="usloviTraktor">
             <div class="form-group">
           <select class="form-select" formControlName="nagibTraktor" required>
@@ -234,7 +230,7 @@
                usloviTraktor.get('traktorDistanca').errors?.minlength ||
                usloviTraktor.get('traktorDistanca').errors?.maxlength">
           Distanca mora biti trocifren ili četvorocifren broj.
-        </small> <br> <br>
+        </small> <br>
               <div class="d-grid gap-2">
                 <button *ngIf="potvrdjenTraktor" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" type="button" class="btn btn-success collapsed" (click)="traktorBtn()">Traktor</button>
               </div>
@@ -252,7 +248,6 @@
       </h2>
       <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
         <div class="animal">
-          <h5>Unesite uslove rada za animal!</h5>  <br>
           <form [formGroup]="usloviAnimal">
             <div class="form-group">
           <select class="form-select" formControlName="nagibAnimal" required>
@@ -275,9 +270,8 @@
         <small class="text-danger"
                *ngIf="usloviAnimal.get('saKorom').errors?.required">
           Da li se cetinari koraju!
-        </small>
-        </div>
-
+        </small> <br>
+        </div> 
           <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
             <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
             <option [ngValue]="1">Cisti cetinari</option>
@@ -308,7 +302,7 @@
                usloviAnimal.get('animalDistanca').errors?.minlength ||
                usloviAnimal.get('animalDistanca').errors?.maxlength">
           Distanca mora biti trocifren ili četvorocifren broj.
-        </small> <br> <br>
+        </small> <br> 
 
               <div class="d-grid gap-2">
                 <button *ngIf="potvrdjenAnimal" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" type="button" class="btn btn-success collapsed" (click)="animalBtn()">Animal</button>
@@ -325,11 +319,10 @@
         <button class="accordion-button collapsed  {{bojaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
           Unijeti uslove rada za iznos<i class="bi bi-exclamation-lg"></i>
         </button>
-      </h2>
+      </h2> <br>
         <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
           <div class="iznos">
             <form [formGroup]="usloviIznos"  >
-              <h5>Unesite uslove rada za iznos!</h5>  <br>
                 <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
 
          <small class="text-danger"
@@ -339,14 +332,14 @@
                         usloviIznos.get('iznosDistanca').errors?.maxlength
                       ">
             Distanca mora biti trocifren ili četvorocifren broj.
-          </small> <br>
+          </small> <br> <br>
           <select class="form-select" formControlName="vrstaTla">
             <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
             <option [ngValue]="2">Bez kamenja</option>
             <option [ngValue]="4">Sa povrsinskim kamenjem</option>
             <option [ngValue]="9">Kamenito preko 30%</option>
           </select>
-        <!--   <small class="text-danger"
+        <!--  <small class="text-danger"
                  *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
             Unijeti vrstu tla!
 
