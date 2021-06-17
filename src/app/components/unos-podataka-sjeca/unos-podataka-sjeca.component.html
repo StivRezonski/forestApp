@@ -4,7 +4,7 @@
 
     <div class="accordion-item1" *ngIf="precnik">
       <h2 class="accordion-header" id="flush-headingOne">
-        <button class="accordion-button collapsed {{bojaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        <button class="accordion-button collapsed {{accordionPrecnik}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
          Unos srednjeg prečnika po vrstama
         </button>
       </h2> <br>
@@ -54,7 +54,7 @@
 
     <div class="accordion-item2">
       <h2 class="accordion-header" id="flush-headingTwo">
-        <button class="accordion-button collapsed {{bojaSjecaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        <button class="accordion-button collapsed {{accordionSjeca}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
           Unijeti uslove rada za sjecu <i class="bi bi-check2-square"> </i>
         </button>
       </h2> <br>
@@ -68,7 +68,7 @@
                   <option [ngValue]="1">Do 15`</option>
                   <option [ngValue]="3">Od 15-30`</option>
                   <option [ngValue]="11">Preko 30`</option>
-                </select> 
+                </select>
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('nagibSjeca').errors?.required">
                 Unijeti nagib za sjecu!
@@ -172,7 +172,7 @@
 
     <div class="accordion-item3" *ngIf="traktor">
       <h2 class="accordion-header" id="flush-headingThree">
-        <button class="accordion-button collapsed {{bojaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        <button class="accordion-button collapsed {{accordionTraktor}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
           Unijeti uslove rada za traktor
         </button>
       </h2>
@@ -242,7 +242,7 @@
 
     <div class="accordion-item4" *ngIf="animal">
       <h2 class="accordion-header" id="flush-headingFour">
-        <button class="accordion-button collapsed {{bojaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+        <button class="accordion-button collapsed {{accordionAnimal}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
           Unijeti uslove rada za animal
         </button>
       </h2>
@@ -271,7 +271,7 @@
                *ngIf="usloviAnimal.get('saKorom').errors?.required">
           Da li se cetinari koraju!
         </small> <br>
-        </div> 
+        </div>
           <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
             <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
             <option [ngValue]="1">Cisti cetinari</option>
@@ -302,7 +302,7 @@
                usloviAnimal.get('animalDistanca').errors?.minlength ||
                usloviAnimal.get('animalDistanca').errors?.maxlength">
           Distanca mora biti trocifren ili četvorocifren broj.
-        </small> <br> 
+        </small> <br>
 
               <div class="d-grid gap-2">
                 <button *ngIf="potvrdjenAnimal" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" type="button" class="btn btn-success collapsed" (click)="animalBtn()">Animal</button>
@@ -316,7 +316,7 @@
 
     <div class="accordion-item5">
       <h2 class="accordion-header" id="flush-headingFive">
-        <button class="accordion-button collapsed  {{bojaAccordion}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+        <button class="accordion-button collapsed  {{accordionIznos}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
           Unijeti uslove rada za iznos<i class="bi bi-exclamation-lg"></i>
         </button>
       </h2> <br>
