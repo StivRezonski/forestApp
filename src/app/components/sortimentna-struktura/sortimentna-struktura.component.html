@@ -16,52 +16,6 @@
         </select>
       </div>
 
-
-
-<!---->
-<!--    <div class="row">-->
-<!--      <div class="col-md-1" *ngIf="rezonantInputs">-->
-<!--        <label for="rezonant" class="control-label">Rezonantno</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1">-->
-<!--        <label for="fTrupci" class="control-label">F trupci</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="lInputs">-->
-<!--        <label for="lTrupci" class="control-label">L trupci</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1">-->
-<!--        <label for="prvaKlasa" class="control-label">Prva klasa</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1">-->
-<!--        <label for="drugaKlasa" class="control-label">Druga klasa</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="trecaKlasaInputs">-->
-<!--        <label for="trecaKlasa" class="control-label">Treca klasa</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="tankaOblovinaInputs">-->
-<!--        <label for="stuboviZaVodove" class="control-label">Stubovi za vodove</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="tankaOblovinaInputs">-->
-<!--        <label for="jamskoDrvo" class="control-label">Jamsko drvo</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="tankaOblovinaInputs">-->
-<!--        <label for="koljeZaVoce" class="control-label">Kolje za voce</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1">-->
-<!--        <label for="celuloznoDrvo" class="control-label">Celulozno drvo</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="ogrevInputs">-->
-<!--        <label for="ogrevPrveKlase" class="control-label">Ogrev prve klase</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1" *ngIf="ogrevInputs">-->
-<!--        <label for="ogrevDrugeKlase" class="control-label">Ogrev druge klase</label>-->
-<!--      </div>-->
-<!--      <div class="col-md-1">-->
-<!--        <label for="sveukupnaDrvnaMasa" class="control-label">Sveukupna masa</label>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--        <div class="">-->
     <div class="row">
       <div class="rezonant form-group col-xs-6" *ngIf="rezonantInputs">
         <input type="number" class="form-control input-group-lg reg_name" formControlName="rezonant" id="rezonant"
@@ -127,18 +81,93 @@
         </div>
 <!--      </div>-->
 
-      <div class="potvrdaMasaBtn text-center">
-        <button class="btn btn-primary" type="button" (click)="validateSubmit()">Unesi</button>
-      </div> <hr>
-
     </div>
-    <div class="zavrsiUnosMasaBtn" *ngIf="uneseneMase">
-      <button class="btn btn-success" type="button"
-              [disabled]="readyForNormeStep"
-              (click)="calcAllAfterPush()">Zavrsi unos masa</button>
+    <hr>
+    <div class="potvrdaMasaBtn text-center">
+      <button class="btn btn-primary btn-lg" type="button" (click)="validateSubmit()">Unesi zapreminu</button>
     </div>
   </form>
+
+  <table class="table table-hover">
+    <thead>
+
+    <tr>
+      <td></td>
+      <th *ngFor="let klase of this.klase">
+        {{klase}}
+      </th>
+    </tr>
+
+    <tr>
+      <td>Jela</td>
+      <td *ngFor="let itemJela of this.trupci.trupciJela">
+        {{itemJela}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Smrca</td>
+      <td *ngFor="let itemSmrca of this.trupci.trupciSmrca">
+        {{itemSmrca}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Bijeli Bor</td>
+      <td *ngFor="let itemBijeliBor of this.trupci.trupciBijeliBor">
+        {{itemBijeliBor}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Crni Bor</td>
+      <td *ngFor="let itemCrniBor of this.trupci.trupciCrniBor">
+        {{itemCrniBor}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Bukva</td>
+      <td *ngFor="let itemBukva of this.trupci.trupciBukva">
+        {{itemBukva}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Hrast</td>
+      <td *ngFor="let itemHrast of this.trupci.trupciHrast">
+        {{itemHrast}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Brijest</td>
+      <td *ngFor="let itemBrijest of this.trupci.trupciBrijest">
+        {{itemBrijest}}
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>Ostali</td>
+      <td *ngFor="let itemOstali of this.trupci.trupciOstali">
+        {{itemOstali}}
+      </td>
+      <td></td>
+    </tr>
+
+    </thead>
+
+  </table>
+  <div class="zavrsiUnosMasaBtn" *ngIf="uneseneMase">
+    <button class="btn btn-success btn-lg" type="button"
+            [disabled]="readyForNormeStep"
+            (click)="calcAllAfterPush()">Zavrsi unos zapremine</button>
+  </div>
 </div>
-
-
-

@@ -1,6 +1,6 @@
 
 .reg_name {
-  max-width:200px;
+  max-width:300px;
 }
 
 .form-group{
@@ -9,6 +9,12 @@
 
 .zavrsiUnosMasaBtn{
 float: right;
+  padding-bottom: 30px;
+}
+
+.potvrdaMasaBtn{
+  margin-left: 100px;
+  padding-bottom: 30px;
 }
 
 input::-webkit-outer-spin-button,
