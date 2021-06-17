@@ -66,7 +66,9 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   normaCetinariTraktor;
   normaLiscariTraktor;
 
-  boja = 'bg-info';
+  // accordion boje
+  bojaAccordion = 'bg-warning';
+  bojaSjecaAccordion = 'bg-warning';
   precnik = true;
   sjeca = true;
   sviPrecnici = [];
@@ -237,8 +239,8 @@ unosPrecnika = new FormGroup({
   }
 
   ngOnInit(): void {
-this.boja = 'bg-warning';
   }
+
   potvrdiNormeSjece(){
     console.log(this.unosUslovaRada.value);
     if (this.unosUslovaRada.value.ucesceAnimala == 0){
@@ -257,6 +259,7 @@ this.boja = 'bg-warning';
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
     this.potvrdjenaSjeca = false;
+    console.log('radi');
   }
 // Funcija unosa precnika po vrstama
   unesiPrecnik(): void {
@@ -481,17 +484,17 @@ this.boja = 'bg-warning';
       this.srednjiPrecnikLiscariBodoviAnimal = 'Nema unijetih srednjih precnika za liscare!';
     }
 
-    console.log(this.bodoviCetinariAnimal)
-    console.log(this.bodoviLiscariAnimal)
-    console.log(this.usloviAnimal.value.nagibAnimal)
-    console.log(this.usloviAnimal.value.ucesceLiscaraAnimal)
-    console.log(this.doznacenaMasaAnimal)
-    console.log(this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal)
-    console.log(this.usloviAnimal.value.udaljenostOdStale)
-    console.log(this.srednjiPrecnikLiscariBodoviAnimal)
-    console.log(this.srednjiPrecnikCetinariBodoviAnimal)
-    console.log(this.usloviRadaCetAnimal)
-    console.log(this.usloviRadaLisAnimal)
+    console.log('bodovi cetinari', this.bodoviCetinariAnimal),
+    console.log('bodovi liscari', this.bodoviLiscariAnimal),
+    console.log('nagib animal',this.usloviAnimal.value.nagibAnimal)
+    console.log( 'ucesce liscara animal',this.usloviAnimal.value.ucesceLiscaraAnimal)
+    console.log('doznacena masa',this.doznacenaMasaAnimal)
+    console.log( 'nadmorska visina',this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal)
+    console.log('udaljenost od stale',this.usloviAnimal.value.udaljenostOdStale)
+    console.log( 'srednji precnik liscari',this.srednjiPrecnikLiscariBodoviAnimal)
+    console.log('srednji precnik cetinari',this.srednjiPrecnikCetinariBodoviAnimal)
+    console.log('uslovi rada cetinar',this.usloviRadaCetAnimal)
+    console.log('uslovi rada liscar',this.usloviRadaLisAnimal)
 // Iznos norme
     if (this.unosUslovaRada.value.nagibAnimal == 4){
   this.nagibTerenaIznos = 5;
@@ -708,7 +711,7 @@ else if (18 >= this.bodoviCetinariLiscariIznos) {
       }
 
       if(this.unosUslovaRada.value.periodSjece == 1){
-        
+
       const c = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))
       .filter(k => k < this.srednjiPrecnikLiscari).pop();
     const d = (Object.keys(this.unosNormi.ljetoLis1[this.usloviRadaLisSjeca][this.unosUslovaRada.value.bonitetLiscari - 1]))

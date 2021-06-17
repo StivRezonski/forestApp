@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./sortimentna-struktura.component.css']
 })
 export class SortimentnaStrukturaComponent implements OnInit {
+  klase = ['R', 'F', 'L', 'I', 'II', 'III', 'TT', 'Rudno', 'Kolje',
+    'Celuloza', 'Ogr. I', 'Ogr. II', 'Sveukupna'];
   uneseneMase = false;
   vrstaSlika;
   // showVrstaImage = false;
@@ -70,7 +72,6 @@ export class SortimentnaStrukturaComponent implements OnInit {
   }
 
   validateSubmit(): void{
-    this.uneseneMase = true;
     this.readyForNormeStep = false;
     if (!this.sortimentiFormGroup.controls.sveukupnaDrvnaMasa.valid){
       this.sveUkupnaFalse = true;
@@ -94,6 +95,7 @@ export class SortimentnaStrukturaComponent implements OnInit {
       this.sveUkupnaFalse = false;
       this.neUneseniTrupci = false;
       this.neIzabranaVrsta = false;
+      this.uneseneMase = true;
       this.onSubmit();
     }
 
