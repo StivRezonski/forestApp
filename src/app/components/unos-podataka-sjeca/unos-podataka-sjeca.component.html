@@ -72,7 +72,7 @@
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('nagibSjeca').errors?.required">
                 Unijeti nagib za sjecu!
-              </small>
+              </small> <br>
                 <select class="form-select" formControlName="gustinaPodmlatkaSjeca" required>
                   <option [ngValue]="null" [disabled]="true">Gustina podmlatka</option>
                   <option [ngValue]="1">Neznatan</option>
@@ -161,7 +161,7 @@
               Unijeti period sjece!
             </small><br> <br>
                   <div class="potvrdaNormiSjece d-grid gap-2">
-                    <button *ngIf="potvrdjenaSjeca" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
+                    <button *ngIf="potvrdjenaSjeca && unosUslovaRada.valid" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
                   </div>
                 </div>
               </div>
