@@ -49,6 +49,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   usloviLisIznos;
   normaCetinariIznos;
   normaLiscariIznos;
+  imaIznosa = false;
 
   nagibTerenaTraktor;
   nadmorskaVisinaTraktor;
@@ -160,7 +161,8 @@ unosPrecnika = new FormGroup({
     bonitetCetinari: new FormControl(),
     bonitetLiscari: new FormControl(),
     ucesceAnimala: new FormControl(),
-    periodSjece: new FormControl()
+    periodSjece: new FormControl(),
+    planiranIznos: new FormControl()
   });
 
 // Forma unosa animal
@@ -271,6 +273,9 @@ unosPrecnika = new FormGroup({
   }
 
   potvrdiNormeSjece(){
+    if(this.unosUslovaRada.value.planiranIznos == 0){
+      this.imaIznosa = true;
+    }else this.imaIznosa = false;
     console.log(this.unosUslovaRada.value);
     if (this.unosUslovaRada.value.ucesceAnimala == 0){
       this.validnaFormaAnimala = true;
@@ -574,6 +579,7 @@ unosPrecnika = new FormGroup({
     console.log('uslovi rada liscar', this.usloviRadaLisAnimal);
 
 // Iznos norme
+
     if (this.usloviAnimal.value.nagibAnimal == 4){
   this.nagibTerenaIznos = 5;
 }else if (this.unosUslovaRada.value.nagibAnimal == 6){

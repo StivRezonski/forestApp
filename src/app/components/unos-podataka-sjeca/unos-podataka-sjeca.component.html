@@ -159,9 +159,18 @@
             <small class="text-danger"
                    *ngIf="unosUslovaRada.get('periodSjece').errors?.required">
               Unijeti period sjece!
-            </small><br> <br>
+            </small><br>
+            <select class="form-select" formControlName="planiranIznos" required>
+              <option [ngValue]="null" [disabled]="true">Da li je planiran iznos</option>
+              <option [ngValue]="0">Planiran je iznos</option>
+              <option [ngValue]="1">Nije planiran iznos</option>
+            </select>
+          <small class="text-danger"
+                 *ngIf="unosUslovaRada.get('planiranIznos').errors?.required">
+            Odaberite da li je planiran iznos!
+          </small><br>
                   <div class="potvrdaNormiSjece d-grid gap-2">
-                    <button *ngIf="potvrdjenaSjeca && unosUslovaRada.valid" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
+                    <button [disabled]="!unosUslovaRada.valid" *ngIf="potvrdjenaSjeca" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
                   </div>
                 </div>
               </div>
@@ -174,7 +183,7 @@
       <h2 class="accordion-header" id="flush-headingThree">
         <button class="accordion-button collapsed {{accordionTraktor}} {{accordionTextValidTraktor}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
           Unijeti uslove rada za traktor <i class="{{accordionIconTraktor}}"> </i>
-        </button>
+        </button> <br>
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
         <div class="traktor">
@@ -232,19 +241,19 @@
           Distanca mora biti trocifren ili četvorocifren broj.
         </small> <br>
               <div class="d-grid gap-2">
-                <button *ngIf="potvrdjenTraktor" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" type="button" class="btn btn-success collapsed" (click)="traktorBtn()">Traktor</button>
+                <button [disabled]="!usloviTraktor.valid" *ngIf="potvrdjenTraktor" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" type="button" class="btn btn-success collapsed" (click)="traktorBtn()">Traktor</button>
               </div>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </div> 
 
     <div class="accordion-item4" *ngIf="animal">
       <h2 class="accordion-header" id="flush-headingFour">
         <button class="accordion-button collapsed {{accordionAnimal}} {{accordionTextValidAnimal}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
           Unijeti uslove rada za animal <i class="{{accordionIconAnimal}}"> </i>
-        </button>
+        </button> <br>
       </h2>
       <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
         <div class="animal">
@@ -305,7 +314,7 @@
         </small> <br>
 
               <div class="d-grid gap-2">
-                <button *ngIf="potvrdjenAnimal" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" type="button" class="btn btn-success collapsed" (click)="animalBtn()">Animal</button>
+                <button [disabled]="!usloviAnimal.valid" *ngIf="potvrdjenAnimal" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" type="button" class="btn btn-success collapsed" (click)="animalBtn()">Animal</button>
               </div>
 
             </div>
@@ -314,10 +323,10 @@
       </div>
     </div>
 
-    <div class="accordion-item5">
+    <div class="accordion-item5" *ngIf="imaIznosa">
       <h2 class="accordion-header" id="flush-headingFive">
         <button class="accordion-button collapsed  {{accordionIznos}} {{accordionTextValidIznos}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-          Unijeti uslove rada za iznos <i class="{{accordionIconIznos}}"> </i>
+          Unijeti uslove rada za iznos <i class="{{ accordionIconIznos}}"> </i>
         </button>
       </h2> <br>
         <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
@@ -333,17 +342,17 @@
                       ">
             Distanca mora biti trocifren ili četvorocifren broj.
           </small> <br> <br>
-          <select class="form-select" formControlName="vrstaTla">
+          <select class="form-select" formControlName="vrstaTla" required>
             <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
             <option [ngValue]="2">Bez kamenja</option>
             <option [ngValue]="4">Sa povrsinskim kamenjem</option>
             <option [ngValue]="9">Kamenito preko 30%</option>
           </select>
-        <!--  <small class="text-danger"
-                 *ngIf="unosUslovaRada.get('vrstaTla').errors?.required">
+        <small class="text-danger"
+                 *ngIf="usloviIznos.get('vrstaTla').errors?.required">
             Unijeti vrstu tla!
 
-          </small> --> <br>
+          </small> <br>
 
             <div class="potvrdjivanjeIznosa">
               <button *ngIf="potvrdjenIznos" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive" type="button" class="btn btn-success collapsed" type="button" (click)="iznosBtn()">
@@ -351,7 +360,7 @@
               </button>
             </div>
 
-          </form> <br>
+          </form> 
         </div>
       </div>
     </div>
