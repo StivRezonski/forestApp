@@ -273,9 +273,12 @@ unosPrecnika = new FormGroup({
   }
 
   potvrdiNormeSjece(){
+    
     if(this.unosUslovaRada.value.planiranIznos == 0){
       this.imaIznosa = true;
-    }else this.imaIznosa = false;
+    }else 
+    this.validnaFormaIznosa = true;
+    this.imaIznosa = false;
     console.log(this.unosUslovaRada.value);
     if (this.unosUslovaRada.value.ucesceAnimala == 0){
       this.validnaFormaAnimala = true;
