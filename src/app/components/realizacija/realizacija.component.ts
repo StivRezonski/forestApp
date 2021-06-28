@@ -21,6 +21,8 @@ export class RealizacijaComponent implements OnInit {
   tabOstali = false;
   tabCet = false;
   tabLis = false;
+  tabTraktor = true;
+  tabIznos = false;
 
   podaciNorma = this.norme.podaciZaIzracunCijene;
 
@@ -189,6 +191,7 @@ export class RealizacijaComponent implements OnInit {
       this.cijenaLisTraktor = 0;
       this.traktorCetBrRadnihDana = 0;
       this.traktorLisBrRadnihDana = 0;
+      this.tabTraktor = false;
     } else {
       this.trupciCetTraktor = this.kolicinaCetTrupci;
       this.trupciLisTraktor = this.kolicinaLisTrupci;

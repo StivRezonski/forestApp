@@ -273,10 +273,10 @@ unosPrecnika = new FormGroup({
   }
 
   potvrdiNormeSjece(){
-    
+
     if(this.unosUslovaRada.value.planiranIznos == 0){
       this.imaIznosa = true;
-    }else 
+    }else
     this.validnaFormaIznosa = true;
     this.imaIznosa = false;
     console.log(this.unosUslovaRada.value);
@@ -295,7 +295,7 @@ unosPrecnika = new FormGroup({
       this.animal = true;
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
-    this.promjeniBojuAccordionSjeca();
+
     this.potvrdjenaSjeca = false;
   }
 

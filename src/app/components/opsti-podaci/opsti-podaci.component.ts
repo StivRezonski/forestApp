@@ -99,7 +99,6 @@ export class OpstiPodaciComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.opstaForma.value);
     this.opstiPodaci.gazdinstvo = this.opstaForma.get('gazdinstvo').value;
     this.opstiPodaci.privrednaJedinica = this.opstaForma.get('privrednaJedinica').value;
     this.opstiPodaci.odjel = this.opstaForma.get('odjel').value;
