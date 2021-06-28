@@ -169,6 +169,18 @@
                  *ngIf="unosUslovaRada.get('planiranIznos').errors?.required">
             Odaberite da li je planiran iznos!
           </small><br>
+          
+        <div class="saKorom" *ngIf="imaCetinara" >
+          <select class="form-select" formControlName="saKorom" required>
+            <option [ngValue]="null" [disabled]="true">Sa korom</option>
+            <option [ngValue]="0">Sa koranjem</option>
+            <option [ngValue]="1">Bez koranja</option>
+          </select>
+        <small class="text-danger"
+               *ngIf="unosUslovaRada.get('saKorom').errors?.required">
+          Da li se cetinari koraju!
+        </small> <br>
+        </div>
                   <div class="potvrdaNormiSjece d-grid gap-2">
                     <button [disabled]="!unosUslovaRada.valid" *ngIf="potvrdjenaSjeca" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" type="button" class="btn btn-success collapsed" (click) = "potvrdiNormeSjece()">Potvrdi uslove sjece</button>
                   </div>
@@ -270,17 +282,6 @@
           Unijeti nagib za animal!
         </small><br>
 
-        <div class="saKorom" *ngIf="imaCetinara" >
-          <select class="form-select" formControlName="saKorom" required>
-            <option [ngValue]="null" [disabled]="true">Sa korom</option>
-            <option [ngValue]="0">Sa koranjem</option>
-            <option [ngValue]="1">Bez koranja</option>
-          </select>
-        <small class="text-danger"
-               *ngIf="usloviAnimal.get('saKorom').errors?.required">
-          Da li se cetinari koraju!
-        </small> <br>
-        </div>
           <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
             <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
             <option [ngValue]="1">Cisti cetinari</option>
