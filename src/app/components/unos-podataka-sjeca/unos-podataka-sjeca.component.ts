@@ -245,6 +245,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     this.accordIcon;
   }
 
+
   unesiPrecnik(): void {
     this.sviPrecnici.push(this.unosPrecnika.value);
     this.unosPrecnika.reset();
@@ -364,7 +365,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.animal = true;
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
-    this.promjeniBojuAccordionSjeca();
+
     this.potvrdjenaSjeca = false;
   }
 
@@ -613,7 +614,6 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.unosUslovaRada.get('bonitetCetinari').patchValue('0');
     }
 
-
     if (this.srednjiPrecnikLiscari !== 0) {
 
       if (this.srednjiPrecnikLiscari > 45) {
@@ -718,9 +718,6 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.doznakaIznos = 11;
     }
 
-  
-
-
     if (this.unosUslovaRada.value.ucesceAnimala !== 0) {
      
 
@@ -776,10 +773,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.normaCetAnimalTankaOblovina = 0;   
     }
     
-
     if (this.unosUslovaRada.value.ucesceAnimala !== 0) {
-
-     
 
       if (this.srednjiPrecnikLiscari > 45) {
         this.srednjiPrecnikLiscariBodoviAnimal = 4;
