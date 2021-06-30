@@ -65,9 +65,9 @@
                 <div class="sjecaNorme">
                 <select class="form-select" formControlName="nagibSjeca" required>
                   <option [ngValue]="null" [disabled]="true">Nagib terena - sjeca</option>
-                  <option [ngValue]="1">Do 15`</option>
-                  <option [ngValue]="3">Od 15-30`</option>
-                  <option [ngValue]="11">Preko 30`</option>
+                  <option [ngValue]="1">Do 15°</option>
+                  <option [ngValue]="3">Od 15-30°</option>
+                  <option [ngValue]="11">Preko 30°</option>
                 </select>
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('nagibSjeca').errors?.required">
@@ -85,9 +85,9 @@
               </small> <br>
                 <select class="form-select" formControlName="doznacenaMasaSjeca" required>
                   <option [ngValue]="null" [disabled]="true">Doznacena masa</option>
-                  <option [ngValue]="4">Veca od 80 m3/ha</option>
-                  <option [ngValue]="6">60-80 m3/ha</option>
-                  <option [ngValue]="10">Do 60 m3/ha</option>
+                  <option [ngValue]="4">Veca od 80 m³/ha</option>
+                  <option [ngValue]="6">60-80 m³/ha</option>
+                  <option [ngValue]="10">Do 60 m³/ha</option>
                 </select>
               <small class="text-danger"
                      *ngIf="unosUslovaRada.get('doznacenaMasaSjeca').errors?.required">
@@ -116,11 +116,11 @@
               <div class="bonitetCetinari" *ngIf="trueBonitetCetinari">
                 <select class="form-select"  formControlName="bonitetCetinari" required>
                   <option [ngValue]="null" [disabled]="true">Bonitet cetinari</option>
-                  <option value="1">Prvi</option>
-                  <option value="2">Drugi</option>
-                  <option value="3">Treći</option>
-                  <option value="4">Četvrti</option>
-                  <option value="5">Peti</option>
+                  <option value="1">I</option>
+                  <option value="2">II</option>
+                  <option value="3">III</option>
+                  <option value="4">IV</option>
+                  <option value="5">V</option>
                 </select>
                 <small class="text-danger"
                        *ngIf="unosUslovaRada.get('bonitetCetinari').errors?.required">
@@ -130,11 +130,11 @@
               <div class="bonitetLiscari" *ngIf="trueBonitetLiscari">
                 <select class="form-select" formControlName="bonitetLiscari" required>
                   <option [ngValue]="null" [disabled]="true">Bonitet liscari</option>
-                  <option value="1">Prvi</option>
-                  <option value="2">Drugi</option>
-                  <option value="3">Treći</option>
-                  <option value="4">Četvrti</option>
-                  <option value="5">Peti</option>
+                  <option value="1">I</option>
+                  <option value="2">II</option>
+                  <option value="3">III</option>
+                  <option value="4">IV</option>
+                  <option value="5">V</option>
                 </select>
                 <small class="text-danger"
                        *ngIf="unosUslovaRada.get('bonitetLiscari').errors?.required">
@@ -162,19 +162,19 @@
             </small><br>
             <select class="form-select" formControlName="planiranIznos" required>
               <option [ngValue]="null" [disabled]="true">Da li je planiran iznos</option>
-              <option [ngValue]="0">Planiran je iznos</option>
-              <option [ngValue]="1">Nije planiran iznos</option>
+              <option [ngValue]="0">Da</option>
+              <option [ngValue]="1">Ne</option>
             </select>
           <small class="text-danger"
                  *ngIf="unosUslovaRada.get('planiranIznos').errors?.required">
             Odaberite da li je planiran iznos!
           </small><br>
-          
+
         <div class="saKorom" *ngIf="imaCetinara" >
           <select class="form-select" formControlName="saKorom" required>
-            <option [ngValue]="null" [disabled]="true">Sa korom</option>
-            <option [ngValue]="0">Sa koranjem</option>
-            <option [ngValue]="1">Bez koranja</option>
+            <option [ngValue]="null" [disabled]="true">Koranje</option>
+            <option [ngValue]="0">Da</option>
+            <option [ngValue]="1">Ne</option>
           </select>
         <small class="text-danger"
                *ngIf="unosUslovaRada.get('saKorom').errors?.required">
@@ -259,7 +259,7 @@
           </form>
         </div>
       </div>
-    </div> 
+    </div>
 
     <div class="accordion-item4" *ngIf="animal">
       <h2 class="accordion-header" id="flush-headingFour">
@@ -273,9 +273,9 @@
             <div class="form-group">
           <select class="form-select" formControlName="nagibAnimal" required>
             <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
-            <option [ngValue]="4">10`-20`</option>
-            <option [ngValue]="6">Veci od 20`</option>
-            <option [ngValue]="10">0`-10`</option>
+            <option [ngValue]="4">10°-20°</option>
+            <option [ngValue]="6">Veci od 20°</option>
+            <option [ngValue]="10">0°-10°</option>
           </select>
         <small class="text-danger"
                *ngIf="usloviAnimal.get('nagibAnimal').errors?.required">
@@ -332,7 +332,7 @@
       </h2> <br>
         <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
           <div class="iznos">
-            <form [formGroup]="usloviIznos"  >
+            <form [formGroup]="usloviIznos">
                 <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
 
          <small class="text-danger"
@@ -361,7 +361,7 @@
               </button>
             </div>
 
-          </form> 
+          </form>
         </div>
       </div>
     </div>
