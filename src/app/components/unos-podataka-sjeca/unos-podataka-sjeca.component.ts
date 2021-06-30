@@ -365,7 +365,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.animal = true;
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
-
+    this.promjeniBojuAccordionSjeca();
     this.potvrdjenaSjeca = false;
   }
 
@@ -437,16 +437,16 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   public get accordIcon(): string {
     return this.accordIconValid ? 'bi bi-check2-square' : 'bi bi-exclamation-lg';
   }
-  
+
   // Funkcija prikupljanja podataka potrebnih za izracun normi
   potvrdi(): void {
-    
+
     this.usloviRada.push(this.unosUslovaRada.value);
     this.router.navigate(['/realizacija']);
 
   // Animal norme
     this.animalNorma();
-       
+
   // Sjeca norma
     this.sjecaNorme();
 
@@ -719,7 +719,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     }
 
     if (this.unosUslovaRada.value.ucesceAnimala !== 0) {
-     
+
 
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
@@ -770,9 +770,9 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     } else {
       this.bodoviCetinariAnimal = 0;
       this.normaCetAnimalTrupci = 0;
-      this.normaCetAnimalTankaOblovina = 0;   
+      this.normaCetAnimalTankaOblovina = 0;
     }
-    
+
     if (this.unosUslovaRada.value.ucesceAnimala !== 0) {
 
       if (this.srednjiPrecnikLiscari > 45) {
@@ -816,7 +816,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     } else {
       this.bodoviLiscariAnimal = 0;
       this.normaLisAnimalTrupci = 0;
-      this.normaLisAnimalTankaOblovina = 0; 
+      this.normaLisAnimalTankaOblovina = 0;
     }
   }
 

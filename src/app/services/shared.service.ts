@@ -12,15 +12,13 @@ export class SharedService {
   getGazdinstvo(): any {
     return [
       {id: '1', name: 'Клековача-Потоци'},
-      {id: '2', name: 'Рибник'},
-      {id: '3', name: 'Дринић'},
     ];
   }
 
   getPrivrednaJedinica(): any {
     return [
       {id: '1', name: 'Потоци-Ресановача'},
-      {id: '2', name: 'Реповац'},
+      {id: '2', name: 'Клековача-Реповац'},
       {id: '3', name: 'Клековача-Дрвар'},
     ];
   }
@@ -54,21 +52,19 @@ export class SharedService {
     return [
       {id: '1', name: 'Редовна сјеча'},
       {id: '2', name: 'Ванредна сјеча'},
-      {id: '3', name: 'Случајни ужитак'},
+      {id: '3', name: 'Случајни ужици'},
     ];
   }
 
   getProjektant(): any {
     return [
       {id: '1', name: 'Боснић Бранислав'},
-      {id: '2', name: 'Бањац Петар'},
-      {id: '3', name: 'Тубић Душко'},
-      {id: '4', name: 'Кнежевић Велибор'},
-      {id: '5', name: 'Гогић Милорад'},
-      {id: '6', name: 'Лукач Драган'},
-      {id: '7', name: 'Тадић Милан'},
-      {id: '8', name: 'Смиљић Александар'},
-      {id: '9', name: 'Топалић Александар'},
+      {id: '2', name: 'Тубић Душко'},
+      {id: '3', name: 'Гогић Милорад'},
+      {id: '4', name: 'Лукач Драган'},
+      {id: '5', name: 'Тадић Милан'},
+      {id: '6', name: 'Смиљић Александар'},
+      {id: '7', name: 'Топалић Александар'},
     ];
   }
 
@@ -84,19 +80,16 @@ export class SharedService {
 
   getRukovodilacPripreme(): any {
     return [
-      {id: '1', name: 'Кнежевић Велибор'},
-      {id: '2', name: 'Ковач Александар'},
-      {id: '3', name: 'Петар Петровић'},
-      {id: '4', name: 'Јанковић Јанко'},
-      {id: '5', name: 'Мирко Мирковић'},
+      {id: '1', name: 'Ковач Александар'},
+      {id: '2', name: 'Петар Петровић'},
+      {id: '3', name: 'Јанковић Јанко'},
+      {id: '4', name: 'Мирко Мирковић'},
     ];
   }
 
   getSumskoPrivrednoPodrucje(): any {
     return [
       {id: '1', name: 'Источнодрварско'},
-      {id: '2', name: 'SPP 2'},
-      {id: '3', name: 'Spp 3'},
     ];
   }
 
@@ -118,13 +111,13 @@ export class SharedService {
 
   getLiceZaUzgoj(): any {
     return [
-      {id: '1', name: 'Кнежевић Велибор'},
+      {id: '1', name: 'Бањац Петар'},
     ];
   }
 
   getLiceZaNadzor(): any {
     return [
-      {id: '1', name: 'Рајко Кнежевић'},
+      {id: '1', name: 'Кнежевић Велибор'},
     ];
   }
 
@@ -133,6 +126,18 @@ export class SharedService {
       {id: '1'},
       {id: '2'},
       {id: '3'},
+      {id: '4'},
+      {id: '5'},
+      {id: '6'},
+      {id: '7'},
+      {id: '8'},
+      {id: '9'},
+      {id: '10'},
+      {id: '11'},
+      {id: '12'},
+      {id: '13'},
+      {id: '14'},
+      {id: '15'},
     ];
   }
 
@@ -141,6 +146,11 @@ export class SharedService {
       {id: '2021'},
       {id: '2022'},
       {id: '2023'},
+      {id: '2024'},
+      {id: '2025'},
+      {id: '2026'},
+      {id: '2027'},
+      {id: '2028'},
     ];
   }
 
@@ -149,6 +159,15 @@ export class SharedService {
       {name: 'Јануар'},
       {name: 'Фебруар'},
       {name: 'Март'},
+      {name: 'Април'},
+      {name: 'Мај'},
+      {name: 'Јуни'},
+      {name: 'Јули'},
+      {name: 'Август'},
+      {name: 'Септембар'},
+      {name: 'Октобар'},
+      {name: 'Новембар'},
+      {name: 'Децембар'},
     ];
   }
 

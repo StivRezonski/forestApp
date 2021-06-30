@@ -626,7 +626,7 @@
       <td></td>
     </tr>
 
-    <tr *ngIf="tabIznos">
+    <tr *ngIf="imaIznos">
       <td rowspan="3">Износ</td>
       <td>Четинари {{usloviRadaIznosCet}}</td>
       <td>{{bonitetCet}}</td>
@@ -637,7 +637,7 @@
       <td>{{cijenaCetIznos | number : '1.2-2'}} KM/m³</td>
       <td>{{iznosCetBrRadnihDana}}</td>
     </tr>
-    <tr *ngIf="tabIznos">
+    <tr *ngIf="imaIznos">
       <td>Лишћари {{usloviRadaIznosLis}}</td>
       <td>{{bonitetLis}}</td>
       <td></td>
@@ -647,7 +647,7 @@
       <td>{{cijenaLisIznos | number : '1.2-2'}} KM/m³</td>
       <td>{{iznosLisBrRadnihDana}}</td>
     </tr>
-    <tr *ngIf="tabIznos">
+    <tr *ngIf="imaIznos">
       <td>Σ</td>
       <td></td>
       <td></td>
@@ -756,20 +756,20 @@
       <td></td>
     </tr>
 
-    <tr *ngIf="tabIznos">
+    <tr *ngIf="imaIznos">
       <td rowspan="3">Износ</td>
       <td>Четинари</td>
       <td>{{kolicinaIznosCet | number : '1.2-2'}} m³</td>
       <td>{{cijenaCetIznos | number : '1.2-2'}} KM/m³</td>
       <td>{{trosakCetIznos | number : '1.2-2'}} KM</td>
     </tr>
-    <tr *ngIf="tabIznos">
+    <tr *ngIf="imaIznos">
       <td>Лишћари</td>
       <td>{{kolicinaIznosLis | number : '1.2-2'}} m³</td>
       <td>{{cijenaLisIznos | number : '1.2-2'}} KM/m³</td>
       <td>{{trosakLisIznos | number : '1.2-2'}} KM</td>
     </tr>
-    <tr *ngIf="tabIznos">
+    <tr *ngIf="imaIznos">
       <td>Σ</td>
       <td></td>
       <td></td>

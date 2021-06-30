@@ -22,7 +22,6 @@ export class RealizacijaComponent implements OnInit {
   tabCet = false;
   tabLis = false;
   tabTraktor = true;
-  tabIznos = false;
 
   podaciNorma = this.norme.podaciZaIzracunCijene;
 
@@ -49,11 +48,6 @@ export class RealizacijaComponent implements OnInit {
 
   normaCetTraktor = this.podaciNorma[25].normaCetinariTraktor;
   normaLisTraktor = this.podaciNorma[26].normaLiscariTraktor;
-  // normaTrupciCetTraktor = this.podaciNorma[];
-  normaTrupciLisTraktor;
-
-  normaTankaCetTraktor;
-  normaTankaLisTraktor;
 
   normaTrupciCet = this.podaciNorma[11].normaCetAnimalTrupci;
   normaTankaCet = this.podaciNorma[12].normaCetAnimalTankaOblovina;
@@ -71,9 +65,10 @@ export class RealizacijaComponent implements OnInit {
   ucesceAnimala = this.podaciNorma[19].ucesceAnimala;
   procenatAnimal = this.podaciNorma[23].procenatAnimal;
 
+  imaIznos = this.podaciNorma[27].imaIznosa;
+
   cetCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaCet;
   lisCijenaSj = this.norme.cijenaRadnogDanaSjeca / this.normaSjecaLis;
-
 
   cijenaCetTraktor = this.norme.cijenaRadnogDanaTraktor / this.normaTrupciCet; // normu za traktor podjeliti
   cijenaCetTrupacAnimal = this.norme.cijenaRadnogDanaAnimal / this.normaTrupciCet;
@@ -177,8 +172,8 @@ export class RealizacijaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.normaIznosCet);
-    console.log(this.normaIznosLis);
+    console.log(this.norme.cijenaRadnogDanaIznos, this.normaIznosCet);
+    console.log(this.trosakCetIznos, this.kolicinaIznosCet,  this.cijenaCetIznos);
     if (this.procenatAnimal === 1) {
       this.trupciCetTraktor = 0;
       this.trupciLisTraktor = 0;
@@ -238,6 +233,10 @@ export class RealizacijaComponent implements OnInit {
     if (this.trupci.sumLis[12] > 0) {
       this.tabLis = true;
     }
+
+    // if (this.imaIznos){
+    //   this.trosakCetIznos = ;
+    // }
 
     if (this.kolicinaCet <= 0) {
       this.usloviRadaCetSj = null;
