@@ -1,0 +1,35 @@
+<div class="container-fluid">
+
+    <div class="zaStampanje" id="zaStampanje">
+
+        <div class="naslovna">
+
+            <img class="slika" src="/assets/memorandum.png" alt="image">
+            <div class="zaglavlje">
+                <p class="p1">Sumsko gazdinstvo "{{gazd}}" {{gra}}</p>
+                <p class="p2">Broj:_____________/ {{godin}}</p>
+                <p class="p2">Dana:_____________ {{godin}} godine</p>      
+            </div>
+            <div class="podaci-odjel d-flex flex-column justify-content-center">
+                <p class="p3">I Z V O DJ A C K I &nbsp; &nbsp; P R O J E K A T</p>
+                <p class="p4">O D J E LJ E NJ E: {{ODJEL1}}.</p>
+                <p class="p3">Dana:_____________ {{godin}} godine</p>
+                <p class="p4">Sumsko gazdinstvo "{{gazd}}" {{gra}}</p>
+                <p class="p5">Broj:_____________/ {{godin}}</p>  
+            </div>
+
+        </div>
+
+        <div class="odluka-usvajanje"></div>
+
+    </div> 
+        <div class="print-btn">
+            <button class="btn btn-primary"
+            [useExistingCss]="true"
+            printSectionId="zaStampanje"
+            ngxPrint>
+            Print
+            </button>
+        </div>
+</div>
+

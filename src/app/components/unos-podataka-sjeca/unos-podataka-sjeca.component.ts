@@ -365,7 +365,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.animal = true;
       this.procenatAnimala = this.unosUslovaRada.value.ucesceAnimala / 100;
     }
-
+    this.promjeniBojuAccordionSjeca();
     this.potvrdjenaSjeca = false;
   }
 
@@ -376,6 +376,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     }
     this.potvrdjenAnimal = false;
   }
+
   iznosBtn() {
     if (this.usloviIznos.valid) {
       this.validnaFormaIznosa = true;
@@ -383,6 +384,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     }
     this.potvrdjenIznos = false;
   }
+  
   traktorBtn() {
     if (this.usloviTraktor.valid) {
       this.validnaFormaTraktora = true;
@@ -456,7 +458,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   // Iznos norme
     this.iznosNorme();
 
-    // Podaci za dalji izračun cijena i za potrebe tabele u html-u
+  // Podaci za dalji izračun cijena i za potrebe tabele u html-u
     this.podaciZaIzracunCijene.push(
       { distanca: this.usloviAnimal.value.animalDistanca },
       { bonitetCetinari: parseInt(this.unosUslovaRada.value.bonitetCetinari) },
@@ -823,7 +825,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   private iznosNorme() {
     if (this.usloviAnimal.value.nagibAnimal == 4) {
       this.nagibTerenaIznos = 5;
-    } else if (this.unosUslovaRada.value.nagibAnimal == 6) {
+    } else if (this.usloviAnimal.value.nagibAnimal == 6) {
       this.nagibTerenaIznos = 10;
     } else {
       this.nagibTerenaIznos = 15;
@@ -849,36 +851,78 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.usloviRadaLiscariIznos = 0;
       this.usloviCetIznos = 'I';
       this.usloviLisIznos = 'I';
-      this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.unosUslovaRada.value.iznosDistanca];
-      this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.unosUslovaRada.value.iznosDistanca];
+
+      if (this.mase1.length == 0) {
+        this.normaCetinariIznos = 0;
+      } else {
+        this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
+      }
+      if (this.mase2.length == 0) {
+        this.normaLiscariIznos = 0
+      } else {
+        this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      } 
+  
     } else if (this.bodoviCetinariLiscariIznos >= 19 && this.bodoviCetinariLiscariIznos <= 25) {
       this.usloviRadaCetinariIznos = 1;
       this.usloviRadaLiscariIznos = 1;
       this.usloviCetIznos = 'I/II';
       this.usloviLisIznos = 'I/II';
-      this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-      this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      if (this.mase1.length == 0) {
+        this.normaCetinariIznos = 0;
+      } else {
+        this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
+      }
+      if (this.mase2.length == 0) {
+        this.normaLiscariIznos = 0
+      } else {
+        this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      }
     } else if (this.bodoviCetinariLiscariIznos >= 26 && this.bodoviCetinariLiscariIznos <= 32) {
       this.usloviRadaCetinariIznos = 2;
       this.usloviRadaLiscariIznos = 2;
       this.usloviCetIznos = 'II';
       this.usloviLisIznos = 'II';
-      this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-      this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      if (this.mase1.length == 0) {
+        this.normaCetinariIznos = 0;
+      } else {
+        this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
+      }
+      if (this.mase2.length == 0) {
+        this.normaLiscariIznos = 0
+      } else {
+        this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      }
     } else if (this.bodoviCetinariLiscariIznos >= 33 && this.bodoviCetinariLiscariIznos <= 41) {
       this.usloviRadaCetinariIznos = 3;
       this.usloviRadaLiscariIznos = 3;
       this.usloviCetIznos = 'II/III';
       this.usloviLisIznos = 'II/III';
-      this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-      this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      if (this.mase1.length == 0) {
+        this.normaCetinariIznos = 0;
+      } else {
+        this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
+      }
+      if (this.mase2.length == 0) {
+        this.normaLiscariIznos = 0
+      } else {
+        this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      }
     } else {
       this.usloviRadaCetinariIznos = 4;
       this.usloviRadaLiscariIznos = 4;
       this.usloviCetIznos = 'III';
       this.usloviLisIznos = 'III';
-      this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
-      this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      if (this.mase1.length == 0) {
+        this.normaCetinariIznos = 0;
+      } else {
+        this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
+      }
+      if (this.mase2.length == 0) {
+        this.normaLiscariIznos = 0
+      } else {
+        this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
+      }
     }
   }
 

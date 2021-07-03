@@ -11,6 +11,7 @@ import { RjesenjePracenjeComponent } from '../components/projektna-dokumentacija
 import { SortimentnaStrukturaComponent } from '../components/sortimentna-struktura/sortimentna-struktura.component';
 import { RealizacijaComponent } from '../components/realizacija/realizacija.component';
 import { TraktorComponent } from '../components/traktor/traktor.component';
+import { PrintSlucajniComponent } from '../components/print-slucajni/print-slucajni.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'sortimentna-struktura', component: SortimentnaStrukturaComponent },
   {path: 'realizacija', component: RealizacijaComponent },
   {path: 'traktor', component: TraktorComponent },
+  {path: 'print-slucajni', component: PrintSlucajniComponent },
   {path: 'dokumentacija', component: ProjektnaDokumentacijaComponent,
     children: [
       {

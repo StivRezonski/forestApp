@@ -8,15 +8,10 @@ import  *  as  data  from  '../../norme/traktor.json';
 })
 export class TraktorComponent implements OnInit {
   
-  normeTraktor:  any  = (data  as  any).default;
+  constructor() {
+  }
 
-  constructor(private http: HttpClient) {
-   }
-
-   ngOnInit(){
-    
-    console.log(this.normeTraktor[0]);
-
+  ngOnInit() {
   }
 
 }

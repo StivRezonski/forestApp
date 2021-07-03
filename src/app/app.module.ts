@@ -27,6 +27,7 @@ import { RealizacijaComponent } from './components/realizacija/realizacija.compo
 import { TrupciService } from './services/trupci.service';
 import { TraktorComponent } from './components/traktor/traktor.component';
 import { NgxPrintModule } from 'ngx-print';
+import { PrintSlucajniComponent } from './components/print-slucajni/print-slucajni.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { NgxPrintModule } from 'ngx-print';
     RjesenjePracenjeComponent,
     SortimentnaStrukturaComponent,
     RealizacijaComponent,
-    TraktorComponent
+    TraktorComponent,
+    PrintSlucajniComponent
   ],
 
   providers: [UnosPodatakaSjecaComponent, OpstiPodaciComponent, NormeService, Jela,
