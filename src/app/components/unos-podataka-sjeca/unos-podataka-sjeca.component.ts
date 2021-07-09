@@ -64,7 +64,6 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   potvrdjenAnimal = true;
 
   // Varijable za iznos
-  nagibTerenaIznos;
   gustinaPodmlatkaIznos;
   doznakaIznos;
   bodoviCetinariLiscariIznos;
@@ -90,6 +89,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   usloviCetTraktor;
   usloviRadaLiscariTraktor;
   prosjecnoStablo;
+  prosjecnoStablo1;
   usloviLisTraktor;
   normaCetinariTraktor;
   normaLiscariTraktor;
@@ -101,6 +101,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   precnik = true;
   sviPrecnici = [];
   podaciZaIzracunCijene = this.unosNormi.podaciZaIzracunCijene = [];
+  sviPodaci = this.unosNormi.sviPodaci = [];
   uneseniSviPrecnici = true;
   zavrsenoSaUnosomPrecnika = false;
   mase1 = this.trupci.sveukupnaCet;
@@ -127,7 +128,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   accordionIznos = this.accordColor;
   accordTextValid = false;
   accordionTextValidSjeca = this.accordTextColor;
-  accordionTextValidTraktor = this.accordTextColor;;
+  accordionTextValidTraktor = this.accordTextColor;
+  distancaTraktor: number[];
+  distancaSamarica: number[];
+  distancaAnimal: number[] = [100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000];
   accordionTextValidAnimal = this.accordTextColor;
   accordionTextValidIznos = this.accordTextColor;
   accordIconValid = false;
@@ -170,24 +174,21 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
   // Forma unosa traktor
   usloviTraktor = new FormGroup({
-    nagibTraktor: new FormControl(),
+    nagibTerenaTraktor: new FormControl(),
+    nagibPutaTraktor: new FormControl(),
     vrstaTlaTraktor: new FormControl(),
     udaljenostOdGaraza: new FormControl(),
-    traktorDistanca: new FormControl('',
-      [Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(4)]),
+    traktorDistanca: new FormControl(),
     primicanjeTraktor: new FormControl()
   });
 
   // Forma unosa iznos
   usloviIznos = new FormGroup({
+    nagibIznos: new FormControl(),
     vrstaTla: new FormControl(),
-    iznosDistanca: new FormControl('',
-      [Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(4)])
+    iznosDistanca: new FormControl()
   });
+  proba;
 
   constructor(public trupci: TrupciService, private unosNormi: NormeService,
     private router: Router) {
@@ -196,6 +197,14 @@ export class UnosPodatakaSjecaComponent implements OnInit {
     const range = (from, to, step) =>
       [...Array(Math.floor((to - from) / step) + 1)].map((_, i) => from + i * step);
     this.ucesceAnimal = range(0, 100, 5);
+    // Puni niz za distanca traktor
+    const range1 = (from, to, step) =>
+    [...Array(Math.floor((to - from) / step) + 1)].map((_, i) => from + i * step);
+    this.distancaTraktor = range1(100, 1300, 100);
+    // Puni niz za distanca samarica
+    const range2 = (from, to, step) =>
+    [...Array(Math.floor((to - from) / step) + 1)].map((_, i) => from + i * step);
+    this.distancaSamarica = range2(100, 1000, 100);
 
     if (this.trupci.jelaSaNeto[12] == null || this.trupci.jelaSaNeto[12] == 0) {
       this.trueJela = true;
@@ -261,7 +270,6 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
     if (this.mase1.length == 0) {
       this.trueBonitetCetinari = false;
-      this.imaCetinara = false;
     } else {
       this.trueBonitetCetinari = true;
     }
@@ -343,7 +351,6 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   }
 
   potvrdiNormeSjece() {
-
     if (this.unosUslovaRada.value.planiranIznos == 0) {
       this.imaIznosa = true;
     } else {
@@ -490,6 +497,48 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       { imaIznosa: this.imaIznosa }
     );
     console.log(this.unosNormi.podaciZaIzracunCijene);
+
+    this.sviPodaci.push(
+      {
+        srednjiPrecnikCetinara: parseInt(this.srednjiPrecnikCetinari),
+        srednjiPrecnikLiscara: parseInt(this.srednjiPrecnikLiscari),
+        bonitetCetinara: parseInt(this.unosUslovaRada.value.bonitetCetinari),
+        bonitetLiscara: parseInt(this.unosUslovaRada.value.bonitetLiscari),
+        bodoviCetinariSjeca: this.bodoviCetinariSjeca,
+        bodoviLiscariSjeca: this.bodoviLiscariSjeca,
+        bodoviCetinariAnimal: this.bodoviCetinariAnimal,
+        bodoviLiscariAnimal: this.bodoviLiscariAnimal,
+        bodoviCetinariTraktor: this.bodoviCetinariTraktor,
+        bodoviLiscariTraktor: this.bodoviLiscariTraktor,
+        bodoviIznos: this.bodoviCetinariLiscariIznos,
+        usloviCetinariSjeca: this.usloviCetSjeca,
+        usloviLiscariSjeca: this.usloviLisSjeca,
+        usloviCetinariAnimal: this.usloviCetAnimal,
+        usloviLiscariAnimal: this.usloviLisAnimal,
+        usloviCetinariTraktor: this.usloviCetTraktor,
+        usloviLiscariTraktor: this.usloviLisTraktor,
+        usloviCetinariIznos: this.usloviCetIznos,
+        usloviLiscariIznos: this.usloviLisIznos,
+        normaCetinariSjeca: parseFloat(this.normaSjeceCetinari),
+        normaLiscariSjeca: parseFloat(this.normaSjeceLiscari),
+        normaCetinariTraktor: parseFloat(this.normaCetinariTraktor),
+        normaLiscariTraktor: parseFloat(this.normaLiscariTraktor),
+        normaCetinariAnimalTrupci: parseFloat(this.normaCetAnimalTrupci),
+        normaCetinariAnimalTo: parseFloat(this.normaCetAnimalTankaOblovina),
+        normaLiscariAnimalTrupci: parseFloat(this.normaLisAnimalTrupci),
+        normaLiscariAnimalTo: parseFloat(this.normaLisAnimalTankaOblovina),
+        normaCetinariIznos: parseFloat(this.normaCetinariIznos),
+        normaLiscariIznos: parseFloat(this.normaLiscariIznos),
+        distancaAnimal: parseInt(this.usloviAnimal.value.animalDistanca),
+        distancaTraktor: parseInt(this.usloviTraktor.value.traktorDistanca),
+        distancaIznos: parseInt(this.usloviIznos.value.iznosDistanca),
+        ucesceAnimala: this.unosUslovaRada.value.ucesceAnimala,
+        procenatAnimala: this.procenatAnimala,
+        koranje: this.unosUslovaRada.value.saKorom,
+        proba: parseFloat(this.proba)
+      }
+    )
+    console.log(this.sviPodaci)
   }
 
   private sjecaNorme() {
@@ -700,24 +749,18 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   // Animal norma
     if (this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 1) {
       this.gustinaPodmlatkaAnimal = 2;
-      this.gustinaPodmlatkaIznos = 2;
     } else if (this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 4) {
       this.gustinaPodmlatkaAnimal = 4;
-      this.gustinaPodmlatkaIznos = 3;
     } else {
       this.gustinaPodmlatkaAnimal = 9;
-      this.gustinaPodmlatkaIznos = 5;
     }
 
     if (this.unosUslovaRada.value.doznacenaMasaSjeca == 4) {
       this.doznacenaMasaAnimal = 1;
-      this.doznakaIznos = 3;
     } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 6) {
       this.doznacenaMasaAnimal = 3;
-      this.doznakaIznos = 6;
     } else {
       this.doznacenaMasaAnimal = 6;
-      this.doznakaIznos = 11;
     }
 
     if (this.unosUslovaRada.value.ucesceAnimala !== 0) {
@@ -725,13 +768,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (this.srednjiPrecnikCetinari > 45) {
         this.srednjiPrecnikCetinariBodoviAnimal = 4;
-        this.srPrecnikCetinariTraktor = 2;
       } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
         this.srednjiPrecnikCetinariBodoviAnimal = 6;
-        this.srPrecnikCetinariTraktor = 5;
       } else {
         this.srednjiPrecnikCetinariBodoviAnimal = 10;
-        this.srPrecnikCetinariTraktor = 8;
       }
 
       this.bodoviCetinariAnimal = this.usloviAnimal.value.nagibAnimal + this.usloviAnimal.value.ucesceLiscaraAnimal
@@ -758,10 +798,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (this.unosUslovaRada.get('saKorom').value == 1) {
         this.normaCetAnimalTrupci =
-          (this.unosNormi.animalCet[this.usloviRadaCetAnimal][0][this.usloviAnimal.value.animalDistanca.toString()]) * 0.8;
+          ((this.unosNormi.animalCet[this.usloviRadaCetAnimal][0][this.usloviAnimal.value.animalDistanca.toString()]) * 0.8).toFixed(2);
 
         this.normaCetAnimalTankaOblovina =
-          (this.unosNormi.animalCet[this.usloviRadaCetAnimal][1][this.usloviAnimal.value.animalDistanca.toString()]) * 0.8;
+          ((this.unosNormi.animalCet[this.usloviRadaCetAnimal][1][this.usloviAnimal.value.animalDistanca.toString()]) * 0.8).toFixed(2);
       } else {
         this.normaCetAnimalTrupci =
           this.unosNormi.animalCet[this.usloviRadaCetAnimal][0][this.usloviAnimal.value.animalDistanca.toString()];
@@ -779,13 +819,10 @@ export class UnosPodatakaSjecaComponent implements OnInit {
 
       if (this.srednjiPrecnikLiscari > 45) {
         this.srednjiPrecnikLiscariBodoviAnimal = 4;
-        this.srPrecnikLiscariTraktor = 2;
       } else if (30 < this.srednjiPrecnikLiscari && this.srednjiPrecnikLiscari < 46) {
         this.srednjiPrecnikLiscariBodoviAnimal = 6;
-        this.srPrecnikLiscariTraktor = 5;
       } else {
         this.srednjiPrecnikLiscariBodoviAnimal = 10;
-        this.srPrecnikLiscariTraktor = 8;
       }
 
       this.bodoviLiscariAnimal = this.usloviAnimal.value.nagibAnimal + this.usloviAnimal.value.ucesceLiscaraAnimal
@@ -823,18 +860,26 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   }
 
   private iznosNorme() {
-    if (this.usloviAnimal.value.nagibAnimal == 4) {
-      this.nagibTerenaIznos = 5;
-    } else if (this.usloviAnimal.value.nagibAnimal == 6) {
-      this.nagibTerenaIznos = 10;
+    if (this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 1) {
+      this.gustinaPodmlatkaIznos = 2;
+    } else if (this.unosUslovaRada.value.gustinaPodmlatkaSjeca == 4) {
+      this.gustinaPodmlatkaIznos = 3;
     } else {
-      this.nagibTerenaIznos = 15;
+      this.gustinaPodmlatkaIznos = 5;
+    }
+
+    if (this.unosUslovaRada.value.doznacenaMasaSjeca == 4) {
+      this.doznakaIznos = 3;
+    } else if (this.unosUslovaRada.value.doznacenaMasaSjeca == 6) {
+      this.doznakaIznos = 6;
+    } else {
+      this.doznakaIznos = 11;
     }
 
     if (this.usloviIznos.value.vrstaTla == 0 || this.usloviIznos.value.vrstaTla == null) {
       this.bodoviCetinariLiscariIznos = null;
     } else {
-      this.bodoviCetinariLiscariIznos = this.nagibTerenaIznos + this.usloviIznos.value.vrstaTla
+      this.bodoviCetinariLiscariIznos = this.usloviIznos.value.nagibIznos + this.usloviIznos.value.vrstaTla
         + this.gustinaPodmlatkaIznos + this.doznakaIznos + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal
         + this.usloviAnimal.value.udaljenostOdStale;
     }
@@ -857,7 +902,7 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       } else {
         this.normaCetinariIznos = this.unosNormi.iznosCet[this.usloviRadaCetinariIznos][this.usloviIznos.value.iznosDistanca];
       }
-      if (this.mase2.length == 0) {
+      if (this.mase2.length == 0 || this.trupci.iznosLis[0] == 0) {
         this.normaLiscariIznos = 0
       } else {
         this.normaLiscariIznos = this.unosNormi.iznosLis[this.usloviRadaLiscariIznos][this.usloviIznos.value.iznosDistanca];
@@ -927,15 +972,41 @@ export class UnosPodatakaSjecaComponent implements OnInit {
   }
 
   private traktorNorma() {
-    this.bodoviCetinariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+    if (this.srednjiPrecnikCetinari > 45) {
+      this.srPrecnikCetinariTraktor = 2;
+    } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
+      this.srPrecnikCetinariTraktor = 5;
+    } else {
+      this.srPrecnikCetinariTraktor = 8;
+    }
+
+    if (this.srednjiPrecnikLiscari > 45) {
+      this.srPrecnikLiscariTraktor = 2;
+    } else if (30 < this.srednjiPrecnikLiscari && this.srednjiPrecnikLiscari < 46) {
+      this.srPrecnikLiscariTraktor = 5;
+    } else {
+      this.srPrecnikLiscariTraktor = 8;
+    }
+
+    if(this.mase1.length !== 0) {
+      this.bodoviCetinariTraktor = this.usloviTraktor.value.nagibTerenaTraktor + this.usloviTraktor.value.nagibPutaTraktor +
       this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
       this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikCetinariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
-
-    this.bodoviLiscariTraktor = this.usloviAnimal.value.nagibAnimal + this.usloviTraktor.value.nagibTraktor +
+    } else {
+      this.bodoviCetinariTraktor = 0;
+    }
+    
+    if (this.mase2.length !==0) {
+      this.bodoviLiscariTraktor = this.usloviTraktor.value.nagibTerenaTraktor + this.usloviTraktor.value.nagibPutaTraktor +
       this.usloviTraktor.value.vrstaTlaTraktor + this.unosUslovaRada.value.nadmorskaVisinaSjecaAnimal +
       this.usloviTraktor.value.udaljenostOdGaraza + this.srPrecnikLiscariTraktor + this.unosUslovaRada.value.doznacenaMasaSjeca;
+    } else {
+      this.bodoviLiscariTraktor = 0;
+    }
+    
 
     // Uslovi rada cetinari traktor
+    if (this.bodoviCetinariTraktor !==0) {
     if (18 >= this.bodoviCetinariTraktor) {
       this.usloviRadaCetinariTraktor = 0;
       this.usloviCetTraktor = 'I';
@@ -952,8 +1023,13 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.usloviRadaCetinariTraktor = 4;
       this.usloviCetTraktor = 'III';
     }
+  } else {
+    this.usloviRadaCetinariTraktor = null;
+    this.usloviCetTraktor = '0';
+  }
 
     // Uslovi rada liscari traktor
+    if (this.bodoviLiscariTraktor !==0) {
     if (18 >= this.bodoviLiscariTraktor) {
       this.usloviRadaLiscariTraktor = 0;
       this.usloviLisTraktor = 'I';
@@ -970,12 +1046,31 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.usloviRadaLiscariTraktor = 4;
       this.usloviLisTraktor = 'III';
     }
+  } else {
+    this.usloviRadaLiscariTraktor = null;
+      this.usloviLisTraktor = '0';
+  }
 
-    // Norma cetinari traktor
+    // Norme traktor
     if (this.srednjiPrecnikCetinari > 45) {
       this.prosjecnoStablo = 1;
+      this.srPrecnikCetinariTraktor = 2;
+    } else if (30 < this.srednjiPrecnikCetinari && this.srednjiPrecnikCetinari < 46) {
+      this.prosjecnoStablo = 0;
+      this.srPrecnikCetinariTraktor = 5;
     } else {
       this.prosjecnoStablo = 0;
+      this.srPrecnikCetinariTraktor = 8;
+    }
+    if (this.srednjiPrecnikLiscari > 45) {
+      this.prosjecnoStablo1 = 1;
+      this.srPrecnikLiscariTraktor = 2;
+    } else if (30 < this.srednjiPrecnikLiscari && this.srednjiPrecnikLiscari < 46) {
+      this.prosjecnoStablo1 = 0;
+      this.srPrecnikLiscariTraktor = 5;
+    } else {
+      this.prosjecnoStablo1 = 0;
+      this.srPrecnikLiscariTraktor = 8;
     }
 
     if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === '') {
@@ -983,20 +1078,70 @@ export class UnosPodatakaSjecaComponent implements OnInit {
       this.usloviTraktor.value.traktorDistanca = 0;
     }
 
+    if (this.mase1.length !== 0) {
     if (this.unosUslovaRada.value.periodSjece == 0) {
 
-      if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === '') {
+     /*  if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === '') {
         this.usloviTraktor.value.primicanjeTraktor = 0;
         this.usloviTraktor.value.traktorDistanca = 0;
+      } */ if (this.usloviTraktor.value.traktorDistanca  > 1001) {
+        const hiljada = 1000;
+        const devetsto = 900;
+        this.normaCetinariTraktor = 
+        ( ( parseFloat(this.unosNormi.traktorLJetoNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][devetsto.toString()])
+        - parseFloat(this.unosNormi.traktorLJetoNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]))
+        * ((this.usloviTraktor.value.traktorDistanca - 1000) / 100) ) 
+        + this.unosNormi.traktorLJetoNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]   
+      } else {
+        this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
       }
-      this.normaCetinariTraktor = this.unosNormi.traktorLJetoNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
-
-      this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1][this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
-    } else {
+      
+    }  else if (this.usloviTraktor.value.traktorDistanca  > 1001) {
+      const hiljada = 1000;
+        const devetsto = 900;
+        this.normaCetinariTraktor = 
+        ( ( parseFloat(this.unosNormi.traktorZimaNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][devetsto.toString()])
+        - parseFloat(this.unosNormi.traktorZimaNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]))
+        * ((this.usloviTraktor.value.traktorDistanca - 1000) / 100)) 
+        + this.unosNormi.traktorZimaNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]   
+    }  else {
       this.normaCetinariTraktor = this.unosNormi.traktorZimaNorme[0][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
-
-      this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1][this.prosjecnoStablo][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
     }
+  } else {
+    this.normaCetinariTraktor = 0;
+  }
+
+  if (this.mase2.length !== 0) {
+    if (this.unosUslovaRada.value.periodSjece == 0) {
+
+      /* if (this.usloviTraktor.value.primicanjeTraktor === null && this.usloviTraktor.value.traktorDistanca === '') {
+        this.usloviTraktor.value.primicanjeTraktor = 0;
+        this.usloviTraktor.value.traktorDistanca = 0;
+      } */ if (this.usloviTraktor.value.traktorDistanca  > 1001) {
+        const hiljada = 1000;
+        const devetsto = 900;
+        this.normaLiscariTraktor = 
+        ( ( parseFloat(this.unosNormi.traktorLJetoNorme[1][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][devetsto.toString()])
+        - parseFloat(this.unosNormi.traktorLJetoNorme[1][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]))
+        * ((this.usloviTraktor.value.traktorDistanca - 1000) / 100)) 
+        + this.unosNormi.traktorLJetoNorme[1][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]   
+      } else {
+      this.normaLiscariTraktor = this.unosNormi.traktorLJetoNorme[1][this.prosjecnoStablo1][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
+      } 
+    } else if (this.usloviTraktor.value.traktorDistanca  > 1001) {
+      const hiljada = 1000;
+      const devetsto = 900;
+      this.normaLiscariTraktor = 
+      ( ( parseFloat(this.unosNormi.traktorZimaNorme[1][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][devetsto.toString()])
+      - parseFloat(this.unosNormi.traktorZimaNorme[1][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]))
+      * ((this.usloviTraktor.value.traktorDistanca - 1000) / 100)) 
+      + this.unosNormi.traktorZimaNorme[1][this.prosjecnoStablo][this.usloviRadaCetinariTraktor][this.usloviTraktor.value.primicanjeTraktor][hiljada.toString()]   
+    } else {
+      this.normaLiscariTraktor = this.unosNormi.traktorZimaNorme[1][this.prosjecnoStablo1][this.usloviRadaLiscariTraktor][this.usloviTraktor.value.primicanjeTraktor][this.usloviTraktor.value.traktorDistanca];
+    }
+  } else {
+    this.normaLiscariTraktor = 0;
+  } 
 
  /*    if (this.mase1.length == 0) {
       this.normaCetinariIznos = 0;

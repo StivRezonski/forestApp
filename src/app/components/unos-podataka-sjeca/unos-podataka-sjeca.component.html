@@ -5,7 +5,7 @@
     <div class="accordion-item1" *ngIf="precnik">
       <h2 class="accordion-header" id="flush-headingOne">
         <button class="accordion-button collapsed bg-warning text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-         <h2>Unos srednjeg prečnika po vrstama<i class="bi bi-exclamation-lg"></i></h2>
+         <h2><p> Unos srednjeg prečnika po vrstama<i class="bi bi-exclamation-lg"></i> </p></h2>
         </button>
       </h2> <br>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -55,7 +55,7 @@
     <div class="accordion-item2">
       <h2 class="accordion-header" id="flush-headingTwo">
         <button class="accordion-button collapsed {{accordionSjeca}} {{accordionTextValidSjeca}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          <h2>Unijeti uslove rada za sjecu <i class="{{accordionIconSjeca}}"></i></h2>
+          <h2> <p> Unijeti uslove rada za sjecu <i class="{{accordionIconSjeca}}" ></i> </p></h2>
         </button>
       </h2> <br>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -194,22 +194,32 @@
     <div class="accordion-item3" *ngIf="traktor">
       <h2 class="accordion-header" id="flush-headingThree">
         <button class="accordion-button collapsed {{accordionTraktor}} {{accordionTextValidTraktor}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          <h2>Unijeti uslove rada za traktor<i class="{{accordionIconTraktor}}"></i></h2>
+          <h2> <p> Unijeti uslove rada za traktor <i class="{{accordionIconTraktor}}"></i></p></h2>
         </button> <br>
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
         <div class="traktor">
           <form [formGroup]="usloviTraktor">
             <div class="form-group">
-          <select class="form-select" formControlName="nagibTraktor" required>
+              <select class="form-select" formControlName="nagibTerenaTraktor" required>
+                <option [ngValue]="null" [disabled]="true">Nagib terena - traktor</option>
+                <option [ngValue]="4">Do 10°</option>
+                <option [ngValue]="6">10 - 30°</option>
+                <option [ngValue]="10">Preko 30°</option>
+              </select>
+            <small class="text-danger"
+                   *ngIf="usloviTraktor.get('nagibTerenaTraktor').errors?.required">
+              Unijeti nagib terena za traktor!
+            </small><br> 
+          <select class="form-select" formControlName="nagibPutaTraktor" required>
           <option [ngValue]="null" [disabled]="true">Nagib traktorskog puta</option>
           <option [ngValue]="1">10-15%</option>
           <option [ngValue]="3">5-10 i veci od 15%</option>
           <option [ngValue]="6">0-5%-mocvarno</option>
         </select>
        <small class="text-danger"
-               *ngIf="usloviTraktor.get('nagibTraktor').errors?.required">
-          Unijeti nagib za traktor!
+               *ngIf="usloviTraktor.get('nagibPutaTraktor').errors?.required">
+          Unijeti nagib traktorskog puta!
         </small>  <br>
 
         <select class="form-select" formControlName="vrstaTlaTraktor" required>
@@ -243,15 +253,18 @@
    Unijeti udaljenost primicanja za traktor!
  </small><br>
 
-        <input formControlName="traktorDistanca" placeholder="Traktor distanca" class="form-control" required>
+ <select class="form-select" formControlName="traktorDistanca" required>
+  <option [ngValue]="null" [disabled]="true">Traktorska distanca</option>
+  <option *ngFor="let distTraktor of distancaTraktor; let i = index" [ngValue]="distTraktor">
+    {{distTraktor}} m
+  </option>
+</select>
+<small class="text-danger"
+*ngIf="
+usloviTraktor.get('traktorDistanca').errors?.required">
+Izaberite distancu privlacenja za traktor.
+</small> <br>
 
-        <small class="text-danger"
-               *ngIf="
-               usloviTraktor.get('traktorDistanca').errors?.required ||
-               usloviTraktor.get('traktorDistanca').errors?.minlength ||
-               usloviTraktor.get('traktorDistanca').errors?.maxlength">
-          Distanca mora biti trocifren ili četvorocifren broj.
-        </small> <br>
               <div class="d-grid gap-2">
                 <button [disabled]="!usloviTraktor.valid" *ngIf="potvrdjenTraktor" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" type="button" class="btn btn-success collapsed" (click)="traktorBtn()">Traktor</button>
               </div>
@@ -264,24 +277,23 @@
     <div class="accordion-item4" *ngIf="animal">
       <h2 class="accordion-header" id="flush-headingFour">
         <button class="accordion-button collapsed {{accordionAnimal}} {{accordionTextValidAnimal}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-          <h2>Unijeti uslove rada za animal<i class="{{accordionIconAnimal}}"></i></h2>
+          <h2> <p> Unijeti uslove rada za animal <i class="{{accordionIconAnimal}}"></i> </p></h2>
         </button> <br>
       </h2>
       <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
         <div class="animal">
           <form [formGroup]="usloviAnimal">
             <div class="form-group">
-          <select class="form-select" formControlName="nagibAnimal" required>
-            <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
-            <option [ngValue]="4">10°-20°</option>
-            <option [ngValue]="6">Veci od 20°</option>
-            <option [ngValue]="10">0°-10°</option>
-          </select>
-        <small class="text-danger"
-               *ngIf="usloviAnimal.get('nagibAnimal').errors?.required">
-          Unijeti nagib za animal!
-        </small><br>
-
+              <select class="form-select" formControlName="nagibAnimal" required>
+                <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
+                <option [ngValue]="4">10°-20°</option>
+                <option [ngValue]="6">Veci od 20°</option>
+                <option [ngValue]="10">0°-10°</option>
+              </select>
+            <small class="text-danger"
+                   *ngIf="usloviAnimal.get('nagibAnimal').errors?.required">
+              Unijeti nagib za animal!
+            </small><br> 
           <select class="form-select" formControlName="ucesceLiscaraAnimal" required >
             <option [ngValue]="null" [disabled]="true">Ucesce liscara</option>
             <option [ngValue]="1">Cisti cetinari</option>
@@ -304,14 +316,17 @@
         </small> <br>
 
 
-          <input formControlName="animalDistanca" placeholder="Animal distanca" class="form-control" required>
+        <select class="form-select" formControlName="animalDistanca" required>
+          <option [ngValue]="null" [disabled]="true">Distanca za animal</option>
+          <option *ngFor="let distAnimal of distancaAnimal; let i = index" [ngValue]="distAnimal">
+            {{distAnimal}} m
+          </option>
+        </select>
 
         <small class="text-danger"
                *ngIf="
-               usloviAnimal.get('animalDistanca').errors?.required ||
-               usloviAnimal.get('animalDistanca').errors?.minlength ||
-               usloviAnimal.get('animalDistanca').errors?.maxlength">
-          Distanca mora biti trocifren ili četvorocifren broj.
+               usloviAnimal.get('animalDistanca').errors?.required">
+          Unijeti distancu za animal.
         </small> <br>
 
               <div class="d-grid gap-2">
@@ -327,22 +342,22 @@
     <div class="accordion-item5" *ngIf="imaIznosa">
       <h2 class="accordion-header" id="flush-headingFive">
         <button class="accordion-button collapsed  {{accordionIznos}} {{accordionTextValidIznos}}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-          <h2>Unijeti uslove rada za iznos<i class="{{ accordionIconIznos}}"></i></h2>
+          <h2> <p> Unijeti uslove rada za iznos <i class="{{ accordionIconIznos}}"></i> </p></h2>
         </button>
       </h2> <br>
         <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
           <div class="iznos">
             <form [formGroup]="usloviIznos">
-                <input formControlName="iznosDistanca" placeholder="Distanca za iznos" class="form-control">
-
-         <small class="text-danger"
-                 *ngIf="
-                        usloviIznos.get('iznosDistanca').errors?.required ||
-                        usloviIznos.get('iznosDistanca').errors?.minlength ||
-                        usloviIznos.get('iznosDistanca').errors?.maxlength
-                      ">
-            Distanca mora biti trocifren ili četvorocifren broj.
-          </small> <br> <br>
+              <select class="form-select" formControlName="nagibIznos" required>
+                <option [ngValue]="null" [disabled]="true">Nagib terena - animal</option>
+                <option [ngValue]="5">10°-20°</option>
+                <option [ngValue]="10">Veci od 20°</option>
+                <option [ngValue]="15">0°-10°</option>
+              </select>
+            <small class="text-danger"
+                   *ngIf="usloviIznos.get('nagibIznos').errors?.required">
+              Unijeti nagib za samaricu!
+            </small><br>
           <select class="form-select" formControlName="vrstaTla" required>
             <option [ngValue]="null" [disabled]="true">Vrsta tla</option>
             <option [ngValue]="2">Bez kamenja</option>
@@ -354,8 +369,20 @@
             Unijeti vrstu tla!
 
           </small> <br>
+          <select class="form-select" formControlName="iznosDistanca" required>
+            <option [ngValue]="null" [disabled]="true">Distanca za samaricu</option>
+            <option *ngFor="let distSamarica of distancaSamarica; let i = index" [ngValue]="distSamarica">
+              {{distSamarica}} m
+            </option>
+          </select>
 
-            <div class="potvrdjivanjeIznosa">
+          <small class="text-danger"
+                  *ngIf="
+                         usloviIznos.get('iznosDistanca').errors?.required">
+             Unecite distancu za samaricu.
+           </small> <br>
+
+            <div class="d-grid gap-2">
               <button *ngIf="potvrdjenIznos" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive" type="button" class="btn btn-success collapsed" type="button" (click)="iznosBtn()">
               Potvrdi uslove iznosa
               </button>

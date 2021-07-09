@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class NormeService {
   podaciZaIzracunCijene = [];
+  sviPodaci = [];
 
   cijenaRadnogDanaSjeca = 89.37;
   cijenaRadnogDanaAnimal = 124.63;
