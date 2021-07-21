@@ -36,6 +36,9 @@ export class TrupciService {
   vrijednostBrijest = [];
   vrijednostOstali = [];
 
+  netoCet = [];
+  netoLis = [];
+
   sumCet = [];
   sumLis = [];
   sumCetLis = [];

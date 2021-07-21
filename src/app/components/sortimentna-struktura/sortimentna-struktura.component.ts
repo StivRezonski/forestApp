@@ -477,32 +477,50 @@ export class SortimentnaStrukturaComponent implements OnInit {
     const sveBrijest = this.trupci.brijestSaNeto[12];
     const sveOstali = this.trupci.ostaliSaNeto[12];
 
+    const sveJelaNeto = this.trupci.jelaSaNeto[13];
+    const sveSmrcaNeto = this.trupci.smrcaSaNeto[13];
+    const sveBijeliBorNeto = this.trupci.bijeliBorSaNeto[13];
+    const sveCrniBorNeto = this.trupci.crniBorSaNeto[13];
+    const sveBukvaNeto = this.trupci.bukvaSaNeto[13];
+    const sveHrastNeto = this.trupci.hrastSaNeto[13];
+    const sveBrijestNeto = this.trupci.brijestSaNeto[13];
+    const sveOstaliNeto = this.trupci.ostaliSaNeto[13];
+
 
     if (sveJela > 0) {
       this.trupci.sveukupnaCet.push(sveJela);
+      this.trupci.netoCet.push(sveJelaNeto);
     }
     if (sveSmrca > 0) {
       this.trupci.sveukupnaCet.push(sveSmrca);
+      this.trupci.netoCet.push(sveSmrcaNeto);
     }
     if (sveBijeliBor > 0) {
       this.trupci.sveukupnaCet.push(sveBijeliBor);
+      this.trupci.netoCet.push(sveBijeliBorNeto);
     }
     if (sveCrniBor > 0) {
       this.trupci.sveukupnaCet.push(sveCrniBor);
+      this.trupci.netoCet.push(sveCrniBorNeto);
     }
 
     if (sveBukva > 0) {
       this.trupci.sveukupnaLis.push(sveBukva);
+      this.trupci.netoLis.push(sveBukvaNeto);
     }
     if (sveHrast > 0) {
       this.trupci.sveukupnaLis.push(sveHrast);
+      this.trupci.netoLis.push(sveHrastNeto);
     }
     if (sveBrijest > 0) {
       this.trupci.sveukupnaLis.push(sveBrijest);
+      this.trupci.netoLis.push(sveBrijestNeto);
     }
     if (sveOstali > 0) {
       this.trupci.sveukupnaLis.push(sveOstali);
+      this.trupci.netoLis.push(sveOstaliNeto);
     }
+    
   }
 
   // testirati treba li ova funkcija jos
